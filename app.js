@@ -3,10 +3,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
 const mongoose = require('mongoose');
+
+require('dotenv').config();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var recipesRouter = require('./routes/recipes');
 
 var app = express();
 
@@ -20,5 +24,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/recipes', recipesRouter);
+
+app.use((err, req, res, next)=>{
+    if(err.name === 'UnauthorizedError'){
+        res.status(401).send({
+            error: true,
+            message: 'Login first!'
+        })
+    }
+});
 
 module.exports = app;
