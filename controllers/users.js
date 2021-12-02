@@ -5,23 +5,23 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 module.exports = {
-    register: async (req, res) => {
+    getAllUsers: async (req, res) => {
+        const users = await User.find();
+        res.send(users);
+    },
+    postUserSingUp: async (req, res) => {
         try {
             req.body.email = req.body.email.toLowerCase();
             let user = await User.findOne({ email: req.body.email })
             if (user) {
-                throw new Error('This email is alredy taken! Try new one...');
+                throw new Error('This email is alredy taken! Try new one...')
             }
-
-            if (!req.body.confirmPW === req.body.password) {
-                throw new Error('The password confirmation does not match. Please try again, but CORRECTLY (:')
-            }
-
-            req.body.password = bcrypt.hashSync(req.body.password);
-            user = await User.create(req.body);
-
+            if (req.body.confim_password === req.body.password) {
+                req.body.password = bcrypt.hashSync(req.body.password)
+                user = await User.create(req.body)
+            } else { throw new Error('The password confirmation does not match. Please try again, but CORRECTLY (:') }
             res.send({
-                error: false,
+                err: false,
                 message: 'A new user has been created!',
                 user: user
             });
@@ -32,7 +32,7 @@ module.exports = {
             });
         }
     },
-    login: async (req, res) => {
+    postUserSingin: async (req, res) => {
         try {
             const user = await User.findOne({ email: req.body.email });
             if (!user) {
@@ -44,7 +44,7 @@ module.exports = {
 
             const userToken = {
                 id: user._id,
-                email: user.email
+                email: user.email,
             }
             const token = jwt.sign(userToken, process.env.SECRET_AUTH_TOKEN, {
                 expiresIn: '50m'
@@ -52,7 +52,7 @@ module.exports = {
 
             res.send({
                 error: false,
-                message: "User is logged in.",
+                message: `User is logged in.`,
                 token: token
             });
         } catch (error) {
@@ -67,7 +67,7 @@ module.exports = {
             const user = await User.findById(req.user.id)
             res.send({
                 error: false,
-                message: `Info for user with id #${req.body.user}`,
+                message: `Info for user ${req.user.first_name} with id #${req.user.id}`,
                 user: user
             })
         } catch (error) {
@@ -77,15 +77,32 @@ module.exports = {
             })
         }
     },
-    editUser: async (req, res) => {
+    postUserEdit: async (req, res) => {
         try {
-            await User.findByIdAndUpdate(req.user.id, req.body);
-            if (!req.body.confirmPW === req.body.password) {
-                throw new Error('The password confirmation does not match. Please try again, but CORRECTLY (:')
-            }
+            if (req.body.confirm_password === req.body.password) {
+                req.body.password = bcrypt.hashSync(req.body.password)
+                const user = await User.findByIdAndUpdate(req.user.id, req.body)
+                res.send({
+                    err: false,
+                    message: `Updated user ${req.body.first_name}`,
+                    user: user
+                });
+            } else { throw new Error('The password confirmation does not match. Please try again, but CORRECTLY (:') }
+        }
+        catch (error) {
             res.send({
-                error: false,
-                message: `Updated profile ${req.body.first_name}`
+                error: true,
+                message: error.message
+            })
+        }
+    },
+    getUserEdit: async (req, res) => {
+        try {
+            const user = await User.findById(req.user.id);
+            res.send({
+                err: false,
+                message: `User ${req.user.first_name}`,
+                user: user
             })
         }
         catch (error) {
@@ -95,20 +112,45 @@ module.exports = {
             })
         }
     },
-    logout: (req, res) => {
+    deleteUser: async (req, res) => {
         try {
             const userToken = {
                 id: req.user.id,
-                email: req.user.email
+                email: req.user.email,
+                first_name: req.user.first_name
+            }
+            const token = jwt.sign(userToken, process.env.SECRET_AUTH_TOKEN, { expiresIn: '1s' });
+            const user = await User.findByIdAndDelete(req.user.id);
+            res.send({
+                error: false,
+                message: "User has been deleted",
+                user: user,
+                token: token
+            });
+        }
+        catch (error) {
+            res.send({
+                error: true,
+                message: error.message
+            })
+        }
+    },
+    postUserSingout: (req, res) => {
+        try {
+            const userToken = {
+                id: req.user.id,
+                email: req.user.email,
+                first_name: req.user.first_name
             }
 
-            const token = jwt.sign(userToken, 'Invalid secret key', {
-                expiresIn: '1'
-            });
+            const token = jwt.sign(userToken, process.env.SECRET_AUTH_TOKEN, { expiresIn: '1s' });
+            res.send(token);
 
-            successResponse(res, 'You have been logged out', token);
         } catch (error) {
-            errorResponse(res, 500, error.message);
+            res.sned({
+                error: true,
+                message: error.message
+            })
         }
     },
 }
