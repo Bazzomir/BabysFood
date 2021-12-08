@@ -1,6 +1,11 @@
 const Recipe = require('../models/recipe');
+const User = require('../models/user');
 
 module.exports = {
+    getAllRecipes: async (req, res) => {
+        const recipes = await Recipe.find();
+        res.send(recipes);
+    },
     getHomePage: async (req, res) => {
         try {
             const recipes = await Recipe.find();
@@ -84,10 +89,11 @@ module.exports = {
             })
         }
     },
-    getRecipe: async (req, res) => {
+    getViews: async (req, res) => {
         try {
+            console.log(req.params.id);
             const recipe = await Recipe.findById(req.params.id);
-            await Recipe.findByIdAndUpdate(recipe.id, { views: recipe.views + 1 });
+            await Recipe.findByIdAndUpdate(recipe.id, { views: recipe.views += 1 });
             res.send({
                 error: false,
                 message: 'Recipe',
@@ -103,10 +109,11 @@ module.exports = {
     },
     getMyRecipes: async (req, res) => {
         try {
+            const user = await User.findById(req.user.id);
             const recipes = await Recipe.find({ user: req.user.id });
             res.send({
                 error: false,
-                message: `A list of all recipes from ${req.user.first_name}`,
+                message: `A list of all recipes from ${user.first_name}`,
                 recipes: recipes
             })
         }
@@ -135,11 +142,12 @@ module.exports = {
     },
     postRecipe: async (req, res) => {
         try {
-            req.body.user = req.user.id;
+            const user = await User.findById(req.user.id);
+            req.body.user = user.id;
             const recipe = await Recipe.create(req.body);
             res.send({
                 error: false,
-                message: `User ${req.user.first_name} has just created a new recipes!`,
+                message: `User ${user.first_name} has just created a new recipes!`,
                 recipe: recipe
             })
         }
@@ -152,6 +160,7 @@ module.exports = {
     },
     postUpdate: async (req, res) => {
         try {
+            console.log(req.body);
             req.body.user = req.user.id;
             await Recipe.findByIdAndUpdate(req.params.id, req.body);
             res.redirect('/recipes/myrecipes');
