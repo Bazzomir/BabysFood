@@ -1,0 +1,10 @@
+body {
+    padding: 50px;
+    background-color: #fefef9;
+}
+
+.card-img-box{
+    width: 400px;
+    height: 500px;
+    object-fit: contain;
+  }
