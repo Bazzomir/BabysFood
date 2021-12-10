@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../assets/logo.png';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
     return (
@@ -27,12 +28,15 @@ export default function Navbar() {
                     </ul>
                 </div>
                 <div className="col">
-                    <button type="button" className="btn btn-link" href="/login">LOG IN</button>
+                    <Link to="/login">
+                        <button type="button" className="btn btn-outline-group">LOG IN</button>
+                    </Link>
                     <span>or</span>
-                    <button type="button" className="btn btn-link" href="/register">CREATE ACCOUNT</button>
+                    <Link to="/register">
+                        <button type="button" className="btn btn-success" >CREATE ACCOUNT</button>
+                    </Link>
                 </div>
             </div>
         </div >
-
     )
 }
