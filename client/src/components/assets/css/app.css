@@ -3,7 +3,7 @@ body {
     background-color: #fefef9;
 }
 
-#footer{
+#footer {
     background-color: grey;
     clear: both;
     position: bottom;
@@ -11,26 +11,34 @@ body {
     color: whitesmoke;
 }
 
-#cardImage{
+#cardImage {
     border-top-left-radius: 2%;
     border-top-right-radius: 2%;
     vertical-align: top;
 }
 
-#card{
-    width: 384px;
-    border-radius: 2%;
-}
-
-#h3Title{
+#h3Title {
     color: green;
     margin-bottom: 3%;
     margin-top: 3%;
 }
 
-#icons{
+#icons {
     width: 16px;
     height: 16px;
+}
+
+#iconsButton {
+   position: absolute;
+   margin-left: 50%;
+   margin-bottom: 2%; 
+   color: whitesmoke;
+   background-color: green;
+   border-radius: 20%;
+}
+
+#notfound{
+    position: relative;
 }
 
 li {
@@ -42,4 +50,9 @@ li {
 
 a {
     text-decoration-color: black;
+}
+
+.card {
+    width: 384px;
+    border-radius: 2%;
 }
