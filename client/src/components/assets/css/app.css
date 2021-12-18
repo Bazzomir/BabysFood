@@ -3,10 +3,23 @@ body {
     background-color: #fefef9;
 }
 
+#colorText{
+    color: orange;
+}
+#plusAndBack{
+    background-color: orange;
+    border-radius: 75%;
+}
+
+#textHeader{
+    padding-right: 150px;
+}
+
 #footer {
+    padding: 60px;
     background-color: grey;
     clear: both;
-    position: bottom;
+    position: relative;
     height: 200px;
     color: whitesmoke;
 }
@@ -29,16 +42,21 @@ body {
 }
 
 #iconsButton {
-   position: absolute;
-   margin-left: 50%;
-   margin-bottom: 2%; 
-   color: whitesmoke;
-   background-color: green;
-   border-radius: 20%;
+    position: absolute;
+    margin-left: 50%;
+    margin-bottom: 2%;
+    color: whitesmoke;
+    background-color: green;
+    border-radius: 20%;
 }
 
-#notfound{
+#notfound {
     position: relative;
+}
+
+#avatarPics {
+    height: 200px;
+    width: 200px;
 }
 
 li {
@@ -52,7 +70,19 @@ a {
     text-decoration-color: black;
 }
 
+hr{
+    background-color: grey;
+}
+
+label {
+    color:orange
+}
+
 .card {
     width: 384px;
     border-radius: 2%;
+}
+
+.card-title{
+    color: orange;
 }

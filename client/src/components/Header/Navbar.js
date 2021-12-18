@@ -29,11 +29,11 @@ export default function Navbar() {
                 </div>
                 <div className="col">
                     <Link to="/login">
-                        <button type="button" className="btn btn-outline-group">LOG IN</button>
+                        <button type="button" className="btn btn-outline-secondary">LOG IN</button>
                     </Link>
-                    <span>or</span>
+                    <span id="colorText">or</span>
                     <Link to="/register">
-                        <button type="button" className="btn btn-success" >CREATE ACCOUNT</button>
+                        <button type="button" className="btn btn-success">CREATE ACCOUNT</button>
                     </Link>
                 </div>
             </div>

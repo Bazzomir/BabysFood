@@ -1,11 +1,13 @@
 import React from 'react';
 import jajca from '../assets/jajca.jpg';
+import Navbar from '../Header/Navbar';
 
 export default function Home() {
     return (
         <div className="container" >
+            <Navbar />
             <div className="row" >
-                <div className="row"><h3 id="h3Title">Fresh & New</h3></div>
+                <div className="row"><h3 id="h3Title">Fresh & New<hr /></h3></div>
                 <div className="col" xs={4} >
                     <div className="card">
                         <img id="cardImage" src={jajca} alt="" />
@@ -35,7 +37,7 @@ export default function Home() {
                 </div>
             </div>
             <div className="row" >
-                <div className="row"><h3 id="h3Title">Most Popular Recipes</h3></div>
+                <div className="row"><h3 id="h3Title">Most Popular Recipes<hr /></h3></div>
                 <div div className="col" xs={4} >
                     <div className="card">
                         <img id="cardImage" src={jajca} alt="" />

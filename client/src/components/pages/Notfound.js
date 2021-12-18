@@ -4,7 +4,7 @@ export default function Notfound() {
     return (
         <div id="notfound">
             <h2>Sorry..</h2>
-            <h4>This Page is not foundddddddddddddddddd.</h4>
+            <h4>This Page is not found.</h4>
             <p>Probably does not exist :(</p>
         </div>
     )
