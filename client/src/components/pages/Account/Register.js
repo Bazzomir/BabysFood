@@ -46,7 +46,7 @@ export default function Register() {
                                 <input className="form-control" type="password" placeholder="*****" />
                             </div>
                         </div>
-                        <button variant="success">Create Account</button>
+                        <button variant="success" className="btn btn-success">Create Account</button>
                     </form>
                 </div>
             </div>

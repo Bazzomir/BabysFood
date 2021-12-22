@@ -6,7 +6,7 @@ const jwt = require('express-jwt');
 require('dotenv').config();
 
 router
-    .get('/', controller.getAllRecipes)
+    // .get('/', controller.getAllRecipes)
     .get('/breakfast', controller.getBreakfast)
     .get('/brunch', controller.getBrunch)
     .get('/dinner', controller.getDinner)

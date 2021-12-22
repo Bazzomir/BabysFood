@@ -39,8 +39,8 @@ export default function MyProfile() {
                                     <input className="form-control" type="email" placeholder="john@smith.com" />
                                 </div>
                                 <div className="form-group col" >
-                                    <label for="birthday">Birthday</label>
-                                    <input type="date" id="birthday" name="birthday"></input>
+                                    <label>Birthday</label><br/>
+                                    <input type="date" id="birthday" name="birthday"/>
                                 </div>
                             </div>
                             <div className="row" >

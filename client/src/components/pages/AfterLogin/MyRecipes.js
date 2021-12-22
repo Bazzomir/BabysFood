@@ -23,7 +23,7 @@ export default function MyRecipes() {
                     </div>
                 </div>
                 <div className="row">
-                    <table className="table" responsive="sm">
+                    <table className="table">
                         <thead>
                             <tr>
                                 <th>Recipe Name</th>
@@ -36,7 +36,7 @@ export default function MyRecipes() {
                         </thead>
                         <tbody>
                             <tr>
-                                <td><a href='/createRecipe' style={{ textDecoration: 'none' }}>Table cell</a></td>
+                                <td><a href='/createrecipes' style={{ textDecoration: 'none' }}>Table cell</a></td>
                                 <td>Table cell</td>
                                 <td>Table cell</td>
                                 <td colSpan='3'></td>

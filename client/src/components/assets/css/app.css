@@ -22,6 +22,7 @@ body {
     position: relative;
     height: 200px;
     color: whitesmoke;
+    text-decoration-style: none;
 }
 
 #cardImage {

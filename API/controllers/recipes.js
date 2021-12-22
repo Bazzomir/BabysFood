@@ -2,10 +2,10 @@ const Recipe = require('../models/recipe');
 const User = require('../models/user');
 
 module.exports = {
-    getAllRecipes: async (req, res) => {
-        const recipes = await Recipe.find();
-        res.send(recipes);
-    },
+    // getAllRecipes: async (req, res) => {
+    //     const recipes = await Recipe.find();
+    //     res.send(recipes);
+    // },
     getHomePage: async (req, res) => {
         try {
             const recipes = await Recipe.find();
@@ -160,7 +160,6 @@ module.exports = {
     },
     postUpdate: async (req, res) => {
         try {
-            console.log(req.body);
             req.body.user = req.user.id;
             await Recipe.findByIdAndUpdate(req.params.id, req.body);
             res.redirect('/recipes/myrecipes');
