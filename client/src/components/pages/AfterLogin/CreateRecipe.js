@@ -15,7 +15,7 @@ export default function CreateRecipe() {
                         <Link to="/myrecipes">
                             <button type="button" className="btn btn-outline-light" id="plusAndBack">
                                 <svg xmlns="http://www.w3.org/2000/svg" id="icons" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z" />
+                                    <path fillRule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z" />
                                     <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z" />
                                 </svg>
                             </button>
@@ -28,7 +28,7 @@ export default function CreateRecipe() {
                             <label>Resipe Image</label>
                         </div>
                         <div className="col">
-                            <image src="https://www.pinclipart.com/picdir/big/133-1331433_free-user-avatar-icons-happy-flat-design-png.png" roundedCircle style={{ width: '171px' }, { height: '180px' }} alt=" " />
+                            <image src="https://www.pinclipart.com/picdir/big/133-1331433_free-user-avatar-icons-happy-flat-design-png.png" roundedCircle style={{ width: '171px', height: '180px' }} alt=" " />
                         </div>
                         <br />
                         <div className="col">

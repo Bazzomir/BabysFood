@@ -23,7 +23,7 @@ export default function Dinner() {
                 <div className="row"><h3 id="h3Title">Dinner<hr /></h3></div>
                 {Dinner.map(recipe => {
                     return (
-                        <div className="col" xs={4} key={recipe._id}>
+                        <div className={` ${Dinner.length > 2 ? 'col-4' : 'col-6'}`} key={recipe._id}>
                             <div className="card">
                                 <img id="cardImage" src={jajca} alt="" />
                                 <div className="card-body">

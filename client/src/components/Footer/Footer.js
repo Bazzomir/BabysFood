@@ -4,15 +4,15 @@ import logo from '../assets/logo.png';
 
 export default function Footer() {
     return (
-        <div id="footer">
+        <div id="footer" className="mt-5">
             <div className="container">
                 <div className="row">
-                    <div className="col">
+                    <div className="col-3">
                         <a className="navbar-brand" href="/">
                             <img src={logo} alt="" width="150" height="70" />
                         </a>
                     </div>
-                    <div className="col">
+                    <div className="col-7">
                         <ul className="nav justify-content-center">
                             <li className="nav-item">
                                 <a className="nav-link" href="/breakfast">BREAKFAST</a>
@@ -28,7 +28,9 @@ export default function Footer() {
                             </li>
                         </ul>
                     </div>
-                    <p className="col-2">Baby's Food Place copyright &copy; 2021</p>
+                    <div className="col-2 text-danger">
+                        <p>Baby's Food Place copyright &copy; 2021</p>
+                    </div>
                 </div>
             </div>
         </div>

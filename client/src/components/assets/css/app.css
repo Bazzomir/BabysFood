@@ -5,6 +5,8 @@ body {
 
 #colorText{
     color: orange;
+    margin-right: 0.5em !important;
+    margin-left: 0.5em !important;
 }
 #plusAndBack{
     background-color: orange;
@@ -17,7 +19,7 @@ body {
 
 #footer {
     padding: 60px;
-    background-color: grey;
+    background-color: khaki;
     clear: both;
     position: relative;
     height: 200px;
@@ -65,10 +67,18 @@ li {
     margin-right: 15px;
     list-style-type: disc;
     color: orange;
+    text-decoration: none;
+}
+li:first-child{
+    list-style: none;
 }
 
-a {
-    text-decoration-color: black;
+.nav a {
+    text-decoration: none;
+    color: grey;
+}
+.nav :active{
+    color: inherit;
 }
 
 hr{
