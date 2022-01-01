@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from '../../Header/Navbar';
-import {api} from '../../../RESTApi/RestApi';
+import { api } from '../../../RESTApi/RestApi';
 
 export default function Register() {
 
@@ -11,7 +11,71 @@ export default function Register() {
     const [password, setPassword] = useState("");
     const [confim_password, setConfirmaPassword] = useState("");
 
-    const handleSubmitClick = () => {
+    const [firstNameError, setFirstNameError] = useState("");
+    const [lastNameError, setLastNameError] = useState("");
+    const [emailError, setEmailError] = useState("");
+    const [birthdayError, setBirthdayError] = useState("");
+    const [passwordError, setPasswordError] = useState("");
+    const [confirm_passwordError, setconfirm_passwordError] = useState("");
+
+
+    const formValidation = () => {
+        const firstNameError = {};
+        const lastNameError = {};
+        const emailError = {};
+        const birthdayError = {};
+        const passwordError = {};
+        const confirm_passwordError = {};
+
+        let isValid = true;
+
+        if (FirstName.trim().length === 0) {
+            firstNameError.FirstNameRequired = "First name is required";
+            isValid = false;
+        }
+
+        if (LastName.trim().length === 0) {
+            lastNameError.LastNameRequired = "Last name is required";
+            isValid = false;
+        }
+
+        if (email.trim().length === 0) {
+            emailError.EmailRequired = "Email is required";
+            isValid = false;
+        }
+
+        if (birthday.trim().length === 0) {
+            birthdayError.BirthdayRequired = "Birthday is required";
+            isValid = false;
+        }
+
+        if (password.trim().length === 0) {
+            passwordError.PasswordRequired = "Password is required";
+            isValid = false;
+        }
+
+        if (password.trim().length === 0) {
+            confirm_passwordError.ComfirmPasswordRequired = "Repeat Password is required";
+            isValid = false;
+        }
+
+        setFirstNameError(firstNameError)
+        setLastNameError(lastNameError)
+        setEmailError(emailError)
+        setBirthdayError(birthdayError)
+        setPasswordError(passwordError)
+        setconfirm_passwordError(confirm_passwordError)
+        return isValid;
+    }
+
+    const handleSubmitClick = (event) => {
+        event.preventDefault();
+
+        const isValid = formValidation();
+
+        if (!isValid)
+            return
+
         const register = {
             first_name: FirstName,
             last_name: LastName,
@@ -20,6 +84,7 @@ export default function Register() {
             password: password,
             confim_password: confim_password
         }
+
         fetch(`${api.root}/users/register`, {
             method: 'POST',
             headers: {
@@ -27,10 +92,9 @@ export default function Register() {
             },
             body: JSON.stringify(register)
         })
-        .then(alert(`Account is created`))
-        .catch(err => alert(err))
+            .then(alert(`Account is created`))
+            .catch(err => alert(err))
     }
-
 
     return (
         <div className="container">
@@ -45,44 +109,63 @@ export default function Register() {
                     </p>
                 </div>
                 <div className="col">
-                    <form style={{ width: "80%" }} >
+                    <form style={{ width: "80%" }} name="registerForm" className='form' onSubmit={handleSubmitClick}>
                         <div className="row mb-3">
                             <div className="col">
                                 <label>First Name</label>
-                                <input className="form-control" placeholder="John" type="text" value={FirstName}
+                                <input className="form-control" placeholder="John" type="text" value={FirstName} required
                                     onChange={e => { setFirstName(e.target.value) }} />
+                                {Object.keys(firstNameError).map((key) => {
+                                    return <div className='text-danger'>{firstNameError[key]}</div>
+                                })}
                             </div>
                             <div className="col">
                                 <label>Last Name</label>
-                                <input className="form-control" placeholder="Smith" type="text" value={LastName}
+                                <input className="form-control" placeholder="Smith" type="text" value={LastName} required
                                     onChange={e => { setLastName(e.target.value) }} />
+                                {Object.keys(lastNameError).map((key) => {
+                                    return <div className='text-danger'>{lastNameError[key]}</div>
+                                })}
                             </div>
                         </div>
                         <div className="row mb-3">
                             <div className="col">
                                 <label>Email</label>
-                                <input className="form-control" placeholder="john@smith.com" type="email" value={email}
+                                <input className="form-control" placeholder="john@smith.com" type="email" value={email} required
                                     onChange={e => { setEmail(e.target.value) }} />
+                                {Object.keys(emailError).map((key) => {
+                                    return <div className='text-danger'>{emailError[key]}</div>
+                                })}
                             </div>
                             <div className="col">
                                 <label>Birthday</label>
-                                <input className="form-control" type="date" value={birthday}
+                                <input className="form-control" type="date" value={birthday} required
                                     onChange={e => { setBirthday(e.target.value) }} />
+                                {Object.keys(birthdayError).map((key) => {
+                                    return <div className='text-danger'>{birthdayError[key]}</div>
+                                })}
                             </div>
                         </div>
                         <div className="row mb-4">
                             <div className="col">
                                 <label>Password</label>
-                                <input className="form-control" type="password" placeholder="*****" value={password}
+                                <input className="form-control" type="password" placeholder="*****" value={password} required
                                     onChange={e => { setPassword(e.target.value) }} />
+                                {Object.keys(passwordError).map((key) => {
+                                    return <div className='text-danger'>{passwordError[key]}</div>
+                                })}
+
                             </div>
                             <div className="col">
                                 <label>Repeat password</label>
-                                <input className="form-control" type="password" placeholder="*****" value={confim_password}
+                                <input className="form-control" type="password" placeholder="*****" value={confim_password} required
                                     onChange={e => { setConfirmaPassword(e.target.value) }} />
+                                {Object.keys(confirm_passwordError).map((key) => {
+                                    return <div className='text-danger'>{confirm_passwordError[key]}</div>
+                                })}
                             </div>
                         </div>
-                        <button variant="success" className="btn btn-success" onClick={handleSubmitClick} >Create Account</button>
+                        <button variant="success" type='submit' className="btn btn-success" onClick={handleSubmitClick} >Create Account</button>
                     </form>
                 </div>
             </div>
