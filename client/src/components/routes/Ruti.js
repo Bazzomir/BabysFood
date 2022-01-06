@@ -12,12 +12,13 @@ import MyProfile from "../pages/AfterLogin/MyProfile"
 import MyRecipes from "../pages/AfterLogin/MyRecipes"
 import CreateRecipe from "../pages/AfterLogin/CreateRecipe";
 import Notfound from "../pages/Notfound";
-
 export default function Ruti() {
     return (
         <div>
             <Routes>
-                <Route path="/" element={<Home />} />
+                {["/", "/home"].map((path, index) =>
+                    <Route path={path} element={<Home />} key={index} />
+                )}
                 <Route path="/breakfast" element={<Breakfast />} />
                 <Route path="/brunch" element={<Brunch />} />
                 <Route path="/lunch" element={<Lunch />} />

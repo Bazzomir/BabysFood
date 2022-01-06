@@ -56,8 +56,8 @@ module.exports = {
                 token: token
             });
         } catch (error) {
-            res.send({
-                error: true,
+            res.status(401).send({
+                error:true,
                 message: error.message
             });
         }

@@ -3,6 +3,8 @@ import logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
 
 export default function Navbar() {
+    let isUserLogged = true;
+
     return (
         <div className="container">
             <div className="row">
@@ -27,15 +29,29 @@ export default function Navbar() {
                         </li>
                     </ul>
                 </div>
-                <div className="col">
-                    <Link to="/login">
-                        <button type="button" className="btn btn-outline-secondary">LOG IN</button>
-                    </Link>
-                    <span id="colorText">or</span>
-                    <Link to="/register">
-                        <button type="button" className="btn btn-success">CREATE ACCOUNT</button>
-                    </Link>
-                </div>
+                {!isUserLogged &&
+                    <div className="col">
+                        <Link to="/login">
+                            <button type="button" className="btn btn-outline-secondary">LOG IN</button>
+                        </Link>
+                        <span id="colorText">or</span>
+                        <Link to="/register">
+                            <button type="button" className="btn btn-success">CREATE ACCOUNT</button>
+                        </Link>
+                    </div>}
+
+                {isUserLogged &&
+                    <div className="col">
+                        <Link to="/myrecipes">
+                            <button type="button" className="btn text-success"  style={{fontWeight:'bold',textDecoration:'underline'}}>MY RECIPES</button>
+                        </Link>
+                        <Link to="/myprofile">
+                            <button type="button" className="btn" style={{fontWeight:'bold',color:'orange',textDecoration:'underline'}}>MY PROFILE</button>
+                        </Link>
+                        <Link to="/logout">
+                            <button type="button" className="btn" style={{fontWeight:'bold',color:'gray',textDecoration:'underline'}}>LOG OUT</button>
+                        </Link>
+                    </div>}
             </div>
         </div >
     )
