@@ -1,42 +1,44 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Navbar from '../../Header/Navbar';
-import { api } from '../../../RESTApi/RestApi';
-import { useNavigate  } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import { logIn } from '../../../redux/ducks/auth';
 
 export default function Login(props) {
-    let navigate  = useNavigate ();
+
+    let navigate = useNavigate();
+
+    const dispatch = useDispatch();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
 
-    const logIn = (event) => {
+    const handleLogin = (event) => {
         event.preventDefault();
-        
-        const loginInfo = {
-            email: email,
-            password: password
-        }
 
-        fetch(`${api.root}/users/login`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(loginInfo)
-        })
-            .then((response) => {
-                return response.json();
-            })
-            .then((data) => {
-                if (!data.error) {
-                    alert(`Successfully logged in`)
-                    navigate("/home");
-                }
-                else
-                    throw new Error(data.message);
-            })
-            .catch(err => alert(err))
+        logIn(email, password)(dispatch);
+
+        // fetch(`${api.root}/users/login`, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(loginInfo)
+        // })
+        //     .then((response) => {
+        //         return response.json();
+        //     })
+        //     .then((data) => {
+        //         if (!data.error) {
+        //             alert(data.message)
+        //             navigate("/home");
+        //         }
+        //         else {
+        //             throw new Error(data.message);
+        //         }
+        //     })
+        //     .catch(err => alert(err))
     }
     return (
         <div className="container">
@@ -60,7 +62,7 @@ export default function Login(props) {
                             <label>Password</label>
                             <input className="form-control" type="password" placeholder="*****" value={password} onChange={e => { setPassword(e.target.value) }} />
                         </div>
-                        <button variant="success" className="btn btn-success" onClick={logIn}>Log In</button>
+                        <button variant="success" className="btn btn-success" onClick={handleLogin}>Log In</button>
                     </form>
                 </div>
             </div>

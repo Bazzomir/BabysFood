@@ -47,7 +47,7 @@ module.exports = {
                 email: user.email,
             }
             const token = jwt.sign(userToken, process.env.SECRET_AUTH_TOKEN, {
-                expiresIn: '50m'
+                expiresIn: '30m'
             })
 
             res.send({

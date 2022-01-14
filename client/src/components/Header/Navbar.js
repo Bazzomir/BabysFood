@@ -1,9 +1,17 @@
 import React from 'react';
 import logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
+import {reducer} from '../../redux/ducks/auth';
+import { useDispatch } from 'react-redux'; 
 
 export default function Navbar() {
-    let isUserLogged = true;
+
+    const dispatch = useDispatch();
+
+    let isUserLogged = dispatch({
+        type: "USER_AUTHENTICATED",
+        payload: null
+    });
 
     return (
         <div className="container">
@@ -29,6 +37,7 @@ export default function Navbar() {
                         </li>
                     </ul>
                 </div>
+
                 {!isUserLogged &&
                     <div className="col">
                         <Link to="/login">
@@ -43,13 +52,13 @@ export default function Navbar() {
                 {isUserLogged &&
                     <div className="col">
                         <Link to="/myrecipes">
-                            <button type="button" className="btn text-success"  style={{fontWeight:'bold',textDecoration:'underline'}}>MY RECIPES</button>
+                            <button type="button" className="btn text-success" style={{ fontWeight: 'bold', textDecoration: 'underline' }}>MY RECIPES</button>
                         </Link>
                         <Link to="/myprofile">
-                            <button type="button" className="btn" style={{fontWeight:'bold',color:'orange',textDecoration:'underline'}}>MY PROFILE</button>
+                            <button type="button" className="btn" style={{ fontWeight: 'bold', color: 'orange', textDecoration: 'underline' }}>MY PROFILE</button>
                         </Link>
                         <Link to="/logout">
-                            <button type="button" className="btn" style={{fontWeight:'bold',color:'gray',textDecoration:'underline'}}>LOG OUT</button>
+                            <button type="button" className="btn" style={{ fontWeight: 'bold', color: 'gray', textDecoration: 'underline' }}>LOG OUT</button>
                         </Link>
                     </div>}
             </div>

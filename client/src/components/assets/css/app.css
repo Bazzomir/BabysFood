@@ -1,6 +1,6 @@
 body {
     padding: 50px;
-    background-color: #fefef9;
+    background-color:#ffffe6;
 }
 
 #colorText{
@@ -19,7 +19,7 @@ body {
 
 #footer {
     padding: 60px;
-    background-color: khaki;
+    background-color: 	#696969;
     clear: both;
     position: relative;
     height: 200px;
@@ -46,11 +46,20 @@ body {
 
 #iconsButton {
     position: absolute;
-    margin-left: 50%;
+    right: 5%;
     margin-bottom: 2%;
     color: whitesmoke;
     background-color: green;
     border-radius: 20%;
+}
+
+#badge{
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-size: 12px;
+    border-radius: 30%;
+    background-color: green;
 }
 
 #notfound {
@@ -69,8 +78,13 @@ li {
     color: orange;
     text-decoration: none;
 }
-li:first-child{
+
+li:first-child {
     list-style: none;
+}
+
+li a:hover{
+    color: orange !important;
 }
 
 .nav a {

@@ -1,6 +1,5 @@
 import React from 'react';
-import logo from '../assets/logo.png';
-
+import footerLogo from '../assets/footerLogo.png';
 
 export default function Footer() {
     return (
@@ -9,7 +8,7 @@ export default function Footer() {
                 <div className="row">
                     <div className="col-3">
                         <a className="navbar-brand" href="/">
-                            <img src={logo} alt="" width="150" height="70" />
+                            <img src={footerLogo} alt="" width="150" height="70" />
                         </a>
                     </div>
                     <div className="col-7">
@@ -28,7 +27,7 @@ export default function Footer() {
                             </li>
                         </ul>
                     </div>
-                    <div className="col-2 text-danger">
+                    <div className="col-2">
                         <p>Baby's Food Place copyright &copy; 2021</p>
                     </div>
                 </div>
