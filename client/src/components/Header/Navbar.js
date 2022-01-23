@@ -1,17 +1,17 @@
 import React from 'react';
 import logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
-import {reducer} from '../../redux/ducks/auth';
-import { useDispatch } from 'react-redux'; 
 
 export default function Navbar() {
 
-    const dispatch = useDispatch();
+    const token = localStorage.getItem("token")
 
-    let isUserLogged = dispatch({
-        type: "USER_AUTHENTICATED",
-        payload: null
-    });
+    const logOut = (event) => {
+        event.preventDefault();
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        window.location.reload();
+    }
 
     return (
         <div className="container">
@@ -38,7 +38,7 @@ export default function Navbar() {
                     </ul>
                 </div>
 
-                {!isUserLogged &&
+                {!token ?
                     <div className="col">
                         <Link to="/login">
                             <button type="button" className="btn btn-outline-secondary">LOG IN</button>
@@ -47,9 +47,8 @@ export default function Navbar() {
                         <Link to="/register">
                             <button type="button" className="btn btn-success">CREATE ACCOUNT</button>
                         </Link>
-                    </div>}
-
-                {isUserLogged &&
+                    </div>
+                    :
                     <div className="col">
                         <Link to="/myrecipes">
                             <button type="button" className="btn text-success" style={{ fontWeight: 'bold', textDecoration: 'underline' }}>MY RECIPES</button>
@@ -57,8 +56,8 @@ export default function Navbar() {
                         <Link to="/myprofile">
                             <button type="button" className="btn" style={{ fontWeight: 'bold', color: 'orange', textDecoration: 'underline' }}>MY PROFILE</button>
                         </Link>
-                        <Link to="/logout">
-                            <button type="button" className="btn" style={{ fontWeight: 'bold', color: 'gray', textDecoration: 'underline' }}>LOG OUT</button>
+                        <Link to="/">
+                            <button type="button" className="btn" onClick={logOut} style={{ fontWeight: 'bold', color: 'gray', textDecoration: 'underline' }}>LOG OUT</button>
                         </Link>
                     </div>}
             </div>

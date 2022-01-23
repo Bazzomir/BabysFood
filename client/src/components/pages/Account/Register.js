@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import Navbar from '../../Header/Navbar';
 import { api } from '../../../RESTApi/RestApi';
+// import { useNavigate } from 'react-router';
+
+// const bcrypt = require("bcryptjs");
 
 export default function Register() {
 
@@ -18,6 +20,7 @@ export default function Register() {
     const [passwordError, setPasswordError] = useState("");
     const [confirm_passwordError, setconfirm_passwordError] = useState("");
 
+    // const navigate = useNavigate();
 
     const formValidation = () => {
         const firstNameError = {};
@@ -70,6 +73,7 @@ export default function Register() {
 
     const handleSubmitClick = (event) => {
         event.preventDefault();
+        // console.log(handleSubmitClick)
 
         const isValid = formValidation();
 
@@ -81,24 +85,32 @@ export default function Register() {
             last_name: LastName,
             email: email,
             birthday: birthday,
+            // password: bcrypt.hashSync(password),
             password: password,
             confim_password: confim_password
         }
 
-        fetch(`${api.root}/users/register`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(register)
-        })
-            .then(alert(`Account is created`))
-            .catch(err => alert(err))
+        if (password === confim_password) {
+            fetch(`${api.root}/users/register`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(register)
+            })
+                .then(res => res.json()
+                    .then((data) => {
+                        if (!data.error) {
+                            alert(data.message)
+                            window.location = "/login"
+                        } else { alert(data.message) }
+                    }))
+                .catch(err => alert(err))
+        } else { alert('The password confirmation does not match. Please try again, but CORRECTLY (:') }
     }
 
     return (
         <div className="container">
-            <Navbar />
             <div className="row"><h3 id="h3Title">Create Account<hr /></h3></div>
             <div className="row" >
                 <div className="col" id="textHeader" xs={5}>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import jajca from '../assets/jajca.jpg';
-import Navbar from '../Header/Navbar';
 import { api } from '../../RESTApi/RestApi';
 import PopupButton from './PopupButton';
 
@@ -11,11 +10,14 @@ export default function Home() {
 
     function getHomePage() {
         fetch(`${api.root}/home`)
-            .then(res => res.json())
-            .then(data => {
-                setPopularRecipes(data.PopularRecipes)
-                setNewRecipes(data.NewRecipes)
-            })
+            .then(res => res.json() , data => {
+                    setPopularRecipes(data.PopularRecipes)
+                    setNewRecipes(data.NewRecipes)
+                })
+            // .then(data => {
+            //     // setPopularRecipes(data.PopularRecipes)
+            //     setNewRecipes(data.NewRecipes)
+            // })
             .catch(err => alert(err));
     }
     useEffect(() => {
@@ -24,7 +26,6 @@ export default function Home() {
 
     return (
         <div className="container" >
-            <Navbar />
             <div className="row" >
                 <div className="row"><h3 id="h3Title">Fresh & New<hr /></h3></div>
                 {NewRecipes.map(recipe => {

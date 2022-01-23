@@ -10,8 +10,8 @@ const cors = require('cors')
 
 require('dotenv').config();
 
-mongoose.connect('mongodb://localhost:27017/babys-food');
-// mongoose.connect(`mongodb+srv://Bazzo97:${process.env.MONGODB_PASSWORD}@babysfood.71g0z.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
+// mongoose.connect('mongodb://localhost:27017/babys-food');
+mongoose.connect(`mongodb+srv://Bazzo97:${process.env.MONGODB_PASSWORD}@babysfood.71g0z.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
 
 const app = express();
 
@@ -27,7 +27,7 @@ app.use('/recipes', recipesRouter);
 
 app.use((err, req, res, next) => {
     if (err.name === 'UnauthorizedError') {
-        res.status(401).send({
+        res.status(500).send({
             error: true,
             message: 'Login first!'
         })

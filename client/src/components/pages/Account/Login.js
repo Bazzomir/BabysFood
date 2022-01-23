@@ -1,48 +1,38 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import Navbar from '../../Header/Navbar';
-import { useNavigate } from "react-router-dom"
-import { logIn } from '../../../redux/ducks/auth';
+import { api } from '../../../RESTApi/RestApi';
 
-export default function Login(props) {
+const bcrypt = require("bcryptjs");
 
-    let navigate = useNavigate();
-
-    const dispatch = useDispatch();
+export default function Login() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-
-    const handleLogin = (event) => {
+    const logIn = (event) => {
         event.preventDefault();
 
-        logIn(email, password)(dispatch);
+        const user = { email: email, password: password }
 
-        // fetch(`${api.root}/users/login`, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(loginInfo)
-        // })
-        //     .then((response) => {
-        //         return response.json();
-        //     })
-        //     .then((data) => {
-        //         if (!data.error) {
-        //             alert(data.message)
-        //             navigate("/home");
-        //         }
-        //         else {
-        //             throw new Error(data.message);
-        //         }
-        //     })
-        //     .catch(err => alert(err))
+        fetch(`${api.root}/users/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json()
+                .then(data => {
+                    let compareData = bcrypt.compareSync(password, `${data.password}`);
+                    if (compareData === true || data.error === false) {
+                        localStorage.setItem("user", JSON.stringify(user));
+                        localStorage.setItem("token", data.token);
+                        window.location = "/myprofile" 
+                    } else { alert("Invalid credentials") }
+                }))
+            .catch(err => alert(err));
     }
     return (
         <div className="container">
-            <Navbar />
             <div className="row"><h3 id="h3Title">Log In<hr /></h3></div>
             <div className="row" >
                 <div className="col" id="textHeader">
@@ -53,16 +43,16 @@ export default function Login(props) {
                     </p>
                 </div>
                 <div className="col" xs={4}>
-                    <form style={{ width: "70%" }} >
+                    <form style={{ width: "70%" }} onSubmit={logIn}>
                         <div className="form-group mb-3">
                             <label>Email address</label>
-                            <input className="form-control" type="email" placeholder="user@domain.com" value={email} onChange={e => { setEmail(e.target.value) }} />
+                            <input className="form-control" type="email" placeholder="user@domain.com" required value={email} onChange={(e) => { setEmail(e.target.value) }} />
                         </div>
                         <div className="form-group mb-4">
                             <label>Password</label>
-                            <input className="form-control" type="password" placeholder="*****" value={password} onChange={e => { setPassword(e.target.value) }} />
+                            <input className="form-control" type="password" placeholder="*****" required value={password} onChange={(e) => { setPassword(e.target.value) }} />
                         </div>
-                        <button variant="success" className="btn btn-success" onClick={handleLogin}>Log In</button>
+                        <button variant="success" className="btn btn-success">Log In</button>
                     </form>
                 </div>
             </div>

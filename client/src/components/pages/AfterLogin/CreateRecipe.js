@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { api } from '../../../RESTApi/RestApi'
-import NavbarAfterLogin from '../../Header/NavbarAfterLogin';
 
 export default function CreateRecipe() {
 
@@ -34,7 +33,7 @@ export default function CreateRecipe() {
         }
 
         if (description.trim().length === 0) {
-            descriptionError.descriptionRequired = "Description is required";
+            descriptionError.descriptionRequired = "Recipe is required";
             isValid = false;
         }
 
@@ -73,10 +72,8 @@ export default function CreateRecipe() {
             .catch(err => alert(err))
     }
 
-
     return (
         <div>
-            <NavbarAfterLogin />
             <div className="container">
                 <div className="row">
                     <div className="col" >
@@ -119,7 +116,7 @@ export default function CreateRecipe() {
                             <div className="row mb-6">
                                 <div className="form-group col mb-3" controlId="formGridState">
                                     <label>Category</label>
-                                    <select class="form-control" id="exampleFormControlSelect1" defaultValue="Choose..." value={category} required
+                                    <select class="form-control" defaultValue="Choose..." value={category} required
                                         onChange={e => { setCategory(e.target.value) }}>
                                         <option>Breakfast</option>
                                         <option>Braunch</option>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import jajca from '../../assets/jajca.jpg';
-import Navbar from '../../Header/Navbar';
 import { api } from '../../../RESTApi/RestApi';
 import PopupButton from '../PopupButton';
 
@@ -19,7 +18,6 @@ export default function Breakfast() {
     }, []);
     return (
         <div className="container" >
-            <Navbar />
             <div className="row" >
                 <div className="row"><h3 id="h3Title">Breakfast<hr /></h3></div>
                 {Breakfast.map(recipe => {

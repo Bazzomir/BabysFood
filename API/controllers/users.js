@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { token } = require('morgan');
 
 require('dotenv').config();
 
@@ -59,6 +60,11 @@ module.exports = {
             res.status(401).send({
                 error:true,
                 message: error.message
+            });
+            res.status(200).send({
+                error:false,
+                message: 'You are Logged in',
+                token:token
             });
         }
     },

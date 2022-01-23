@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import jajca from '../../assets/jajca.jpg';
-import Navbar from '../../Header/Navbar';
 import { api } from '../../../RESTApi/RestApi';
 import PopupButton from '../PopupButton';
 
@@ -19,7 +18,6 @@ export default function Brunch() {
     }, []);
     return (
         <div className="container" >
-            <Navbar />
             <div className="row" >
                 <div className="row"><h3 id="h3Title">Brunch<hr /></h3></div>
                 {Brunch.map(recipe => {

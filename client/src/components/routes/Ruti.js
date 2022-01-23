@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Home from '../pages/Home';
 import Breakfast from "../pages/Menu/Breakfast";
 import Brunch from "../pages/Menu/Brunch";
@@ -7,11 +7,14 @@ import Lunch from "../pages/Menu/Lunch";
 import Dinner from "../pages/Menu/Dinner";
 import Login from "../pages/Account/Login";
 import Register from "../pages/Account/Register";
-import LogOut from "../pages/AfterLogin/LogOut";
-import MyProfile from "../pages/AfterLogin/MyProfile"
-import MyRecipes from "../pages/AfterLogin/MyRecipes"
+import MyProfile from "../pages/AfterLogin/MyProfile";
+import MyRecipes from "../pages/AfterLogin/MyRecipes";
+import EditRecipe from "../pages/AfterLogin/EditRecipe";
 import CreateRecipe from "../pages/AfterLogin/CreateRecipe";
 import Notfound from "../pages/Notfound";
+
+const token = localStorage.getItem('token');
+
 export default function Ruti() {
     return (
         <div>
@@ -23,12 +26,12 @@ export default function Ruti() {
                 <Route path="/brunch" element={<Brunch />} />
                 <Route path="/lunch" element={<Lunch />} />
                 <Route path="/dinner" element={<Dinner />} />
-                <Route path="/login" element={<Login />} />
+                <Route path="/login" element={token ? <Navigate to='/myprofile' /> : <Login />} />
                 <Route path="/register" element={<Register />} />
-                <Route path="/myprofile" element={<MyProfile />} />
-                <Route path="/myrecipes" element={<MyRecipes />} />
-                <Route path="/createrecipes" element={<CreateRecipe />} />
-                <Route path="/logout" element={<LogOut />} />
+                <Route path="/myprofile" element={token ? <MyProfile /> : <Navigate to='/login' />} />
+                <Route path="/myrecipes" element={token ? <MyRecipes /> : <Navigate to='/login' />} />
+                <Route path="/myrecipes/:id" element={token ? <EditRecipe /> : <Navigate to='/login' />} />
+                <Route path="/createrecipes" element={token ? <CreateRecipe /> : <Navigate to='/login' />} />
                 <Route path='*' element={<Notfound />} />
             </Routes>
         </div>
