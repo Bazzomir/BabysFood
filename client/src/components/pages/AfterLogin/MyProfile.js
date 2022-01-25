@@ -16,7 +16,8 @@ export default function MyProfile() {
     const getUser = () => {
         fetch(`${api.root}/users/me`, {
             headers: {
-                Authorization: `Barer ${localStorage.getItem('token')}`
+                'Content-Type': 'application/json',
+                'Authorization': `Barer ${localStorage.getItem('token')}`
             }
         })
             .then(res => {
@@ -55,7 +56,7 @@ export default function MyProfile() {
             fetch(`${api.root}/users/edit`, {
                 method: 'PATCH',
                 headers: {
-                    Authorization: `Barer ${localStorage.getItem('token')}`
+                    'Authorization': `Barer ${localStorage.getItem('token')}`
                 },
                 body: formData
             })

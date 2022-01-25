@@ -44,19 +44,17 @@ export default function EditRecipe() {
         fetch(`${api.root}/recipes/myrecipes/${id}`, {
             method: 'PATCH',
             headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
+                'Authorization': `Bearer ${localStorage.getItem("token")}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(recipe)
         })
-            .then(res => res.json())
-            .then(data => {
-                if (data.err === true) {
-                    alert(data.message)
-                } else {
-                    const redirect = () => { window.location = "/myrecipes" }; redirect();
-                }
-            })
+            .then(res => res.json()
+                .then(data => {
+                    if (data.err === true) {
+                        alert(data.message)
+                    } else { window.location = "/myrecipes" }
+                }))
             .catch(err => alert(err))
     }
 

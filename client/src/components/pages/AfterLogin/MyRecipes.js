@@ -9,13 +9,14 @@ export default function MyRecipes() {
     function getMyRecipes() {
         fetch(`${api.root}/recipes/myrecipes`, {
             headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem("token")}`
             }
         })
-            .then(res => res.json())
-            .then(data => {
-                setRecipes(data.recipes)
-            })
+            .then(res => res.json()
+                .then(data => {
+                    setRecipes(data.recipes)
+                }))
     }
 
     useEffect(() => {
@@ -23,14 +24,15 @@ export default function MyRecipes() {
     }, [])
 
     function deleteMyRecipe() {
-        fetch(`${api.root}/recipes/myrecipes`, {
+        fetch(`${api.root}/recipes/${recipes._id}`, {
             method: 'DELETE',
             headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem("token")}`
             }
         })
-            .then(res => res.json())
-            .then(data => alert(data.message))
+            .then(res => res.json()
+                .then(data => alert(data.message)))
             .catch(err => alert(err))
     }
 
@@ -64,9 +66,9 @@ export default function MyRecipes() {
                         </tr>
                     </thead>
                     <tbody>
-                        {recipes.map(recipe => {
+                        {recipes?.map((recipe, i) => {
                             return (
-                                <tr>
+                                <tr key={i}>
                                     <td><a href={`/myrecipes/${recipe._id}`} style={{ textDecoration: 'none' }}>{recipe.title}</a></td>
                                     <td>{recipe.category}</td>
                                     <td>{recipe.createdAt.slice(0, 10)}</td>
