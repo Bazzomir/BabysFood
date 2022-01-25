@@ -60,12 +60,15 @@ export default function CreateRecipe() {
             people: people
         }
 
-        const myHeaders = new Headers();
-        myHeaders.append('Content-Type', 'application/json');
+        // const myHeaders = new Headers();
+        // myHeaders.append('Content-Type', 'application/json');
 
-        fetch(`${api.root}/recipes/create`, {
+        fetch(`${api.root}/recipes/createrecipes`, {
             method: 'POST',
-            headers: myHeaders,
+            // headers: myHeaders,
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(createRecipes)
         })
             .then(alert(`Recipes is created`))
@@ -82,7 +85,7 @@ export default function CreateRecipe() {
                     <div className="col" align='end'>
                         <Link to="/myrecipes">
                             <button type="button" className="btn btn-outline-light" id="plusAndBack">
-                                <svg xmlns="http://www.w3.org/2000/svg" id="icons" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                                <svg xmlns="http://www.w3.org/2000/svg" id="icons" fill="currentColor" className="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
                                     <path fillRule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z" />
                                     <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z" />
                                 </svg>
@@ -96,7 +99,7 @@ export default function CreateRecipe() {
                             <label>Resipe Image</label>
                         </div>
                         <div className="col">
-                            <image src="https://www.pinclipart.com/picdir/big/133-1331433_free-user-avatar-icons-happy-flat-design-png.png" roundedCircle style={{ width: '171px', height: '180px' }} alt=" " />
+                            <img src="https://www.eatthis.com/wp-content/uploads/sites/4/2019/06/deep-dish-pizza-chicago.jpg" style={{ width: '171px', height: '180px' }} alt=" " />
                         </div>
                         <br />
                         <div className="col">
@@ -105,7 +108,7 @@ export default function CreateRecipe() {
                     </div>
                     <div className="col" xs={8} md={6}>
                         <form name="createForm" className='form' onSubmit={handleSubmitClick}>
-                            <div className="form-group mb-3" controlId="formBasicEmail">
+                            <div className="form-group mb-3">
                                 <label>Recipe Title</label>
                                 <input className="form-control" type="RecipeTitle" placeholder="Recipe Title" value={title} required
                                     onChange={e => { setTitle(e.target.value) }} />
@@ -114,9 +117,9 @@ export default function CreateRecipe() {
                                 })}
                             </div>
                             <div className="row mb-6">
-                                <div className="form-group col mb-3" controlId="formGridState">
+                                <div className="form-group col mb-3">
                                     <label>Category</label>
-                                    <select class="form-control" defaultValue="Choose..." value={category} required
+                                    <select className="form-control" defaultValue="Choose..." value={category} required
                                         onChange={e => { setCategory(e.target.value) }}>
                                         <option>Breakfast</option>
                                         <option>Braunch</option>
@@ -124,12 +127,12 @@ export default function CreateRecipe() {
                                         <option>Dinner</option>
                                     </select>
                                 </div>
-                                <div className="form-group col" controlId="formGridCity">
+                                <div className="form-group col">
                                     <label>Preparation Time</label>
                                     <input className="form-control" type='number' value={preparation} required
                                         onChange={e => { setPreparation(e.target.value) }} />
                                 </div>
-                                <div className="form-group col" controlId="formGridZip">
+                                <div className="form-group col">
                                     <label>No. People</label>
                                     <input className="form-control" type='number' value={people} required
                                         onChange={e => { setPeople(e.target.value) }} />
@@ -137,7 +140,7 @@ export default function CreateRecipe() {
                             </div>
                             <div className="form-group mb-3" id="exampleFormControlTextarea1">
                                 <label>Short Description</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" value={shortDescription} required
+                                <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" value={shortDescription} required
                                     onChange={e => { setShortDescription(e.target.value) }} />
                                 {Object.keys(shortDescriptionError).map((key) => {
                                     return <div className='text-danger'>{shortDescriptionError[key]}</div>
@@ -149,7 +152,7 @@ export default function CreateRecipe() {
                     <div className="col" xs={6} md={4}>
                         <div className="form-group mb-3" id="exampleFormControlTextarea1">
                             <label>Recipe</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" value={description} required
+                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="10" value={description} required
                                 onChange={e => { setDescription(e.target.value) }}>
                             </textarea>
                             {Object.keys(descriptionError).map((key) => {

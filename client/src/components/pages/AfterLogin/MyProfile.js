@@ -66,8 +66,7 @@ export default function MyProfile() {
                         window.location = "/login";
                     }
                     return res.json();
-                })
-                .then((data) => {
+                }, data => {
                     if (!data.error) {
                         alert(data.message)
                         window.location.reload();
@@ -109,21 +108,21 @@ export default function MyProfile() {
                             <div className="row">
                                 <div className="form-group col">
                                     <label> Email address </label>
-                                    <input className="form-control" type="email" placeholder="john@smith.com" onChange={(e) => setEmail(e.target.value)} value={email} type="email" />
+                                    <input className="form-control" type="email" placeholder="john@smith.com" onChange={(e) => setEmail(e.target.value)} value={email} />
                                 </div>
                                 <div className="form-group col" >
                                     <label>Birthday</label><br />
-                                    <input type="date" id="birthday" name="birthday" onChange={(e) => setBirthday(e.target.value)} value={birthday} type="date" />
+                                    <input className="form-control" type="date" name="birthday" onChange={(e) => setBirthday(e.target.value)} value={birthday} />
                                 </div>
                             </div>
                             <div className="row" >
                                 <div className="form-group col" >
                                     <label> Password </label>
-                                    <input className="form-control" type="password" placeholder="******" onChange={(e) => setPassword(e.target.value)} value={password} type="password" />
+                                    <input className="form-control" type="password" placeholder="******" onChange={(e) => setPassword(e.target.value)} value={password} />
                                 </div>
                                 <div className="form-group col" >
                                     <label> Repeat Password </label>
-                                    <input className="form-control" type="password" placeholder="******" onChange={(e) => setConfirmaPassword(e.target.value)} value={confim_password} type="password" />
+                                    <input className="form-control" type="password" placeholder="******" onChange={(e) => setConfirmaPassword(e.target.value)} value={confim_password} />
                                 </div>
                             </div>
                             <div className="row" >

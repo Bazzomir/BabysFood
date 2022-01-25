@@ -10,10 +10,10 @@ export default function Home() {
 
     function getHomePage() {
         fetch(`${api.root}/home`)
-            .then(res => res.json() , data => {
-                    setPopularRecipes(data.PopularRecipes)
-                    setNewRecipes(data.NewRecipes)
-                })
+            .then(res => res.json(), data => {
+                setPopularRecipes(data.PopularRecipes)
+                setNewRecipes(data.NewRecipes)
+            })
             // .then(data => {
             //     // setPopularRecipes(data.PopularRecipes)
             //     setNewRecipes(data.NewRecipes)

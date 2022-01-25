@@ -73,7 +73,7 @@ export default function EditRecipe() {
                             </div>
                             <div className="col">
                                 <label>Category</label>
-                                <select class="form-control" value={category} onChange={(e) => setCategory(e.target.value)} aria-label="Default select example">
+                                <select className="form-control" value={category} onChange={(e) => setCategory(e.target.value)} aria-label="Default select example">
                                     <option value="Breakfast">Breakfast</option>
                                     <option value="Brunch">Brunch</option>
                                     <option value="Lunch">Lunch</option>

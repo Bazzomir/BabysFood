@@ -14,7 +14,7 @@ router
     .get('/myrecipes', jwt({ secret: process.env.SECRET_AUTH_TOKEN, algorithms: ['HS256'] }), controller.getMyRecipes)
     .get('/myrecipes/:id', jwt({ secret: process.env.SECRET_AUTH_TOKEN, algorithms: ['HS256'] }), controller.getMyRecipe)
     .get('/myrecipes/view/:id', jwt({ secret: process.env.SECRET_AUTH_TOKEN, algorithms: ['HS256'] }), controller.getViews)
-    .post('/create', jwt({ secret: process.env.SECRET_AUTH_TOKEN, algorithms: ['HS256'] }), controller.postRecipe)
+    .post('/createrecipes', jwt({ secret: process.env.SECRET_AUTH_TOKEN, algorithms: ['HS256'] }), controller.postRecipe)
     .post('/:id', jwt({ secret: process.env.SECRET_AUTH_TOKEN, algorithms: ['HS256'] }), controller.postUpdate)
     .delete('/myrecipes/:id', jwt({ secret: process.env.SECRET_AUTH_TOKEN, algorithms: ['HS256'] }), controller.deleteMyRecipe)
 
