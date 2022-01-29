@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { api } from "../../../RESTApi/RestApi";
-import avatar from "../../assets/avatar.png";
+// import avatar from "../../assets/avatar.png";
+const bcrypt = require("bcryptjs");
 
 export default function MyProfile() {
 
@@ -10,6 +11,17 @@ export default function MyProfile() {
     const [birthday, setBirthday] = useState("");
     const [password, setPassword] = useState("");
     const [confirm_password, setConfirmPassword] = useState("");
+    const [image, setImage] = useState(null);
+
+    function handleImage(e) {
+        const reader = new FileReader();
+        reader.onload = () => {
+            if (reader.readyState === 2) {
+                setImage(reader.result)
+            }
+        }
+        reader.readAsDataURL(e.target.files[0])
+    }
 
     const getUser = () => {
         fetch(`${api.root}/users/me`, {
@@ -31,6 +43,12 @@ export default function MyProfile() {
                 setLastName(data.user.last_name)
                 setEmail(data.user.email)
                 setBirthday(data.user.birthday)
+
+                if (data.user.image === "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png") {
+                    setImage(data.user.image)
+                } else {
+                    setImage(`${api.root}/${data.user.image}`)
+                }
                 // setPassword(data.user.password)
                 // setConfirmaPassword(data.user.password)
             })
@@ -43,34 +61,38 @@ export default function MyProfile() {
     const editUserProfile = (event) => {
         event.preventDefault();
 
-        // const formData = new FormData();
+        const formData = new FormData();
+        const imageUpload = document.querySelector('input[type="file"]');
+        
+        formData.append('first_name', FirstName);
+        formData.append('last_name', LastName);
+        formData.append('email', email);
+        formData.append('birthday', birthday);
+        formData.append('password', password);
+        formData.append('confirm_password', confirm_password);
+        formData.append('image', imageUpload.files[0]);
+        
 
-        // formData.append('first_name', FirstName);
-        // formData.append('last_name', LastName);
-        // formData.append('email', email);
-        // formData.append('birthday', birthday);
-        // formData.append('password', bcrypt.hashSync(password));
-        // formData.append('password', bcrypt.hashSync(confim_password));
+        
+        // var user = {
+        //     first_name: FirstName,
+        //     last_name: LastName,
+        //     email: email,
+        //     birthday: birthday,
+        //     password: password,
+        //     confirm_password: confirm_password
 
-        var user = {
-            first_name: FirstName,
-            last_name: LastName,
-            email: email,
-            birthday: birthday,
-            password: password,
-            confirm_password: confirm_password
-
-        }
+        // }
 
         if (password === confirm_password) {
 
             fetch(`${api.root}/users/edit`, {
-                method: 'POST',
+                method: 'PATCH',
                 headers: {
-                    'Content-Type': 'application/json',
+                    // 'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 },
-                body: JSON.stringify(user)
+                body: formData
             })
                 .then(res => {
                     if (res.status === 401) {
@@ -101,10 +123,11 @@ export default function MyProfile() {
                     </div>
                     <div className="col-sm-3 md-4">
                         <div className="col" >
-                            <img id="avatarPics" src={avatar} alt="" />
+                            <img id="avatarPics" src={image} alt="" />
                         </div>
                         <div className="col">
-                            <button type="submit" className="btn btn-outline-secondary"> CHANGE AVATAR </button>
+                            <button onClick={() => document.getElementById("fileinput").click()} type="submit" className="btn btn-outline-secondary"> CHANGE AVATAR </button>
+                            <input id="fileinput" onChange={handleImage} type="file" accept="image/*" style={{ display: "none" }} />               
                         </div>
                     </div>
                     <div className="col-sm-5 md-8" >
