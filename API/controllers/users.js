@@ -2,6 +2,7 @@ const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { token } = require('morgan');
+const fs = require("fs");
 
 require('dotenv').config();
 
@@ -21,7 +22,7 @@ module.exports = {
                 req.body.password = bcrypt.hashSync(req.body.password)
                 user = await User.create(req.body)
             }
-             else { throw new Error('The password confirmation does not match. Please try again, but CORRECTLY (:') }
+            else { throw new Error('The password confirmation does not match. Please try again, but CORRECTLY (:') }
             res.send({
                 err: false,
                 message: 'A new user has been created!',
@@ -59,13 +60,13 @@ module.exports = {
             });
         } catch (error) {
             res.status(401).send({
-                error:true,
+                error: true,
                 message: error.message
             });
             res.status(200).send({
-                error:false,
+                error: false,
                 message: 'You are Logged in',
-                token:token
+                token: token
             });
         }
     },
@@ -87,8 +88,22 @@ module.exports = {
     postUserEdit: async (req, res) => {
         try {
             if (req.body.confirm_password === req.body.password) {
+                var user=await User.findById(req.user.id)
+
                 req.body.password = bcrypt.hashSync(req.body.password)
-                const user = await User.findByIdAndUpdate(req.user.id, req.body)
+
+                if (req.file) {
+                    req.body.image = `images/users/${req.file.filename}`;
+                    if (user.image!=null && req.body.image !== user.image && user.image !== "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png") {
+                        fs.unlinkSync(`public/${user.image}`)
+                    }
+                } else {
+                    req.body.image = "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+                }
+
+
+                user = await User.findByIdAndUpdate(req.user.id, req.body)
+
                 res.send({
                     error: false,
                     message: `Updated user ${user.first_name}`,
