@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { api } from "../../../RESTApi/RestApi";
 import avatar from "../../assets/avatar.png";
 
-const bcrypt = require("bcryptjs");
-
 export default function MyProfile() {
 
     const [FirstName, setFirstName] = useState("");
@@ -11,13 +9,13 @@ export default function MyProfile() {
     const [email, setEmail] = useState("");
     const [birthday, setBirthday] = useState("");
     const [password, setPassword] = useState("");
-    const [confim_password, setConfirmaPassword] = useState("");
+    const [confirm_password, setConfirmPassword] = useState("");
 
     const getUser = () => {
         fetch(`${api.root}/users/me`, {
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Barer ${localStorage.getItem('token')}`
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         })
             .then(res => {
@@ -27,38 +25,52 @@ export default function MyProfile() {
                     window.location = "/login";
                 }
                 return res.json();
-            },
-                data => {
-                    setFirstName(data.user.first_name)
-                    setLastName(data.user.last_name)
-                    setEmail(data.user.email)
-                    setBirthday(data.user.birthday)
-                    setPassword(data.user.password)
-                    setConfirmaPassword(data.user.password)
-                })
+            })
+            .then(data => {
+                setFirstName(data.user.first_name)
+                setLastName(data.user.last_name)
+                setEmail(data.user.email)
+                setBirthday(data.user.birthday)
+                // setPassword(data.user.password)
+                // setConfirmaPassword(data.user.password)
+            })
     }
 
     useEffect(() => {
         getUser();
     }, []);
 
-    const editUserProfile = () => {
+    const editUserProfile = (event) => {
+        event.preventDefault();
 
-        const formData = new FormData();
+        // const formData = new FormData();
 
-        formData.append('first_name', FirstName);
-        formData.append('last_name', LastName);
-        formData.append('email', email);
-        formData.append('birthday', birthday);
-        formData.append('password', bcrypt.hashSync(password));
+        // formData.append('first_name', FirstName);
+        // formData.append('last_name', LastName);
+        // formData.append('email', email);
+        // formData.append('birthday', birthday);
+        // formData.append('password', bcrypt.hashSync(password));
+        // formData.append('password', bcrypt.hashSync(confim_password));
 
-        if (password === confim_password) {
+        var user = {
+            first_name: FirstName,
+            last_name: LastName,
+            email: email,
+            birthday: birthday,
+            password: password,
+            confirm_password: confirm_password
+
+        }
+
+        if (password === confirm_password) {
+
             fetch(`${api.root}/users/edit`, {
-                method: 'PATCH',
+                method: 'POST',
                 headers: {
-                    'Authorization': `Barer ${localStorage.getItem('token')}`
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
                 },
-                body: formData
+                body: JSON.stringify(user)
             })
                 .then(res => {
                     if (res.status === 401) {
@@ -67,11 +79,12 @@ export default function MyProfile() {
                         window.location = "/login";
                     }
                     return res.json();
-                }, data => {
+                })
+                .then(data => {
                     if (!data.error) {
                         alert(data.message)
                         window.location.reload();
-                    } else { alert(data.message) }
+                    } else { getUser();}
                 })
                 .catch(err => alert(err))
         } else { alert('The password confirmation does not match. Please try again, but CORRECTLY (:') }
@@ -83,10 +96,10 @@ export default function MyProfile() {
                 <div className="row">
                     <div className="row">
                         <div className="col">
-                            <h3 id="h3Title">My Profile<hr /></h3>
+                            <h3 id="h3Title">My Profile<hr className='mt-2' /></h3>
                         </div>
                     </div>
-                    <div className="col md-4" xs={6}>
+                    <div className="col-sm-3 md-4">
                         <div className="col" >
                             <img id="avatarPics" src={avatar} alt="" />
                         </div>
@@ -94,8 +107,8 @@ export default function MyProfile() {
                             <button type="submit" className="btn btn-outline-secondary"> CHANGE AVATAR </button>
                         </div>
                     </div>
-                    <div className="col md-8" xs={12} >
-                        <form>
+                    <div className="col-sm-5 md-8" >
+                        <form onSubmit={editUserProfile}>
                             <div className="row">
                                 <div className="form-group mb-3 col">
                                     <label> First Name </label>
@@ -117,18 +130,18 @@ export default function MyProfile() {
                                 </div>
                             </div>
                             <div className="row" >
-                                <div className="form-group col" >
+                                <div className="form-group mt-3 col" >
                                     <label> Password </label>
                                     <input className="form-control" type="password" placeholder="******" onChange={(e) => setPassword(e.target.value)} value={password} />
                                 </div>
-                                <div className="form-group col" >
+                                <div className="form-group mt-3 col" >
                                     <label> Repeat Password </label>
-                                    <input className="form-control" type="password" placeholder="******" onChange={(e) => setConfirmaPassword(e.target.value)} value={confim_password} />
+                                    <input className="form-control" type="password" placeholder="******" onChange={(e) => setConfirmPassword(e.target.value)} value={confirm_password} />
                                 </div>
                             </div>
                             <div className="row" >
-                                <div className="col" >
-                                    <button type="submit" className="btn btn-success" onClick={editUserProfile}> SAVE </button>
+                                <div className="col mt-4" >
+                                    <button type="submit" className="btn btn-success" > SAVE </button>
                                 </div>
                             </div>
                         </form>

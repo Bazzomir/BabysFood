@@ -20,7 +20,8 @@ module.exports = {
             if (req.body.confim_password === req.body.password) {
                 req.body.password = bcrypt.hashSync(req.body.password)
                 user = await User.create(req.body)
-            } else { throw new Error('The password confirmation does not match. Please try again, but CORRECTLY (:') }
+            }
+             else { throw new Error('The password confirmation does not match. Please try again, but CORRECTLY (:') }
             res.send({
                 err: false,
                 message: 'A new user has been created!',

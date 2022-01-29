@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { api } from '../../../RESTApi/RestApi';
-// import { useNavigate } from 'react-router';
 
 // const bcrypt = require("bcryptjs");
 
@@ -19,8 +18,6 @@ export default function Register() {
     const [birthdayError, setBirthdayError] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [confirm_passwordError, setconfirm_passwordError] = useState("");
-
-    // const navigate = useNavigate();
 
     const formValidation = () => {
         const firstNameError = {};
@@ -71,10 +68,8 @@ export default function Register() {
         return isValid;
     }
 
-    const handleSubmitClick = (event) => {
+    const singUp = (event) => {
         event.preventDefault();
-        // console.log(handleSubmitClick)
-
         const isValid = formValidation();
 
         if (!isValid)
@@ -98,13 +93,13 @@ export default function Register() {
                 },
                 body: JSON.stringify(register)
             })
-                .then(res => res.json()
-                    .then((data) => {
-                        if (!data.error) {
-                            alert(data.message)
-                            window.location = "/login"
-                        } else { alert(data.message) }
-                    }))
+                .then(res => res.json())
+                .then((data) => {
+                    if (!data.error) {
+                        alert(data.message)
+                        window.location = "/login"
+                    } else { alert(data.message) }
+                })
                 .catch(err => alert(err))
         } else { alert('The password confirmation does not match. Please try again, but CORRECTLY (:') }
     }
@@ -121,7 +116,7 @@ export default function Register() {
                     </p>
                 </div>
                 <div className="col">
-                    <form style={{ width: "80%" }} name="registerForm" className='form' onSubmit={handleSubmitClick}>
+                    <form style={{ width: "80%" }} name="registerForm" className='form' onSubmit={singUp}>
                         <div className="row mb-3">
                             <div className="col">
                                 <label>First Name</label>
@@ -177,7 +172,7 @@ export default function Register() {
                                 })}
                             </div>
                         </div>
-                        <button variant="success" type='submit' className="btn btn-success" onClick={handleSubmitClick} >Create Account</button>
+                        <button variant="success" type='submit' className="btn btn-success" onClick={singUp} >Create Account</button>
                     </form>
                 </div>
             </div>

@@ -49,16 +49,24 @@ export default function Navbar() {
                         </Link>
                     </div>
                     :
-                    <div className="col">
-                        <Link to="/myrecipes">
-                            <button type="button" className="btn text-success" style={{ fontWeight: 'bold', textDecoration: 'underline' }}>MY RECIPES</button>
-                        </Link>
-                        <Link to="/myprofile">
-                            <button type="button" className="btn" style={{ fontWeight: 'bold', color: 'orange', textDecoration: 'underline' }}>MY PROFILE</button>
-                        </Link>
-                        <Link to="/">
-                            <button type="button" className="btn" onClick={logOut} style={{ fontWeight: 'bold', color: 'gray', textDecoration: 'underline' }}>LOG OUT</button>
-                        </Link>
+                    <div className="col-4">
+                        <ul className="nav" id="header">
+                            <li className="nav-button">
+                                <Link to="/myrecipes">
+                                    <button type="button" className="btn text-success" style={{ fontWeight: 'bold', textDecoration: 'underline' }}>MY RECIPES</button>
+                                </Link>
+                            </li>
+                            <li className="nav-button">
+                                <Link to="/myprofile">
+                                    <button type="button" className="btn" style={{ fontWeight: 'bold', color: 'orange', textDecoration: 'underline' }}>MY PROFILE</button>
+                                </Link>
+                            </li>
+                            <li className="nav-button">
+                                <Link to="/">
+                                    <button type="button" className="btn" onClick={logOut} style={{ fontWeight: 'bold', color: 'gray', textDecoration: 'underline' }}>LOG OUT</button>
+                                </Link>
+                            </li>
+                        </ul>
                     </div>}
             </div>
         </div >

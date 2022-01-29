@@ -13,9 +13,10 @@ router
     .get('/lunch', controller.getLunch)
     .get('/myrecipes', jwt({ secret: process.env.SECRET_AUTH_TOKEN, algorithms: ['HS256'] }), controller.getMyRecipes)
     .get('/myrecipes/:id', jwt({ secret: process.env.SECRET_AUTH_TOKEN, algorithms: ['HS256'] }), controller.getMyRecipe)
-    .get('/myrecipes/view/:id', jwt({ secret: process.env.SECRET_AUTH_TOKEN, algorithms: ['HS256'] }), controller.getViews)
+    // .get('/myrecipes/view/:id', jwt({ secret: process.env.SECRET_AUTH_TOKEN, algorithms: ['HS256'] }), controller.getViews)
+    .get('/myrecipes/view/:id', controller.getViews)
     .post('/createrecipes', jwt({ secret: process.env.SECRET_AUTH_TOKEN, algorithms: ['HS256'] }), controller.postRecipe)
-    .post('/:id', jwt({ secret: process.env.SECRET_AUTH_TOKEN, algorithms: ['HS256'] }), controller.postUpdate)
-    .delete('/myrecipes/:id', jwt({ secret: process.env.SECRET_AUTH_TOKEN, algorithms: ['HS256'] }), controller.deleteMyRecipe)
+    .post('/updateRecipe/:id', jwt({ secret: process.env.SECRET_AUTH_TOKEN, algorithms: ['HS256'] }), controller.postUpdate)
+    .delete('/myrecipes/delete/:id', jwt({ secret: process.env.SECRET_AUTH_TOKEN, algorithms: ['HS256'] }), controller.deleteMyRecipe)
 
 module.exports = router; 

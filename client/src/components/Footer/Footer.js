@@ -12,7 +12,7 @@ export default function Footer() {
                         </a>
                     </div>
                     <div className="col-7">
-                        <ul className="nav justify-content-center">
+                        <ul className="nav justify-content-left mt-3">
                             <li className="nav-item">
                                 <a className="nav-link" href="/breakfast">BREAKFAST</a>
                             </li>

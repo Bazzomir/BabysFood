@@ -60,19 +60,23 @@ export default function CreateRecipe() {
             people: people
         }
 
-        // const myHeaders = new Headers();
-        // myHeaders.append('Content-Type', 'application/json');
-
         fetch(`${api.root}/recipes/createrecipes`, {
             method: 'POST',
-            // headers: myHeaders,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem("token")}`
             },
             body: JSON.stringify(createRecipes)
         })
-            .then(alert(`Recipes is created`))
+            .then(res => {
+                if (res.status === 401) {
+                    alert("Token expired");
+                    localStorage.removeItem("token");
+                    window.location = "/login";
+                }
+                return res.json();
+            })
+            .then(alert(`Recipes is created`), window.location = "/myrecipes" )
             .catch(err => alert(err))
     }
 
@@ -108,7 +112,7 @@ export default function CreateRecipe() {
                         </div>
                     </div>
                     <div className="col" xs={8} md={6}>
-                        <form name="createForm" className='form' onSubmit={handleSubmitClick}>
+                        <form name="createForm" className='form' >
                             <div className="form-group mb-3">
                                 <label>Recipe Title</label>
                                 <input className="form-control" type="RecipeTitle" placeholder="Recipe Title" value={title} required
@@ -119,14 +123,15 @@ export default function CreateRecipe() {
                             </div>
                             <div className="row mb-6">
                                 <div className="form-group col mb-3">
-                                    <label>Category</label>
-                                    <select className="form-control" defaultValue="Choose..." value={category} required
-                                        onChange={e => { setCategory(e.target.value) }}>
-                                        <option>Breakfast</option>
-                                        <option>Braunch</option>
-                                        <option>Lanch</option>
-                                        <option>Dinner</option>
-                                    </select>
+                                    <label>Category
+                                        <select className="form-control" placeholder="Choose..." value={category} required
+                                            onChange={e => { setCategory(e.target.value) }}>
+                                            <option>Breakfast</option>
+                                            <option>Brunch</option>
+                                            <option>Lunch</option>
+                                            <option>Dinner</option>
+                                        </select>
+                                    </label>
                                 </div>
                                 <div className="form-group col">
                                     <label>Preparation Time</label>
@@ -150,12 +155,11 @@ export default function CreateRecipe() {
                             <button variant="success" className="btn btn-success" onClick={handleSubmitClick}>SAVE</button>
                         </form>
                     </div>
-                    <div className="col" xs={6} md={4}>
+                    <div className="col md-4" xs={6}>
                         <div className="form-group mb-3" id="exampleFormControlTextarea1">
                             <label>Recipe</label>
                             <textarea className="form-control" id="exampleFormControlTextarea1" rows="10" value={description} required
-                                onChange={e => { setDescription(e.target.value) }}>
-                            </textarea>
+                                onChange={e => { setDescription(e.target.value) }} />
                             {Object.keys(descriptionError).map((key) => {
                                 return <div className='text-danger'>{descriptionError[key]}</div>
                             })}
@@ -163,6 +167,6 @@ export default function CreateRecipe() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
