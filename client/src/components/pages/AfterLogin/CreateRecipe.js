@@ -10,10 +10,21 @@ export default function CreateRecipe() {
     const [category, setCategory] = useState("");
     const [preparation, setPreparation] = useState("");
     const [people, setPeople] = useState("");
+    const [image, setImage] = useState("https://w7.pngwing.com/pngs/692/99/png-transparent-hamburger-street-food-seafood-fast-food-delicious-food-salmon-with-vegetables-salad-in-plate-leaf-vegetable-food-recipe-thumbnail.png");
 
     const [titleError, setTitleError] = useState("");
     const [shortDescriptionError, setShortDescriptionError] = useState("");
     const [descriptionError, setDescriptionError] = useState("");
+
+    function handleImage(e) {
+        const reader = new FileReader();
+        reader.onload = () => {
+            if (reader.readyState === 2) {
+                setImage(reader.result)
+            }
+        }
+        reader.readAsDataURL(e.target.files[0])
+    }
 
     const formRecipesValidation = () => {
         const titleError = {};
@@ -51,22 +62,24 @@ export default function CreateRecipe() {
         if (!isValid)
             return
 
-        const createRecipes = {
-            title: title,
-            short_description: shortDescription,
-            description: description,
-            category: category,
-            preparation: preparation,
-            people: people
-        }
+        const formData = new FormData();
+        const imageUpload = document.querySelector('input[type="file"]');
+
+        formData.append('title', title);
+        formData.append('short_description', shortDescription);
+        formData.append('description', description);
+        formData.append('category', category);
+        formData.append('preparation', preparation);
+        formData.append('people', people);
+        formData.append('image', imageUpload.files[0]);
 
         fetch(`${api.root}/recipes/createrecipes`, {
-            method: 'POST',
+            method: 'PATCH',
             headers: {
-                'Content-Type': 'application/json',
+                // 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem("token")}`
             },
-            body: JSON.stringify(createRecipes)
+            body: formData
         })
             .then(res => {
                 if (res.status === 401) {
@@ -74,20 +87,23 @@ export default function CreateRecipe() {
                     localStorage.removeItem("token");
                     window.location = "/login";
                 }
-                return res.json();
+                alert(`Recipes is created`)
+                window.location = "/myrecipes"
             })
-            .then(alert(`Recipes is created`), window.location = "/myrecipes" )
             .catch(err => alert(err))
     }
 
     return (
         <div>
-            <div className="container">
+            <div className="container mt-5">
                 <div className="row">
-                    <div className="col" >
-                        <h3 id="h3Title">My recipes<hr /></h3>
+                    <div className="col-2" >
+                        <h3 id="h3Title">My recipes</h3>
                     </div>
-                    <div className="col" align='end'>
+                    <div className="col-9">
+                        <hr className='mt-4' />
+                    </div>
+                    <div className="col-1" align='end'>
                         <Link to="/myrecipes">
                             <button type="button" className="btn btn-outline-light" id="plusAndBack">
                                 <svg xmlns="http://www.w3.org/2000/svg" id="icons" fill="currentColor" className="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
@@ -98,73 +114,83 @@ export default function CreateRecipe() {
                         </Link>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col" xs={4} md={2}>
+                <div className="row mt-5">
+                    <div className="col-3" xs={4} md={2}>
                         <div className="col">
-                            <label>Resipe Image</label>
+                            <label>Recipe Image</label>
                         </div>
                         <div className="col">
-                            <img src="https://www.eatthis.com/wp-content/uploads/sites/4/2019/06/deep-dish-pizza-chicago.jpg" style={{ width: '171px', height: '180px' }} alt=" " />
+                            <img style={{ width: '171px', height: '180px' }} alt=" " src={image} />
                         </div>
                         <br />
                         <div className="col">
-                            <button variant="outline-secondary" className="btn btn-outline-secondary">UPLOAD IMAGE</button>
+                            <button variant="outline-secondary" onClick={() => document.getElementById("fileinput").click()} type="submit" className="btn btn-outline-secondary">UPLOAD IMAGE</button>
+                            <input id="fileinput" onChange={handleImage} type="file" accept="image/*" style={{ display: "none" }} />
                         </div>
                     </div>
-                    <div className="col" xs={8} md={6}>
-                        <form name="createForm" className='form' >
-                            <div className="form-group mb-3">
-                                <label>Recipe Title</label>
-                                <input className="form-control" type="RecipeTitle" placeholder="Recipe Title" value={title} required
-                                    onChange={e => { setTitle(e.target.value) }} />
-                                {Object.keys(titleError).map((key) => {
-                                    return <div className='text-danger'>{titleError[key]}</div>
-                                })}
-                            </div>
-                            <div className="row mb-6">
-                                <div className="form-group col mb-3">
-                                    <label>Category
-                                        <select className="form-control" placeholder="Choose..." value={category} required
-                                            onChange={e => { setCategory(e.target.value) }}>
-                                            <option>Breakfast</option>
-                                            <option>Brunch</option>
-                                            <option>Lunch</option>
-                                            <option>Dinner</option>
-                                        </select>
-                                    </label>
+                    <div className="col-9" xs={8} md={6}>
+                        <form name="createForm" className='form row' >
+                            <div className="col-7">
+                                <div className="row">
+                                    <div className="form-group col-12 mb-3">
+                                        <label>Recipe Title</label>
+                                        <input className="form-control" type="RecipeTitle" placeholder="Recipe Title" value={title} required
+                                            onChange={e => { setTitle(e.target.value) }} />
+                                        {Object.keys(titleError).map((key) => {
+                                            return <div className='text-danger'>{titleError[key]}</div>
+                                        })}
+                                    </div>
+                                    <div className="form-group col-4">
+                                        <label style={{ width: "100%" }}>Category
+                                            <select className="form-control" placeholder="Choose..." value={category || "none"} required
+                                                onChange={e => { setCategory(e.target.value) }}>
+                                                <option value="none" disabled selected>Select ..</option>
+                                                <option>Breakfast</option>
+                                                <option>Brunch</option>
+                                                <option>Lunch</option>
+                                                <option>Dinner</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                    <div className="form-group col-4">
+                                        <label>Preparation Time</label>
+                                        <input className="form-control" type='number' value={preparation} required
+                                            onChange={e => { setPreparation(e.target.value) }} />
+                                    </div>
+                                    <div className="form-group col-4">
+                                        <label>No. People</label>
+                                        <input className="form-control" type='number' value={people} required
+                                            onChange={e => { setPeople(e.target.value) }} />
+                                    </div>
                                 </div>
-                                <div className="form-group col">
-                                    <label>Preparation Time</label>
-                                    <input className="form-control" type='number' value={preparation} required
-                                        onChange={e => { setPreparation(e.target.value) }} />
-                                </div>
-                                <div className="form-group col">
-                                    <label>No. People</label>
-                                    <input className="form-control" type='number' value={people} required
-                                        onChange={e => { setPeople(e.target.value) }} />
+                                <div className="form-group mt-4" id="exampleFormControlTextarea1">
+                                    <label>Short Description</label>
+                                    <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" value={shortDescription} required
+                                        onChange={e => { setShortDescription(e.target.value) }} />
+                                    {Object.keys(shortDescriptionError).map((key) => {
+                                        return <div className='text-danger'>{shortDescriptionError[key]}</div>
+                                    })}
                                 </div>
                             </div>
-                            <div className="form-group mb-3" id="exampleFormControlTextarea1">
-                                <label>Short Description</label>
-                                <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" value={shortDescription} required
-                                    onChange={e => { setShortDescription(e.target.value) }} />
-                                {Object.keys(shortDescriptionError).map((key) => {
-                                    return <div className='text-danger'>{shortDescriptionError[key]}</div>
-                                })}
+                            <div className="col md-4" xs={6}>
+                                <div className="form-group mb-3" id="exampleFormControlTextarea1">
+                                    <label>Recipe</label>
+                                    <textarea className="form-control" id="exampleFormControlTextarea1" rows="10" value={description} required
+                                        onChange={e => { setDescription(e.target.value) }} />
+                                    {Object.keys(descriptionError).map((key) => {
+                                        return <div className='text-danger'>{descriptionError[key]}</div>
+                                    })}
+                                </div>
                             </div>
-                            <button variant="success" className="btn btn-success" onClick={handleSubmitClick}>SAVE</button>
+                            <div className="row">
+                                <button variant="success" className="btn btn-success col-2" onClick={handleSubmitClick}>SAVE</button>
+                            </div>
                         </form>
+
+
+
                     </div>
-                    <div className="col md-4" xs={6}>
-                        <div className="form-group mb-3" id="exampleFormControlTextarea1">
-                            <label>Recipe</label>
-                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="10" value={description} required
-                                onChange={e => { setDescription(e.target.value) }} />
-                            {Object.keys(descriptionError).map((key) => {
-                                return <div className='text-danger'>{descriptionError[key]}</div>
-                            })}
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div >

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { api } from "../../../RESTApi/RestApi";
-// import avatar from "../../assets/avatar.png";
-const bcrypt = require("bcryptjs");
+import avatar from "../../assets/avatar.png";
 
 export default function MyProfile() {
 
@@ -44,8 +43,8 @@ export default function MyProfile() {
                 setEmail(data.user.email)
                 setBirthday(data.user.birthday)
 
-                if (data.user.image === "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png") {
-                    setImage(data.user.image)
+                if (data.user.image === "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" || data.user.image===undefined) {
+                    setImage(avatar)
                 } else {
                     setImage(`${api.root}/${data.user.image}`)
                 }

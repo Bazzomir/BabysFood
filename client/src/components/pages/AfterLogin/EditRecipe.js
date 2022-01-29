@@ -11,6 +11,17 @@ export default function EditRecipe() {
     const [category, setCategory] = useState("");
     const [preparation, setPreparation] = useState("");
     const [people, setPeople] = useState("");
+    const [image, setImage] = useState(null);
+
+    function handleImage(e) {
+        const reader = new FileReader();
+        reader.onload = () => {
+            if (reader.readyState === 2) {
+                setImage(reader.result)
+            }
+        }
+        reader.readAsDataURL(e.target.files[0])
+    }
 
     const getMyRecipe = () => {
         fetch(`${api.root}/recipes/myrecipes/${id}`, {
@@ -31,6 +42,12 @@ export default function EditRecipe() {
                 setCategory(data.recipe.category)
                 setPreparation(data.recipe.preparation)
                 setPeople(data.recipe.people)
+
+                if (data.recipe.image !== undefined) {
+                    setImage(`${api.root}/${data.recipe.image}`)
+                } else
+                    setImage("https://w7.pngwing.com/pngs/692/99/png-transparent-hamburger-street-food-seafood-fast-food-delicious-food-salmon-with-vegetables-salad-in-plate-leaf-vegetable-food-recipe-thumbnail.png")
+
             })
     }
 
@@ -38,25 +55,35 @@ export default function EditRecipe() {
         getMyRecipe();
     }, []);
 
+    const openFileInput = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        document.getElementById("fileinput1").click()
+    }
     const editRecipe = (event) => {
         event.preventDefault();
 
-        let recipe = {
-            title: title,
-            short_description: shortDescription,
-            description: description,
-            category: category,
-            preparation: preparation,
-            people: people
-        }
-        
+        const formData = new FormData();
+        const imageUpload = document.querySelector('input[type="file"]');
+
+
+        formData.append('title', title);
+        formData.append('short_description', shortDescription);
+        formData.append('description', description);
+        formData.append('category', category);
+        formData.append('preparation', preparation);
+        formData.append('people', people);
+        formData.append('image', imageUpload.files[0]);
+
+
         fetch(`${api.root}/recipes/updateRecipe/${id}`, {
-            method: 'POST',
+            method: 'PATCH',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem("token")}`,
-                'Content-Type': 'application/json',
+                // 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(recipe)
+            body: formData
         })
             .then(res => {
                 if (res.status === 401) {
@@ -81,6 +108,19 @@ export default function EditRecipe() {
                 <div className="col">
                     <form name="createForm" className='form' style={{ width: "80%" }} >
                         <div className="row mb-3">
+                            <div className="col" xs={4} md={2}>
+                                <div className="col">
+                                    <label>Recipe Image</label>
+                                </div>
+                                <div className="col">
+                                    <img style={{ width: '171px', height: '180px' }} alt=" " src={image} />
+                                </div>
+                                <br />
+                                <div className="col">
+                                    <button variant="outline-secondary" onClick={openFileInput } type="submit" className="btn btn-outline-secondary">UPLOAD IMAGE</button>
+                                    <input id="fileinput1" onChange={handleImage} type="file" accept="image/*" style={{ display: "none" }} />
+                                </div>
+                            </div>
                             <div className="col">
                                 <label>Recipe Title</label>
                                 <input className="form-control" onChange={(e) => setTitle(e.target.value)} defaultValue={title} type="text" />

@@ -10,6 +10,7 @@ export default function MyRecipes() {
 
     function getMyRecipes() {
         fetch(`${api.root}/recipes/myrecipes`, {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem("token")}`
@@ -24,6 +25,13 @@ export default function MyRecipes() {
                 return res.json();
             })
             .then(data => {
+
+                data.recipes.map((recipe) => {
+                    if (recipe.image !== undefined) {
+                        recipe.image = `${api.root}/${recipe.image}`
+                    }else
+                        recipe.image="https://w7.pngwing.com/pngs/692/99/png-transparent-hamburger-street-food-seafood-fast-food-delicious-food-salmon-with-vegetables-salad-in-plate-leaf-vegetable-food-recipe-thumbnail.png"
+                })
                 setRecipes(data.recipes)
             })
     }
@@ -73,6 +81,7 @@ export default function MyRecipes() {
                 <table className="table">
                     <thead>
                         <tr>
+                            <th></th>
                             <th>Recipe Name</th>
                             <th>Category</th>
                             <th className="col-6">Created On</th>
@@ -84,7 +93,11 @@ export default function MyRecipes() {
                     <tbody>
                         {recipes.map((recipe, i) => {
                             return (
-                                <tr key={i}>
+                                <tr key={i} style={{verticalAlign:"middle"}}> 
+
+                                    <td style={{width:"100px", height:"100px",textAlign:"center"}}>
+                                        <img style={{maxHeight:"100%", maxWidth:"100%"}} src={recipe.image}/>
+                                    </td>
                                     <td><a href={`/myrecipes/${recipe._id}`} style={{ textDecoration: 'none', color: 'grey', fontWeight: 'bold' }}>{recipe.title}</a></td>
                                     <td><span id="categoryTD">{recipe.category}</span></td>
                                     <td>{recipe.createdAt.slice(0, 10)}</td>

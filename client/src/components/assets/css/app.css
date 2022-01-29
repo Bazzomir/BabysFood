@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Bitter');
+body,html {    
+    margin: 0 !important;
+    padding: 0 !important;
+}
 body {
     padding: 50px;
     background-color:#ffffe6;
@@ -24,10 +28,14 @@ body {
     padding: 60px;
     background-color: 	#696969;
     clear: both;
-    position: relative;
+    position: fixed;
+    overflow: hidden;
+    bottom:0;
+    width: 100%;
     height: 200px;
     color: whitesmoke;
     text-decoration-style: none;
+    clear: both;
 }
 
 #footer li a{

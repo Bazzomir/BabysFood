@@ -1,5 +1,6 @@
 const Recipe = require('../models/recipe');
 const User = require('../models/user');
+const fs = require("fs");
 
 module.exports = {
     // getAllRecipes: async (req, res) => {
@@ -144,6 +145,13 @@ module.exports = {
         try {
             const user = await User.findById(req.user.id);
             req.body.user = user.id;
+
+            if (req.file) {
+                req.body.image = `images/recipes/${req.file.filename}`;
+            } else {
+                req.body.image = "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+            }
+
             const recipe = await Recipe.create(req.body);
             res.send({
                 error: false,
@@ -160,9 +168,24 @@ module.exports = {
     },
     postUpdate: async (req, res) => {
         try {
+
+            const recipe = await Recipe.findById(req.params.id);
             req.body.user = req.user.id;
+
+            if (req.file) {
+                req.body.image = `images/recipes/${req.file.filename}`;
+                if (recipe.image!=null && req.body.image !== recipe.image && recipe.image !== "https://w7.pngwing.com/pngs/692/99/png-transparent-hamburger-street-food-seafood-fast-food-delicious-food-salmon-with-vegetables-salad-in-plate-leaf-vegetable-food-recipe-thumbnail.png") {
+                    fs.unlinkSync(`public/${recipe.image}`)
+                }
+            } else {
+                req.body.image = "https://w7.pngwing.com/pngs/692/99/png-transparent-hamburger-street-food-seafood-fast-food-delicious-food-salmon-with-vegetables-salad-in-plate-leaf-vegetable-food-recipe-thumbnail.png"
+            }
+
             await Recipe.findByIdAndUpdate(req.params.id, req.body);
-            res.redirect('/recipes/myrecipes');
+            res.send({
+                error: false,
+                message: "recipe updated",
+            })
         }
         catch (error) {
             res.send({

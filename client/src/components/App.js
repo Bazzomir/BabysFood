@@ -7,7 +7,7 @@ import Navbar from "./Header/Navbar";
 
 export default function App() {
   return (
-    <div className="App">
+    <div>
       <BrowserRouter>
         <Navbar />
         <Ruti />

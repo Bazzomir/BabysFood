@@ -14,7 +14,7 @@ export default function Navbar() {
     }
 
     return (
-        <div className="container">
+        <div className="container mt-5">
             <div className="row">
                 <div className="col">
                     <a className="navbar-brand" href="/">
