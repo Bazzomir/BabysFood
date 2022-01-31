@@ -184,7 +184,7 @@ module.exports = {
             await Recipe.findByIdAndUpdate(req.params.id, req.body);
             res.send({
                 error: false,
-                message: "recipe updated",
+                message: "Recipe updated",
             })
         }
         catch (error) {

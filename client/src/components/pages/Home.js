@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import jajca from '../assets/jajca.jpg';
+// import jajca from '../assets/jajca.jpg';
 import { api } from '../../RESTApi/RestApi';
 import { Popup } from './Popup';
 
@@ -26,11 +26,16 @@ export default function Home() {
             <div className="row" >
                 <div className="row"><h3 id="h3Title">Fresh & New<hr className='mt-2' /></h3></div>
                 {NewRecipes.map(recipe => {
+                    if (recipe.image !== undefined) {
+                        recipe.image = `${api.root}/${recipe.image}`
+                    } else {
+                        recipe.image = "https://pizzapalaceburwell.com/wp-content/uploads/2021/11/Food.jpg"
+                    }
                     return (
                         <div className="col-4 mb-5" key={recipe._id}>
                             <div className="card" style={{ marginBottom: "2px" }} >
                                 <span className="badge badge-success text-left" id="badge">{recipe.category || "Some food.."}</span>
-                                <img id="cardImage" src={jajca} alt="" />
+                                <img id="cardImage" src={recipe.image} alt="" />
                                 <div className="card-body">
                                     <div className="card-title">
                                         {recipe.title}
@@ -56,11 +61,16 @@ export default function Home() {
             <div className="row" >
                 <div className="row"><h3 id="h3Title">Most Popular Recipes<hr className='mt-2' /></h3></div>
                 {PopularRecipes.map(recipe => {
+                    if (recipe.image !== undefined) {
+                        recipe.image = `${api.root}/${recipe.image}`
+                    } else {
+                        recipe.image = "https://pizzapalaceburwell.com/wp-content/uploads/2021/11/Food.jpg"
+                    }
                     return (
                         <div className="col-4 mb-5" key={recipe._id}>
                             <div className="card">
                                 <span className="badge badge-success text-left" id="badge">{recipe.category || "Some food.."}</span>
-                                <img id="cardImage" src={jajca} alt="" />
+                                <img id="cardImage" src={recipe.image} alt="" />
                                 <div className="card-body">
                                     <div className="card-title">
                                         {recipe.title}

@@ -30,7 +30,7 @@ export default function MyProfile() {
             }
         })
             .then(res => {
-                if (res.status === 401) {
+                if (res.status === 401 || res.status === 500) {
                     alert("Loggin first");
                     localStorage.removeItem('token');
                     window.location = "/login";
@@ -48,8 +48,6 @@ export default function MyProfile() {
                 } else {
                     setImage(`${api.root}/${data.user.image}`)
                 }
-                // setPassword(data.user.password)
-                // setConfirmaPassword(data.user.password)
             })
     }
 
@@ -70,31 +68,18 @@ export default function MyProfile() {
         formData.append('password', password);
         formData.append('confirm_password', confirm_password);
         formData.append('image', imageUpload.files[0]);
-        
-
-        
-        // var user = {
-        //     first_name: FirstName,
-        //     last_name: LastName,
-        //     email: email,
-        //     birthday: birthday,
-        //     password: password,
-        //     confirm_password: confirm_password
-
-        // }
 
         if (password === confirm_password) {
 
             fetch(`${api.root}/users/edit`, {
                 method: 'PATCH',
                 headers: {
-                    // 'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 },
                 body: formData
             })
                 .then(res => {
-                    if (res.status === 401) {
+                    if (res.status === 401 || res.status === 500) {
                         alert("Token expired");
                         localStorage.removeItem("token");
                         window.location = "/login";
@@ -124,7 +109,7 @@ export default function MyProfile() {
                         <div className="col" >
                             <img id="avatarPics" src={image} alt="" />
                         </div>
-                        <div className="col">
+                        <div className="col mt-5">
                             <button onClick={() => document.getElementById("fileinput").click()} type="submit" className="btn btn-outline-secondary"> CHANGE AVATAR </button>
                             <input id="fileinput" onChange={handleImage} type="file" accept="image/*" style={{ display: "none" }} />               
                         </div>

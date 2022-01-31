@@ -33,7 +33,7 @@ export default function Login() {
     }
     return (
         <div className="container">
-            <div className="row"><h3 id="h3Title">Log In<hr /></h3></div>
+            <div className="row"><h3 id="h3Title">Log In<hr className='mt-2'/></h3></div>
             <div className="row" >
                 <div className="col" id="textHeader">
                     <h1><span id="colorText" >Welcome to</span> Baby's</h1>

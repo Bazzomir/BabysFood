@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import jajca from '../../assets/jajca.jpg';
+// import jajca from '../../assets/jajca.jpg';
 import { api } from '../../../RESTApi/RestApi';
 import { Popup } from '../Popup';
 
@@ -21,11 +21,15 @@ export default function Breakfast() {
             <div className="row" >
                 <div className="row"><h3 id="h3Title">Breakfast<hr className='mt-2' /></h3></div>
                 {Breakfast.map(recipe => {
+                    if (recipe.image !== undefined) {
+                        recipe.image = `${api.root}/${recipe.image}`
+                    }else
+                        recipe.image="https://w7.pngwing.com/pngs/692/99/png-transparent-hamburger-street-food-seafood-fast-food-delicious-food-salmon-with-vegetables-salad-in-plate-leaf-vegetable-food-recipe-thumbnail.png"
                     return (
                         <div className={` ${Breakfast.length > 2 ? 'col-4' : 'col-6'} mb-5`} key={recipe._id}>
                             <div className="card">
                                 <span className="badge badge-success text-left" id="badge" style={{ backgroundColor: 'green' }}>{recipe.category}</span>
-                                <img id="cardImage" src={jajca} alt="" />
+                                <img id="cardImage" alt="" />
                                 <div className="card-body">
                                     <div className="card-title">
                                         {recipe.title}

@@ -17,7 +17,7 @@ export default function MyRecipes() {
             }
         })
             .then(res => {
-                if (res.status === 401) {
+                if (res.status === 401 || res.status === 500) {
                     alert("Loggin first");
                     localStorage.removeItem('token');
                     window.location = "/login";
@@ -25,7 +25,6 @@ export default function MyRecipes() {
                 return res.json();
             })
             .then(data => {
-
                 data.recipes.map((recipe) => {
                     if (recipe.image !== undefined) {
                         recipe.image = `${api.root}/${recipe.image}`
@@ -60,7 +59,7 @@ export default function MyRecipes() {
     }
 
     return (
-        <div className="container">
+        <div className="container mt-5">
             <div className="row">
                 <div className="col">
                     <h3 id="h3Title">My recipes<hr className='col-sm-12' /></h3>
@@ -76,7 +75,6 @@ export default function MyRecipes() {
                     </Link>
                 </div>
             </div>
-
             <div className="row">
                 <table className="table">
                     <thead>
@@ -96,7 +94,7 @@ export default function MyRecipes() {
                                 <tr key={i} style={{verticalAlign:"middle"}}> 
 
                                     <td style={{width:"100px", height:"100px",textAlign:"center"}}>
-                                        <img style={{maxHeight:"100%", maxWidth:"100%"}} src={recipe.image}/>
+                                        <img style={{maxHeight:"100%", maxWidth:"100%"}} alt="" src={recipe.image}/>
                                     </td>
                                     <td><a href={`/myrecipes/${recipe._id}`} style={{ textDecoration: 'none', color: 'grey', fontWeight: 'bold' }}>{recipe.title}</a></td>
                                     <td><span id="categoryTD">{recipe.category}</span></td>

@@ -27,7 +27,7 @@ export function Popup(props) {
                 <Modal.Body>
                     <div className="row">
                         <div className="col-4">
-                            <Card.Img style={{ borderTopLeftRadius: "2%", borderTopRightRadius: "2%" }} variant="top" src="https://media.istockphoto.com/photos/cheesy-pepperoni-pizza-picture-id938742222?k=20&m=938742222&s=612x612&w=0&h=X5AlEERlt4h86X7U7vlGz3bDaDDGQl4C3MuU99u2ZwQ=" />
+                            <Card.Img style={{ borderTopLeftRadius: "2%", borderTopRightRadius: "2%" }} variant="top" /> {recipe.image}
                             <Card.Title className="mt-3">Best Served For<span style={{ backgroundColor: "green", borderRadius: "20%/50%", padding: "1%", color: "white", opacity: "0.8", paddingLeft: "2%", paddingRight: "2%", paddingBottom: "1.5%" }}>{recipe.category.toLowerCase()}</span></Card.Title>
                             <Card.Text>
                                 {recipe.short_description}
@@ -45,11 +45,9 @@ export function Popup(props) {
                         </div>
                         <div className="col-6">
                             <Card.Body >
-
                                 <Card.Text>
                                     {recipe.description}
                                 </Card.Text>
-
                             </Card.Body>
                         </div>
                     </div>
