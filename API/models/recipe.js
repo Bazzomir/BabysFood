@@ -18,7 +18,7 @@ const recipeSchema = mongoose.Schema({
         required: true
     },
     preparation: {
-        type: Number,
+        type: String,
         required: true
     },
     people: {

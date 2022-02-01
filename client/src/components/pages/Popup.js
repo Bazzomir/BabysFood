@@ -20,15 +20,15 @@ export function Popup(props) {
                 }}
             >
                 <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-vcenter">
+                    <Modal.Title id="colorText">
                         {recipe.title}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div className="row">
                         <div className="col-4">
-                            <Card.Img style={{ borderTopLeftRadius: "2%", borderTopRightRadius: "2%" }} variant="top" src={recipe.image}/> 
-                            <Card.Title className="mt-3">Best Served For<span style={{ backgroundColor: "green", borderRadius: "20%/50%", padding: "1%", color: "white", opacity: "0.8", paddingLeft: "2%", paddingRight: "2%", paddingBottom: "1.5%" }}>{recipe.category.toLowerCase()}</span></Card.Title>
+                            <Card.Img style={{ borderTopLeftRadius: "2%", borderTopRightRadius: "2%" }} variant="top" src={`${api.root}/${recipe.image}`}/> 
+                            <Card.Title className="mt-3" style={{color:"green"}}>Best Served For  <span style={{ backgroundColor: "green", borderRadius: "20%/50%", padding: "1%", color: "white", opacity: "0.8", paddingLeft: "2%", paddingRight: "2%", paddingBottom: "1.5%" }}>{recipe.category.toLowerCase()}</span></Card.Title>
                             <Card.Text>
                                 {recipe.short_description}
                             </Card.Text>

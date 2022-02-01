@@ -15,6 +15,7 @@ export default function CreateRecipe() {
     const [titleError, setTitleError] = useState("");
     const [shortDescriptionError, setShortDescriptionError] = useState("");
     const [descriptionError, setDescriptionError] = useState("");
+    const [categoryError, setCategoryError] = useState("");
 
     function handleImage(e) {
         const reader = new FileReader();
@@ -30,6 +31,7 @@ export default function CreateRecipe() {
         const titleError = {};
         const shortDescriptionError = {};
         const descriptionError = {};
+        const categoryError = {};
 
         let isValid = true;
 
@@ -48,9 +50,15 @@ export default function CreateRecipe() {
             isValid = false;
         }
 
+        if (category.trim().length === 0) {
+            categoryError.categoryRequired = "Recipe is required";
+            isValid = false;
+        }
+
         setTitleError(titleError)
         setShortDescriptionError(shortDescriptionError)
         setDescriptionError(descriptionError)
+        setCategoryError(categoryError)
         return isValid;
     }
 
@@ -147,6 +155,9 @@ export default function CreateRecipe() {
                                             <option value="Dinner">Dinner</option>
                                         </select>
                                     </label>
+                                    {Object.keys(categoryError).map((key) => {
+                                        return <div className='text-danger'>{categoryError[key]}</div>
+                                    })}
                                 </div>
                                 <div className="form-group col-4">
                                     <label>Preparation Time</label>

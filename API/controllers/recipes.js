@@ -178,7 +178,9 @@ module.exports = {
             if (req.file) {
                 req.body.image = `images/recipes/${req.file.filename}`;
                 if (recipe.image != null && req.body.image !== recipe.image && recipe.image !== "https://w7.pngwing.com/pngs/692/99/png-transparent-hamburger-street-food-seafood-fast-food-delicious-food-salmon-with-vegetables-salad-in-plate-leaf-vegetable-food-recipe-thumbnail.png") {
-                    fs.unlinkSync(`public/${recipe.image}`)
+                    fs.unlink(`/public/${recipe.image}`, err => {
+                        console.log(err)
+                    })
                 }
             } else {
                 req.body.image = ' '

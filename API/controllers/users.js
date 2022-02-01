@@ -96,7 +96,9 @@ module.exports = {
                 if (req.file) {
                     req.body.image = `images/users/${req.file.filename}`;
                     if ( user.image !==undefined && user.image !=='undefined' && req.body.image !== user.image) {
-                        fs.unlinkSync(`public/${user.image}`)
+                        fs.unlink(`/public/${user.image}`, err => {
+                            console.log(err)
+                        })
                     }
                 } else {
                     if (user.image === undefined)
