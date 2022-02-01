@@ -43,7 +43,7 @@ export default function MyProfile() {
                 setEmail(data.user.email)
                 setBirthday(data.user.birthday)
 
-                if (data.user.image === "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" || data.user.image===undefined) {
+                if (data.user.image === `${avatar}` || data.user.image===undefined) {
                     setImage(avatar)
                 } else {
                     setImage(`${api.root}/${data.user.image}`)

@@ -21,16 +21,11 @@ export default function Dinner() {
             <div className="row" >
                 <div className="row"><h3 id="h3Title">Dinner<hr className='mt-2' /></h3></div>
                 {Dinner.map(recipe => {
-                    if (recipe.image !== undefined) {
-                        recipe.image = `${api.root}/${recipe.image}`
-                    } else {
-                        recipe.image = "https://pizzapalaceburwell.com/wp-content/uploads/2021/11/Food.jpg"
-                    }
                     return (
                         <div className={` ${Dinner.length > 2 ? 'col-4' : 'col-6'} mb-5`} key={recipe._id}>
                             <div className="card">
                                 <span className="badge badge-success text-left" id="badge">{recipe.category}</span>
-                                <img id="cardImage" src={recipe.image} alt="" />
+                                <img id="cardImage" src={`${api.root}/${recipe.image}`} alt="" />
                                 <div className="card-body">
                                     <div className="card-title">
                                         {recipe.title}

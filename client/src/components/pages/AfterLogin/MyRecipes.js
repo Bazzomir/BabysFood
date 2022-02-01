@@ -28,8 +28,8 @@ export default function MyRecipes() {
                 data.recipes.map((recipe) => {
                     if (recipe.image !== undefined) {
                         recipe.image = `${api.root}/${recipe.image}`
-                    }else
-                        recipe.image="https://w7.pngwing.com/pngs/692/99/png-transparent-hamburger-street-food-seafood-fast-food-delicious-food-salmon-with-vegetables-salad-in-plate-leaf-vegetable-food-recipe-thumbnail.png"
+                    } else
+                        recipe.image = "https://w7.pngwing.com/pngs/692/99/png-transparent-hamburger-street-food-seafood-fast-food-delicious-food-salmon-with-vegetables-salad-in-plate-leaf-vegetable-food-recipe-thumbnail.png"
                 })
                 setRecipes(data.recipes)
             })
@@ -91,10 +91,9 @@ export default function MyRecipes() {
                     <tbody>
                         {recipes.map((recipe, i) => {
                             return (
-                                <tr key={i} style={{verticalAlign:"middle"}}> 
-
-                                    <td style={{width:"100px", height:"100px",textAlign:"center"}}>
-                                        <img style={{maxHeight:"100%", maxWidth:"100%"}} alt="" src={recipe.image}/>
+                                <tr key={i} style={{ verticalAlign: "middle" }} className="customTR">
+                                    <td style={{ width: "100px", height: "100px", textAlign: "center" }}>
+                                        <img style={{ maxHeight: "100%", maxWidth: "100%" }} alt="" src={recipe.image} />
                                     </td>
                                     <td><a href={`/myrecipes/${recipe._id}`} style={{ textDecoration: 'none', color: 'grey', fontWeight: 'bold' }}>{recipe.title}</a></td>
                                     <td><span id="categoryTD">{recipe.category}</span></td>

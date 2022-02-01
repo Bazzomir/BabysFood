@@ -140,11 +140,11 @@ export default function CreateRecipe() {
                                     <label style={{ width: "100%" }}>Category
                                         <select className="form-control" placeholder="Choose..." value={category || "none"} required
                                             onChange={e => { setCategory(e.target.value) }}>
-                                            <option value="none" disabled selected>Select ..</option>
-                                            <option>Breakfast</option>
-                                            <option>Brunch</option>
-                                            <option>Lunch</option>
-                                            <option>Dinner</option>
+                                            <option value="none" disabled selected>Choose...</option>
+                                            <option value="Breakfast">Breakfast</option>
+                                            <option value="Brunch">Brunch</option>
+                                            <option value="Lunch">Lunch</option>
+                                            <option value="Dinner">Dinner</option>
                                         </select>
                                     </label>
                                 </div>

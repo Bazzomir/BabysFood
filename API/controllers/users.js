@@ -88,19 +88,20 @@ module.exports = {
     postUserEdit: async (req, res) => {
         try {
             if (req.body.confirm_password === req.body.password) {
-                var user=await User.findById(req.user.id)
+                var user = await User.findById(req.user.id)
 
+                req.body.image = user.image;
                 req.body.password = bcrypt.hashSync(req.body.password)
 
                 if (req.file) {
                     req.body.image = `images/users/${req.file.filename}`;
-                    if (user.image!=null && req.body.image !== user.image && user.image !== "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png") {
+                    if ( user.image !==undefined && user.image !=='undefined' && req.body.image !== user.image) {
                         fs.unlinkSync(`public/${user.image}`)
                     }
                 } else {
-                    req.body.image = "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+                    if (user.image === undefined)
+                        req.body.image = "https://w7.pngwing.com/pngs/692/99/png-transparent-hamburger-street-food-seafood-fast-food-delicious-food-salmon-with-vegetables-salad-in-plate-leaf-vegetable-food-recipe-thumbnail.png"
                 }
-
 
                 user = await User.findByIdAndUpdate(req.user.id, req.body)
 

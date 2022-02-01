@@ -149,7 +149,8 @@ module.exports = {
             if (req.file) {
                 req.body.image = `images/recipes/${req.file.filename}`;
             } else {
-                req.body.image = "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+                req.body.image = ' '
+                // req.body.image = "https://w7.pngwing.com/pngs/692/99/png-transparent-hamburger-street-food-seafood-fast-food-delicious-food-salmon-with-vegetables-salad-in-plate-leaf-vegetable-food-recipe-thumbnail.png"
             }
 
             const recipe = await Recipe.create(req.body);
@@ -170,21 +171,25 @@ module.exports = {
         try {
 
             const recipe = await Recipe.findById(req.params.id);
+
             req.body.user = req.user.id;
+            req.body.image = recipe.image;
 
             if (req.file) {
                 req.body.image = `images/recipes/${req.file.filename}`;
-                if (recipe.image!=null && req.body.image !== recipe.image && recipe.image !== "https://w7.pngwing.com/pngs/692/99/png-transparent-hamburger-street-food-seafood-fast-food-delicious-food-salmon-with-vegetables-salad-in-plate-leaf-vegetable-food-recipe-thumbnail.png") {
+                if (recipe.image != null && req.body.image !== recipe.image && recipe.image !== "https://w7.pngwing.com/pngs/692/99/png-transparent-hamburger-street-food-seafood-fast-food-delicious-food-salmon-with-vegetables-salad-in-plate-leaf-vegetable-food-recipe-thumbnail.png") {
                     fs.unlinkSync(`public/${recipe.image}`)
                 }
             } else {
-                req.body.image = "https://w7.pngwing.com/pngs/692/99/png-transparent-hamburger-street-food-seafood-fast-food-delicious-food-salmon-with-vegetables-salad-in-plate-leaf-vegetable-food-recipe-thumbnail.png"
+                req.body.image = ' '
+                // if (recipe.image === undefined)
+                //     req.body.image = "https://w7.pngwing.com/pngs/692/99/png-transparent-hamburger-street-food-seafood-fast-food-delicious-food-salmon-with-vegetables-salad-in-plate-leaf-vegetable-food-recipe-thumbnail.png"
             }
 
             await Recipe.findByIdAndUpdate(req.params.id, req.body);
             res.send({
                 error: false,
-                message: "Recipe updated",
+                message: "Recipe has been updated",
             })
         }
         catch (error) {
