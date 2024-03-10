@@ -6,12 +6,13 @@ const mongoose = require('mongoose');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const recipesRouter = require('./routes/recipes');
-const cors = require('cors')
+const cors = require('cors');
 
 require('dotenv').config();
 
 // mongoose.connect('mongodb://localhost:27017/babys-food');
-mongoose.connect(`mongodb+srv://Bazzo97:${process.env.MONGODB_PASSWORD}@babysfood.71g0z.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
+// mongoose.connect(`mongodb+srv://Bazzo97:${process.env.MONGODB_PASSWORD}@babysfood.71g0z.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`); //old code
+mongoose.connect(`mongodb+srv://bazzomir1997:${process.env.MONGODB_PASSWORD}@babysfood.bv5j2a5.mongodb.net/?retryWrites=true&w=majority&appName=BabysFood`);
 
 const app = express();
 
