@@ -29,6 +29,7 @@ const userSchema = mongoose.Schema({
     image:{
         type:String
     }
-}, { timestamps: true });
+}, { timestamps: true })
+mongoose.set('strictQuery', false);
 
 module.exports = mongoose.model('user', userSchema);
