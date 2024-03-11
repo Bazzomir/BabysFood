@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const recipeSchema = mongoose.Schema({
+const recipeSchema = mongoose.Schema ({
     title: {
         type: String,
         required: true
@@ -37,7 +37,9 @@ const recipeSchema = mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'user'
     }
-
 }, { timestamps: true });
 
+mongoose.set('strictQuery', false);
+
 module.exports = mongoose.model('recipe', recipeSchema);
+

@@ -63,11 +63,6 @@ module.exports = {
                 error: true,
                 message: error.message
             });
-            res.status(200).send({
-                error: false,
-                message: 'You are Logged in',
-                token: token
-            });
         }
     },
     getUserById: async (req, res) => {
