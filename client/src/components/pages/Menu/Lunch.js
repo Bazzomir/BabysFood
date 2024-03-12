@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-// import jajca from '../../assets/jajca.jpg';
 import { api } from '../../../RESTApi/RestApi';
-import { Popup } from '../Popup';
+import Popup from '../Popup';
 
 export default function Lunch() {
     const [Lunch, setLunch] = useState([]);

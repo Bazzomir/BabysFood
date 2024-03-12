@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-import Home from '../pages/Home';
+import Homepage from '../pages/Homepage';
 import Breakfast from "../pages/Menu/Breakfast";
 import Brunch from "../pages/Menu/Brunch";
 import Lunch from "../pages/Menu/Lunch";
@@ -19,8 +19,8 @@ export default function Ruti() {
     return (
         <div>
             <Routes>
-                {["/", "/home"].map((path, index) =>
-                    <Route path={path} element={<Home />} key={index} />
+                {["/", "/Homepage"].map((path, index) =>
+                    <Route path={path} element={<Homepage />} key={index} />
                 )}
                 <Route path="/breakfast" element={<Breakfast />} />
                 <Route path="/brunch" element={<Brunch />} />

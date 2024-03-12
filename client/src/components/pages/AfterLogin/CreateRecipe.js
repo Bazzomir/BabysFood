@@ -46,12 +46,12 @@ export default function CreateRecipe() {
         }
 
         if (description.trim().length === 0) {
-            descriptionError.descriptionRequired = "Recipe is required";
+            descriptionError.descriptionRequired = "Description is required";
             isValid = false;
         }
 
         if (category.trim().length === 0) {
-            categoryError.categoryRequired = "Recipe is required";
+            categoryError.categoryRequired = "Category is required";
             isValid = false;
         }
 

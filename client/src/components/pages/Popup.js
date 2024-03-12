@@ -3,7 +3,7 @@ import { Card, Modal } from "react-bootstrap";
 import PropTypes from 'prop-types';
 import { api } from '../../RESTApi/RestApi';
 
-export function Popup(props) {
+function Popup(props) {
 
     const recipe = props.recipe
 
@@ -83,3 +83,5 @@ export function Popup(props) {
 Popup.propTypes = {
     recipe: PropTypes.object.isRequired
 }
+
+export default Popup;
