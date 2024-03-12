@@ -1,81 +1,96 @@
 @import url('https://fonts.googleapis.com/css?family=Bitter');
-* {    
+
+* {
     margin: 0;
     padding: 0;
 }
+
 body {
-    background-color:#f5f0d9;
+    background-color: #f5f0d9;
     font-family: 'Bitter';
 }
 
-#colorText{
-    color: orange;
+.pt-6 {
+    padding-top: 6rem !important;
+}
+
+.pt-7 {
+    padding-top: 9rem !important;
+}
+
+.pb-6 {
+    padding-bottom: 6rem !important;
+}
+
+.pb-7 {
+    padding-bottom: 9rem !important;
+}
+
+#colorText {
+    color: #f3b254;
     margin-right: 0.5em !important;
     margin-left: 0.5em !important;
 }
 
-#plusAndBack{
-    background-color: orange;
+.title hr {
+    color: #696969;
+}
+
+#plusAndBack {
+    background-color: #f3b254;
     border-radius: 100%;
 }
 
-#textHeader{
+#textHeader {
     padding-right: 150px;
 }
 
 .footer {
-    background-color: 	#696969;
+    background-color: #696969;
     width: 100%;
     color: whitesmoke;
-    position:sticky;
+    position: sticky;
 }
 
-.footer li a{
-    color:whitesmoke !important;
+.footer li a {
+    color: whitesmoke !important;
     text-decoration: none;
 }
 
-#cardImage {
-    border-top-left-radius: 2%;
-    border-top-right-radius: 2%;
+.card-image {
+    border-radius: 2% 2% 0 0;
     vertical-align: top;
     width: 100%;
     height: 250px;
 }
 
-#h3Title {
+.badge {
+    position: absolute;
+    top: 13px;
+    left: 16px;
+    font-size: 12px;
+    border-radius: 25px;
+    background-color: green;
+}
+
+.title {
     color: green;
-    margin-bottom: 3%;
-    margin-top: 3%;
     font-weight: bold;
+    width: 100%;
 }
 
 #icons {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
+    color: green;
 }
 
-.recipeIcons{
-    margin-right: 0.5em !important;
-    margin-left:0.1em !important;
-}
+
 
 #iconsButton {
-    position: absolute;
-    right: 5%;
-    margin-bottom: 2%;
     color: whitesmoke;
     background-color: green;
-    border-radius: 20%;
-}
-
-#badge{
-    position: absolute;
-    top: 8px;
-    left: 16px;
-    font-size: 12px;
-    border-radius: 30%;
-    background-color: green;
+    border-radius: 25%;
 }
 
 #notfound {
@@ -91,7 +106,7 @@ li {
     margin-left: 10px;
     margin-right: 15px;
     list-style-type: disc;
-    color: orange;
+    color: #f3b254;
     text-decoration: none;
 }
 
@@ -99,12 +114,12 @@ li:first-child {
     list-style: none;
 }
 
-li a:hover{
-    color: orange !important;
+li a:hover {
+    color: #f3b254 !important;
 }
 
 li a:active {
-    color: orange !important;
+    color: #f3b254 !important;
 }
 
 .header {
@@ -114,11 +129,11 @@ li a:active {
     opacity: 1;
     width: 100%;
     overflow: hidden;
-    box-shadow: 0px 8px 5px 0px rgba(105,105,105,0.3);
+    box-shadow: 0px 8px 5px 0px rgba(105, 105, 105, 0.3);
     transition: padding 0.3s ease-in-out;
 }
 
-.nav-button{
+.nav-button {
     margin-left: 10px;
     margin-right: 15px;
     list-style-type: disc;
@@ -132,25 +147,33 @@ li a:active {
     color: grey;
     font-weight: bold;
 }
-.nav :active{
+
+.nav :active {
     color: inherit;
 }
 
-hr{
+hr {
     background-color: grey;
 }
 
 label {
-    color:orange
+    color: #f3b254
 }
 
 .card {
-    width: 384px;
+    /* width: 384px; */
     border-radius: 2%;
 }
 
-.card-title{
-    color: orange;
+.card-title {
+    color: #f3b254;
+}
+
+.card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
 }
 
 table {
@@ -158,11 +181,11 @@ table {
 }
 
 th {
-    color: orange;
+    color: #f3b254;
     border: none !important;
 }
 
-#categoryTD{
+#categoryTD {
     border-radius: 3px;
     padding: 2px 4px 2px 4px;
     background-color: green;
@@ -170,29 +193,32 @@ th {
 
 }
 
-table { 
-    border-collapse: separate; 
-    border-spacing: 0 10px; 
-    margin-top: -10px; 
+table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: -10px;
 }
+
 td {
     border: solid 1px whitesmoke;
     border-style: solid none;
     padding: 10px;
     background-color: cyan;
 }
+
 td:first-child {
     border-left-style: solid;
-    border-top-left-radius: 10px; 
+    border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
+
 td:last-child {
     border-right-style: solid;
-    border-bottom-right-radius: 10px; 
-    border-top-right-radius: 10px; 
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
-.customTR{
+.customTR {
     border: 10px solid whit !important;
     background-color: white;
     padding: 10px;

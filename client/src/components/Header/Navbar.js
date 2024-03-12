@@ -5,23 +5,23 @@ import { Link } from 'react-router-dom';
 export default function Navbar() {
 
     const token = localStorage.getItem("token");
-    
+
     const logOut = (event) => {
         event.preventDefault();
         localStorage.removeItem("token");
         localStorage.removeItem("user");
         window.location.reload();
     }
-    
-    const [scrollClass, setScrollClass] = useState({ pt: 'pt-3', pb: 'pb-3' });
+
+    const [scrollClass, setScrollClass] = useState({ pt: 'py-3' });
 
     useEffect(() => {
         const handleScroll = () => {
             const scrollThreshold = 10;
-            if (window.scrollY > scrollThreshold && scrollClass.pt === 'pt-3') {
-                setScrollClass({ pt: 'pt-1', pb: 'pb-1' });
-            } else if (window.scrollY <= scrollThreshold && scrollClass.pt === 'pt-1') {
-                setScrollClass({ pt: 'pt-3', pb: 'pb-3' });
+            if (window.scrollY > scrollThreshold && scrollClass.pt === 'py-3') {
+                setScrollClass({ pt: 'py-1' });
+            } else if (window.scrollY <= scrollThreshold && scrollClass.pt === 'py-1') {
+                setScrollClass({ pt: 'py-3' });
             }
         };
 
