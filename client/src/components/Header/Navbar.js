@@ -41,7 +41,7 @@ export default function Navbar() {
                             <img src={logo} alt="" width="130" height="50" />
                         </a>
                     </div>
-                    <div className="col-6 d-flex align-items-center justify-content-center">
+                    <div className="col-5 d-flex align-items-center justify-content-center">
                         <ul className="nav">
                             <li className="nav-item">
                                 <a className="nav-link" href="/breakfast">BREAKFAST</a>
@@ -69,7 +69,7 @@ export default function Navbar() {
                             </Link>
                         </div>
                         :
-                        <div className="col-4">
+                        <div className="col-4 d-flex align-items-center justify-content-end">
                             <ul className="nav" id="header">
                                 <li className="nav-button">
                                     <Link to="/myrecipes">

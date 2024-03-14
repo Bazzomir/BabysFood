@@ -26,14 +26,22 @@ body {
     padding-bottom: 9rem !important;
 }
 
+.py-6 {
+    padding: 6rem 0 !important;
+}
+
+.py-7 {
+    padding: 9rem 0 !important;
+}
+
+.notFound{
+    height: 66.7vh;
+}
+
 #colorText {
     color: #f3b254;
     margin-right: 0.5em !important;
     margin-left: 0.5em !important;
-}
-
-.title hr {
-    color: #696969;
 }
 
 #plusAndBack {
@@ -57,44 +65,26 @@ body {
     text-decoration: none;
 }
 
-.card-image {
-    border-radius: 2% 2% 0 0;
-    vertical-align: top;
-    width: 100%;
-    height: 250px;
-}
-
-.badge {
-    position: absolute;
-    top: 13px;
-    left: 16px;
-    font-size: 12px;
-    border-radius: 25px;
-    background-color: green;
-}
-
 .title {
     color: green;
     font-weight: bold;
     width: 100%;
 }
 
-#icons {
+.title hr {
+    color: #696969;
+}
+
+.icons {
     width: 18px;
     height: 18px;
     color: green;
 }
 
-
-
-#iconsButton {
+.iconsButton {
     color: whitesmoke;
     background-color: green;
     border-radius: 25%;
-}
-
-#notfound {
-    position: relative;
 }
 
 #avatarPics {
@@ -114,6 +104,11 @@ li:first-child {
     list-style: none;
 }
 
+li a {
+    text-decoration: none;
+    color: #696969;
+}
+
 li a:hover {
     color: #f3b254 !important;
 }
@@ -123,7 +118,7 @@ li a:active {
 }
 
 .header {
-    position: fixed;
+    position: sticky;
     background-color: #f5f0d9;
     z-index: 3;
     opacity: 1;
@@ -161,12 +156,22 @@ label {
 }
 
 .card {
-    /* width: 384px; */
     border-radius: 2%;
+    overflow: hidden;
+    height: 34.375rem;
+    width: 25rem;
 }
 
 .card-title {
     color: #f3b254;
+}
+
+.card-body {
+    overflow: hidden;
+}
+
+.card-body p {
+    height: 220px;
 }
 
 .card-bottom {
@@ -174,6 +179,24 @@ label {
     justify-content: space-between;
     align-items: center;
     gap: 10px;
+}
+
+.card-image {
+    border-radius: 2% 2% 0 0;
+    height: 250px;
+}
+
+.card-image:hover {
+    height: 450px;
+}
+
+.badge {
+    position: absolute;
+    top: 13px;
+    left: 16px;
+    font-size: 12px;
+    border-radius: 25px;
+    background-color: green;
 }
 
 table {

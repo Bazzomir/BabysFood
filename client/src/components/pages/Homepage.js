@@ -23,12 +23,12 @@ function Homepage() {
     return (
         <div className='homepage'>
             <div className="container">
-                <div className="row pt-7">
+                <div className="row pt-5">
                     <div className="col-12 pb-3">
-                        <h3 className="title">Fresh & New
+                        <h2 className="title">Fresh & New
                             <hr className='mt-2' />
-                        </h3>
-                        <div className='row row-cols-3 gap-3'>
+                        </h2>
+                        <div className='row row-cols-3 gap-5 align-items-center m-0 pt-3'>
                             {NewRecipes.map(recipe => (
                                 <RecipeCard key={recipe._id} recipe={recipe} />
                             ))}
@@ -36,13 +36,11 @@ function Homepage() {
                     </div>
                 </div>
                 <div className="row pt-5 pb-6" >
-                    <div className="row pb-3">
-                        <div className="col-12 pb-3">
-                            <h3 className="title">Most Popular Recipes
-                                <hr className='mt-2' />
-                            </h3>
-                        </div>
-                        <div className='row row-cols-1 row-cols-3 g-3'>
+                    <div className="col-12 pb-3">
+                        <h2 className="title">Most Popular Recipes
+                            <hr className='mt-2' />
+                        </h2>
+                        <div className='row row-cols-3 gap-5 align-items-center m-0 pt-3'>
                             {PopularRecipes.map(recipe => (
                                 <RecipeCard key={recipe._id} recipe={recipe} />
                             ))}
