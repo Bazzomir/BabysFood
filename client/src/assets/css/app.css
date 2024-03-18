@@ -5,10 +5,6 @@
     padding: 0;
 }
 
-/* :root {
-    
-} */
-
 body {
     background-color: #f5f0d9;
     font-family: 'Bitter';
@@ -17,8 +13,30 @@ body {
     --orange: #f3b254;
 }
 
-.orangeText{
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: var(--orange);
+    border-radius: 15px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: var(--green);
+    width: 15px;
+}
+
+.orangeText {
     color: var(--orange);
+}
+
+.py-6 {
+    padding: 6rem 0 !important;
+}
+
+.py-7 {
+    padding: 9rem 0 !important;
 }
 
 .pt-6 {
@@ -37,19 +55,10 @@ body {
     padding-bottom: 9rem !important;
 }
 
-.py-6 {
-    padding: 6rem 0 !important;
-}
-
-.py-7 {
-    padding: 9rem 0 !important;
-}
 
 .notFound {
     height: 66.7vh;
 }
-
-
 
 #plusAndBack {
     background-color: var(--orange);
@@ -82,16 +91,30 @@ body {
     color: var(--grey);
 }
 
-.icons {
-    width: 18px;
-    height: 18px;
-    color: var(--green);
-}
-
-.iconsButton {
+.popUpButton {
     color: whitesmoke;
     background-color: var(--green);
-    border-radius: 25%;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.popUpButton:hover {
+    transform: scale(1.25);
+    z-index: 2;
+}
+
+.popUpButtonIcons {
+    width: 15px;
+    height: 15px;
+    color: whitesmoke;
+    position: absolute;
+    top: 6px;
+    left: 7px;
 }
 
 #avatarPics {
@@ -133,12 +156,12 @@ nav {
     color: var(--grey);
 }
 
-nav a:hover,
-nav a.active {
+.nav a:hover,
+.nav a.active {
     color: var(--orange) !important;
 }
 
-nav a.active:hover {
+.nav a.active:hover {
     color: var(--green) !important;
 }
 
@@ -153,36 +176,50 @@ label {
 .card {
     border-radius: 2%;
     overflow: hidden;
+    box-sizing: border-box;
     height: 34.375rem;
     width: 25rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    -webkit-transition: box-shadow 0.5s;
+    transition: box-shadow 0.5s;
+}
+
+.card:hover {
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
 }
 
 .card-title {
     color: var(--orange);
 }
 
-.card-body {
-    overflow: hidden;
-}
-
 .card-body p {
-    height: 220px;
+    display: block;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    transition: all 0.5s;
 }
 
 .card-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
 }
 
 .card-image {
-    border-radius: 2% 2% 0 0;
     height: 250px;
+    border-radius: 2% 2% 0 0;
+    transition: height 0.5s;
+    object-fit: cover;
 }
 
 .card-image:hover {
-    height: 450px;
+    height: 85% !important;
+}
+
+.cardIcons {
+    width: 21px;
+    height: 21px;
+    color: var(--green);
 }
 
 .badge {

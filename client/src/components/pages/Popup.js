@@ -27,8 +27,8 @@ function Popup(props) {
                 <Modal.Body>
                     <div className="row">
                         <div className="col-4">
-                            <Card.Img style={{ borderTopLeftRadius: "2%", borderTopRightRadius: "2%" }} variant="top" src={`${api.root}/${recipe.image}`}/> 
-                            <Card.Title className="mt-3" style={{color:"green"}}>Best Served For  <span style={{ backgroundColor: "green", borderRadius: "20%/50%", padding: "1%", color: "white", opacity: "0.8", paddingLeft: "2%", paddingRight: "2%", paddingBottom: "1.5%" }}>{recipe.category.toLowerCase()}</span></Card.Title>
+                            <Card.Img style={{ borderTopLeftRadius: "2%", borderTopRightRadius: "2%" }} variant="top" src={`${api.root}/${recipe.image}`} />
+                            <Card.Title className="mt-3" style={{ color: "green" }}>Best Served For  <span style={{ backgroundColor: "green", borderRadius: "20%/50%", padding: "1%", color: "white", opacity: "0.8", paddingLeft: "2%", paddingRight: "2%", paddingBottom: "1.5%" }}>{recipe.category.toLowerCase()}</span></Card.Title>
                             <Card.Text>
                                 {recipe.short_description}
                             </Card.Text>
@@ -66,10 +66,13 @@ function Popup(props) {
 
     return (
         <>
-            <button className='iconsButton' onClick={() => { setPopUpShow(true); updateViews() }}>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="icons bi bi-chevron-double-right" viewBox="0 0 16 16">
+            <button className='popUpButton' onClick={() => { setPopUpShow(true); updateViews() }}>
+                {/* <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="popUpButtonIcons bi bi-chevron-double-right" viewBox="0 0 16 16">
                     <path fillRule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z" />
                     <path fillRule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z" />
+                </svg> */}
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="popUpButtonIcons" viewBox="0 0 512 512">
+                    <path d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z" />
                 </svg>
             </button>
             <PopUpFunction
