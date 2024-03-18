@@ -17,6 +17,10 @@ body {
     --orange: #f3b254;
 }
 
+.orangeText{
+    color: var(--orange);
+}
+
 .pt-6 {
     padding-top: 6rem !important;
 }
@@ -45,11 +49,7 @@ body {
     height: 66.7vh;
 }
 
-#colorText {
-    color: var(--orange);
-    margin-right: 0.5em !important;
-    margin-left: 0.5em !important;
-}
+
 
 #plusAndBack {
     background-color: var(--orange);

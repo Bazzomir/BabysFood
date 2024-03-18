@@ -109,9 +109,9 @@ export default function Register() {
             <div className="row pt-5">
                 <h2 className="title">Create Account<hr className='mt-2' /></h2>
             </div>
-            <div className="row" >
+            <div className="row pt-5 pb-6" >
                 <div className="col" id="textHeader" xs={5}>
-                    <h2><span id="colorText">Create Your</span> Account</h2>
+                    <h2><span className="orangeText">Create Your</span> Account</h2>
                     <p>
                         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
                         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?

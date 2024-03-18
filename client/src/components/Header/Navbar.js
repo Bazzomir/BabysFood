@@ -40,7 +40,7 @@ export default function Navbar() {
                             <img src={logo} alt="" width="130" height="50" />
                         </a>
                     </div>
-                    <div className="stroke col-5 d-flex align-items-center justify-content-center">
+                    <div className="col-5 d-flex align-items-center justify-content-center">
                         <ul className="nav">
                             <li className="nav-item">
                                 <NavLink exact to="/breakfast" activeClassName="active" className="nav-link">BREAKFAST</NavLink>
@@ -58,17 +58,17 @@ export default function Navbar() {
                     </div>
 
                     {!token ?
-                        <div className="col-3 d-flex align-items-center justify-content-end">
+                        <div className="col-4 d-flex align-items-center justify-content-end gap-3">
                             <NavLink to="/login">
                                 <button type="button" className="btn btn-outline-secondary">LOG IN</button>
                             </NavLink>
-                            <span id="colorText">or</span>
+                            <span className="orangeText">or</span>
                             <NavLink to="/register">
                                 <button type="button" className="btn btn-success">CREATE ACCOUNT</button>
                             </NavLink>
                         </div>
                         :
-                        <div className="stroke col-4 d-flex align-items-center justify-content-end">
+                        <div className="col-4 d-flex align-items-center justify-content-end">
                             <ul className="nav">
                                 <li className="nav-button">
                                     <NavLink to="/myrecipes">
