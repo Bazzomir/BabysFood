@@ -5,9 +5,16 @@
     padding: 0;
 }
 
+/* :root {
+    
+} */
+
 body {
     background-color: #f5f0d9;
     font-family: 'Bitter';
+    --green: #008000;
+    --grey: #696969;
+    --orange: #f3b254;
 }
 
 .pt-6 {
@@ -34,18 +41,18 @@ body {
     padding: 9rem 0 !important;
 }
 
-.notFound{
+.notFound {
     height: 66.7vh;
 }
 
 #colorText {
-    color: #f3b254;
+    color: var(--orange);
     margin-right: 0.5em !important;
     margin-left: 0.5em !important;
 }
 
 #plusAndBack {
-    background-color: #f3b254;
+    background-color: var(--orange);
     border-radius: 100%;
 }
 
@@ -54,7 +61,7 @@ body {
 }
 
 .footer {
-    background-color: #696969;
+    background-color: var(--grey);
     width: 100%;
     color: whitesmoke;
     position: sticky;
@@ -66,24 +73,24 @@ body {
 }
 
 .title {
-    color: green;
+    color: var(--green);
     font-weight: bold;
     width: 100%;
 }
 
 .title hr {
-    color: #696969;
+    color: var(--grey);
 }
 
 .icons {
     width: 18px;
     height: 18px;
-    color: green;
+    color: var(--green);
 }
 
 .iconsButton {
     color: whitesmoke;
-    background-color: green;
+    background-color: var(--green);
     border-radius: 25%;
 }
 
@@ -96,7 +103,7 @@ li {
     margin-left: 10px;
     margin-right: 15px;
     list-style-type: disc;
-    color: #f3b254;
+    color: var(--orange);
     text-decoration: none;
 }
 
@@ -104,22 +111,8 @@ li:first-child {
     list-style: none;
 }
 
-li a {
-    text-decoration: none;
-    color: #696969;
-}
-
-li a:hover {
-    color: #f3b254 !important;
-}
-
-li a:active {
-    color: #f3b254 !important;
-}
-
-.header {
+nav {
     position: sticky;
-    background-color: #f5f0d9;
     z-index: 3;
     opacity: 1;
     width: 100%;
@@ -129,30 +122,32 @@ li a:active {
 }
 
 .nav-button {
-    margin-left: 10px;
-    margin-right: 15px;
     list-style-type: disc;
-    color: gray;
-    text-decoration: underline !important;
-    font-weight: bold !important;
+    color: var(--grey);
 }
 
 .nav a {
-    text-decoration: none;
-    color: grey;
     font-weight: bold;
+    transition: all .5s;
+    text-decoration: none;
+    color: var(--grey);
 }
 
-.nav :active {
-    color: inherit;
+nav a:hover,
+nav a.active {
+    color: var(--orange) !important;
+}
+
+nav a.active:hover {
+    color: var(--green) !important;
 }
 
 hr {
-    background-color: grey;
+    background-color: var(--grey);
 }
 
 label {
-    color: #f3b254
+    color: var(--orange)
 }
 
 .card {
@@ -163,7 +158,7 @@ label {
 }
 
 .card-title {
-    color: #f3b254;
+    color: var(--orange);
 }
 
 .card-body {
@@ -196,7 +191,7 @@ label {
     left: 16px;
     font-size: 12px;
     border-radius: 25px;
-    background-color: green;
+    background-color: var(--green);
 }
 
 table {
@@ -204,14 +199,14 @@ table {
 }
 
 th {
-    color: #f3b254;
+    color: var(--orange);
     border: none !important;
 }
 
 #categoryTD {
     border-radius: 3px;
     padding: 2px 4px 2px 4px;
-    background-color: green;
+    background-color: var(--green);
     color: whitesmoke;
 
 }
@@ -245,5 +240,5 @@ td:last-child {
     border: 10px solid whit !important;
     background-color: white;
     padding: 10px;
-    color: grey;
+    color: var(--grey);
 }

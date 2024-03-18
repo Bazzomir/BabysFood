@@ -20,7 +20,7 @@ export default function Lunch() {
 
     return (
         <div className="container">
-            <div className="row" >
+            <div className="row pt-5" >
                 <div className="row">
                     <h2 className="title">Lunch
                         <hr className='mt-2' />
@@ -28,7 +28,7 @@ export default function Lunch() {
                 </div>
                 {Lunch.map(recipe => {
                     return (
-                        <div className={`${Lunch.length > 2 ? 'col-4' : 'col-6'} mb-5`} key={recipe._id}>
+                        <div className={`${Lunch.length > 2 ? 'col-4' : 'col-6'} pb-5`} key={recipe._id}>
                             <RecipeCard key={recipe._id} recipe={recipe} />
                         </div>
                     )

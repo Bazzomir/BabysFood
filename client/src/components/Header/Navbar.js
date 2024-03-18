@@ -1,9 +1,8 @@
-import { React, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '../../assets/logo/NavLogo.png';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export default function Navbar() {
-
     const token = localStorage.getItem("token");
 
     const logOut = (event) => {
@@ -13,15 +12,15 @@ export default function Navbar() {
         window.location.reload();
     }
 
-    const [scrollClass, setScrollClass] = useState({ pt: 'py-3' });
+    const [scrollClass, setScrollClass] = useState('py-3');
 
     useEffect(() => {
         const handleScroll = () => {
             const scrollThreshold = 10;
-            if (window.scrollY > scrollThreshold && scrollClass.pt === 'py-3') {
-                setScrollClass({ pt: 'py-1' });
-            } else if (window.scrollY <= scrollThreshold && scrollClass.pt === 'py-1') {
-                setScrollClass({ pt: 'py-3' });
+            if (window.scrollY > scrollThreshold && scrollClass === 'py-3') {
+                setScrollClass('py-1');
+            } else if (window.scrollY <= scrollThreshold && scrollClass === 'py-1') {
+                setScrollClass('py-3');
             }
         };
 
@@ -33,63 +32,64 @@ export default function Navbar() {
     }, [scrollClass]);
 
     return (
-        <div className="header">
-            <div className={`container ${scrollClass.pt} ${scrollClass.pb}`}>
+        <nav className="header">
+            <div className={`container ${scrollClass}`}>
                 <div className="row">
                     <div className="col-3 d-flex align-items-center justify-content-start">
                         <a href="/">
                             <img src={logo} alt="" width="130" height="50" />
                         </a>
                     </div>
-                    <div className="col-5 d-flex align-items-center justify-content-center">
+                    <div className="stroke col-5 d-flex align-items-center justify-content-center">
                         <ul className="nav">
                             <li className="nav-item">
-                                <a className="nav-link" href="/breakfast">BREAKFAST</a>
+                                <NavLink exact to="/breakfast" activeClassName="active" className="nav-link">BREAKFAST</NavLink>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/brunch">BRUNCH</a>
+                                <NavLink to="/brunch" activeClassName="active" className="nav-link">BRUNCH</NavLink>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/lunch">LUNCH</a>
+                                <NavLink to="/lunch" activeClassName="active" className="nav-link">LUNCH</NavLink>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/dinner">DINNER</a>
+                                <NavLink to="/dinner" activeClassName="active" className="nav-link">DINNER</NavLink>
                             </li>
                         </ul>
                     </div>
 
                     {!token ?
                         <div className="col-3 d-flex align-items-center justify-content-end">
-                            <Link to="/login">
+                            <NavLink to="/login">
                                 <button type="button" className="btn btn-outline-secondary">LOG IN</button>
-                            </Link>
+                            </NavLink>
                             <span id="colorText">or</span>
-                            <Link to="/register">
+                            <NavLink to="/register">
                                 <button type="button" className="btn btn-success">CREATE ACCOUNT</button>
-                            </Link>
+                            </NavLink>
                         </div>
                         :
-                        <div className="col-4 d-flex align-items-center justify-content-end">
-                            <ul className="nav" id="header">
+                        <div className="stroke col-4 d-flex align-items-center justify-content-end">
+                            <ul className="nav">
                                 <li className="nav-button">
-                                    <Link to="/myrecipes">
-                                        <button type="button" className="btn text-success" style={{ fontWeight: 'bold', textDecoration: 'underline' }}>MY RECIPES</button>
-                                    </Link>
+                                    <NavLink to="/myrecipes">
+                                        <button type="button" className="btn" style={{ fontWeight: 'bold', color: '#008000', textDecoration: 'underline' }}>MY RECIPES</button>
+                                    </NavLink>
                                 </li>
                                 <li className="nav-button">
-                                    <Link to="/myprofile">
-                                        <button type="button" className="btn" style={{ fontWeight: 'bold', color: 'orange', textDecoration: 'underline' }}>MY PROFILE</button>
-                                    </Link>
+                                    <NavLink to="/myprofile">
+                                        <button type="button" className="btn" style={{ fontWeight: 'bold', color: '#f3b254', textDecoration: 'underline' }}>MY PROFILE</button>
+                                    </NavLink>
                                 </li>
                                 <li className="nav-button">
-                                    <Link to="/">
-                                        <button type="button" className="btn" onClick={logOut} style={{ fontWeight: 'bold', color: 'gray', textDecoration: 'underline' }}>LOG OUT</button>
-                                    </Link>
+                                    <NavLink to="/" onClick={logOut}>
+                                        <button type="button" className="btn" style={{ fontWeight: 'bold', color: '#696969', textDecoration: 'underline' }}>LOG OUT</button>
+                                    </NavLink>
                                 </li>
                             </ul>
-                        </div>}
+                        </div>
+                    }
                 </div>
             </div>
-        </div>
+        </nav>
     )
 }

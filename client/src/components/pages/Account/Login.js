@@ -33,10 +33,12 @@ export default function Login() {
     }
     return (
         <div className="container">
-            <div className="row"><h3 id="h3Title">Log In<hr className='mt-2'/></h3></div>
+            <div className="row pt-5">
+                <h2 className="title">Log In<hr className='mt-2'/></h2>
+                </div>
             <div className="row" >
                 <div className="col" id="textHeader">
-                    <h1><span id="colorText" >Welcome to</span> Baby's</h1>
+                    <h2><span id="colorText">Welcome to</span> Baby's</h2>
                     <p>
                         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
                         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
