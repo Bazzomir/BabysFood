@@ -125,6 +125,13 @@ body::-webkit-scrollbar-thumb:hover {
     left: 7px;
 }
 
+.popUpbadge {
+    color:whitesmoke;
+    background-color: var(--green);
+    border-radius: 25px;
+    padding: 2px 7.5px;
+}
+
 #avatarPics {
     height: 200px;
     width: 200px;

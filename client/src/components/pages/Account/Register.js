@@ -107,7 +107,7 @@ export default function Register() {
     return (
         <div className="container">
             <div className="row pt-5">
-                <h2 className="title">Create Account<hr className='mt-2' /></h2>
+                <h2 className="title">Sing Up<hr className='mt-2' /></h2>
             </div>
             <div className="row pt-5 pb-6" >
                 <div className="col" id="textHeader" xs={5}>

@@ -7,7 +7,7 @@ export default function Footer() {
             <div className="container pt-5 pb-5">
                 <div className="row">
                     <div className="col-3 d-flex align-items-center justify-content-start">
-                        <a className="navbar-brand" href="/">
+                        <a className="navbar-brand" href="/home">
                             <img src={logoFooter} alt="" width="160" height="75" />
                         </a>
                     </div>
