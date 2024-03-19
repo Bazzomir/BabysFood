@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { api } from '../../../RESTApi/RestApi';
-import logo from '../../../assets/logo/logo.png'
+// import logo from '../../../assets/logo/logo.png'
 
 const bcrypt = require("bcryptjs");
 
