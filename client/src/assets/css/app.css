@@ -59,6 +59,10 @@ body::-webkit-scrollbar-thumb:hover {
     padding-bottom: 9rem !important;
 }
 
+.logo {
+    height: 300px;
+    width: 300px;
+}
 
 .notFound {
     height: 66.7vh;
@@ -69,9 +73,9 @@ body::-webkit-scrollbar-thumb:hover {
     border-radius: 100%;
 }
 
-#textHeader {
+/* #textHeader {
     padding-right: 150px;
-}
+} */
 
 .footer {
     background-color: var(--grey);
