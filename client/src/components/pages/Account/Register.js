@@ -106,10 +106,12 @@ export default function Register() {
 
     return (
         <div className="container">
-            <div className="row"><h3 id="h3Title">Create Account<hr className='mt-2' /></h3></div>
-            <div className="row" >
+            <div className="row pt-5">
+                <h2 className="title">Create Account<hr className='mt-2' /></h2>
+            </div>
+            <div className="row pt-5 pb-6" >
                 <div className="col" id="textHeader" xs={5}>
-                    <h1><span id="colorText">Create Your</span> Account</h1>
+                    <h2><span className="orangeText">Create Your</span> Account</h2>
                     <p>
                         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?
                         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?

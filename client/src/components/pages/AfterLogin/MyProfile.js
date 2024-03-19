@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { api } from "../../../RESTApi/RestApi";
-import avatar from "../../assets/avatar.png";
+import avatar from "../../../assets/avatar.png";
 
 export default function MyProfile() {
 
