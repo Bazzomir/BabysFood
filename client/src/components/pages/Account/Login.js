@@ -33,25 +33,10 @@ export default function Login() {
             .catch(err => alert(err));
     }
 
-    (() => {
-        const forms = document.querySelectorAll('.needs-validation');
-
-        Array.from(forms).forEach(form => {
-            form.addEventListener('submit', event => {
-                if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                }
-
-                form.classList.add('was-validated')
-            }, false)
-        })
-    })();
-
     return (
         <div className="container">
             <div className="row pt-5">
-                <h2 className="title">Log In<hr className='mt-2' /></h2>
+                <h2 className="title">Sigh In<hr className='mt-2' /></h2>
             </div>
             <div className="row pt-5 pb-6">
                 <div className="col-6">

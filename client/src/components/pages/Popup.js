@@ -16,7 +16,8 @@ function Popup(props) {
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
                 style={{
-                    backdropFilter: "blur(5px)"
+                    backdropFilter: "blur(5px)",
+                    transform: "easy 0.5s"
                 }}
             >
                 <Modal.Header closeButton>
@@ -27,8 +28,8 @@ function Popup(props) {
                 <Modal.Body>
                     <div className="row">
                         <div className="col-5">
-                            <Card.Img style={{ borderTopLeftRadius: "2%", borderTopRightRadius: "2%" }} variant="top" src={`${api.root}/${recipe.image}`} />
-                            <Card.Title className="m-0 py-3" style={{ color: "green" }}>Best Served For {recipe.category.toLowerCase()}</Card.Title>
+                            <Card.Img style={{ borderRadius: "15px" }} variant="top" src={`${api.root}/${recipe.image}`} />
+                            <Card.Title className="m-0 py-3 d-flex gap-2 align-items-center" style={{ color: "green" }}>Best Served For <span className="popUpbadge mr-2">{recipe.category}</span></Card.Title>
                             <Card.Text className="m-0">
                                 {recipe.short_description}
                             </Card.Text>
