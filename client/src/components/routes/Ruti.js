@@ -19,7 +19,7 @@ export default function Ruti() {
     return (
         <div>
             <Routes>
-                {["/", "/Homepage"].map((path, index) =>
+                {["/", "/home"].map((path, index) =>
                     <Route path={path} element={<Homepage />} key={index} />
                 )}
                 <Route path="/breakfast" element={<Breakfast />} />
