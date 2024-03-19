@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import logo from '../../assets/logo/NavLogo.png';
+import logoNav from '../../assets/logo/logo-nav.png';
 import { NavLink } from 'react-router-dom';
 
 export default function Navbar() {
@@ -37,7 +37,7 @@ export default function Navbar() {
                 <div className="row">
                     <div className="col-3 d-flex align-items-center justify-content-start">
                         <a href="/">
-                            <img src={logo} alt="" width="130" height="50" />
+                            <img src={logoNav} alt="" width="130" height="50" />
                         </a>
                     </div>
                     <div className="col-5 d-flex align-items-center justify-content-center">
