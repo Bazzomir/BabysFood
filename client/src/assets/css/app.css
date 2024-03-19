@@ -31,6 +31,10 @@ body::-webkit-scrollbar-thumb:hover {
     color: var(--orange);
 }
 
+.greenText {
+    color:var(--green)
+}
+
 .py-6 {
     padding: 6rem 0 !important;
 }
