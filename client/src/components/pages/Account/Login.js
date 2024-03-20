@@ -33,6 +33,24 @@ export default function Login() {
             .catch(err => alert(err));
     }
 
+    (function () {
+        'use strict'
+
+        const forms = document.querySelectorAll('.needs-validation')
+
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+
     return (
         <div className="container">
             <div className="row pt-5">
@@ -51,22 +69,22 @@ export default function Login() {
                     </p>
                 </div>
                 <div className="col-6 d-flex justify-content-end">
-                    <form className="col-12 needs-validation" onSubmit={logIn} novalidate>
+                    <form className="col-12 needs-validation" onSubmit={logIn} noValidate>
                         <div className="form-group pb-4">
                             <label htmlFor="validationCustom01" className="form-label m-0">Email address</label>
                             <input className="form-control" type="email" placeholder="user@domain.com" id="validationCustom01" required value={email} onChange={(e) => { setEmail(e.target.value) }} />
-                            <div class="valid-feedback">
+                            <div className="invalid-feedback">
                                 Please enter your email address.
                             </div>
                         </div>
                         <div className="form-group pb-4">
                             <label htmlFor="validationCustom02" className="form-label m-0">Password</label>
-                            <input className="form-control" type="password" placeholder="*****" id="validationCustom02" required value={password} onChange={(e) => { setPassword(e.target.value) }} />
-                            <div class="valid-feedback">
-                                Please enter your email address.
+                            <input className="form-control" type="password" placeholder="********" id="validationCustom02" required value={password} onChange={(e) => { setPassword(e.target.value) }} />
+                            <div className="invalid-feedback">
+                                Please enter your password.
                             </div>
                         </div>
-                        <button variant="success" className="btn btn-success">Log In</button>
+                        <button variant="success" className="btn btn-success" type="submit">Log In</button>
                     </form>
                 </div>
             </div>
