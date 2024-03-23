@@ -64,7 +64,7 @@ export default function Navbar() {
                             </NavLink>
                             <span className="orangeText">or</span>
                             <NavLink to="/register">
-                                <button type="button" className="btn btn-success">CREATE ACCOUNT</button>
+                                <button type="button" className="btn btn-green">CREATE ACCOUNT</button>
                             </NavLink>
                         </div>
                         :
