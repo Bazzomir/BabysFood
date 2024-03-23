@@ -180,9 +180,9 @@ body::-webkit-scrollbar-thumb:hover {
     padding: 2px 7.5px;
 }
 
-#avatarPics {
-    height: 200px;
-    width: 200px;
+.avatarImg {
+    height: 150px;
+    width: 150px;
 }
 
 li {
