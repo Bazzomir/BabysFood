@@ -12,9 +12,11 @@ code {
 }
 
 body {
+    position: relative;
     /* font-family: 'Bitter'; */
     font-family: 'alkatra';
     background-color: #f5f0d9;
+    min-height: 100vh;
     --green: #008000;
     --grey: #696969;
     /* --darkgrey: #2d2c2c; */
@@ -42,6 +44,20 @@ body::-webkit-scrollbar-thumb:hover {
     background-color: var(--white) !important;
 } */
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+select option:hover {
+    background: var(--orange) !important;
+}
+
 /* .invalid-feedback {
     font-size: 1.14rem;
 } */
@@ -68,6 +84,14 @@ body::-webkit-scrollbar-thumb:hover {
 .form-control:focus {
     box-shadow: var(--active-box-shadow);
 }
+
+.form-select:focus {
+    box-shadow: var(--active-box-shadow);
+}
+
+/* .form-select option:hover {
+    background: var(--orange) !important;
+} */
 
 .orangeText {
     color: var(--orange);
@@ -117,8 +141,32 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 #plusAndBack {
-    background-color: var(--orange);
-    border-radius: 100%;
+    background-color: var(--green);
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.plusAndBackIcon {
+    color: var(--white);
+    height: 15px;
+    width: 15px;
+}
+
+.xxx {
+    position: relative;
+    z-index: 1;
+}
+
+.yyy {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    top: 79px;
 }
 
 .login {
@@ -129,7 +177,9 @@ body::-webkit-scrollbar-thumb:hover {
     background-color: var(--grey);
     width: 100%;
     color: var(--white);
-    position: sticky;
+    position: absolute;
+    left: 0;
+    /* bottom: 0; */
 }
 
 .footer li a {
@@ -145,6 +195,10 @@ body::-webkit-scrollbar-thumb:hover {
 
 .title hr {
     color: var(--grey);
+}
+
+.titleLine {
+    width: 98%;
 }
 
 .popUpButton {
@@ -199,10 +253,12 @@ li:first-child {
 
 nav {
     position: sticky;
+    top: 0;
     z-index: 3;
     opacity: 1;
     width: 100%;
     overflow: hidden;
+    background-color: #f5f0d9;
     box-shadow: 0px 8px 5px 0px rgba(105, 105, 105, 0.3);
     transition: padding 0.3s ease-in-out;
 }

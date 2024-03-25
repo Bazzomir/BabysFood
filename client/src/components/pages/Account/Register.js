@@ -11,7 +11,7 @@ export default function Register() {
     const [email, setEmail] = useState("");
     const [birthday, setBirthday] = useState("");
     const [password, setPassword] = useState("");
-    const [confimPassword, setConfirmaPassword] = useState("");
+    const [confim_password, setConfirmPassword] = useState("");
     const [agree, setAgree] = useState("");
 
     // const [firstNameError, setFirstNameError] = useState("");
@@ -118,10 +118,10 @@ export default function Register() {
             birthday: birthday,
             // password: bcrypt.hashSync(password),
             password: password,
-            confimPassword: confimPassword
+            confim_password: confim_password
         }
 
-        if (password === confimPassword) {
+        if (password === confim_password) {
             fetch(`${api.root}/users/register`, {
                 method: 'POST',
                 headers: {
@@ -216,9 +216,9 @@ export default function Register() {
                                     </div>
                                 </div>
                                 <div className="form-group col-xl-6 col-xs">
-                                    <label htmlFor="confimPassword" className="form-label m-0">Repeat password</label>
-                                    <input className="form-control" placeholder="********" type="password" id="confimPassword" value={confimPassword} required
-                                        onChange={e => { setConfirmaPassword(e.target.value) }} />
+                                    <label htmlFor="confim_password" className="form-label m-0">Repeat password</label>
+                                    <input className="form-control" placeholder="********" type="password" id="confim_password" value={confim_password} required
+                                        onChange={e => { setConfirmPassword(e.target.value) }} />
                                     {/* {Object.keys(confirmPasswordError).map((key) => {
                                         return <div className="text-danger">{confirmPasswordError[key]}</div>
                                     })} */}

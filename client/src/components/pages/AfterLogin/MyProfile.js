@@ -97,10 +97,10 @@ export default function MyProfile() {
     }
 
     return (
-        <div>
+        // <div>
             <div className="container">
                 <div className="row pt-5 pb-6">
-                    <div className="row pt-3">
+                    <div className="row">
                         <div className="col">
                             <h2 className="title">My Profile<hr className="mt-2" /></h2>
                         </div>
@@ -149,7 +149,7 @@ export default function MyProfile() {
                                 </div>
                                 <div className="row" >
                                     <div className="col mt-4" >
-                                        <button type="submit" className="btn btn-green">SAVE</button>
+                                        <button type="submit" className="btn btn-green col-2">SAVE</button>
                                     </div>
                                 </div>
                             </form>
@@ -157,6 +157,6 @@ export default function MyProfile() {
                     </div>
                 </div>
             </div>
-        </div>
+        // </div>
     )
 }
