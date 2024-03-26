@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { api } from '../../../RESTApi/RestApi'
+import defaultImgRecipe from '../../../assets/defaultImgRecipe.jpg'
 
 export default function CreateRecipe() {
 
@@ -10,7 +11,7 @@ export default function CreateRecipe() {
     const [category, setCategory] = useState("");
     const [preparation, setPreparation] = useState("");
     const [people, setPeople] = useState("");
-    const [image, setImage] = useState("https://w7.pngwing.com/pngs/692/99/png-transparent-hamburger-street-food-seafood-fast-food-delicious-food-salmon-with-vegetables-salad-in-plate-leaf-vegetable-food-recipe-thumbnail.png");
+    const [image, setImage] = useState(defaultImgRecipe);
 
     // const [titleError, setTitleError] = useState("");
     // const [shortDescriptionError, setShortDescriptionError] = useState("");
@@ -120,7 +121,7 @@ export default function CreateRecipe() {
                     localStorage.removeItem("token");
                     window.location = "/login";
                 }
-                alert(`Recipes is created`)
+                alert(`Recipes is created`);
                 window.location = "/myrecipes"
             })
             .catch(err => alert(err))
@@ -149,7 +150,7 @@ export default function CreateRecipe() {
                             <label>Recipe Image</label>
                         </div>
                         <div className="col">
-                            <img style={{ width: '171px', height: '180px' }} alt=" " src={image} />
+                            <img style={{ width: '200px', height: '200px', borderRadius: '18px' }} alt=" " src={image} />
                         </div>
                         <br />
                         <div className="col">
@@ -221,7 +222,7 @@ export default function CreateRecipe() {
                                         return <div className='text-danger'>{descriptionError[key]}</div>
                                     })} */}
                                     <div className="invalid-feedback">
-                                        Please enter your full recipe.
+                                        Please enter full recipe.
                                     </div>
                                 </div>
                             </div>

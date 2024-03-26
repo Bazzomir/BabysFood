@@ -169,10 +169,6 @@ select option:hover {
     top: 79px;
 }
 
-.login {
-    height: 66.1vh;
-}
-
 .footer {
     background-color: var(--grey);
     width: 100%;
@@ -336,8 +332,8 @@ label {
 }
 
 .card-bottom--icons {
-    width: 30px;
     height: 20px;
+    width: auto;
     color: var(--green);
 }
 
@@ -348,6 +344,12 @@ label {
     font-size: 12px;
     border-radius: 25px;
     background-color: var(--green);
+}
+
+.deleteIcon {
+    height: 20px;
+    width: auto;
+    color: #dc3545;
 }
 
 table {
