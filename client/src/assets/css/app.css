@@ -1,16 +1,29 @@
-@import url('https://fonts.googleapis.com/css?family=Bitter');
+/* @import url('https://fonts.googleapis.com/css?family=Bitter'); */
+@import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@400..700&display=swap');
 
 * {
     margin: 0;
     padding: 0;
 }
 
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
+
 body {
+    position: relative;
+    /* font-family: 'Bitter'; */
+    font-family: 'alkatra';
     background-color: #f5f0d9;
-    font-family: 'Bitter';
+    min-height: 100vh;
     --green: #008000;
     --grey: #696969;
+    /* --darkgrey: #2d2c2c; */
+    --darkgrey: #252525;
     --orange: #f3b254;
+    --white: #f5f5f5;
+    --active-box-shadow: 0 0 0 0.25rem #0dcaf01a;
 }
 
 body::-webkit-scrollbar {
@@ -27,12 +40,69 @@ body::-webkit-scrollbar-thumb:hover {
     width: 15px;
 }
 
+/* input {
+    background-color: var(--white) !important;
+} */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+select option:hover {
+    background: var(--orange) !important;
+}
+
+/* .invalid-feedback {
+    font-size: 1.14rem;
+} */
+
+.btn-green {
+    background-color: var(--green);
+    border: var(--green);
+    color: var(--white);
+    transition: .2s ease-in-out 0s;
+}
+
+.btn-green:hover {
+    /* background-color: #157347; */
+    background-color: #006700;
+    border: #146c43;
+    color: var(--white);
+    transform: scale(1.10);
+}
+
+.btn:focus {
+    box-shadow: var(--active-box-shadow);
+}
+
+.form-control:focus {
+    box-shadow: var(--active-box-shadow);
+}
+
+.form-select:focus {
+    box-shadow: var(--active-box-shadow);
+}
+
+/* .form-select option:hover {
+    background: var(--orange) !important;
+} */
+
 .orangeText {
     color: var(--orange);
 }
 
 .greenText {
-    color:var(--green)
+    color: var(--green)
+}
+
+.greyText {
+    color: var(--grey)
 }
 
 .py-6 {
@@ -60,8 +130,10 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .logo {
-    height: 300px;
-    width: 300px;
+    height: 12.5rem;
+    width: 12.5rem;
+    float: left;
+    margin-right: 20px;
 }
 
 .notFound {
@@ -69,23 +141,45 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 #plusAndBack {
-    background-color: var(--orange);
-    border-radius: 100%;
+    background-color: var(--green);
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
 }
 
-/* #textHeader {
-    padding-right: 150px;
-} */
+.plusAndBackIcon {
+    color: var(--white);
+    height: 15px;
+    width: 15px;
+}
+
+.xxx {
+    position: relative;
+    z-index: 1;
+}
+
+.yyy {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    top: 79px;
+}
 
 .footer {
     background-color: var(--grey);
     width: 100%;
-    color: whitesmoke;
-    position: sticky;
+    color: var(--white);
+    position: absolute;
+    left: 0;
+    /* bottom: 0; */
 }
 
 .footer li a {
-    color: whitesmoke !important;
+    color: var(--white) !important;
     text-decoration: none;
 }
 
@@ -99,8 +193,12 @@ body::-webkit-scrollbar-thumb:hover {
     color: var(--grey);
 }
 
+.titleLine {
+    width: 98%;
+}
+
 .popUpButton {
-    color: whitesmoke;
+    color: var(--white);
     background-color: var(--green);
     border-radius: 50%;
     height: 30px;
@@ -119,22 +217,22 @@ body::-webkit-scrollbar-thumb:hover {
 .popUpButtonIcons {
     width: 15px;
     height: 15px;
-    color: whitesmoke;
+    color: var(--white);
     position: absolute;
     top: 6px;
     left: 7px;
 }
 
 .popUpbadge {
-    color:whitesmoke;
+    color: var(--white);
     background-color: var(--green);
     border-radius: 25px;
     padding: 2px 7.5px;
 }
 
-#avatarPics {
-    height: 200px;
-    width: 200px;
+.avatarImg {
+    height: 150px;
+    width: 150px;
 }
 
 li {
@@ -151,10 +249,12 @@ li:first-child {
 
 nav {
     position: sticky;
+    top: 0;
     z-index: 3;
     opacity: 1;
     width: 100%;
     overflow: hidden;
+    background-color: #f5f0d9;
     box-shadow: 0px 8px 5px 0px rgba(105, 105, 105, 0.3);
     transition: padding 0.3s ease-in-out;
 }
@@ -232,8 +332,8 @@ label {
 }
 
 .card-bottom--icons {
-    width: 30px;
     height: 20px;
+    width: auto;
     color: var(--green);
 }
 
@@ -244,6 +344,12 @@ label {
     font-size: 12px;
     border-radius: 25px;
     background-color: var(--green);
+}
+
+.deleteIcon {
+    height: 20px;
+    width: auto;
+    color: #dc3545;
 }
 
 table {
@@ -259,7 +365,7 @@ th {
     border-radius: 3px;
     padding: 2px 4px 2px 4px;
     background-color: var(--green);
-    color: whitesmoke;
+    color: var(--white);
 
 }
 
@@ -270,7 +376,7 @@ table {
 }
 
 td {
-    border: solid 1px whitesmoke;
+    border: solid 1px var(--white);
     border-style: solid none;
     padding: 10px;
     background-color: cyan;

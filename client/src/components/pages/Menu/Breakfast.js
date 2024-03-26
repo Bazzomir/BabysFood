@@ -23,7 +23,7 @@ export default function Breakfast() {
             <div className="row pt-5">
                 <div className="row">
                     <h2 className="title">Breakfast
-                        <hr className='mt-2' />
+                        <hr className="mt-2" />
                     </h2>
                 </div>
                 {Breakfast.map(recipe => {

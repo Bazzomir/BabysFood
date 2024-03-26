@@ -43,16 +43,16 @@ export default function Navbar() {
                     <div className="col-5 d-flex align-items-center justify-content-center">
                         <ul className="nav">
                             <li className="nav-item">
-                                <NavLink exact to="/breakfast" activeClassName="active" className="nav-link">BREAKFAST</NavLink>
+                                <NavLink to="/breakfast" activeclassname="active" className="nav-link">BREAKFAST</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to="/brunch" activeClassName="active" className="nav-link">BRUNCH</NavLink>
+                                <NavLink to="/brunch" activeclassname="active" className="nav-link">BRUNCH</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to="/lunch" activeClassName="active" className="nav-link">LUNCH</NavLink>
+                                <NavLink to="/lunch" activeclassname="active" className="nav-link">LUNCH</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to="/dinner" activeClassName="active" className="nav-link">DINNER</NavLink>
+                                <NavLink to="/dinner" activeclassname="active" className="nav-link">DINNER</NavLink>
                             </li>
                         </ul>
                     </div>
@@ -64,7 +64,7 @@ export default function Navbar() {
                             </NavLink>
                             <span className="orangeText">or</span>
                             <NavLink to="/register">
-                                <button type="button" className="btn btn-success">CREATE ACCOUNT</button>
+                                <button type="button" className="btn btn-green">CREATE ACCOUNT</button>
                             </NavLink>
                         </div>
                         :
