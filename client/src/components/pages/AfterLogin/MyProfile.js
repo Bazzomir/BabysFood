@@ -110,7 +110,7 @@ export default function MyProfile() {
                             <img className="avatarImg" src={image} alt="" />
                         </div>
                         <div className="col mt-5">
-                            <button onClick={() => document.getElementById("fileinput").click()} type="submit" className="btn btn-outline-secondary"> CHANGE AVATAR </button>
+                            <button onClick={() => document.getElementById("fileinput").click()} type="submit" className="btn btn-grey"> CHANGE AVATAR </button>
                             <input id="fileinput" onChange={handleImage} type="file" accept="image/*" style={{ display: "none" }} />
                         </div>
                     </div>

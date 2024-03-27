@@ -147,14 +147,14 @@ export default function CreateRecipe() {
                 <div className="row d-flex justify-content-center">
                     <div className="col-3">
                         <div className="col">
-                            <label>Recipe Image</label>
+                            <label htmlFor="recipeImage">Recipe Image</label>
                         </div>
                         <div className="col">
-                            <img style={{ width: '200px', height: '200px', borderRadius: '18px' }} alt=" " src={image} />
+                            <img style={{ width: '200px', height: '200px', borderRadius: '18px' }} alt="Recipe Image" src={image} />
                         </div>
                         <br />
                         <div className="col">
-                            <button variant="outline-secondary" onClick={() => document.getElementById("fileinput").click()} type="submit" className="btn btn-outline-secondary">UPLOAD IMAGE</button>
+                            <button onClick={() => document.getElementById("fileinput").click()} type="submit" className="btn btn-grey">UPLOAD IMAGE</button>
                             <input id="fileinput" onChange={handleImage} type="file" accept="image/*" style={{ display: "none" }} />
                         </div>
                     </div>
@@ -174,7 +174,7 @@ export default function CreateRecipe() {
                                         </div>
                                     </div>
                                     <div className="form-group col-4">
-                                        <label htmlFor="recipeCategory" style={{ width: "100%" }}>Category</label>
+                                        <label htmlFor="recipeCategory">Category</label>
                                         <select className="form-select" id="recipeCategory" value={category} required
                                             onChange={e => { setCategory(e.target.value) }}>
                                             <option value="" disabled selected id="none">Choose...</option>
@@ -196,7 +196,7 @@ export default function CreateRecipe() {
                                             onChange={e => { setPreparation(e.target.value) }} />
                                     </div>
                                     <div className="form-group col-4">
-                                        <label htmlFor="recipeNumPeople" >No. People</label>
+                                        <label htmlFor="recipeNumPeople">No. People</label>
                                         <input className="form-control" id="recipeNumPeople" type="number" value={people}
                                             onChange={e => { setPeople(e.target.value) }} />
                                     </div>
@@ -213,7 +213,7 @@ export default function CreateRecipe() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col md-4" xs={6}>
+                            <div className="col md-4">
                                 <div className="form-group mb-3">
                                     <label htmlFor="recipeDes" >Recipe</label>
                                     <textarea className="form-control" id="recipeDes" rows="10" value={description} required

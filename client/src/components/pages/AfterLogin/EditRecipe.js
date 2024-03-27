@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
 import { api } from "../../../RESTApi/RestApi";
 import { useParams } from "react-router-dom";
+import defaultImgRecipe from '../../../assets/defaultImgRecipe.jpg'
 
 export default function EditRecipe() {
 
@@ -21,7 +21,7 @@ export default function EditRecipe() {
                 setImage(reader.result)
             }
         }
-        reader.readAsDataURL(e.target.files[0])
+        reader.readAsDataURL(e.target.files[0]);
     }
 
     const getMyRecipe = () => {
@@ -37,17 +37,17 @@ export default function EditRecipe() {
                 return res.json();
             })
             .then(data => {
-                setTitle(data.recipe.title)
-                setShortDescription(data.recipe.short_description)
-                setDescription(data.recipe.description)
-                setCategory(data.recipe.category)
-                setPreparation(data.recipe.preparation)
-                setPeople(data.recipe.people)
+                setTitle(data.recipe.title);
+                setShortDescription(data.recipe.short_description);
+                setDescription(data.recipe.description);
+                setCategory(data.recipe.category);
+                setPreparation(data.recipe.preparation);
+                setPeople(data.recipe.people);
 
                 if (data.recipe.image !== undefined) {
-                    setImage(`${api.root}/${data.recipe.image}`)
+                    setImage(`${api.root}/${data.recipe.image}`);
                 } else
-                    setImage("https://w7.pngwing.com/pngs/692/99/png-transparent-hamburger-street-food-seafood-fast-food-delicious-food-salmon-with-vegetables-salad-in-plate-leaf-vegetable-food-recipe-thumbnail.png")
+                    setImage(defaultImgRecipe);
 
             })
     }
@@ -59,7 +59,7 @@ export default function EditRecipe() {
     const openFileInput = (event) => {
         event.preventDefault();
         event.stopPropagation();
-        document.getElementById("fileinput1").click()
+        document.getElementById("fileinput1").click();
     }
 
     const editRecipe = (event) => {
@@ -100,77 +100,79 @@ export default function EditRecipe() {
     }
 
     return (
-        <div className="container mt-5">
-            <div className="row">
-                <div className="col" >
-                    <h3 id="h3Title" className="mb-2">Edit recipes</h3><hr className='col-sm-12 mb-4' />
-                </div>
-            </div>
-            <div className="row mt-5">
-                <div className="col-3" xs={4} md={2}>
-                    <div className="col">
-                        <label>Recipe Image</label>
+        <div className="container">
+            <div className="row pt-5 pb-6">
+                <div className="row">
+                    <div className="col" >
+                        <h2 className="title">Edit recipes</h2><hr className="mt-2" />
                     </div>
-                    <div className="col">
-                        <img style={{ width: '171px', height: '180px' }} alt=" " src={image} />
-                    </div>
-                    <br />
-                    <div className="col">
-                        <button variant="outline-secondary" onClick={openFileInput} type="submit" className="btn btn-outline-secondary">UPLOAD IMAGE</button>
-                        <input id="fileinput1" onChange={handleImage} type="file" accept="image/*" style={{ display: "none" }} />
-                    </div >
                 </div>
-                <div className="col-9" xs={8} md={6}>
-                    <form name="createForm" className='form row'>
-                        <div className="col-7">
-                            <div className="row">
-                                <div className="form-group col-12 mb-3">
-                                    <label>Recipe Title</label>
-                                    <input className="form-control" type="RecipeTitle" placeholder="Recipe Title" value={title} required
-                                        onChange={e => { setTitle(e.target.value) }} />
-                                </div>
-                                <div className="form-group col-4">
-                                    <label style={{ width: "100%" }}>Category
-                                        <select className="form-control" placeholder="Choose..." value={category || "none"} required
+                <div className="row d-flex justify-content-center">
+                    <div className="col-3">
+                        <div className="col">
+                            <label htmlFor="recipeImage">Recipe Image</label>
+                        </div>
+                        <div className="col">
+                            <img style={{ width: '200px', height: '200px', borderRadius: '18px' }} alt="Recipe Image" src={image} />
+                        </div>
+                        <br />
+                        <div className="col">
+                            <button onClick={openFileInput} type="submit" className="btn btn-grey">UPLOAD IMAGE</button>
+                            <input id="fileinput1" onChange={handleImage} type="file" accept="image/*" style={{ display: "none" }} />
+                        </div >
+                    </div>
+                    <div className="col-9">
+                        <form name="editRecipeForm" className="row">
+                            <div className="col-7">
+                                <div className="row">
+                                    <div className="form-group col-12 mb-3">
+                                        <label htmlFor="recipeTitle">Recipe Title</label>
+                                        <input className="form-control" id="recipeTitle" type="text" value={title} required
+                                            onChange={e => { setTitle(e.target.value) }} />
+                                    </div>
+                                    <div className="form-group col-4">
+                                        <label htmlFor="recipeCategory">Category
+                                        </label>
+                                        <select className="form-control" id="recipeCategory" value={category} required
                                             onChange={e => { setCategory(e.target.value) }}>
-                                            <option value="none" disabled selected>Choose...</option>
-                                            <option value="Breakfast">Breakfast</option>
-                                            <option value="Brunch">Brunch</option>
-                                            <option value="Lunch">Lunch</option>
-                                            <option value="Dinner">Dinner</option>
+                                            <option value="" disabled selected id="none">Choose...</option>
+                                            <option value="Breakfast" id="Breakfast" >Breakfast</option>
+                                            <option value="Brunch" id="Brunch" >Brunch</option>
+                                            <option value="Lunch" id="Lunch" >Lunch</option>
+                                            <option value="Dinner" id="Dinner" >Dinner</option>
                                         </select>
-                                    </label>
+                                    </div>
+                                    <div className="form-group col-4">
+                                        <label htmlFor="recipePreparationTime">Preparation Time</label>
+                                        <input className="form-control" id="recipePreparationTime" type="number" value={preparation} required
+                                            onChange={e => { setPreparation(e.target.value) }} />
+                                    </div>
+                                    <div className="form-group col-4">
+                                        <label htmlFor="recipeNumPeople">No. People</label>
+                                        <input className="form-control" id="recipeNumPeople" type="number" value={people} required
+                                            onChange={e => { setPeople(e.target.value) }} />
+                                    </div>
                                 </div>
-                                <div className="form-group col-4">
-                                    <label>Preparation Time</label>
-                                    <input className="form-control" type='number' value={preparation} required
-                                        onChange={e => { setPreparation(e.target.value) }} />
-                                </div>
-                                <div className="form-group col-4">
-                                    <label>No. People</label>
-                                    <input className="form-control" type='number' value={people} required
-                                        onChange={e => { setPeople(e.target.value) }} />
+                                <div className="form-group mt-4">
+                                    <label htmlFor="recipeShortDes">Short Description</label>
+                                    <textarea className="form-control" id="recipeShortDes" rows="3" value={shortDescription} required
+                                        onChange={e => { setShortDescription(e.target.value) }} />
                                 </div>
                             </div>
-                            <div className="form-group mt-4" id="exampleFormControlTextarea1">
-                                <label>Short Description</label>
-                                <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" value={shortDescription} required
-                                    onChange={e => { setShortDescription(e.target.value) }} />
+                            <div className="col md-4">
+                                <div className="form-group mb-3">
+                                    <label htmlFor="recipeDes" >Recipe</label>
+                                    <textarea className="form-control" id="recipeDes" rows="10" value={description} required
+                                        onChange={e => { setDescription(e.target.value) }} />
+                                </div>
                             </div>
-                        </div>
-                        <div className="col md-4" xs={6}>
-                            <div className="form-group mb-3" id="exampleFormControlTextarea1">
-                                <label>Recipe</label>
-                                <textarea className="form-control" id="exampleFormControlTextarea1" rows="10" value={description} required
-                                    onChange={e => { setDescription(e.target.value) }} />
+                            <div className="pt-3">
+                                <button variant="success" className="btn btn-green col-2" onClick={editRecipe}>SAVE</button>
                             </div>
-                        </div>
-                        <div className="row">
-                            <button variant="success" className="btn btn-success col-1" onClick={editRecipe}>SAVE</button>
-                        </div>
-                    </form>
-                </div>
+                        </form>
+                    </div>
+                </div >
             </div >
-        </div >
+        </div>
     )
 }

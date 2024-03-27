@@ -64,7 +64,7 @@ select option:hover {
 
 .btn-green {
     background-color: var(--green);
-    border: var(--green);
+    border: 1px solid var(--green);
     color: var(--white);
     transition: .2s ease-in-out 0s;
 }
@@ -72,7 +72,21 @@ select option:hover {
 .btn-green:hover {
     /* background-color: #157347; */
     background-color: #006700;
-    border: #146c43;
+    border: 1px solid #146c43;
+    color: var(--white);
+    transform: scale(1.10);
+}
+
+.btn-grey {
+    background-color: transparent;
+    border: 1px solid var(--grey);
+    color: var(--grey);
+    transition: .2s ease-in-out 0s;
+}
+
+.btn-grey:hover {
+    background-color: #6c757d;
+    border-color: 1px solid #6c757d;
     color: var(--white);
     transform: scale(1.10);
 }

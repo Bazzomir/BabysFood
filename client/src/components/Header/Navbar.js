@@ -60,7 +60,7 @@ export default function Navbar() {
                     {!token ?
                         <div className="col-4 d-flex align-items-center justify-content-end gap-3">
                             <NavLink to="/login">
-                                <button type="button" className="btn btn-outline-secondary">LOG IN</button>
+                                <button type="button" className="btn btn-grey">LOG IN</button>
                             </NavLink>
                             <span className="orangeText">or</span>
                             <NavLink to="/register">
