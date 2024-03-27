@@ -117,7 +117,7 @@ export default function EditRecipe() {
                         </div>
                         <br />
                         <div className="col">
-                            <button onClick={openFileInput} type="submit" className="btn btn-outline-secondary">UPLOAD IMAGE</button>
+                            <button onClick={openFileInput} type="submit" className="btn btn-grey">UPLOAD IMAGE</button>
                             <input id="fileinput1" onChange={handleImage} type="file" accept="image/*" style={{ display: "none" }} />
                         </div >
                     </div>

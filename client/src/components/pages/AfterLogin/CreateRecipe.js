@@ -154,7 +154,7 @@ export default function CreateRecipe() {
                         </div>
                         <br />
                         <div className="col">
-                            <button onClick={() => document.getElementById("fileinput").click()} type="submit" className="btn btn-outline-secondary">UPLOAD IMAGE</button>
+                            <button onClick={() => document.getElementById("fileinput").click()} type="submit" className="btn btn-grey">UPLOAD IMAGE</button>
                             <input id="fileinput" onChange={handleImage} type="file" accept="image/*" style={{ display: "none" }} />
                         </div>
                     </div>
