@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { api } from '../../RESTApi/RestApi';
-import Popup from '../pages/Popup';
-import timeIcon from '../../assets/logo/time-recipe.png'
-import plateIcon from '../../assets/logo/plate-recipe.png'
-import favouriteIcon from '../../assets/logo/favourite-recipe.png'
+import Popup from './Popup';
+import timeIcon from '../../assets/logo/time-recipe.png';
+import eye2 from '../../assets/logo/eye2.png';
+import plate1 from '../../assets/logo/plate1.png';
 
 function RecipeCard({ recipe }) {
     const [isHoveredImage, setIsHoveredImage] = useState(false);
@@ -37,9 +37,9 @@ function RecipeCard({ recipe }) {
                     <div className="col-5 d-flex justify-content-between">
                         <img src={timeIcon} className="card-bottom--icons" alt="Icon card:Time" />
                         <span className="icon-text ps-1 pe-2">{recipe.preparation}</span>
-                        <img src={plateIcon} className="card-bottom--icons" alt="Icon card:Plate" />
+                        <img src={plate1} className="card-bottom--icons" alt="Icon card:Plate" />
                         <span className="icon-text ps-1 pe-2">{recipe.people}</span>
-                        <img src={favouriteIcon} className="card-bottom--icons" alt="Icon card:Favourite" />
+                        <img src={eye2} className="card-bottom--icons" alt="Icon card:Favourite" />
                         <span className="icon-text ps-1 pe-2">{recipe.views}</span>
                     </div>
                     <Popup recipe={recipe} />
