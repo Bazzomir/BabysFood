@@ -146,13 +146,18 @@ export default function Register() {
                 <h2 className="title">Sing Up<hr className="mt-2" /></h2>
             </div>
             <div className="row pt-3 pb-6" >
-                <div className="col-7">
+                <div className="col-6">
                     <h2><span className="orangeText">Create Your</span> <span className="greyText"> Account</span></h2>
+                    {/* <p className="greyText"><img className="logo" src={logo} alt="Logo" />
+                        Wondering what to make for dinner tonight?
+                        Baby's Food Place is here to help you cook delicious meals with less stress and more joy.
+                        We offer recipes and cooking advice for home cooks, by home cooks.
+                    </p> */}
                     <p className="greyText"><img className="logo" src={logo} alt="Logo" />
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        Feeling indecisive about tonight's dinner? Let Baby's Food Place take the guesswork out of mealtime and bring joy back into your kitchen! Our platform is designed to inspire and empower home cooks like you to create delicious meals with ease and enjoyment. Say goodbye to mealtime stress and hello to culinary bliss as we provide you with a wide array of recipes, cooking tips, and guidance tailored specifically for home cooks, by home cooks. Whether you're a seasoned chef or just starting out on your culinary journey, our collection of tried-and-true recipes and expert advice will equip you with the tools and confidence you need to whip up memorable meals that will delight your family and friends. Join our community of passionate food enthusiasts and let's make cooking dinner a delightful experience together!
                     </p>
                 </div>
-                <div className="col-5 d-flex justify-content-end">
+                <div className="col-6 d-flex justify-content-end">
                     <div className="row d-flex justify-content-center align-items-center w-100">
                         <form name="registerForm" className="needs-validation col-12" onSubmit={singUp} noValidate>
                             <div className="row pb-4">

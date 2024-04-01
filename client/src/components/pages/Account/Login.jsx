@@ -59,8 +59,13 @@ export default function Login() {
                 <div className="col-7">
                     <h2><span className="orangeText">Welcome to</span><span className="greyText"> Baby's</span></h2>
                     <div className="d-flex col gap-5 pt-3">
+                        {/* <p className="greyText"><img className="logo" src={logo} alt="Logo" />
+                            Join other Baby's Food Place users and get access to thousands of recipes, cooking tips and hacks.
+                            Browse easy recipes for breakfast, lunch, brunch, dinner and more.
+                            Find thousands of popular recipes approved by our test kitchen and cooked by our community.
+                        </p> */}
                         <p className="greyText"><img className="logo" src={logo} alt="Logo" />
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                            Join other Baby's Food Place users and gain exclusive access to a treasure trove of culinary delights! Explore our extensive collection of recipes, cooking tips, and clever kitchen hacks that cater to every palate and dietary preference. Whether you're in search of a quick breakfast fix, a satisfying lunch, a delightful brunch spread, or a sumptuous dinner feast, we've got you covered. Our platform features thousands of easy-to-follow recipes that have been meticulously curated and tested by our dedicated team of chefs in our test kitchen, ensuring that each dish meets the highest standards of taste and quality. Plus, with contributions from our vibrant community of home cooks, you'll discover a wealth of popular recipes that have been tried, tested, and loved by fellow food enthusiasts. Join us today and embark on a culinary journey filled with flavor, creativity, and endless inspiration!
                         </p>
                     </div>
                 </div>
