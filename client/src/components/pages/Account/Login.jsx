@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { api } from '../../../RESTApi/RestApi';
 import logo from '../../../assets/logo/logo.png';
+import ariaLabelText from '../../component/ariaLabelText';
 
 const bcrypt = require("bcryptjs");
 
@@ -88,18 +89,18 @@ export default function Login() {
                             </div>
                             <div className="form-group pb-4 col-12 d-flex justify-content-between align-items-center">
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="rememberMe" />
-                                    <label className="form-check-label" htmlFor="rememberMe">
+                                    <input className="form-check-input" type="checkbox" value="" id="rememberMe" aria-label={ariaLabelText.loginAriaLabel.rememberMeAriaLabel} />
+                                    <label className="form-check-label" htmlFor="rememberMe" >
                                         Remember Me
                                     </label>
                                 </div>
-                                <h6>Forgot Password</h6>
+                                <h6 aria-label={ariaLabelText.loginAriaLabel.forgotPasswordAriaLabel}>Forgot Password</h6>
                             </div>
                             <div className="form-group pb-4 col-12">
-                                <button variant="success" className="btn btn-green" type="submit">Log In</button>
+                                <button variant="success" className="btn btn-green" type="submit" aria-label={ariaLabelText.loginAriaLabel.logInBtnAriaLabel}>Log In</button>
                             </div>
                         </form>
-                        <h6>Have an account?</h6>
+                        <h6 aria-label={ariaLabelText.loginAriaLabel.dontHaveAnAcc}>Have an account?</h6>
                     </div>
                 </div>
             </div>

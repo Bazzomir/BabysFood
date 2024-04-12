@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { api } from '../../../RESTApi/RestApi';
 import { useParams } from "react-router-dom";
+import ariaLabelText from '../../component/ariaLabelText';
 
 export default function MyRecipes() {
 
@@ -68,7 +69,7 @@ export default function MyRecipes() {
                 </div>
                 <div className="col d-flex justify-content-end aling-items-center yyy">
                     <Link to="/createrecipes">
-                        <button type="button" className="btn btn-outline-light" id="plusAndBack">
+                        <button type="button" className="btn btn-outline-light" id="plusAndBack" aria-label={ariaLabelText.myRecipesAriaLabel.createRecipeBtnAriaLabel}>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" className="plusAndBackIcon">
                                 <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
                             </svg>
@@ -95,13 +96,13 @@ export default function MyRecipes() {
                                         <td style={{ width: "100px", height: "100px", textAlign: "center" }}>
                                             <img style={{ maxHeight: "100%", maxWidth: "100%" }} alt="Recipe image" src={recipe.image} />
                                         </td>
-                                        <td><a href={`/myrecipes/${recipe._id}`} style={{ textDecoration: 'none', color: 'grey', fontWeight: 'bold' }}>{recipe.title}</a></td>
+                                        <td><a href={`/myrecipes/${recipe._id}`} style={{ textDecoration: 'none', color: 'grey', fontWeight: 'bold' }} aria-label={ariaLabelText.myRecipesAriaLabel.editRecipeBtnAriaLabel}>{recipe.title}</a></td>
                                         <td><span id="categoryTD">{recipe.category}</span></td>
                                         <td>{recipe.createdAt.slice(0, 10)}</td>
                                         <td colSpan='3'></td>
                                         <td></td>
                                         <td style={{ textAlign: "right" }}>
-                                            <button className="btn btn-primary-outline" variant="link" onClick={() => deleteMyRecipe(recipe._id)}>
+                                            <button className="btn btn-primary-outline" variant="link" onClick={() => deleteMyRecipe(recipe._id)} aria-label={ariaLabelText.myRecipesAriaLabel.deleteRecipeBtnAriaLabel}>
                                                 {/* <svg id="icons" xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-trash" viewBox="0 0 16 16">
                                                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
                                                     <path fillRule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
