@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { api } from '../../../RESTApi/RestApi';
 import logo from '../../../assets/logo/logo.png';
+import ariaLabelText from '../../component/ariaLabelText';
 
 // const bcrypt = require("bcryptjs");
 
@@ -154,7 +155,7 @@ export default function Register() {
                         We offer recipes and cooking advice for home cooks, by home cooks.
                     </p> */}
                     <p className="greyText"><img className="logo" src={logo} alt="Main Logo" />
-                        Feeling indecisive about tonight's dinner? Let Baby's Food Place take the guesswork out of mealtime and bring joy back into your kitchen! Our platform is designed to inspire and empower home cooks like you to create delicious meals with ease and enjoyment. Say goodbye to mealtime stress and hello to culinary bliss as we provide you with a wide array of recipes, cooking tips, and guidance tailored specifically for home cooks, by home cooks. Whether you're a seasoned chef or just starting out on your culinary journey, our collection of tried-and-true recipes and expert advice will equip you with the tools and confidence you need to whip up memorable meals that will delight your family and friends. Join our community of passionate food enthusiasts and let's make cooking dinner a delightful experience together!
+                        Feeling indecisive about tonight's dinner? <br />Let Baby's Food Place take the guesswork out of mealtime and bring joy back into your kitchen!<br />Our platform is designed to inspire and empower home cooks like you to create delicious meals with ease and enjoyment. Say goodbye to mealtime stress and hello to culinary bliss as we provide you with a wide array of recipes, cooking tips, and guidance tailored specifically for home cooks, by home cooks. Whether you're a seasoned chef or just starting out on your culinary journey, our collection of tried-and-true recipes and expert advice will equip you with the tools and confidence you need to whip up memorable meals that will delight your family and friends. <br /> Join our community of passionate food enthusiasts and let's make cooking dinner a delightful experience together!
                     </p>
                 </div>
                 <div className="col-6 d-flex justify-content-end">
@@ -234,7 +235,7 @@ export default function Register() {
                             </div>
                             <div className="form-group pb-4 col-12">
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value={agree} id="invalidCheck" required onChange={e => { setAgree(e.target.value) }} />
+                                    <input className="form-check-input" type="checkbox" value={agree} id="invalidCheck" required onChange={e => { setAgree(e.target.value) }} aria-label={ariaLabelText.createAccAriaLabel.AgreeTC} />
                                     <label className="form-check-label" htmlFor="invalidCheck">
                                         Agree to terms and conditions
                                     </label>
@@ -247,10 +248,10 @@ export default function Register() {
                                 </div>
                             </div>
                             <div className="form-group pb-4 col-12">
-                                <button variant="success" type="submit" className="btn btn-green">Create Account</button>
+                                <button variant="success" type="submit" className="btn btn-green" aria-label={ariaLabelText.createAccAriaLabel.createAccBtnAriaLabel}>Create Account</button>
                             </div>
                         </form>
-                        <h6>Have an account?</h6>
+                        <h6 aria-label={ariaLabelText.createAccAriaLabel.haveAnAcc}>Have an account?</h6>
                     </div>
                 </div>
             </div>

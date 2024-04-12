@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import logoNav from '../../assets/logo/logo-nav.png';
 import { NavLink } from 'react-router-dom';
+import ariaLabelText from '../component/ariaLabelText';
 
 export default function Navbar() {
     const token = localStorage.getItem("token");
@@ -39,34 +40,34 @@ export default function Navbar() {
             <div className={`container ${scrollClass}`}>
                 <div className="row">
                     <div className="col-3 d-flex align-items-center justify-content-start">
-                        <a className="navbar-brand" href="/home">
+                        <a className="navbar-brand" href="/home" aria-label={ariaLabelText.navAriaLabel.navIconAriaLabel}>
                             <img src={logoNav} alt="Header Logo" />
                         </a>
                     </div>
                     <div className="col-5 d-flex align-items-center justify-content-center">
                         <ul className="nav">
                             <li className="nav-item">
-                                <NavLink to="/breakfast" activeclassname="active" className="nav-link">BREAKFAST</NavLink>
+                                <NavLink to="/breakfast" activeclassname="active" className="nav-link" aria-label={ariaLabelText.navAriaLabel.navLinkAriaLabel1}>BREAKFAST</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to="/brunch" activeclassname="active" className="nav-link">BRUNCH</NavLink>
+                                <NavLink to="/brunch" activeclassname="active" className="nav-link" aria-label={ariaLabelText.navAriaLabel.navLinkAriaLabel2}>BRUNCH</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to="/lunch" activeclassname="active" className="nav-link">LUNCH</NavLink>
+                                <NavLink to="/lunch" activeclassname="active" className="nav-link" aria-label={ariaLabelText.navAriaLabel.navLinkAriaLabel3}>LUNCH</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to="/dinner" activeclassname="active" className="nav-link">DINNER</NavLink>
+                                <NavLink to="/dinner" activeclassname="active" className="nav-link" aria-label={ariaLabelText.navAriaLabel.navLinkAriaLabel4}>DINNER</NavLink>
                             </li>
                         </ul>
                     </div>
 
                     {!token ?
                         <div className="col-4 d-flex align-items-center justify-content-end gap-3">
-                            <NavLink to="/login">
+                            <NavLink to="/login" aria-label={ariaLabelText.loginAriaLabel.logInBtnAriaLabel}>
                                 <button type="button" className="btn btn-grey">LOG IN</button>
                             </NavLink>
                             <span className="orangeText">or</span>
-                            <NavLink to="/register">
+                            <NavLink to="/register" aria-label={ariaLabelText.createAccAriaLabel.createAccBtnAriaLabel}>
                                 <button type="button" className="btn btn-green">CREATE ACCOUNT</button>
                             </NavLink>
                         </div>
@@ -74,17 +75,17 @@ export default function Navbar() {
                         <div className="col-4 d-flex align-items-center justify-content-end">
                             <ul className="nav">
                                 <li className="nav-button">
-                                    <NavLink to="/myrecipes">
+                                    <NavLink to="/myrecipes" aria-label={ariaLabelText.navAriaLabel.navLinkAriaLabel5}>
                                         <button type="button" className="btn" style={{ fontWeight: 'bold', color: '#008000', textDecoration: 'underline' }}>MY RECIPES</button>
                                     </NavLink>
                                 </li>
                                 <li className="nav-button">
-                                    <NavLink to="/myprofile">
+                                    <NavLink to="/myprofile" aria-label={ariaLabelText.navAriaLabel.navLinkAriaLabel6}>
                                         <button type="button" className="btn" style={{ fontWeight: 'bold', color: '#f96400', textDecoration: 'underline' }}>MY PROFILE</button>
                                     </NavLink>
                                 </li>
                                 <li className="nav-button">
-                                    <NavLink to="/" onClick={logOut}>
+                                    <NavLink to="/" onClick={logOut} aria-label={ariaLabelText.navAriaLabel.navLinkAriaLabel7}>
                                         <button type="button" className="btn" style={{ fontWeight: 'bold', color: '#696969', textDecoration: 'underline' }}>LOG OUT</button>
                                     </NavLink>
                                 </li>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { api } from "../../../RESTApi/RestApi";
 import avatar from "../../../assets/avatar.png";
+import ariaLabelText from '../../component/ariaLabelText';
 
 export default function MyProfile() {
 
@@ -110,7 +111,7 @@ export default function MyProfile() {
                             <img className="avatarImg" src={image} alt="Avatar Image" />
                         </div>
                         <div className="col mt-5">
-                            <button onClick={() => document.getElementById("fileinput").click()} type="submit" className="btn btn-grey"> CHANGE AVATAR </button>
+                            <button onClick={() => document.getElementById("fileinput").click()} type="submit" className="btn btn-grey" area-label={ariaLabelText.myProfileAriaLabel.uploadAvatarAriaLabel}> CHANGE AVATAR </button>
                             <input id="fileinput" onChange={handleImage} type="file" accept="image/*" style={{ display: "none" }} />
                         </div>
                     </div>
@@ -149,7 +150,7 @@ export default function MyProfile() {
                                 </div>
                                 <div className="row" >
                                     <div className="col mt-4" >
-                                        <button type="submit" className="btn btn-green col-2">SAVE</button>
+                                        <button type="submit" className="btn btn-green col-2" area-label={ariaLabelText.myProfileAriaLabel.saveProfileAriaLabel}>SAVE</button>
                                     </div>
                                 </div>
                             </form>
