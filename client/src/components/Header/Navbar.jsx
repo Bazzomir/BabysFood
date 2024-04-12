@@ -39,7 +39,7 @@ export default function Navbar() {
             <div className={`container ${scrollClass}`}>
                 <div className="row">
                     <div className="col-3 d-flex align-items-center justify-content-start">
-                        <a href="/home">
+                        <a className="navbar-brand" href="/home">
                             <img src={logoNav} alt="Header Logo" />
                         </a>
                     </div>

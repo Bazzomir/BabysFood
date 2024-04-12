@@ -205,7 +205,7 @@ select option:hover {
     color: var(--white);
     position: absolute;
     left: 0;
-    /* bottom: 0; */
+    bottom: 100;
 }
 
 .footer li a {
@@ -214,9 +214,9 @@ select option:hover {
 }
 
 .footer img {
-    aspect-ratio: 32/15;
-    height: 75px;
-    width: 160px;
+    aspect-ratio: 13 / 5;
+    height: 50px;
+    width: 130px;
 }
 
 .title {
