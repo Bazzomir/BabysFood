@@ -107,7 +107,7 @@ export default function MyProfile() {
                     </div>
                     <div className="col-5">
                         <div className="col d-flex align-items-center" >
-                            <img className="avatarImg" src={image} alt="" />
+                            <img className="avatarImg" src={image} alt="Avatar Image" />
                         </div>
                         <div className="col mt-5">
                             <button onClick={() => document.getElementById("fileinput").click()} type="submit" className="btn btn-grey"> CHANGE AVATAR </button>

@@ -9,12 +9,14 @@
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
         monospace;
+    font-display: optional;
 }
 
 body {
     position: relative;
     /* font-family: 'Bitter'; */
     font-family: 'alkatra';
+    font-display: optional;
     background-color: #f5f0d9;
     min-height: 100vh;
     --green: #008000;
@@ -40,6 +42,16 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar-thumb:hover {
     background: var(--green);
     width: 15px;
+}
+
+::selection {
+    color: var(--white);
+    background-color: var(--orange);
+}
+
+::-moz-selection {
+    color: var(--white);
+    background-color: var(--orange);
 }
 
 /* input {
@@ -201,6 +213,12 @@ select option:hover {
     text-decoration: none;
 }
 
+.footer img {
+    aspect-ratio: 32/15;
+    height: 75px;
+    width: 160px;
+}
+
 .title {
     color: var(--green);
     font-weight: bold;
@@ -299,6 +317,12 @@ nav {
     background-color: #f5f0d9;
     box-shadow: 0px 8px 5px 0px rgba(105, 105, 105, 0.3);
     transition: padding 0.3s ease-in-out;
+}
+
+nav img {
+    aspect-ratio: 13 / 5;
+    width: 130px;
+    height: 50px;
 }
 
 .nav-button {

@@ -12,15 +12,15 @@ export default function Navbar() {
         window.location.reload();
     }
 
-    const [scrollClass, setScrollClass] = useState('py-3');
+    const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
-            const scrollThreshold = 10;
-            if (window.scrollY > scrollThreshold && scrollClass === 'py-3') {
-                setScrollClass('py-1');
-            } else if (window.scrollY <= scrollThreshold && scrollClass === 'py-1') {
-                setScrollClass('py-3');
+            const scrollThresholdRem = 0.625;
+            if (window.scrollY > scrollThresholdRem && !isScrolled) {
+                setIsScrolled(true);
+            } else if (window.scrollY <= scrollThresholdRem && isScrolled) {
+                setIsScrolled(false);
             }
         };
 
@@ -29,15 +29,18 @@ export default function Navbar() {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [scrollClass]);
+    }, [isScrolled]);
+
+    const scrollClass = isScrolled ? 'py-1' : 'py-3';
+
 
     return (
-        <nav className="header">
+        <nav>
             <div className={`container ${scrollClass}`}>
                 <div className="row">
                     <div className="col-3 d-flex align-items-center justify-content-start">
                         <a href="/home">
-                            <img src={logoNav} alt="" width="130" height="50" />
+                            <img src={logoNav} alt="Header Logo" />
                         </a>
                     </div>
                     <div className="col-5 d-flex align-items-center justify-content-center">
@@ -77,7 +80,7 @@ export default function Navbar() {
                                 </li>
                                 <li className="nav-button">
                                     <NavLink to="/myprofile">
-                                        <button type="button" className="btn" style={{ fontWeight: 'bold', color: '#f3b254', textDecoration: 'underline' }}>MY PROFILE</button>
+                                        <button type="button" className="btn" style={{ fontWeight: 'bold', color: '#f96400', textDecoration: 'underline' }}>MY PROFILE</button>
                                     </NavLink>
                                 </li>
                                 <li className="nav-button">

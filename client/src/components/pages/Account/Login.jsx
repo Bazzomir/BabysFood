@@ -64,7 +64,7 @@ export default function Login() {
                             Browse easy recipes for breakfast, lunch, brunch, dinner and more.
                             Find thousands of popular recipes approved by our test kitchen and cooked by our community.
                         </p> */}
-                        <p className="greyText"><img className="logo" src={logo} alt="Logo" />
+                        <p className="greyText"><img className="logo" src={logo} alt="Main Logo" />
                             Join other Baby's Food Place users and gain exclusive access to a treasure trove of culinary delights! Explore our extensive collection of recipes, cooking tips, and clever kitchen hacks that cater to every palate and dietary preference. Whether you're in search of a quick breakfast fix, a satisfying lunch, a delightful brunch spread, or a sumptuous dinner feast, we've got you covered. Our platform features thousands of easy-to-follow recipes that have been meticulously curated and tested by our dedicated team of chefs in our test kitchen, ensuring that each dish meets the highest standards of taste and quality. Plus, with contributions from our vibrant community of home cooks, you'll discover a wealth of popular recipes that have been tried, tested, and loved by fellow food enthusiasts. Join us today and embark on a culinary journey filled with flavor, creativity, and endless inspiration!
                         </p>
                     </div>
@@ -99,6 +99,7 @@ export default function Login() {
                                 <button variant="success" className="btn btn-green" type="submit">Log In</button>
                             </div>
                         </form>
+                        <h6>Have an account?</h6>
                     </div>
                 </div>
             </div>

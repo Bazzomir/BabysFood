@@ -93,7 +93,7 @@ export default function MyRecipes() {
                                 return (
                                     <tr key={i} style={{ verticalAlign: "middle" }} className="customTR">
                                         <td style={{ width: "100px", height: "100px", textAlign: "center" }}>
-                                            <img style={{ maxHeight: "100%", maxWidth: "100%" }} alt="" src={recipe.image} />
+                                            <img style={{ maxHeight: "100%", maxWidth: "100%" }} alt="Recipe image" src={recipe.image} />
                                         </td>
                                         <td><a href={`/myrecipes/${recipe._id}`} style={{ textDecoration: 'none', color: 'grey', fontWeight: 'bold' }}>{recipe.title}</a></td>
                                         <td><span id="categoryTD">{recipe.category}</span></td>
