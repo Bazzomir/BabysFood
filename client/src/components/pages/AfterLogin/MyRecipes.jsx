@@ -107,7 +107,7 @@ export default function MyRecipes() {
                                         </td>
                                         <td><a href={`/myrecipes/${recipe._id}`} style={{ textDecoration: 'none', color: 'grey', fontWeight: 'bold' }} aria-label={ariaLabelText.myRecipesAriaLabel.editRecipeBtnAriaLabel}>{recipe.title}</a></td>
                                         {/* <td><span className="tableBadge">{recipe.category}</span></td> */}
-                                        <td><RecipeCategoryBadge category={recipe.category} className="tableBadge" /></td>
+                                        <td><RecipeCategoryBadge category={recipe.category || "Some food.."} className="tableBadge" /></td>
                                         <td>{recipe.createdAt.slice(0, 10)}</td>
                                         <td colSpan="3"></td>
                                         <td></td>

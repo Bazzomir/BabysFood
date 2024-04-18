@@ -58,7 +58,7 @@ function Popup(props) {
                             <Card.Title className="m-0 py-3 d-flex gap-2 align-items-center" style={{ color: "green" }}>
                                 Best Served For
                                 {/* <span className="popUpbadge mr-2">{recipe.category}</span> */}
-                                <RecipeCategoryBadge category={recipe.category} className="popUpbadge mr-2" />
+                                <RecipeCategoryBadge category={recipe.category || "Some food.."} className="popUpbadge mr-2" />
                             </Card.Title>
                             <Card.Text className="m-0">
                                 {recipe.short_description}
