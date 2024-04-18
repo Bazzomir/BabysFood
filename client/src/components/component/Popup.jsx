@@ -8,6 +8,7 @@ import eye2 from '../../assets/logo/eye2.png';
 import plate1 from '../../assets/logo/plate1.png';
 import '../../assets/css/popup.css';
 import ariaLabelText from "./ariaLabelText";
+import RecipeCategoryBadge from "./RecipeCategoryBadge";
 
 function Popup(props) {
     const [modalOpen, setModalOpen] = useState(false);
@@ -54,7 +55,11 @@ function Popup(props) {
                     <div className="row">
                         <div className="col-5">
                             <Card.Img style={{ borderRadius: "15px" }} variant="top" src={`${api.root}/${recipe.image}`} />
-                            <Card.Title className="m-0 py-3 d-flex gap-2 align-items-center" style={{ color: "green" }}>Best Served For <span className="popUpbadge mr-2">{recipe.category}</span></Card.Title>
+                            <Card.Title className="m-0 py-3 d-flex gap-2 align-items-center" style={{ color: "green" }}>
+                                Best Served For
+                                {/* <span className="popUpbadge mr-2">{recipe.category}</span> */}
+                                <RecipeCategoryBadge category={recipe.category || "Some food.."} className="popUpbadge mr-2" />
+                            </Card.Title>
                             <Card.Text className="m-0">
                                 {recipe.short_description}
                             </Card.Text>
@@ -78,7 +83,7 @@ function Popup(props) {
                         <span className="icon-text ps-1 pe-2">{recipe.views}</span>
                     </div>
                     <div className="d-flex align-items-center gap-2">
-                        <img src={avatar} className="card-bottom--icons" alt="Avatar Image" />
+                        <img src={avatar} className="card-bottom--icons" alt="Avatar" />
                         <span>{recipe.user}</span>
                     </div>
                 </Modal.Footer>

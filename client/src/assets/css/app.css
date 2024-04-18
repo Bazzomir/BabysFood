@@ -36,7 +36,7 @@ body::-webkit-scrollbar {
 
 body::-webkit-scrollbar-thumb {
     background: var(--orange);
-    border-radius: 15px;
+    border-radius: 2px;
 }
 
 body::-webkit-scrollbar-thumb:hover {
@@ -205,7 +205,7 @@ select option:hover {
     color: var(--white);
     position: absolute;
     left: 0;
-    bottom: 100;
+    /* bottom: 100; */
 }
 
 .footer li a {
@@ -354,7 +354,7 @@ label {
     color: var(--orange)
 }
 
-.card {
+/* .card {
     border-radius: 2%;
     overflow: hidden;
     box-sizing: border-box;
@@ -403,14 +403,15 @@ label {
     color: var(--green);
 }
 
-.badge {
+.badgeCard {
+    background-color: var(--green);
+    color: var(--white);
     position: absolute;
     top: 13px;
     left: 16px;
     font-size: 12px;
     border-radius: 25px;
-    background-color: var(--green);
-}
+} */
 
 .deleteIcon {
     height: 20px;
@@ -419,7 +420,9 @@ label {
 }
 
 table {
-    justify-content: center;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: -10px;
 }
 
 th {
@@ -427,25 +430,10 @@ th {
     border: none !important;
 }
 
-#categoryTD {
-    border-radius: 3px;
-    padding: 2px 4px 2px 4px;
-    background-color: var(--green);
-    color: var(--white);
-
-}
-
-table {
-    border-collapse: separate;
-    border-spacing: 0 10px;
-    margin-top: -10px;
-}
-
 td {
     border: solid 1px var(--white);
     border-style: solid none;
     padding: 10px;
-    background-color: cyan;
 }
 
 td:first-child {
@@ -460,9 +448,23 @@ td:last-child {
     border-top-right-radius: 10px;
 }
 
+.tableBadge {
+    color: var(--white);
+    background-color: var(--green);
+    border-radius: 25px;
+    padding: 2px 7.5px;
+}
+
+.tableImage {
+    width: 100%;
+    height: 100%;
+    border-radius: 9px;
+    margin: 6px;
+}
+
 .customTR {
-    border: 10px solid whit !important;
+    border: 10px solid white !important;
     background-color: white;
-    padding: 10px;
     color: var(--grey);
+    border-radius: 9%;
 }

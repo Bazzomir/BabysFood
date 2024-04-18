@@ -17,23 +17,21 @@ const token = localStorage.getItem('token');
 
 export default function Ruti() {
     return (
-        <div>
-            <Routes>
-                {["/", "/home"].map((path, index) =>
-                    <Route path={path} element={<Homepage />} key={index} />
-                )}
-                <Route path="/breakfast" element={<Breakfast />} />
-                <Route path="/brunch" element={<Brunch />} />
-                <Route path="/lunch" element={<Lunch />} />
-                <Route path="/dinner" element={<Dinner />} />
-                <Route path="/login" element={token ? <Navigate to='/myprofile' /> : <Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/myprofile" element={token ? <MyProfile /> : <Navigate to='/login' />} />
-                <Route path="/myrecipes" element={token ? <MyRecipes /> : <Navigate to='/login' />} />
-                <Route path="/myrecipes/:id" element={token ? <EditRecipe /> : <Navigate to='/login' />} />
-                <Route path="/createrecipes" element={token ? <CreateRecipe /> : <Navigate to='/login' />} />
-                <Route path='*' element={<Notfound />} />
-            </Routes>
-        </div>
+        <Routes>
+            {["/", "/home"].map((path, index) =>
+                <Route path={path} element={<Homepage />} key={index} />
+            )}
+            <Route path="/breakfast" element={<Breakfast />} />
+            <Route path="/brunch" element={<Brunch />} />
+            <Route path="/lunch" element={<Lunch />} />
+            <Route path="/dinner" element={<Dinner />} />
+            <Route path="/login" element={token ? <Navigate to='/myprofile' /> : <Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/myprofile" element={token ? <MyProfile /> : <Navigate to='/login' />} />
+            <Route path="/myrecipes" element={token ? <MyRecipes /> : <Navigate to='/login' />} />
+            <Route path="/myrecipes/:id" element={token ? <EditRecipe /> : <Navigate to='/login' />} />
+            <Route path="/createrecipes" element={token ? <CreateRecipe /> : <Navigate to='/login' />} />
+            <Route path='*' element={<Notfound />} />
+        </Routes>
     )
 }
