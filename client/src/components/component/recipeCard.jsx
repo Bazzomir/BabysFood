@@ -4,7 +4,7 @@ import Popup from './Popup';
 import timeIcon from '../../assets/logo/time-recipe.png';
 import eye2 from '../../assets/logo/eye2.png';
 import plate1 from '../../assets/logo/plate1.png';
-import RecipeCategoryBadge from './recipeCategoryBadge';
+import RecipeCategoryBadge from './RecipeCategoryBadge';
 import '../../assets/css/card.css';
 
 function RecipeCard({ recipe }) {

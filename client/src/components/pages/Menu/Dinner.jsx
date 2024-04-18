@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { api } from '../../../RESTApi/RestApi';
-import RecipeCard from '../../component/recipeCard';
+import RecipeCard from '../../component/RecipeCard';
+import TitleWithLine from '../../component/TitleWithLine';
 
 export default function Dinner() {
     const [Dinner, setDinner] = useState([]);
@@ -21,11 +22,12 @@ export default function Dinner() {
     return (
         <div className="container" >
             <div className="row pt-5" >
-                <div className="row">
+                {/* <div className="row">
                     <h2 className="title">Dinner
                         <hr className='mt-2' />
                     </h2>
-                </div>
+                </div> */}
+                    <TitleWithLine title="Dinner" />
                 {Dinner.map(recipe => {
                     return (
                         <div className={`${Dinner.length > 2 ? 'col-4' : 'col-6'} pb-5`} key={recipe._id}>

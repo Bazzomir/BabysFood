@@ -8,7 +8,7 @@ import eye2 from '../../assets/logo/eye2.png';
 import plate1 from '../../assets/logo/plate1.png';
 import '../../assets/css/popup.css';
 import ariaLabelText from "./ariaLabelText";
-import RecipeCategoryBadge from "./recipeCategoryBadge";
+import RecipeCategoryBadge from "./RecipeCategoryBadge";
 
 function Popup(props) {
     const [modalOpen, setModalOpen] = useState(false);

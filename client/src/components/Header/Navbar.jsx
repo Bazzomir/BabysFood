@@ -37,7 +37,7 @@ export default function Navbar() {
 
     return (
         <nav>
-            <div className={`container ${scrollClass}`}>
+            <div className={`container ${scrollClass} px-0`}>
                 <div className="row">
                     <div className="col-3 d-flex align-items-center justify-content-start">
                         <a className="navbar-brand" href="/home" aria-label={ariaLabelText.navAriaLabel.navIconAriaLabel}>

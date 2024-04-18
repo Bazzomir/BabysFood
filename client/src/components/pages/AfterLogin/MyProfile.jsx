@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { api } from "../../../RESTApi/RestApi";
 import avatar from "../../../assets/avatar.png";
 import ariaLabelText from '../../component/ariaLabelText';
+import TitleWithLine from '../../component/TitleWithLine';
 
 export default function MyProfile() {
 
@@ -101,11 +102,12 @@ export default function MyProfile() {
         // <div>
         <div className="container">
             <div className="row pt-5 pb-6">
-                <div className="row">
+                {/* <div className="row">
                     <div className="col">
                         <h2 className="title">My Profile<hr className="mt-2" /></h2>
                     </div>
-                </div>
+                </div> */}
+                <TitleWithLine title="My Profile"/>
                 <div className="col-2">
                     <div className="col d-flex align-items-center" >
                         <img className="avatarImg" src={image} alt="Avatar Image" />
@@ -144,7 +146,7 @@ export default function MyProfile() {
                                             <input className="form-control" type="date" name="birthday" onChange={(e) => setBirthday(e.target.value)} value={birthday} />
                                         </div>
                                     </div>
-                                    <div className="row" >
+                                    <div className="row">
                                         <div className="form-group mt-3 col" >
                                             <label>Password</label>
                                             <input className="form-control" type="password" placeholder="******" onChange={(e) => setPassword(e.target.value)} value={password} />
@@ -154,7 +156,7 @@ export default function MyProfile() {
                                             <input className="form-control" type="password" placeholder="******" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} />
                                         </div>
                                     </div>
-                                    <div className="row" >
+                                    <div className="row">
                                         <div className="col mt-4 d-flex justify-content-end" >
                                             <button type="submit" className="btn btn-green col-2" area-label={ariaLabelText.myProfileAriaLabel.saveProfileAriaLabel}>SAVE</button>
                                         </div>

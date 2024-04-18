@@ -4,7 +4,8 @@ import { api } from '../../../RESTApi/RestApi';
 import defaultImgRecipe from '../../../assets/defaultImgRecipe.jpg';
 // import { useParams } from "react-router-dom";
 import ariaLabelText from '../../component/ariaLabelText';
-import RecipeCategoryBadge from '../../component/recipeCategoryBadge';
+import RecipeCategoryBadge from '../../component/RecipeCategoryBadge';
+import TitleWithLine from '../../component/TitleWithLine';
 
 export default function MyRecipes() {
 
@@ -69,11 +70,12 @@ export default function MyRecipes() {
     return (
         <div className="container">
             <div className="row pt-5 pb-6 xxx">
-                <div className="row">
-                    <div className="col-12">
+                {/* <div className="row">
+                    <div className="col">
                         <h2 className="title">My recipes<hr className="mt-2 titleLine" /></h2>
                     </div>
-                </div>
+                </div> */}
+                <TitleWithLine title="My Recipes" additionalClass="titleLine" />
                 <div className="col d-flex justify-content-end aling-items-center yyy">
                     <Link to="/createrecipes">
                         <button type="button" className="btn btn-outline-light" id="plusAndBack" aria-label={ariaLabelText.myRecipesAriaLabel.createRecipeBtnAriaLabel}>

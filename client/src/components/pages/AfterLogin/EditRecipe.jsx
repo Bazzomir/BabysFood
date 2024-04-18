@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useParams } from "react-router-dom";
 import defaultImgRecipe from '../../../assets/defaultImgRecipe.jpg'
 import ariaLabelText from '../../component/ariaLabelText';
+import TitleWithLine from "../../component/TitleWithLine";
 
 export default function EditRecipe() {
 
@@ -138,9 +139,10 @@ export default function EditRecipe() {
         <div className="container">
             <div className="row pt-5 pb-6 xxx">
                 <div className="row">
-                    <div className="col" >
+                    {/* <div className="col" >
                         <h2 className="title">Edit recipes</h2><hr className="mt-2 titleLine" />
-                    </div>
+                    </div> */}
+                    <TitleWithLine title="Edit Recipes" additionalClass="titleLine" />
                     <div className="col d-flex justify-content-end aling-items-center yyy">
                         <Link to="/myrecipes">
                             <button type="button" className="btn btn-outline-light" id="plusAndBack" aria-label={ariaLabelText.createMyRecipeAriaLabel.backToCreateRecipeBtnAriaLabel}>
