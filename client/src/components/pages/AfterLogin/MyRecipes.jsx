@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { api } from '../../../RESTApi/RestApi';
-import { useParams } from "react-router-dom";
+import defaultImgRecipe from '../../../assets/defaultImgRecipe.jpg';
+// import { useParams } from "react-router-dom";
 import ariaLabelText from '../../component/ariaLabelText';
+import RecipeCategoryBadge from '../../component/recipeCategoryBadge';
 
 export default function MyRecipes() {
 
-    const { id } = useParams();
+    // const { id } = useParams();
     const [recipes, setRecipes] = useState([]);
+
 
     function getMyRecipes() {
         fetch(`${api.root}/recipes/myrecipes`, {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json',
+                // 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem("token")}`
             }
         })
@@ -26,13 +29,17 @@ export default function MyRecipes() {
                 return res.json();
             })
             .then(data => {
-                data.recipes.map((recipe) => {
+                let getRecipesImage = data.recipes.map((recipe) => {
                     if (recipe.image !== undefined) {
                         recipe.image = `${api.root}/${recipe.image}`
-                    } else
-                        recipe.image = "https://w7.pngwing.com/pngs/692/99/png-transparent-hamburger-street-food-seafood-fast-food-delicious-food-salmon-with-vegetables-salad-in-plate-leaf-vegetable-food-recipe-thumbnail.png"
+                    } else {
+                        // recipe.image = "https://w7.pngwing.com/pngs/692/99/png-transparent-hamburger-street-food-seafood-fast-food-delicious-food-salmon-with-vegetables-salad-in-plate-leaf-vegetable-food-recipe-thumbnail.png"
+                        recipe.image = defaultImgRecipe;
+                    }
+                    return recipe;
+
                 })
-                setRecipes(data.recipes)
+                setRecipes(getRecipesImage);
             })
     }
 
@@ -92,14 +99,17 @@ export default function MyRecipes() {
                         <tbody>
                             {recipes.map((recipe, i) => {
                                 return (
-                                    <tr key={i} style={{ verticalAlign: "middle" }} className="customTR">
+                                    <tr key={i} style={{ verticalAlign: "middle", borderRadius: "25px" }} className="customTR">
                                         <td style={{ width: "100px", height: "100px", textAlign: "center" }}>
-                                            <img style={{ maxHeight: "100%", maxWidth: "100%" }} alt="Recipe image" src={recipe.image} />
+                                            <a href={`/myrecipes/${recipe._id}`} style={{ textDecoration: 'none', color: 'grey', fontWeight: 'bold' }} aria-label={ariaLabelText.myRecipesAriaLabel.editRecipeBtnAriaLabel}>
+                                                <img className="tableImage" alt="Recipe" src={recipe.image ? recipe.image : defaultImgRecipe} />
+                                            </a>
                                         </td>
                                         <td><a href={`/myrecipes/${recipe._id}`} style={{ textDecoration: 'none', color: 'grey', fontWeight: 'bold' }} aria-label={ariaLabelText.myRecipesAriaLabel.editRecipeBtnAriaLabel}>{recipe.title}</a></td>
-                                        <td><span id="categoryTD">{recipe.category}</span></td>
+                                        {/* <td><span className="tableBadge">{recipe.category}</span></td> */}
+                                        <td><RecipeCategoryBadge category={recipe.category} className="tableBadge" /></td>
                                         <td>{recipe.createdAt.slice(0, 10)}</td>
-                                        <td colSpan='3'></td>
+                                        <td colSpan="3"></td>
                                         <td></td>
                                         <td style={{ textAlign: "right" }}>
                                             <button className="btn btn-primary-outline" variant="link" onClick={() => deleteMyRecipe(recipe._id)} aria-label={ariaLabelText.myRecipesAriaLabel.deleteRecipeBtnAriaLabel}>

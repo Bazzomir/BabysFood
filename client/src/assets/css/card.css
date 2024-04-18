@@ -1,0 +1,58 @@
+.card {
+    border-radius: 2%;
+    overflow: hidden;
+    box-sizing: border-box;
+    height: 34.375rem;
+    width: 25rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    -webkit-transition: box-shadow 0.5s;
+    transition: box-shadow 0.5s;
+}
+
+.card:hover {
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+}
+
+.card-title {
+    color: var(--orange);
+}
+
+.card-body p {
+    display: block;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    transition: all 0.5s;
+}
+
+.card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-image {
+    height: 250px;
+    border-radius: 2% 2% 0 0;
+    transition: height 0.5s;
+    object-fit: cover;
+}
+
+.card-image:hover {
+    height: 85% !important;
+}
+
+.card-bottom--icons {
+    height: 23px;
+    width: auto;
+    color: var(--green);
+}
+
+.badge {
+    background-color: var(--green);
+    color: var(--white);
+    position: absolute;
+    top: 13px;
+    left: 16px;
+    font-size: 12px;
+    border-radius: 25px;
+}

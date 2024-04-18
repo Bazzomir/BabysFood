@@ -99,65 +99,73 @@ export default function MyProfile() {
 
     return (
         // <div>
-            <div className="container">
-                <div className="row pt-5 pb-6">
-                    <div className="row">
-                        <div className="col">
-                            <h2 className="title">My Profile<hr className="mt-2" /></h2>
-                        </div>
+        <div className="container">
+            <div className="row pt-5 pb-6">
+                <div className="row">
+                    <div className="col">
+                        <h2 className="title">My Profile<hr className="mt-2" /></h2>
                     </div>
-                    <div className="col-5">
-                        <div className="col d-flex align-items-center" >
-                            <img className="avatarImg" src={image} alt="Avatar Image" />
-                        </div>
-                        <div className="col mt-5">
-                            <button onClick={() => document.getElementById("fileinput").click()} type="submit" className="btn btn-grey" area-label={ariaLabelText.myProfileAriaLabel.uploadAvatarAriaLabel}> CHANGE AVATAR </button>
-                            <input id="fileinput" onChange={handleImage} type="file" accept="image/*" style={{ display: "none" }} />
-                        </div>
+                </div>
+                <div className="col-2">
+                    <div className="col d-flex align-items-center" >
+                        <img className="avatarImg" src={image} alt="Avatar Image" />
                     </div>
-                    <div className="col-7 justify-content-end" >
-                        <div className="row d-flex justify-content-center align-items-center w-100">
-                            <form onSubmit={editUserProfile}>
-                                <div className="row">
-                                    <div className="form-group mb-3 col">
-                                        <label>First Name</label>
-                                        <input className="form-control" placeholder="John" onChange={(e) => setFirstName(e.target.value)} value={FirstName} type="text" />
+                    <div className="col mt-5">
+                        <button onClick={() => document.getElementById("fileinput").click()} type="submit" className="btn btn-grey" area-label={ariaLabelText.myProfileAriaLabel.uploadAvatarAriaLabel}> CHANGE AVATAR </button>
+                        <input id="fileinput" onChange={handleImage} type="file" accept="image/*" style={{ display: "none" }} />
+                    </div>
+                </div>
+                <div className="col-10 justify-content-end" >
+                    <div className="row d-flex justify-content-center align-items-center w-100">
+                        <form onSubmit={editUserProfile}>
+                            <div className="row">
+                                <div className="form-group col-4">
+                                    <label htmlFor="aboutMe">About Me</label>
+                                    <textarea className="form-control" style={{ height: "70%" }} />
+                                </div>
+                                <div className="col-8">
+                                    <div className="row">
+                                        <div className="form-group mb-3 col">
+                                            <label>First Name</label>
+                                            <input className="form-control" placeholder="John" onChange={(e) => setFirstName(e.target.value)} value={FirstName} type="text" />
+                                        </div>
+                                        <div className="form-group mb-3 col">
+                                            <label>Last Name</label>
+                                            <input className="form-control" placeholder="Smith" onChange={(e) => setLastName(e.target.value)} value={LastName} type="text" />
+                                        </div>
                                     </div>
-                                    <div className="form-group mb-3 col">
-                                        <label>Last Name</label>
-                                        <input className="form-control" placeholder="Smith" onChange={(e) => setLastName(e.target.value)} value={LastName} type="text" />
+                                    <div className="row">
+                                        <div className="form-group col">
+                                            <label>Email address</label>
+                                            <input className="form-control" type="email" placeholder="john@smith.com" onChange={(e) => setEmail(e.target.value)} value={email} />
+                                        </div>
+                                        <div className="form-group col" >
+                                            <label>Birthday</label><br />
+                                            <input className="form-control" type="date" name="birthday" onChange={(e) => setBirthday(e.target.value)} value={birthday} />
+                                        </div>
+                                    </div>
+                                    <div className="row" >
+                                        <div className="form-group mt-3 col" >
+                                            <label>Password</label>
+                                            <input className="form-control" type="password" placeholder="******" onChange={(e) => setPassword(e.target.value)} value={password} />
+                                        </div>
+                                        <div className="form-group mt-3 col" >
+                                            <label>Repeat Password</label>
+                                            <input className="form-control" type="password" placeholder="******" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} />
+                                        </div>
+                                    </div>
+                                    <div className="row" >
+                                        <div className="col mt-4 d-flex justify-content-end" >
+                                            <button type="submit" className="btn btn-green col-2" area-label={ariaLabelText.myProfileAriaLabel.saveProfileAriaLabel}>SAVE</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="row">
-                                    <div className="form-group col">
-                                        <label>Email address</label>
-                                        <input className="form-control" type="email" placeholder="john@smith.com" onChange={(e) => setEmail(e.target.value)} value={email} />
-                                    </div>
-                                    <div className="form-group col" >
-                                        <label>Birthday</label><br />
-                                        <input className="form-control" type="date" name="birthday" onChange={(e) => setBirthday(e.target.value)} value={birthday} />
-                                    </div>
-                                </div>
-                                <div className="row" >
-                                    <div className="form-group mt-3 col" >
-                                        <label>Password</label>
-                                        <input className="form-control" type="password" placeholder="******" onChange={(e) => setPassword(e.target.value)} value={password} />
-                                    </div>
-                                    <div className="form-group mt-3 col" >
-                                        <label>Repeat Password</label>
-                                        <input className="form-control" type="password" placeholder="******" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} />
-                                    </div>
-                                </div>
-                                <div className="row" >
-                                    <div className="col mt-4" >
-                                        <button type="submit" className="btn btn-green col-2" area-label={ariaLabelText.myProfileAriaLabel.saveProfileAriaLabel}>SAVE</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
+        </div>
         // </div>
     )
 }

@@ -4,6 +4,8 @@ import Popup from './Popup';
 import timeIcon from '../../assets/logo/time-recipe.png';
 import eye2 from '../../assets/logo/eye2.png';
 import plate1 from '../../assets/logo/plate1.png';
+import RecipeCategoryBadge from './recipeCategoryBadge';
+import '../../assets/css/card.css';
 
 function RecipeCard({ recipe }) {
     const [isHoveredImage, setIsHoveredImage] = useState(false);
@@ -11,8 +13,9 @@ function RecipeCard({ recipe }) {
 
     return (
         <div className="card p-0" key={recipe._id}>
-            <span className="badge">{recipe.category || "Some food.."}</span>
-            <img className="card-image" alt="Recipe Image"
+            {/* <span className="badge">{recipe.category || "Some food.."}</span> */}
+            <RecipeCategoryBadge category={recipe.category || "Some food.."} className="badge" />
+            <img className="card-image" alt="Recipe"
                 src={`${api.root}/${recipe.image}`}
                 style={{
                     height: isHoveredParagraph ? "25%" : "250px"

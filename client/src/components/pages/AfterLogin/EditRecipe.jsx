@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../../../RESTApi/RestApi";
+import { Link } from 'react-router-dom';
 import { useParams } from "react-router-dom";
 import defaultImgRecipe from '../../../assets/defaultImgRecipe.jpg'
+import ariaLabelText from '../../component/ariaLabelText';
 
 export default function EditRecipe() {
 
@@ -24,37 +26,70 @@ export default function EditRecipe() {
         reader.readAsDataURL(e.target.files[0]);
     }
 
-    const getMyRecipe = () => {
-        fetch(`${api.root}/recipes/myrecipes/${id}`, {
-            headers: { 'Authorization': `Bearer ${localStorage.getItem("token")}` }
-        })
-            .then(res => {
-                if (res.status === 401 || res.status === 500) {
-                    alert("Loggin first");
-                    localStorage.removeItem('token');
-                    window.location = "/login";
-                }
-                return res.json();
-            })
-            .then(data => {
-                setTitle(data.recipe.title);
-                setShortDescription(data.recipe.short_description);
-                setDescription(data.recipe.description);
-                setCategory(data.recipe.category);
-                setPreparation(data.recipe.preparation);
-                setPeople(data.recipe.people);
+    // const getMyRecipe = () => {
+    //     fetch(`${api.root}/recipes/myrecipes/${id}`, {
+    //         headers: { 'Authorization': `Bearer ${localStorage.getItem("token")}` }
+    //     })
+    //         .then(res => {
+    //             if (res.status === 401 || res.status === 500) {
+    //                 alert("Loggin first");
+    //                 localStorage.removeItem('token');
+    //                 window.location = "/login";
+    //             }
+    //             return res.json();
+    //         })
+    //         .then(data => {
+    //             setTitle(data.recipe.title);
+    //             setShortDescription(data.recipe.short_description);
+    //             setDescription(data.recipe.description);
+    //             setCategory(data.recipe.category);
+    //             setPreparation(data.recipe.preparation);
+    //             setPeople(data.recipe.people);
 
-                if (data.recipe.image !== undefined) {
-                    setImage(`${api.root}/${data.recipe.image}`);
-                } else
-                    setImage(defaultImgRecipe);
+    //             if (data.recipe.image !== undefined) {
+    //                 setImage(`${api.root}/${data.recipe.image}`);
+    //             } else
+    //                 setImage(defaultImgRecipe);
 
-            })
-    }
+    //         })
+    // }
+
+    // useEffect(() => {
+    //     getMyRecipe();
+    // }, []);
 
     useEffect(() => {
+        const getMyRecipe = () => {
+            fetch(`${api.root}/recipes/myrecipes/${id}`, {
+                headers: { 'Authorization': `Bearer ${localStorage.getItem("token")}` }
+            })
+                .then(res => {
+                    if (res.status === 401 || res.status === 500) {
+                        alert("Loggin first");
+                        localStorage.removeItem('token');
+                        window.location = "/login";
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    setTitle(data.recipe.title);
+                    setShortDescription(data.recipe.short_description);
+                    setDescription(data.recipe.description);
+                    setCategory(data.recipe.category);
+                    setPreparation(data.recipe.preparation);
+                    setPeople(data.recipe.people);
+
+                    if (data.recipe.image !== undefined) {
+                        setImage(`${api.root}/${data.recipe.image}`);
+                    } else {
+                        setImage(defaultImgRecipe);
+                    }
+                });
+        };
+
         getMyRecipe();
-    }, []);
+    }, [id]);
+
 
     const openFileInput = (event) => {
         event.preventDefault();
@@ -101,10 +136,19 @@ export default function EditRecipe() {
 
     return (
         <div className="container">
-            <div className="row pt-5 pb-6">
+            <div className="row pt-5 pb-6 xxx">
                 <div className="row">
                     <div className="col" >
-                        <h2 className="title">Edit recipes</h2><hr className="mt-2" />
+                        <h2 className="title">Edit recipes</h2><hr className="mt-2 titleLine" />
+                    </div>
+                    <div className="col d-flex justify-content-end aling-items-center yyy">
+                        <Link to="/myrecipes">
+                            <button type="button" className="btn btn-outline-light" id="plusAndBack" aria-label={ariaLabelText.createMyRecipeAriaLabel.backToCreateRecipeBtnAriaLabel}>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="plusAndBackIcon">
+                                    <path d="M48.5 224H40c-13.3 0-24-10.7-24-24V72c0-9.7 5.8-18.5 14.8-22.2s19.3-1.7 26.2 5.2L98.6 96.6c87.6-86.5 228.7-86.2 315.8 1c87.5 87.5 87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3c-62.2-62.2-162.7-62.5-225.3-1L185 183c6.9 6.9 8.9 17.2 5.2 26.2s-12.5 14.8-22.2 14.8H48.5z" />
+                                </svg>
+                            </button>
+                        </Link>
                     </div>
                 </div>
                 <div className="row d-flex justify-content-center">
