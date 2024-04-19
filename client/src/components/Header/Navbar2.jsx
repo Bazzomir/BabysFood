@@ -45,7 +45,7 @@ const Navbar = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <div className="navbar-nav me-auto mb-2 m-lg-0 w-100 justify-content-between align-items-lg-center">
-                        <ul className="row m-0 p-0">
+                        <ul className="row m-0 p-0 ms-xl-5 ms-lg-0 row-cols-ms-3 row-cols-xl-5">
                             <li className="nav-item col">
                                 <NavLink to="/breakfast" activeClassName="active" className="nav-link" aria-label={ariaLabelText.navAriaLabel.navLinkAriaLabel2}>BREAKFAST</NavLink>
                             </li>
@@ -61,7 +61,7 @@ const Navbar = () => {
                         </ul>
                         <ul className="row m-0 p-0 gap-4">
                             {!token ?
-                                <>
+                                <div className="nav-item col d-flex align-items-center px-auto mx-auto gap-4">
                                     <NavLink to="/login" aria-label={ariaLabelText.loginAriaLabel.logInBtnAriaLabel}>
                                         <button type="button" className="btn btn-grey">LOG IN</button>
                                     </NavLink>
@@ -69,7 +69,7 @@ const Navbar = () => {
                                     <NavLink to="/register" aria-label={ariaLabelText.createAccAriaLabel.createAccBtnAriaLabel}>
                                         <button type="button" className="btn btn-green">CREATE ACCOUNT</button>
                                     </NavLink>
-                                </>
+                                </div>
                                 :
                                 <>
                                     <li className="nav-item col px-auto mx-auto">
