@@ -37,7 +37,7 @@ const Navbar = () => {
     return (
         <nav className={`navbar navbar-expand-lg navbar-light ${scrollClass}`}>
             <div className="container px-0">
-                <a className="navbar-brand mr-lg-7" href="/home">
+                <a className="navbar-brand me-lg-7 me-sm-0" href="/home">
                     <img src={logoNav} alt="Header Logo" />
                 </a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

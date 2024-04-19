@@ -135,11 +135,11 @@ select option:hover {
     color: var(--grey)
 }
 
-.mr-lg-6 {
+.mr-6 {
     margin-right: 6rem !important;
 }
 
-.mr-lg-7 {
+.mr-7 {
     margin-right: 9rem !important;
 }
 
@@ -165,6 +165,18 @@ select option:hover {
 
 .pb-7 {
     padding-bottom: 9rem !important;
+}
+
+@media (min-width: 992px) {
+    .me-lg-7 {
+        margin-right: 9rem !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .me-md-7 {
+        margin-right: 9rem !important;
+    }
 }
 
 .logo {
