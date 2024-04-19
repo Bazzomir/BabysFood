@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import logoNav from '../../assets/logo/logo-nav.png';
 import { NavLink } from 'react-router-dom';
 import ariaLabelText from '../component/ariaLabelText';
+import NavigationButton from '../component/Buttons';
 
 export default function Navbar() {
     const token = localStorage.getItem("token");
@@ -63,31 +64,36 @@ export default function Navbar() {
 
                     {!token ?
                         <div className="col-4 d-flex align-items-center justify-content-end gap-3">
-                            <NavLink to="/login" aria-label={ariaLabelText.loginAriaLabel.logInBtnAriaLabel}>
+                            {/* <NavLink to="/login" aria-label={ariaLabelText.loginAriaLabel.logInBtnAriaLabel}>
                                 <button type="button" className="btn btn-grey">LOG IN</button>
-                            </NavLink>
+                            </NavLink> */}
+                            <NavigationButton to="/login" aria-label={ariaLabelText.loginAriaLabel.logInBtnAriaLabel} buttonName="Log In" className="btn btn-gray" type="button" style="textTransform: uppercase" />
                             <span className="orangeText">or</span>
-                            <NavLink to="/register" aria-label={ariaLabelText.createAccAriaLabel.createAccBtnAriaLabel}>
+                            {/* <NavLink to="/register" aria-label={ariaLabelText.createAccAriaLabel.createAccBtnAriaLabel}>
                                 <button type="button" className="btn btn-green">CREATE ACCOUNT</button>
-                            </NavLink>
+                            </NavLink> */}
+                            <NavigationButton to="/register" aria-label={ariaLabelText.createAccAriaLabel.createAccBtnAriaLabel} buttonName="Create Account" className="btn btn-green" type="button" style="textTransform: uppercase" />
                         </div>
                         :
                         <div className="col-4 d-flex align-items-center justify-content-end">
                             <ul className="nav">
                                 <li className="nav-button">
-                                    <NavLink to="/myrecipes" aria-label={ariaLabelText.navAriaLabel.navLinkAriaLabel5}>
+                                    {/* <NavLink to="/myrecipes" aria-label={ariaLabelText.navAriaLabel.navLinkAriaLabel5}>
                                         <button type="button" className="btn" style={{ fontWeight: 'bold', color: '#008000', textDecoration: 'underline' }}>MY RECIPES</button>
-                                    </NavLink>
+                                    </NavLink> */}
+                                    <NavigationButton to="/myrecipes" aria-label={ariaLabelText.navAriaLabel.navLinkAriaLabel5} buttonName="My Recipes" className="btn" type="button"style="textTransform: uppercase; fontWeight: bold; color: #008000; textDecoration: underline" />
                                 </li>
                                 <li className="nav-button">
-                                    <NavLink to="/myprofile" aria-label={ariaLabelText.navAriaLabel.navLinkAriaLabel6}>
+                                    {/* <NavLink to="/myprofile" aria-label={ariaLabelText.navAriaLabel.navLinkAriaLabel6}>
                                         <button type="button" className="btn" style={{ fontWeight: 'bold', color: '#f96400', textDecoration: 'underline' }}>MY PROFILE</button>
-                                    </NavLink>
+                                    </NavLink> */}
+                                    <NavigationButton to="/myprofile" aria-label={ariaLabelText.navAriaLabel.navLinkAriaLabel6} buttonName="My Profile" className="btn" type="button" style="textTransform: uppercase; fontWeight: bold; color: #f96400; textDecoration: underline" />
                                 </li>
                                 <li className="nav-button">
-                                    <NavLink to="/" onClick={logOut} aria-label={ariaLabelText.navAriaLabel.navLinkAriaLabel7}>
+                                    {/* <NavLink to="/" onClick={logOut} aria-label={ariaLabelText.navAriaLabel.navLinkAriaLabel7}>
                                         <button type="button" className="btn" style={{ fontWeight: 'bold', color: '#696969', textDecoration: 'underline' }}>LOG OUT</button>
-                                    </NavLink>
+                                    </NavLink> */}
+                                    <NavigationButton to="/myprofile" onClick={logOut} aria-label={ariaLabelText.navAriaLabel.navLinkAriaLabel7} buttonName="Log Out" className="btn" type="button" style="textTransform: uppercase; fontWeight: bold; color: #696969; textDecoration: underline" />
                                 </li>
                             </ul>
                         </div>
