@@ -32,7 +32,7 @@ const Navbar = () => {
         };
     }, [isScrolled]);
 
-    const scrollClass = isScrolled ? 'py-1' : 'py-3';
+    const scrollClass = isScrolled ? 'py-0' : 'py-3';
 
     return (
         <nav className={`navbar navbar-expand-lg navbar-light ${scrollClass}`}>
