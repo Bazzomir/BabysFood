@@ -13,12 +13,4 @@ const TitleWithLine = ({ title, additionalClass }) => {
   )
 };
 
-// const TitleWithLineUser = ({ title }) => {
-//   return (
-//     <div className="col">
-//       <h2 className="title">{title}<hr className="mt-2 titleLine" /></h2>
-//     </div>
-//   )
-// };
-
 export default TitleWithLine;

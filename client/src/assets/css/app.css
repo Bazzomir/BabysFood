@@ -135,6 +135,14 @@ select option:hover {
     color: var(--grey)
 }
 
+.mr-lg-6 {
+    margin-right: 6rem !important;
+}
+
+.mr-lg-7 {
+    margin-right: 9rem !important;
+}
+
 .py-6 {
     padding: 6rem 0 !important;
 }
@@ -295,24 +303,17 @@ select option:hover {
     width: 150px;
 }
 
-li {
-    margin-left: 10px;
-    margin-right: 15px;
-    list-style-type: disc;
-    color: var(--orange);
-    text-decoration: none;
-}
 
-li:first-child {
-    list-style: none;
-}
 
 nav {
-    position: sticky;
+    position: sticky !important;
+    /* display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between; */
     top: 0;
     z-index: 3;
     opacity: 1;
-    width: 100%;
     overflow: hidden;
     background-color: #f5f0d9;
     box-shadow: 0px 8px 5px 0px rgba(105, 105, 105, 0.3);
@@ -325,24 +326,37 @@ nav img {
     height: 50px;
 }
 
-.nav-button {
+li {
+    margin-left: 10px;
+    margin-right: 15px;
+    list-style-type: disc;
+    color: var(--orange);
+    text-decoration: none;
+}
+
+li:first-child {
+    list-style: none;
+}
+
+li:nth-child(6),
+li:nth-child(7) {
     list-style-type: disc;
     color: var(--grey);
 }
 
-.nav a {
+li a {
     font-weight: bold;
     transition: all .5s;
     text-decoration: none;
-    color: var(--grey);
+    color: var(--grey) !important;
 }
 
-.nav a:hover,
-.nav a.active {
+li a:hover,
+li a.active {
     color: var(--orange) !important;
 }
 
-.nav a.active:hover {
+li a.active:hover {
     color: var(--green) !important;
 }
 
