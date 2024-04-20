@@ -4,6 +4,7 @@ import { api } from '../../../RESTApi/RestApi';
 import defaultImgRecipe from '../../../assets/defaultImgRecipe.jpg';
 import ariaLabelText from '../../component/ariaLabelText';
 import TitleWithLine from '../../component/TitleWithLine';
+import { ButtonAuth } from '../../component/Buttons';
 
 export default function CreateRecipe() {
 
@@ -236,13 +237,14 @@ export default function CreateRecipe() {
                                 //  onClick={handleSubmitClick}
                                 >SAVE</button>
                             </div> */}
-                            <div className="row px-0">
+                            {/* <div className="row px-0">
                                 <div className="col px-0 mt-4 d-flex justify-content-end" >
                                     <button variant="success" className="btn btn-green col-2" aria-label={ariaLabelText.createMyRecipeAriaLabel.saveRecipeAriaLabel}
                                     //  onClick={handleSubmitClick}
                                     >SAVE</button>
                                 </div>
-                            </div>
+                            </div> */}
+                            <ButtonAuth classNameDiv="col-12 mt-4 text-end" classNameBtn="btn-green text-uppercase col-md-2" buttonName="Save" ariaLabel={ariaLabelText.createMyRecipeAriaLabel.saveRecipeAriaLabel} />
                         </form>
                     </div>
                 </div>
