@@ -4,15 +4,17 @@ import { NavLink } from 'react-router-dom';
 export const NavigationButton = ({ to, ariaLabel, onClick, buttonName, className, style }) => {
     return (
         <NavLink to={to} aria-label={ariaLabel} onClick={onClick}>
-            <button type="button" className={`btn ${className}`} style={{ textTransform: 'uppercase', ...style }} >{buttonName}</button>
+            <button type="button" className={`btn ${className}`} style={{ ...style, textTransform: "uppercase", fontWeight: "bold" }} >{buttonName}</button>
         </NavLink>
     );
 };
 
-export const NavigationLInk = ({ to, linkName, ariaLabel }) => {
+export const NavigationLInk = ({ to, linkName, ariaLabel, className }) => {
     return (
         <li className="nav-item col w-auto">
-            <NavLink to={to} activeClassName="active" className="nav-link text-uppercase" aria-label={ariaLabel}>{linkName}</NavLink>
+            <NavLink to={to}
+                //  activeClassName="active" 
+                className={`nav-link text-uppercase ${className}`} aria-label={ariaLabel}>{linkName}</NavLink>
         </li>
     )
 };
