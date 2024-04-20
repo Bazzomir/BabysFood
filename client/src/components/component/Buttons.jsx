@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 export const NavigationButton = ({ to, ariaLabel, onClick, buttonName, className, style }) => {
     return (
         <NavLink to={to} aria-label={ariaLabel} onClick={onClick}>
-            <button type="button" className={`btn ${className}`} style={{ ...style, textTransform: "uppercase", fontWeight: "bold" }} >{buttonName}</button>
+            <button type="button" className={`btn text-uppercase fw-bold ${className}`} style={style}>{buttonName}</button>
         </NavLink>
     );
 };
@@ -27,13 +27,13 @@ export const NavigationImage = ({ to, className, ariaLabel, src, alt }) => {
     )
 }
 
-export const ButtonAuth = ({ buttonName, className, ariaLabel, onClick }) => {
+export const ButtonAuth = ({ buttonName, classNameBtn, classNameDiv, ariaLabel, onClick }) => {
     return (
-        <div className={`form-group`}>
+        <div className={`form-group ${classNameDiv}`}>
             <button
                 type="submit"
                 variant="success"
-                className={`btn ${className}`}
+                className={`btn ${classNameBtn}`}
                 aria-label={ariaLabel}
                 onClick={onClick}
             >
@@ -50,5 +50,6 @@ export const ButtonLink = ({ divClassName, to, ariaLabel, className, linkName })
         </div>
     );
 };
+
 
 // export default (NavigationButton, ButtonAuth, LinkButton, NavigationLInk);

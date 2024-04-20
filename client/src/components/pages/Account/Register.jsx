@@ -251,7 +251,7 @@ export default function Register() {
                             {/* <div className="form-group pb-4 col-12">
                                 <button variant="success" type="submit" className="btn btn-green" aria-label={ariaLabelText.createAccAriaLabel.createAccBtnAriaLabel}>Create Account</button>
                             </div> */}
-                            <ButtonAuth className="btn-green" ariaLabel={ariaLabelText.createAccAriaLabel.createAccBtnAriaLabel} buttonName="Create Account" />
+                            <ButtonAuth classNameBtn="btn-green" ariaLabel={ariaLabelText.createAccAriaLabel.createAccBtnAriaLabel} buttonName="Create Account" />
                         </form>
                         {/* <h6 aria-label={ariaLabelText.createAccAriaLabel.haveAnAcc}>Have an account?</h6> */}
                         <ButtonLink to="/login" ariaLabel={ariaLabelText.createAccAriaLabel.haveAnAcc} className="haveAnAcc" divClassName="pt-4" linkName="Have an account?" />

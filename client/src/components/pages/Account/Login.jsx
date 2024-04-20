@@ -127,7 +127,7 @@ export default function Login() {
                             {/* <div className="form-group pb-4 col-12">
                                 <button variant="success" className="btn btn-green" type="submit" aria-label={ariaLabelText.loginAriaLabel.logInBtnAriaLabel}>Log In</button>
                             </div> */}
-                            <ButtonAuth className="btn-green" ariaLabel={ariaLabelText.loginAriaLabel.logInBtnAriaLabel} buttonName="Log In" />
+                            <ButtonAuth classNameBtn="btn-green" ariaLabel={ariaLabelText.loginAriaLabel.logInBtnAriaLabel} buttonName="Log In" />
                         </form>
                         {/* <div> */}
                         <ButtonLink to="/register" ariaLabel={ariaLabelText.loginAriaLabel.dontHaveAnAcc} className="haveAnAcc" divClassName="pt-4" linkName="Have an account?" />
