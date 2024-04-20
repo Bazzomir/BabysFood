@@ -20,7 +20,7 @@ export default function Breakfast() {
     }, []);
 
     return (
-        <div className="container" >
+        <div className="container">
             <div className="row pt-5 pb-6">
                 <div className="col pb-3">
                     {/* <div className="row">
@@ -33,7 +33,7 @@ export default function Breakfast() {
                         {Breakfast.map(recipe => {
                             return (
                                 // <div className={`${Breakfast.length > 2 ? 'col-4' : 'col-6'} pb-5`} key={recipe._id}>
-                                    <RecipeCard key={recipe._id} recipe={recipe} />
+                                <RecipeCard key={recipe._id} recipe={recipe} />
                                 // </div>
                             )
                         })}
