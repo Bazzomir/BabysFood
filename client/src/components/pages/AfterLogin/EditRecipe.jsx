@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import defaultImgRecipe from '../../../assets/defaultImgRecipe.jpg'
 import ariaLabelText from '../../component/ariaLabelText';
 import TitleWithLine from "../../component/TitleWithLine";
+import { ButtonAuth } from "../../component/Buttons";
 
 export default function EditRecipe() {
 
@@ -212,9 +213,10 @@ export default function EditRecipe() {
                                         onChange={e => { setDescription(e.target.value) }} />
                                 </div>
                             </div>
-                            <div className="pt-3">
+                            {/* <div className="pt-3">
                                 <button variant="success" className="btn btn-green col-2" onClick={editRecipe}>SAVE</button>
-                            </div>
+                            </div> */}
+                            <ButtonAuth classNameDiv="col-12 mt-4 text-end" classNameBtn="btn-green text-uppercase col-md-2" buttonName="Save" onClick={editRecipe} ariaLabel={ariaLabelText.createMyRecipeAriaLabel.saveRecipeAriaLabel} />
                         </form>
                     </div>
                 </div >
