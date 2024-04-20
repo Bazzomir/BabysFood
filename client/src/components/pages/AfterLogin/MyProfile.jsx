@@ -3,6 +3,7 @@ import { api } from "../../../RESTApi/RestApi";
 import avatar from "../../../assets/avatar.png";
 import ariaLabelText from '../../component/ariaLabelText';
 import TitleWithLine from '../../component/TitleWithLine';
+import { ButtonAuth } from '../../component/Buttons';
 
 export default function MyProfile() {
 
@@ -102,72 +103,63 @@ export default function MyProfile() {
         // <div>
         <div className="container">
             <div className="row pt-5 pb-6">
-                {/* <div className="row">
-                    <div className="col">
-                        <h2 className="title">My Profile<hr className="mt-2" /></h2>
+                <TitleWithLine title="My Profile" />
+                <div className="row px-0 mx-auto mt-4">
+                    <div className="col-sm-12 col-lg-2">
+                        <div className="col-12 text-center" >
+                            <img className="avatarImg mx-auto" src={image} alt="Avatar Image" />
+                        </div>
+                        <div className="col mt-4 text-center">
+                            <button onClick={() => document.getElementById("fileinput").click()} type="submit" className="btn btn-grey" area-label={ariaLabelText.myProfileAriaLabel.uploadAvatarAriaLabel}> CHANGE AVATAR </button>
+                            <input id="fileinput" onChange={handleImage} type="file" accept="image/*" style={{ display: "none" }} />
+                        </div>
                     </div>
-                </div> */}
-                <TitleWithLine title="My Profile"/>
-                <div className="col-2">
-                    <div className="col d-flex align-items-center" >
-                        <img className="avatarImg" src={image} alt="Avatar Image" />
-                    </div>
-                    <div className="col mt-5">
-                        <button onClick={() => document.getElementById("fileinput").click()} type="submit" className="btn btn-grey" area-label={ariaLabelText.myProfileAriaLabel.uploadAvatarAriaLabel}> CHANGE AVATAR </button>
-                        <input id="fileinput" onChange={handleImage} type="file" accept="image/*" style={{ display: "none" }} />
-                    </div>
-                </div>
-                <div className="col-10 justify-content-end" >
-                    <div className="row d-flex justify-content-center align-items-center w-100">
-                        <form onSubmit={editUserProfile}>
-                            <div className="row">
-                                <div className="form-group col-4">
-                                    <label htmlFor="aboutMe">About Me</label>
-                                    <textarea className="form-control" style={{ height: "70%" }} />
-                                </div>
-                                <div className="col-8">
-                                    <div className="row">
-                                        <div className="form-group mb-3 col">
-                                            <label>First Name</label>
-                                            <input className="form-control" placeholder="John" onChange={(e) => setFirstName(e.target.value)} value={FirstName} type="text" />
-                                        </div>
-                                        <div className="form-group mb-3 col">
-                                            <label>Last Name</label>
-                                            <input className="form-control" placeholder="Smith" onChange={(e) => setLastName(e.target.value)} value={LastName} type="text" />
+                    <div className="col-lg-10 col-sm-12 justify-content-end" >
+                        <div className="row mx-auto px-0 d-flex justify-content-center align-items-center">
+                            <form onSubmit={editUserProfile}>
+                                <div className="row row-cols-md-2">
+                                    <div className="col-md-8">
+                                        <div className="row row-cols-md-2">
+                                            <div className="form-group p-2 col-sm-12 col-md-6">
+                                                <label>First Name</label>
+                                                <input className="form-control" placeholder="John" onChange={(e) => setFirstName(e.target.value)} value={FirstName} type="text" />
+                                            </div>
+                                            <div className="form-group p-2 col-sm-12 col-md-6">
+                                                <label>Last Name</label>
+                                                <input className="form-control" placeholder="Smith" onChange={(e) => setLastName(e.target.value)} value={LastName} type="text" />
+                                            </div>
+
+                                            <div className="form-group p-2 col-sm-12 col-md-6">
+                                                <label>Email address</label>
+                                                <input className="form-control" type="email" placeholder="john@smith.com" onChange={(e) => setEmail(e.target.value)} value={email} />
+                                            </div>
+                                            <div className="form-group p-2 col-sm-12 col-md-6" >
+                                                <label>Birthday</label><br />
+                                                <input className="form-control" type="date" name="birthday" onChange={(e) => setBirthday(e.target.value)} value={birthday} />
+                                            </div>
+                                            <div className="form-group p-2 col-sm-12 col-md-6" >
+                                                <label>Password</label>
+                                                <input className="form-control" type="password" placeholder="******" onChange={(e) => setPassword(e.target.value)} value={password} />
+                                            </div>
+                                            <div className="form-group p-2 col-sm-12 col-md-6" >
+                                                <label>Repeat Password</label>
+                                                <input className="form-control" type="password" placeholder="******" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} />
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="row">
-                                        <div className="form-group col">
-                                            <label>Email address</label>
-                                            <input className="form-control" type="email" placeholder="john@smith.com" onChange={(e) => setEmail(e.target.value)} value={email} />
-                                        </div>
-                                        <div className="form-group col" >
-                                            <label>Birthday</label><br />
-                                            <input className="form-control" type="date" name="birthday" onChange={(e) => setBirthday(e.target.value)} value={birthday} />
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="form-group mt-3 col" >
-                                            <label>Password</label>
-                                            <input className="form-control" type="password" placeholder="******" onChange={(e) => setPassword(e.target.value)} value={password} />
-                                        </div>
-                                        <div className="form-group mt-3 col" >
-                                            <label>Repeat Password</label>
-                                            <input className="form-control" type="password" placeholder="******" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} />
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col mt-4 d-flex justify-content-end" >
-                                            <button type="submit" className="btn btn-green col-2" area-label={ariaLabelText.myProfileAriaLabel.saveProfileAriaLabel}>SAVE</button>
+                                    <div className="col-md-4 p-0">
+                                        <div className="form-group col-12 p-2" >
+                                            <label htmlFor="aboutMe">About Me</label>
+                                            <textarea className="form-control h-100 overflow-hidden" rows="8" />
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                                <ButtonAuth classNameDiv="col-12 mt-4 text-end" classNameBtn="btn-green text-uppercase col-md-2" buttonName="Save" ariaLabel={ariaLabelText.myProfileAriaLabel.saveProfileAriaLabel} />
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        // </div>
     )
 }
