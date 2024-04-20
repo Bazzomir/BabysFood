@@ -142,7 +142,7 @@ export default function EditRecipe() {
                     {/* <div className="col" >
                         <h2 className="title">Edit recipes</h2><hr className="mt-2 titleLine" />
                     </div> */}
-                    <TitleWithLine title="Edit Recipes" additionalClass="titleLine" />
+                    <TitleWithLine title="Edit Recipes" className="titleLine" />
                     <div className="col d-flex justify-content-end aling-items-center yyy">
                         <Link to="/myrecipes">
                             <button type="button" className="btn btn-outline-light" id="plusAndBack" aria-label={ariaLabelText.createMyRecipeAriaLabel.backToCreateRecipeBtnAriaLabel}>
