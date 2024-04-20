@@ -68,6 +68,15 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
+/* .form-check-input[type=checkbox] {
+    background-color: var(--green) !important;
+} */
+
+.form-check-input:checked {
+    background-color: var(--green) !important;
+    ;
+}
+
 select option:hover {
     background: var(--orange) !important;
 }
@@ -253,6 +262,17 @@ select option:hover {
     width: 98%;
 }
 
+.haveAnAcc {
+    color: var(--darkgrey);
+    text-decoration: none;
+
+}
+
+.haveAnAcc:hover {
+    color: var(--green);
+    text-decoration: underline;
+}
+
 /* @keyframes slideIn {
     from {
         opacity: 0;
@@ -314,8 +334,6 @@ select option:hover {
     height: 150px;
     width: 150px;
 }
-
-
 
 nav {
     position: sticky !important;

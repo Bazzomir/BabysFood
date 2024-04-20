@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { api } from '../../../RESTApi/RestApi';
 import logo from '../../../assets/logo/logo.png';
 import ariaLabelText from '../../component/ariaLabelText';
+import { ButtonAuth, ButtonLink } from '../../component/Buttons';
+// import { NavLink } from 'react-router-dom';
 
 const bcrypt = require("bcryptjs");
 
@@ -9,6 +11,31 @@ export default function Login() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    useEffect(() => {
+        const forms = document.querySelectorAll('.needs-validation');
+
+        const handleSubmit = (e) => {
+            const form = e.target;
+
+            if (!form.checkValidity()) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            form.classList.add('was-validated');
+        };
+
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', handleSubmit);
+        });
+
+        return () => {
+            Array.from(forms).forEach(form => {
+                form.removeEventListener('submit', handleSubmit);
+            });
+        };
+    }, []);
 
     const logIn = (event) => {
         event.preventDefault();
@@ -34,21 +61,21 @@ export default function Login() {
             .catch(err => alert(err));
     }
 
-    (() => {
+    // (() => {
 
-        const forms = document.querySelectorAll('.needs-validation')
+    //     const forms = document.querySelectorAll('.needs-validation')
 
-        Array.prototype.slice.call(forms)
-            .forEach((form) => {
-                form.addEventListener('submit', (e) => {
-                    if (!form.checkValidity()) {
-                        e.preventDefault()
-                        e.stopPropagation()
-                    }
-                    form.classList.add('was-validated')
-                }, false)
-            })
-    })()
+    //     Array.prototype.slice.call(forms)
+    //         .forEach((form) => {
+    //             form.addEventListener('submit', (e) => {
+    //                 if (!form.checkValidity()) {
+    //                     e.preventDefault()
+    //                     e.stopPropagation()
+    //                 }
+    //                 form.classList.add('was-validated')
+    //             }, false)
+    //         })
+    // })()
 
     return (
         // <section className="login">
@@ -70,7 +97,7 @@ export default function Login() {
                         </p>
                     </div>
                 </div>
-                <div className="col-5 d-flex justify-content-end">
+                <div className="col-5">
                     <div className="row d-flex justify-content-center align-items-center w-100">
                         <form className="needs-validation col-12" onSubmit={logIn} noValidate>
                             <div className="form-group pb-4 col">
@@ -94,13 +121,18 @@ export default function Login() {
                                         Remember Me
                                     </label>
                                 </div>
-                                <h6 aria-label={ariaLabelText.loginAriaLabel.forgotPasswordAriaLabel}>Forgot Password</h6>
+                                {/* <h6 aria-label={ariaLabelText.loginAriaLabel.forgotPasswordAriaLabel}>Forgot Password</h6> */}
+                                <ButtonLink aria-label="loginAriaLabel.forgotPasswordAriaLabel" className="haveAnAcc" divClassName="pt-0" linkName="I forgot my password" />
                             </div>
-                            <div className="form-group pb-4 col-12">
+                            {/* <div className="form-group pb-4 col-12">
                                 <button variant="success" className="btn btn-green" type="submit" aria-label={ariaLabelText.loginAriaLabel.logInBtnAriaLabel}>Log In</button>
-                            </div>
+                            </div> */}
+                            <ButtonAuth className="btn-green" ariaLabel={ariaLabelText.loginAriaLabel.logInBtnAriaLabel} buttonName="Log In" />
                         </form>
-                        <h6 aria-label={ariaLabelText.loginAriaLabel.dontHaveAnAcc}>Have an account?</h6>
+                        {/* <div> */}
+                        <ButtonLink to="/register" ariaLabel={ariaLabelText.loginAriaLabel.dontHaveAnAcc} className="haveAnAcc" divClassName="pt-4" linkName="Have an account?" />
+                        {/* <h6 aria-label={ariaLabelText.loginAriaLabel.dontHaveAnAcc}>Have an account?</h6> */}
+                        {/* </div> */}
                     </div>
                 </div>
             </div>

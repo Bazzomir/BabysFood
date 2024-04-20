@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { api } from '../../../RESTApi/RestApi';
 import logo from '../../../assets/logo/logo.png';
 import ariaLabelText from '../../component/ariaLabelText';
+import { ButtonAuth, ButtonLink } from '../../component/Buttons';
 
 // const bcrypt = require("bcryptjs");
 
@@ -247,11 +248,13 @@ export default function Register() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="form-group pb-4 col-12">
+                            {/* <div className="form-group pb-4 col-12">
                                 <button variant="success" type="submit" className="btn btn-green" aria-label={ariaLabelText.createAccAriaLabel.createAccBtnAriaLabel}>Create Account</button>
-                            </div>
+                            </div> */}
+                            <ButtonAuth className="btn-green" ariaLabel={ariaLabelText.createAccAriaLabel.createAccBtnAriaLabel} buttonName="Create Account" />
                         </form>
-                        <h6 aria-label={ariaLabelText.createAccAriaLabel.haveAnAcc}>Have an account?</h6>
+                        {/* <h6 aria-label={ariaLabelText.createAccAriaLabel.haveAnAcc}>Have an account?</h6> */}
+                        <ButtonLink to="/login" ariaLabel={ariaLabelText.createAccAriaLabel.haveAnAcc} className="haveAnAcc" divClassName="pt-4" linkName="Have an account?" />
                     </div>
                 </div>
             </div>
