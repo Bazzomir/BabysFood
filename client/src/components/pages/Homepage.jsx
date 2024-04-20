@@ -33,7 +33,7 @@ function Homepage() {
                             </h2>
                         </div> */}
                         <TitleWithLine title="Fresh & New" />
-                        <div className="row row-cols-3 d-flex justify-content-between align-items-center gap-5 m-0 pt-3">
+                        <div className="row row-cols-3 d-flex justify-content-around align-items-center gap-5 m-0 pt-3">
                             {NewRecipes.map(recipe => (
                                 <RecipeCard key={recipe._id} recipe={recipe} />
                             ))}
@@ -47,7 +47,7 @@ function Homepage() {
                             <hr className="mt-2" />
                         </h2> */}
                         <TitleWithLine title="Most Popular Recipes" />
-                        <div className="row row-cols-3 d-flex justify-content-between align-items-center gap-5 m-0 pt-3">
+                        <div className="row row-cols-3 d-flex justify-content-around align-items-center gap-5 m-0 pt-3">
                             {PopularRecipes.map(recipe => (
                                 <RecipeCard key={recipe._id} recipe={recipe} />
                             ))}
