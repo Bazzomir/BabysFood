@@ -341,6 +341,16 @@ select option:hover {
     width: 150px;
 }
 
+.recipeImage {
+    border-radius: 11px;
+    aspect-ratio: 1 / 1;
+}
+
+.recipeImageDiv {
+    max-height: 250px;
+    max-width: 250px;
+}
+
 nav {
     position: sticky !important;
     /* display: flex;
