@@ -20,21 +20,25 @@ export default function Breakfast() {
     }, []);
 
     return (
-        <div className="container" >
-            <div className="row pt-5">
-                {/* <div className="row">
+        <div className="container">
+            <div className="row pt-5 pb-6">
+                <div className="col pb-3">
+                    {/* <div className="row">
                     <h2 className="title">Breakfast
                         <hr className="mt-2" />
                     </h2>
                 </div> */}
                     <TitleWithLine title="Breakfast" />
-                {Breakfast.map(recipe => {
-                    return (
-                        <div className={`${Breakfast.length > 2 ? 'col-4' : 'col-6'} pb-5`} key={recipe._id}>
-                            <RecipeCard key={recipe._id} recipe={recipe} />
-                        </div>
-                    )
-                })}
+                    <div className="row row-cols-3 d-flex justify-content-around align-items-center gap-5 m-0 pt-3">
+                        {Breakfast.map(recipe => {
+                            return (
+                                // <div className={`${Breakfast.length > 2 ? 'col-4' : 'col-6'} pb-5`} key={recipe._id}>
+                                <RecipeCard key={recipe._id} recipe={recipe} />
+                                // </div>
+                            )
+                        })}
+                    </div>
+                </div>
             </div>
         </div>
     )

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../../../RESTApi/RestApi";
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { useParams } from "react-router-dom";
 import defaultImgRecipe from '../../../assets/defaultImgRecipe.jpg'
 import ariaLabelText from '../../component/ariaLabelText';
 import TitleWithLine from "../../component/TitleWithLine";
+import { ButtonAuth, ButtonCircle } from "../../component/Buttons";
 
 export default function EditRecipe() {
 
@@ -137,13 +138,13 @@ export default function EditRecipe() {
 
     return (
         <div className="container">
-            <div className="row pt-5 pb-6 xxx">
+            <div className="row pt-5 pb-6 position-relative">
                 <div className="row">
                     {/* <div className="col" >
                         <h2 className="title">Edit recipes</h2><hr className="mt-2 titleLine" />
                     </div> */}
-                    <TitleWithLine title="Edit Recipes" additionalClass="titleLine" />
-                    <div className="col d-flex justify-content-end aling-items-center yyy">
+                    <TitleWithLine title="Edit Recipes" className="titleLine" />
+                    {/* <div className="col d-flex justify-content-end aling-items-center yyy">
                         <Link to="/myrecipes">
                             <button type="button" className="btn btn-outline-light" id="plusAndBack" aria-label={ariaLabelText.createMyRecipeAriaLabel.backToCreateRecipeBtnAriaLabel}>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="plusAndBackIcon">
@@ -151,7 +152,8 @@ export default function EditRecipe() {
                                 </svg>
                             </button>
                         </Link>
-                    </div>
+                    </div> */}
+                    <ButtonCircle to="/myrecipes" ariaLabel={ariaLabelText.createMyRecipeAriaLabel.backToCreateRecipeBtnAriaLabel} viewBox="0 0 512 512" d="M48.5 224H40c-13.3 0-24-10.7-24-24V72c0-9.7 5.8-18.5 14.8-22.2s19.3-1.7 26.2 5.2L98.6 96.6c87.6-86.5 228.7-86.2 315.8 1c87.5 87.5 87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3c-62.2-62.2-162.7-62.5-225.3-1L185 183c6.9 6.9 8.9 17.2 5.2 26.2s-12.5 14.8-22.2 14.8H48.5z" />
                 </div>
                 <div className="row d-flex justify-content-center">
                     <div className="col-3">
@@ -212,9 +214,10 @@ export default function EditRecipe() {
                                         onChange={e => { setDescription(e.target.value) }} />
                                 </div>
                             </div>
-                            <div className="pt-3">
+                            {/* <div className="pt-3">
                                 <button variant="success" className="btn btn-green col-2" onClick={editRecipe}>SAVE</button>
-                            </div>
+                            </div> */}
+                            <ButtonAuth classNameDiv="col-12 mt-4 text-end" classNameBtn="btn-green text-uppercase col-md-2" buttonName="Save" onClick={editRecipe} ariaLabel={ariaLabelText.createMyRecipeAriaLabel.saveRecipeAriaLabel} />
                         </form>
                     </div>
                 </div >

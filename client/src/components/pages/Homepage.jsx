@@ -22,7 +22,7 @@ function Homepage() {
     }, []);
 
     return (
-        <div className="homepage">
+        // <div className="homepage">
             <div className="container">
                 <div className="row pt-5">
                     <div className="col pb-3">
@@ -55,7 +55,7 @@ function Homepage() {
                     </div>
                 </div >
             </div>
-        </div>
+        // </div>
     );
 }
 
