@@ -138,7 +138,7 @@ export default function EditRecipe() {
 
     return (
         <div className="container">
-            <div className="row pt-5 pb-6 xxx">
+            <div className="row pt-5 pb-6 position-relative">
                 <div className="row">
                     {/* <div className="col" >
                         <h2 className="title">Edit recipes</h2><hr className="mt-2 titleLine" />

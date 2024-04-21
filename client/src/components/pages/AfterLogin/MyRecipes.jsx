@@ -70,14 +70,14 @@ export default function MyRecipes() {
 
     return (
         <div className="container">
-            <div className="row pt-5 pb-6 xxx">
-                {/* <div className="row">
-                    <div className="col">
+            <div className="row pt-5 pb-6 position-relative ">
+                <div className="row">
+                    {/* <div className="col">
                         <h2 className="title">My recipes<hr className="mt-2 titleLine" /></h2>
-                    </div>
-                </div> */}
-                <TitleWithLine title="My Recipes" className="titleLine" />
-                {/* <div className="col d-flex justify-content-end aling-items-center yyy">
+                    </div> */}
+
+                    <TitleWithLine title="My Recipes" className="titleLine" />
+                    {/* <div className="col d-flex justify-content-end aling-items-center yyy">
                     <Link to="/createrecipes">
                         <button type="button" className="btn btn-outline-light" id="plusAndBack" aria-label={ariaLabelText.myRecipesAriaLabel.createRecipeBtnAriaLabel}>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" className="plusAndBackIcon">
@@ -86,7 +86,8 @@ export default function MyRecipes() {
                         </button>
                     </Link>
                 </div> */}
-                <ButtonCircle to="/createrecipes" ariaLabel={ariaLabelText.myRecipesAriaLabel.createRecipeBtnAriaLabel} viewBox="0 0 448 512" d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                    <ButtonCircle to="/createrecipes" ariaLabel={ariaLabelText.myRecipesAriaLabel.createRecipeBtnAriaLabel} viewBox="0 0 448 512" d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                </div>
                 <div className="row">
                     <table className="table">
                         <thead>

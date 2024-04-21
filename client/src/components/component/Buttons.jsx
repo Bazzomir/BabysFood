@@ -54,7 +54,7 @@ export const ButtonLink = ({ divClassName, to, ariaLabel, className, linkName })
 
 export const ButtonCircle = ({ to, ariaLabel, viewBox, d }) => {
     return (
-        <div className="col d-flex justify-content-end aling-items-center yyy">
+        <div className="col-auto position-absolute end-0 top-79">
             <NavLink to={to} aria-label={ariaLabel} >
                 <button type="button" className="btn btn-outline-light" id="plusAndBack" >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox={viewBox} fill="currentColor" className="plusAndBackIcon">
