@@ -229,7 +229,7 @@ export default function CreateRecipe() {
                                     </div>
                                     <div className="col-md-12 col-lg-5 p-2">
                                         <div className="form-group mb-3">
-                                            <label htmlFor="recipeDes" >Recipe</label>
+                                            <label htmlFor="recipeDes">Full Recipe</label>
                                             <textarea className="form-control" id="recipeDes" rows="10" value={description} required
                                                 onChange={e => { setDescription(e.target.value) }} />
                                             {/* {Object.keys(descriptionError).map((key) => {
