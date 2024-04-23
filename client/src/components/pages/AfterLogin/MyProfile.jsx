@@ -128,7 +128,6 @@ export default function MyProfile() {
                                                 <label>Last Name</label>
                                                 <input className="form-control" placeholder="Smith" onChange={(e) => setLastName(e.target.value)} value={LastName} type="text" />
                                             </div>
-
                                             <div className="form-group p-2 col-sm-12 col-md-6">
                                                 <label>Email address</label>
                                                 <input className="form-control" type="email" placeholder="john@smith.com" onChange={(e) => setEmail(e.target.value)} value={email} />

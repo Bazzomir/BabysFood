@@ -128,20 +128,20 @@ select option:hover {
     box-shadow: var(--active-box-shadow);
 }
 
-/* .form-select option:hover {
-    background: var(--orange) !important;
-} */
+.hover-a:hover {
+    color: var(--orange);
+}
 
 .orangeText {
     color: var(--orange);
 }
 
 .greenText {
-    color: var(--green)
+    color: var(--green);
 }
 
 .greyText {
-    color: var(--grey)
+    color: var(--grey);
 }
 
 .top-79 {
@@ -344,6 +344,7 @@ select option:hover {
 .recipeImage {
     border-radius: 11px;
     aspect-ratio: 1 / 1;
+
 }
 
 .recipeImageDiv {
@@ -515,11 +516,19 @@ td:last-child {
     padding: 2px 7.5px;
 }
 
-.tableImage {
-    width: 100%;
-    height: 100%;
-    border-radius: 9px;
+.tableImageLink {
+    display: block;
+    width: 100px !important;
+    height: 80px !important;
     margin: 6px;
+}
+
+.tableImage {
+    /* width: 100%; */
+    /* height: 100%; */
+    object-fit: cover;
+    border-radius: 9px;
+    object-fit: cover;
 }
 
 .customTR {
