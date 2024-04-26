@@ -66,7 +66,7 @@ const Navbar = () => {
                         </ul>
                         <ul className="row m-0 p-0">
                             {!token ?
-                                <div className="nav-item col d-flex align-items-center px-0 mx-auto gap-4">
+                                <div className="nav-item col d-flex align-items-center justify-content-center px-0 mx-auto gap-4">
                                     {/* <NavLink to="/login" aria-label={ariaLabelText.loginAriaLabel.logInBtnAriaLabel}>
                                         <button type="button" className="btn btn-grey">LOG IN</button>
                                     </NavLink> */}
