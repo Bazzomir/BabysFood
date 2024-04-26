@@ -90,7 +90,7 @@ export default function Login() {
                     <h2 className="col-12"><span className="orangeText">Welcome to</span><span className="greyText"> Baby's</span></h2>
                     <div className="row flex-sm-row-reverse p-0 m-0 w-100">
                         <div className="col-md-6 col-sm-12">
-                            <div className="row d-flex justify-content-center align-items-center w-100">
+                            <div className="row d-flex justify-content-center align-items-center">
                                 <form className="needs-validation col-12" onSubmit={logIn} noValidate>
                                     <div className="form-group pb-4 col">
                                         <label htmlFor="validationCustom01" className="form-label m-0">Email address</label>
