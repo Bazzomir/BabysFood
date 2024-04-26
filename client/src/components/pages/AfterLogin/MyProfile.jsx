@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { api } from "../../../RESTApi/RestApi";
 import avatar from "../../../assets/avatar.png";
+// import avatar from "../../../assets/avatar2.png";
 import ariaLabelText from '../../component/ariaLabelText';
 import TitleWithLine from '../../component/TitleWithLine';
 import { ButtonAuth } from '../../component/Buttons';
