@@ -89,35 +89,35 @@ export default function MyRecipes() {
                     <ButtonCircle to="/createrecipes" ariaLabel={ariaLabelText.myRecipesAriaLabel.createRecipeBtnAriaLabel} viewBox="0 0 448 512" d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
                 </div>
                 <div className="row justify-content-center">
-                    <div className="col-12">
-                        <table className="table row-cols-sm-2">
-                            <thead className="col-12">
+                    <div className="col-12 p-0">
+                        <table className="table">
+                            <thead>
                                 <tr>
-                                    <th></th>
-                                    <th>Recipe Name</th>
-                                    <th>Category</th>
-                                    <th className="col-6">Created On</th>
+                                    <th scope="col"></th>
+                                    <th scope="col">Recipe Name</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col" className="col-6">Created On</th>
                                     {/* <th colSpan='3'></th> */}
                                     {/* <th></th> */}
-                                    <th className="align-self-end" style={{ textAlign: "right" }}>Delete</th>
+                                    <th scope="col" style={{ textAlign: "right" }}>Delete</th>
                                 </tr>
                             </thead>
-                            <tbody className="col-12">
+                            <tbody>
                                 {recipes.map((recipe, i) => {
                                     return (
-                                        <tr key={i} style={{ verticalAlign: "middle", borderRadius: "25px" }} className="customTR ">
+                                        <tr key={i} scope="row" className="customTR align-middle">
                                             {/* <td style={{  textAlign: "center" }}>
                                                 <a href={`/myrecipes/${recipe._id}`} style={{ textDecoration: 'none', color: 'grey', fontWeight: 'bold' }} aria-label={ariaLabelText.myRecipesAriaLabel.editRecipeBtnAriaLabel}>
                                                     <img className="tableImage" alt="Recipe" src={recipe.image ? recipe.image : defaultImgRecipe} />
                                                 </a>
                                             </td> */}
                                             <td>
-                                                <NavigationImage to={`/myrecipes/${recipe._id}`} src={recipe.image ? recipe.image : defaultImgRecipe} classNameLink="tableImageLink" classNameImg="tableImage w-100 h-100 w-sm-25 h-sm-25" ariaLabel={ariaLabelText.myRecipesAriaLabel.editRecipeBtnAriaLabel} alt="Recipe" />
+                                                <NavigationImage to={`/myrecipes/${recipe._id}`} src={recipe.image ? recipe.image : defaultImgRecipe} classNameLink="tableImageLink" classNameImg="tableImage" ariaLabel={ariaLabelText.myRecipesAriaLabel.editRecipeBtnAriaLabel} alt="Recipe" />
                                             </td>
                                             <td>
                                                 {/* <a href={`/myrecipes/${recipe._id}`} style={{ textDecoration: 'none', color: 'grey', fontWeight: 'bold' }} aria-label={ariaLabelText.myRecipesAriaLabel.editRecipeBtnAriaLabel}>{recipe.title}</a> */}
                                                 <ButtonLink to={`/myrecipes/${recipe._id}`} ariaLabel={ariaLabelText.myRecipesAriaLabel.editRecipeBtnAriaLabel} className="greyText hover-a fw-bold word-wrap text-break text-decoration-none" linkName={recipe.title} />
-                                                </td>
+                                            </td>
                                             {/* <td><span className="tableBadge">{recipe.category}</span></td> */}
                                             <td><RecipeCategoryBadge category={recipe.category || "Some food.."} className="tableBadge" /></td>
                                             <td>{recipe.createdAt.slice(0, 10)}</td>
