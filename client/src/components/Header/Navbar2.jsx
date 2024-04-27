@@ -66,7 +66,7 @@ const Navbar = () => {
                         </ul>
                         <ul className="row m-0 p-0">
                             {!token ?
-                                <div className="nav-item col d-flex align-items-center px-0 mx-auto gap-4">
+                                <div className="nav-item col d-flex align-items-center justify-content-center px-0 mx-auto gap-4">
                                     {/* <NavLink to="/login" aria-label={ariaLabelText.loginAriaLabel.logInBtnAriaLabel}>
                                         <button type="button" className="btn btn-grey">LOG IN</button>
                                     </NavLink> */}
@@ -78,20 +78,20 @@ const Navbar = () => {
                                     <NavigationButton to="/register" ariaLabel={ariaLabelText.createAccAriaLabel.createAccBtnAriaLabel} buttonName="Create Account" className="btn-green" />
                                 </div>
                                 :
-                                <div className="nav-item col d-flex align-items-center px-0 mx-auto gap-4">
-                                    <li className="nav-item col-4 px-auto mx-auto">
+                                <div className="nav-item col d-flex align-items-center ustify-content-center px-0 mx-auto gap-4">
+                                    <li className="nav-item col-4 px-auto mx-auto w-auto">
                                         {/* <NavLink to="/myrecipes" aria-label={ariaLabelText.navAriaLabel.navLinkAriaLabel5}>
                                             <button type="button" className="btn px-0" style={{ fontWeight: 'bold', color: '#008000', width: '88px', textDecoration: 'underline' }}>MY RECIPES</button>
                                         </NavLink> */}
                                         <NavigationButton to="/myrecipes" ariaLabel={ariaLabelText.navAriaLabel.navLinkAriaLabel5} buttonName="My Recipes" style={{color: "#008000", textDecoration: "underline"}} />
                                     </li>
-                                    <li className="nav-item col-4 px-auto mx-auto">
+                                    <li className="nav-item col-4 px-auto mx-auto w-auto">
                                         {/* <NavLink to="/myprofile" aria-label={ariaLabelText.navAriaLabel.navLinkAriaLabel6}>
                                             <button type="button" className="btn px-0" style={{ fontWeight: 'bold', color: '#f96400', width: '88px', textDecoration: 'underline' }}>MY PROFILE</button>
                                         </NavLink> */}
                                         <NavigationButton to="/myprofile" ariaLabel={ariaLabelText.navAriaLabel.navLinkAriaLabel6} buttonName="My Profile" style={{color: "#f96400", textDecoration: "underline"}} />
                                     </li>
-                                    <li className="nav-item col-4 px-auto mx-auto">
+                                    <li className="nav-item col-4 px-auto mx-auto w-auto">
                                         {/* <NavLink to="/" onClick={logOut} aria-label={ariaLabelText.navAriaLabel.navLinkAriaLabel7}>
                                             <button type="button" className="btn px-0" style={{ fontWeight: 'bold', color: '#696969', width: '70px', textDecoration: 'underline' }}>LOG OUT</button>
                                         </NavLink> */}

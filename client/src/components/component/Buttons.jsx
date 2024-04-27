@@ -13,16 +13,15 @@ export const NavigationLInk = ({ to, linkName, ariaLabel, className }) => {
     return (
         <li className="nav-item col w-auto">
             <NavLink to={to}
-                //  activeClassName="active" 
                 className={`nav-link text-uppercase ${className}`} aria-label={ariaLabel}>{linkName}</NavLink>
         </li>
     )
 };
 
-export const NavigationImage = ({ to, className, ariaLabel, src, alt }) => {
+export const NavigationImage = ({ to, classNameLink, classNameImg, ariaLabel, src, alt }) => {
     return (
-        <NavLink className={className} to={to} aria-label={ariaLabel}>
-            <img src={src} alt={alt} />
+        <NavLink className={classNameLink} to={to} aria-label={[ariaLabel]}>
+            <img src={src} alt={alt} className={classNameImg} />
         </NavLink>
     )
 }

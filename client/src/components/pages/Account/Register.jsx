@@ -3,6 +3,8 @@ import { api } from '../../../RESTApi/RestApi';
 import logo from '../../../assets/logo/logo.png';
 import ariaLabelText from '../../component/ariaLabelText';
 import { ButtonAuth, ButtonLink } from '../../component/Buttons';
+import TitleWithLine from '../../component/TitleWithLine';
+import { InputCheck, InputUser } from '../../component/Inputs';
 
 // const bcrypt = require("bcryptjs");
 
@@ -144,117 +146,110 @@ export default function Register() {
 
     return (
         <div className="container">
-            <div className="row pt-5">
-                <h2 className="title">Sing Up<hr className="mt-2" /></h2>
-            </div>
-            <div className="row pt-3 pb-6" >
-                <div className="col-6">
-                    <h2><span className="orangeText">Create Your</span> <span className="greyText"> Account</span></h2>
-                    {/* <p className="greyText"><img className="logo" src={logo} alt="Logo" />
-                        Wondering what to make for dinner tonight?
-                        Baby's Food Place is here to help you cook delicious meals with less stress and more joy.
-                        We offer recipes and cooking advice for home cooks, by home cooks.
-                    </p> */}
-                    <p className="greyText"><img className="logo" src={logo} alt="Main Logo" />
-                        Feeling indecisive about tonight's dinner? <br />Let Baby's Food Place take the guesswork out of mealtime and bring joy back into your kitchen!<br />Our platform is designed to inspire and empower home cooks like you to create delicious meals with ease and enjoyment. Say goodbye to mealtime stress and hello to culinary bliss as we provide you with a wide array of recipes, cooking tips, and guidance tailored specifically for home cooks, by home cooks. Whether you're a seasoned chef or just starting out on your culinary journey, our collection of tried-and-true recipes and expert advice will equip you with the tools and confidence you need to whip up memorable meals that will delight your family and friends. <br /> Join our community of passionate food enthusiasts and let's make cooking dinner a delightful experience together!
-                    </p>
-                </div>
-                <div className="col-6 d-flex justify-content-end">
-                    <div className="row d-flex justify-content-center align-items-center w-100">
-                        <form name="registerForm" className="needs-validation col-12" onSubmit={singUp} noValidate>
-                            <div className="row pb-4">
-                                <div className="col-xl-6 col-xs-12">
-                                    <label htmlFor="first_name" className="form-label m-0">First Name</label>
-                                    <input className="form-control" type="text" placeholder="John" id="first_name" required value={FirstName}
-                                        onChange={e => { setFirstName(e.target.value) }} />
-                                    {/* {Object.keys(firstNameError).map((key) => {
-                                        return <div className="text-danger">{firstNameError[key]}</div>
-                                    })} */}
-                                    <div className="invalid-feedback">
-                                        Please enter your first name.
+            <div className="row pt-5 pb-6 mx-auto">
+                {/* <div className="row pt-5">
+                    <h2 className="title">Sing Up<hr className="mt-2" /></h2>
+                </div> */}
+                <TitleWithLine title="Sing Up" />
+                <div className="row py-3 px-0 mx-auto w-100" >
+                    <h2 className="col-12" ><span className="orangeText">Create Your</span><span className="greyText"> Account</span></h2>
+                    <div className="row flex-sm-row-reverse p-0 m-0 w-100">
+                        <div className="col-md-6 col-sm-12">
+                            <div className="row d-flex justify-content-center align-items-center">
+                                <form name="registerForm" className="needs-validation col-12" onSubmit={singUp} noValidate>
+                                    <div className="form-group">
+                                        <div className="row">
+                                            {/* <div className="col-xl-6 col-xs-12">
+                                            <label htmlFor="first_name" className="form-label m-0">First Name</label>
+                                            <input className="form-control" type="text" placeholder="John" id="first_name" required value={FirstName}
+                                                onChange={e => { setFirstName(e.target.value) }} />
+                                            <div className="invalid-feedback">
+                                                Please enter your first name.
+                                            </div>
+                                        </div>  */}
+                                            <InputUser htmlFor="first_name" labelName="First Name" type="text" placeholder="John" classNameDiv="py-2 col-xl-6 col-xs-12" id="first_name" value={FirstName} onChange={e => { setFirstName(e.target.value) }} feedback="Please enter your first name." />
+                                            {/* <div className="col-xl-6 col-xs">
+                                            <label htmlFor="last_name"sssssssssssssssssssssssssss className="form-label m-0">Last Name</label>
+                                            <input className="form-control" type="text" placeholder="Doe" id="last_name" required value={LastName}
+                                                onChange={e => { setLastName(e.target.value) }} />
+                                            <div className="invalid-feedback">
+                                                Please enter your last name.
+                                            </div>
+                                        </div> */}
+                                            <InputUser htmlFor="last_name" labelName="Last Name" type="text" placeholder="Doe" classNameDiv="py-2 col-xl-6 col-xs-12" id="last_name" value={LastName} onChange={e => { setLastName(e.target.value) }} feedback="Please enter your last name." />
+                                        </div>
+                                        <div className="row">
+                                            {/* <div className="col-xl-6 col-xs">
+                                            <label htmlFor="email" className="form-label m-0">Email</label>
+                                            <input className="form-control" placeholder="user@domain.com" type="email" id="email" value={email} required
+                                                onChange={e => { setEmail(e.target.value) }} />
+                                            <div className="invalid-feedback">
+                                                Please enter your email address.
+                                            </div>
+                                        </div> */}
+                                            <InputUser htmlFor="email" labelName="Email" type="email" placeholder="user@domain.com" classNameDiv="py-2 col-xl-6 col-xs-12" id="email" value={email} onChange={e => { setEmail(e.target.value) }} feedback="Please enter your email address." />
+                                            {/* <div className="form-group col-xl-6 col-xs">
+                                            <label htmlFor="birthday" className="form-label m-0">Birthday</label>
+                                            <input className="form-control" type="date" value={birthday} id="birthday" required
+                                                onChange={e => { setBirthday(e.target.value) }} />
+                                            <div className="invalid-feedback">
+                                                Please enter your birthday.
+                                            </div>
+                                        </div> */}
+                                            <InputUser htmlFor="birthday" labelName="Birthday" type="date" classNameDiv="py-2 col-xl-6 col-xs-12" id="birthday" value={birthday} onChange={e => { setBirthday(e.target.value) }} feedback="Please enter your birthday." />
+                                        </div>
+                                        <div className="row">
+                                            {/* <div className="form-group col-xl-6 col-xs">
+                                            <label htmlFor="password" className="form-label m-0">Password</label>
+                                            <input className="form-control" placeholder="********" type="password" id="password" value={password} required
+                                                onChange={e => { setPassword(e.target.value) }} />
+                                            <div className="invalid-feedback">
+                                                Please enter your password.
+                                            </div>
+                                        </div> */}
+                                            <InputUser htmlFor="password" labelName="Password" type="password" classNameDiv="py-2 col-xl-6 col-xs-12" id="password" value={password} placeholder="********" onChange={e => { setPassword(e.target.value) }} feedback="Please enter your password." />
+                                            {/* <div className="form-group col-xl-6 col-xs">
+                                            <label htmlFor="confim_password" className="form-label m-0">Repeat password</label>
+                                            <input className="form-control" placeholder="********" type="password" id="confim_password" value={confim_password} required
+                                                onChange={e => { setConfirmPassword(e.target.value) }} />
+                                            <div className="invalid-feedback">
+                                                Please enter your password.
+                                            </div>
+                                        </div> */}
+                                            <InputUser htmlFor="confim_password" labelName="Repeat password" type="password" classNameDiv="py-2 col-xl-6 col-xs-12" id="confim_password" value={confim_password} placeholder="********" onChange={e => { setConfirmPassword(e.target.value) }} feedback="Please enter your password." />
+                                        </div>
+                                        <div className="form-group pt-3 pb-1 px-0 col-12">
+                                            {/* <div className="form-check">
+                                            <input className="form-check-input" type="checkbox" value={agree} id="invalidCheck" required onChange={e => { setAgree(e.target.value) }} aria-label={ariaLabelText.createAccAriaLabel.AgreeTC} />
+                                            <label className="form-check-label" htmlFor="invalidCheck">
+                                                Agree to terms and conditions
+                                            </label>
+                                            <div className="invalid-feedback">
+                                                You must agree before submitting.
+                                            </div>
+                                        </div> */}
+                                            <InputCheck value={agree} required onChange={e => { setAgree(e.target.value) }} ariaLabel={ariaLabelText.createAccAriaLabel.AgreeTC} id="invalidCheck" htmlFor="invalidCheck" labelName="Agree to terms and conditions" feedback="You must agree before submitting." />
+                                        </div>
+                                        {/* <div className="form-group pb-4 col-12">
+                                            <button variant="success" type="submit" className="btn btn-green" aria-label={ariaLabelText.createAccAriaLabel.createAccBtnAriaLabel}>Create Account</button>
+                                        </div> */}
+                                        <ButtonAuth classNameBtn="btn-green my-4" ariaLabel={ariaLabelText.createAccAriaLabel.createAccBtnAriaLabel} buttonName="Create Account" />
                                     </div>
-                                </div>
-                                <div className="col-xl-6 col-xs">
-                                    <label htmlFor="last_name" className="form-label m-0">Last Name</label>
-                                    <input className="form-control" type="text" placeholder="Doe" id="last_name" required value={LastName}
-                                        onChange={e => { setLastName(e.target.value) }} />
-                                    {/* {Object.keys(lastNameError).map((key) => {
-                                        return <div className="text-danger">{lastNameError[key]}</div>
-                                    })} */}
-                                    <div className="invalid-feedback">
-                                        Please enter your last name.
-                                    </div>
-                                </div>
+                                </form>
+                                {/* <h6 aria-label={ariaLabelText.createAccAriaLabel.haveAnAcc}>Have an account?</h6> */}
+                                <ButtonLink to="/login" ariaLabel={ariaLabelText.createAccAriaLabel.haveAnAcc} className="haveAnAcc" divClassName="py-4" linkName="Have an account?" />
                             </div>
-                            <div className="row pb-4">
-                                <div className="col-xl-6 col-xs">
-                                    <label htmlFor="email" className="form-label m-0">Email</label>
-                                    <input className="form-control" placeholder="user@domain.com" type="email" id="email" value={email} required
-                                        onChange={e => { setEmail(e.target.value) }} />
-                                    {/* {Object.keys(emailError).map((key) => {
-                                        return <div className="text-danger">{emailError[key]}</div>
-                                    })} */}
-                                    <div className="invalid-feedback">
-                                        Please enter your email address.
-                                    </div>
-                                </div>
-                                <div className="form-group col-xl-6 col-xs">
-                                    <label htmlFor="birthday" className="form-label m-0">Birthday</label>
-                                    <input className="form-control" type="date" value={birthday} id="birthday" required
-                                        onChange={e => { setBirthday(e.target.value) }} />
-                                    {/* {Object.keys(birthdayError).map((key) => {
-                                        return <div className="text-danger">{birthdayError[key]}</div>
-                                    })} */}
-                                    <div className="invalid-feedback">
-                                        Please enter your birthday.
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="row pb-4">
-                                <div className="form-group col-xl-6 col-xs">
-                                    <label htmlFor="password" className="form-label m-0">Password</label>
-                                    <input className="form-control" placeholder="********" type="password" id="password" value={password} required
-                                        onChange={e => { setPassword(e.target.value) }} />
-                                    {/* {Object.keys(passwordError).map((key) => {
-                                        return <div className="text-danger">{passwordError[key]}</div>
-                                    })} */}
-                                    <div className="invalid-feedback">
-                                        Please enter your password.
-                                    </div>
-                                </div>
-                                <div className="form-group col-xl-6 col-xs">
-                                    <label htmlFor="confim_password" className="form-label m-0">Repeat password</label>
-                                    <input className="form-control" placeholder="********" type="password" id="confim_password" value={confim_password} required
-                                        onChange={e => { setConfirmPassword(e.target.value) }} />
-                                    {/* {Object.keys(confirmPasswordError).map((key) => {
-                                        return <div className="text-danger">{confirmPasswordError[key]}</div>
-                                    })} */}
-                                    <div className="invalid-feedback">
-                                        Please enter your password.
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group pb-4 col-12">
-                                <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value={agree} id="invalidCheck" required onChange={e => { setAgree(e.target.value) }} aria-label={ariaLabelText.createAccAriaLabel.AgreeTC} />
-                                    <label className="form-check-label" htmlFor="invalidCheck">
-                                        Agree to terms and conditions
-                                    </label>
-                                    {/* {Object.keys(checkBoxError).map((key) => {
-                                        return <div className="text-danger">{checkBoxError[key]}</div>
-                                    })} */}
-                                    <div className="invalid-feedback">
-                                        You must agree before submitting.
-                                    </div>
-                                </div>
-                            </div>
-                            {/* <div className="form-group pb-4 col-12">
-                                <button variant="success" type="submit" className="btn btn-green" aria-label={ariaLabelText.createAccAriaLabel.createAccBtnAriaLabel}>Create Account</button>
-                            </div> */}
-                            <ButtonAuth classNameBtn="btn-green" ariaLabel={ariaLabelText.createAccAriaLabel.createAccBtnAriaLabel} buttonName="Create Account" />
-                        </form>
-                        {/* <h6 aria-label={ariaLabelText.createAccAriaLabel.haveAnAcc}>Have an account?</h6> */}
-                        <ButtonLink to="/login" ariaLabel={ariaLabelText.createAccAriaLabel.haveAnAcc} className="haveAnAcc" divClassName="pt-4" linkName="Have an account?" />
+                        </div>
+                        <div className="col-md-6 col-sm-12">
+                            {/* <p className="greyText"><img className="logo" src={logo} alt="Logo" />
+                                Wondering what to make for dinner tonight?
+                                Baby's Food Place is here to help you cook delicious meals with less stress and more joy.
+                                We offer recipes and cooking advice for home cooks, by home cooks.
+                            </p> */}
+                            <p className="greyText"><img className="logo" src={logo} alt="Main Logo" />
+                                Feeling indecisive about tonight's dinner? <br />Let Baby's Food Place take the guesswork out of mealtime and bring joy back into your kitchen!<br />Our platform is designed to inspire and empower home cooks like you to create delicious meals with ease and enjoyment. Say goodbye to mealtime stress and hello to culinary bliss as we provide you with a wide array of recipes, cooking tips, and guidance tailored specifically for home cooks, by home cooks. Whether you're a seasoned chef or just starting out on your culinary journey, our collection of tried-and-true recipes and expert advice will equip you with the tools and confidence you need to whip up memorable meals that will delight your family and friends. <br /> Join our community of passionate food enthusiasts and let's make cooking dinner a delightful experience together!
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
