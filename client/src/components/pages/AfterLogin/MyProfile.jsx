@@ -5,6 +5,7 @@ import avatar from "../../../assets/avatar.png";
 import ariaLabelText from '../../component/ariaLabelText';
 import TitleWithLine from '../../component/TitleWithLine';
 import { ButtonAuth } from '../../component/Buttons';
+import {InputAuth} from '../../component/Inputs';
 
 export default function MyProfile() {
 
@@ -121,30 +122,36 @@ export default function MyProfile() {
                                 <div className="row row-cols-md-2">
                                     <div className="col-md-8">
                                         <div className="row row-cols-md-2">
-                                            <div className="form-group p-2 col-sm-12 col-md-6">
+                                            {/* <div className="form-group p-2 col-sm-12 col-md-6">
                                                 <label>First Name</label>
                                                 <input className="form-control" placeholder="John" onChange={(e) => setFirstName(e.target.value)} value={FirstName} type="text" />
-                                            </div>
-                                            <div className="form-group p-2 col-sm-12 col-md-6">
+                                            </div> */}
+                                            <InputAuth htmlFor="first_name" labelName="First Name" inputName="first_name" type="text" value={FirstName} onChange={(e) => setFirstName(e.target.value)} />
+                                            {/* <div className="form-group p-2 col-sm-12 col-md-6">
                                                 <label>Last Name</label>
                                                 <input className="form-control" placeholder="Smith" onChange={(e) => setLastName(e.target.value)} value={LastName} type="text" />
-                                            </div>
-                                            <div className="form-group p-2 col-sm-12 col-md-6">
+                                            </div> */}
+                                            <InputAuth htmlFor="last_name" labelName="Last Name" inputName="last_name" type="text" value={LastName} onChange={(e) => setLastName(e.target.value)} />
+                                            {/* <div className="form-group p-2 col-sm-12 col-md-6">
                                                 <label>Email address</label>
                                                 <input className="form-control" type="email" placeholder="john@smith.com" onChange={(e) => setEmail(e.target.value)} value={email} />
-                                            </div>
-                                            <div className="form-group p-2 col-sm-12 col-md-6" >
+                                            </div> */}
+                                            <InputAuth htmlFor="email" labelName="Email" inputName="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                                            {/* <div className="form-group p-2 col-sm-12 col-md-6" >
                                                 <label>Birthday</label><br />
                                                 <input className="form-control" type="date" name="birthday" onChange={(e) => setBirthday(e.target.value)} value={birthday} />
-                                            </div>
-                                            <div className="form-group p-2 col-sm-12 col-md-6" >
+                                            </div> */}
+                                            <InputAuth htmlFor="birthday" labelName="Birthdat" inputName="birthday" type="date" value={email} onChange={(e) => setBirthday(e.target.value)} />
+                                            {/* <div className="form-group p-2 col-sm-12 col-md-6" >
                                                 <label>Password</label>
                                                 <input className="form-control" type="password" placeholder="******" onChange={(e) => setPassword(e.target.value)} value={password} />
-                                            </div>
-                                            <div className="form-group p-2 col-sm-12 col-md-6" >
+                                            </div> */}
+                                            <InputAuth htmlFor="password" labelName="Password" inputName="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                                            {/* <div className="form-group p-2 col-sm-12 col-md-6" >
                                                 <label>Repeat Password</label>
                                                 <input className="form-control" type="password" placeholder="******" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} />
-                                            </div>
+                                            </div> */}
+                                            <InputAuth htmlFor="password" labelName="Repeat Password" inputName="password" type="password" value={password} onChange={(e) => setConfirmPassword(e.target.value)} />
                                         </div>
                                     </div>
                                     <div className="col-md-4 p-0">

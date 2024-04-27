@@ -4,6 +4,7 @@ import logo from '../../../assets/logo/logo.png';
 import ariaLabelText from '../../component/ariaLabelText';
 import { ButtonAuth, ButtonLink } from '../../component/Buttons';
 import TitleWithLine from '../../component/TitleWithLine';
+import { InputCheck, InputRegister } from '../../component/Inputs';
 
 // const bcrypt = require("bcryptjs");
 
@@ -151,96 +152,82 @@ export default function Register() {
                 </div> */}
                 <TitleWithLine title="Sing Up" />
                 <div className="row pt-3 pb-6" >
-                    <h2 className="col-12" ><span className="orangeText">Create Your</span> <span className="greyText"> Account</span></h2>
+                    <h2 className="col-12" ><span className="orangeText">Create Your</span><span className="greyText"> Account</span></h2>
                     <div className="row flex-sm-row-reverse p-0 m-0 w-100">
                         <div className="col-md-6 col-sm-12">
                             <div className="row d-flex justify-content-center align-items-center">
                                 <form name="registerForm" className="needs-validation col-12" onSubmit={singUp} noValidate>
                                     <div className="row pb-4">
-                                        <div className="col-xl-6 col-xs-12">
+                                        {/* <div className="col-xl-6 col-xs-12">
                                             <label htmlFor="first_name" className="form-label m-0">First Name</label>
                                             <input className="form-control" type="text" placeholder="John" id="first_name" required value={FirstName}
                                                 onChange={e => { setFirstName(e.target.value) }} />
-                                            {/* {Object.keys(firstNameError).map((key) => {
-                                        return <div className="text-danger">{firstNameError[key]}</div>
-                                    })} */}
                                             <div className="invalid-feedback">
                                                 Please enter your first name.
                                             </div>
-                                        </div>
-                                        <div className="col-xl-6 col-xs">
+                                        </div>  */}
+                                        <InputRegister htmlFor="first_name" labelName="First Name" type="text" placeholder="John" id="first_name" value={FirstName} onChange={e => { setFirstName(e.target.value) }} feedback="Please enter your first name." />
+                                        {/* <div className="col-xl-6 col-xs">
                                             <label htmlFor="last_name" className="form-label m-0">Last Name</label>
                                             <input className="form-control" type="text" placeholder="Doe" id="last_name" required value={LastName}
                                                 onChange={e => { setLastName(e.target.value) }} />
-                                            {/* {Object.keys(lastNameError).map((key) => {
-                                        return <div className="text-danger">{lastNameError[key]}</div>
-                                    })} */}
                                             <div className="invalid-feedback">
                                                 Please enter your last name.
                                             </div>
-                                        </div>
+                                        </div> */}
+                                        <InputRegister htmlFor="last_name" labelName="Last Name" type="text" placeholder="Doe" id="last_name" value={LastName} onChange={e => { setLastName(e.target.value) }} feedback="Please enter your last name." />
                                     </div>
                                     <div className="row pb-4">
-                                        <div className="col-xl-6 col-xs">
+                                        {/* <div className="col-xl-6 col-xs">
                                             <label htmlFor="email" className="form-label m-0">Email</label>
                                             <input className="form-control" placeholder="user@domain.com" type="email" id="email" value={email} required
                                                 onChange={e => { setEmail(e.target.value) }} />
-                                            {/* {Object.keys(emailError).map((key) => {
-                                        return <div className="text-danger">{emailError[key]}</div>
-                                    })} */}
                                             <div className="invalid-feedback">
                                                 Please enter your email address.
                                             </div>
-                                        </div>
-                                        <div className="form-group col-xl-6 col-xs">
+                                        </div> */}
+                                        <InputRegister htmlFor="email" labelName="Email" type="email" placeholder="user@domain.com" id="email" value={email} onChange={e => { setEmail(e.target.value) }} feedback="Please enter your email address." />
+                                        {/* <div className="form-group col-xl-6 col-xs">
                                             <label htmlFor="birthday" className="form-label m-0">Birthday</label>
                                             <input className="form-control" type="date" value={birthday} id="birthday" required
                                                 onChange={e => { setBirthday(e.target.value) }} />
-                                            {/* {Object.keys(birthdayError).map((key) => {
-                                        return <div className="text-danger">{birthdayError[key]}</div>
-                                    })} */}
                                             <div className="invalid-feedback">
                                                 Please enter your birthday.
                                             </div>
-                                        </div>
+                                        </div> */}
+                                        <InputRegister htmlFor="birthday" labelName="Birthday" type="date" id="birthday" value={birthday} onChange={e => { setBirthday(e.target.value) }} feedback="Please enter your birthday." />
                                     </div>
                                     <div className="row pb-4">
-                                        <div className="form-group col-xl-6 col-xs">
+                                        {/* <div className="form-group col-xl-6 col-xs">
                                             <label htmlFor="password" className="form-label m-0">Password</label>
                                             <input className="form-control" placeholder="********" type="password" id="password" value={password} required
                                                 onChange={e => { setPassword(e.target.value) }} />
-                                            {/* {Object.keys(passwordError).map((key) => {
-                                        return <div className="text-danger">{passwordError[key]}</div>
-                                    })} */}
                                             <div className="invalid-feedback">
                                                 Please enter your password.
                                             </div>
-                                        </div>
-                                        <div className="form-group col-xl-6 col-xs">
+                                        </div> */}
+                                        <InputRegister htmlFor="password" labelName="Password" type="password" id="password" value={password} placeholder="********" onChange={e => { setPassword(e.target.value) }} feedback="Please enter your password." />
+                                        {/* <div className="form-group col-xl-6 col-xs">
                                             <label htmlFor="confim_password" className="form-label m-0">Repeat password</label>
                                             <input className="form-control" placeholder="********" type="password" id="confim_password" value={confim_password} required
                                                 onChange={e => { setConfirmPassword(e.target.value) }} />
-                                            {/* {Object.keys(confirmPasswordError).map((key) => {
-                                        return <div className="text-danger">{confirmPasswordError[key]}</div>
-                                    })} */}
                                             <div className="invalid-feedback">
                                                 Please enter your password.
                                             </div>
-                                        </div>
+                                        </div> */}
+                                        <InputRegister htmlFor="confim_password" labelName="Repeat password" type="password" id="confim_password" value={confim_password} placeholder="********" onChange={e => { setConfirmPassword(e.target.value) }} feedback="Please enter your password." />
                                     </div>
                                     <div className="form-group pb-4 col-12">
-                                        <div className="form-check">
+                                        {/* <div className="form-check">
                                             <input className="form-check-input" type="checkbox" value={agree} id="invalidCheck" required onChange={e => { setAgree(e.target.value) }} aria-label={ariaLabelText.createAccAriaLabel.AgreeTC} />
                                             <label className="form-check-label" htmlFor="invalidCheck">
                                                 Agree to terms and conditions
                                             </label>
-                                            {/* {Object.keys(checkBoxError).map((key) => {
-                                        return <div className="text-danger">{checkBoxError[key]}</div>
-                                    })} */}
                                             <div className="invalid-feedback">
                                                 You must agree before submitting.
                                             </div>
-                                        </div>
+                                        </div> */}
+                                        <InputCheck value={agree} required onChange={e => { setAgree(e.target.value) }} ariaLabel={ariaLabelText.createAccAriaLabel.AgreeTC} id="invalidCheck" htmlFor="invalidCheck" labelName="Agree to terms and conditions" feedback="You must agree before submitting."/>
                                     </div>
                                     {/* <div className="form-group pb-4 col-12">
                                 <button variant="success" type="submit" className="btn btn-green" aria-label={ariaLabelText.createAccAriaLabel.createAccBtnAriaLabel}>Create Account</button>
