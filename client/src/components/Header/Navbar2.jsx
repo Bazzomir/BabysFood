@@ -78,7 +78,7 @@ const Navbar = () => {
                                     <NavigationButton to="/register" ariaLabel={ariaLabelText.createAccAriaLabel.createAccBtnAriaLabel} buttonName="Create Account" className="btn-green" />
                                 </div>
                                 :
-                                <div className="nav-item col d-flex align-items-center ustify-content-center px-0 mx-auto gap-4">
+                                <div className="nav-item col d-flex align-items-center justify-content-center px-0 mx-auto gap-4">
                                     <li className="nav-item col-4 px-auto mx-auto w-auto">
                                         {/* <NavLink to="/myrecipes" aria-label={ariaLabelText.navAriaLabel.navLinkAriaLabel5}>
                                             <button type="button" className="btn px-0" style={{ fontWeight: 'bold', color: '#008000', width: '88px', textDecoration: 'underline' }}>MY RECIPES</button>
