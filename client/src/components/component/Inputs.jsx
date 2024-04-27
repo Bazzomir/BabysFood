@@ -16,9 +16,9 @@ export const InputAuth = ({ htmlFor, labelName, inputName, type, value, onChange
     );
 }
 
-export const InputRegister = ({ htmlFor, labelName, type, placeholder, id, value, onChange, feedback }) => {
+export const InputUser = ({ htmlFor, labelName, classNameDiv, type, placeholder, id, value, onChange, feedback }) => {
     return (
-        <div className="col-xl-6 col-xs-12">
+        <div className={classNameDiv}>
             <label htmlFor={htmlFor} className="form-label m-0">{labelName}</label>
             <input className="form-control"
                 type={type}
