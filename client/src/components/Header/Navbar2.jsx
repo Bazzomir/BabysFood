@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import logoNav from '../../assets/logo/logo-nav.png';
-import { NavigationButton, NavigationImage, NavigationLInk } from '../component/Buttons';
+import { NavigationButton, NavigationImage, NavigationLink } from '../component/Buttons';
 import ariaLabelText from '../component/ariaLabelText';
 
 const Navbar = () => {
@@ -50,19 +50,19 @@ const Navbar = () => {
                             {/* <li className="nav-item col">
                                 <NavLink to="/breakfast" activeClassName="active" className="nav-link" aria-label={ariaLabelText.navAriaLabel.navLinkAriaLabel2}>BREAKFAST</NavLink>
                             </li> */}
-                            <NavigationLInk to="/breakfast" linkName="Breakfast" ariaLabel={ariaLabelText.navAriaLabel.navLinkAriaLabel1} className={(navData) => (navData.isActive ? "active-style" : 'none')} />
+                            <NavigationLink to="/breakfast" linkName="Breakfast" ariaLabel={ariaLabelText.navAriaLabel.navLinkAriaLabel1} className={(navData) => (navData.isActive ? "active-style" : 'none')} />
                             {/* <li className="nav-item col">
                                 <NavLink to="/brunch" activeClassName="active" className="nav-link" aria-label={ariaLabelText.navAriaLabel.navLinkAriaLabel3}>BRUNCH</NavLink>
                             </li> */}
-                            <NavigationLInk to="/brunch" linkName="Brunch" ariaLabel={ariaLabelText.navAriaLabel.navLinkAriaLabel2} className={(navData) => (navData.isActive ? "active-style" : 'none')} />
+                            <NavigationLink to="/brunch" linkName="Brunch" ariaLabel={ariaLabelText.navAriaLabel.navLinkAriaLabel2} className={(navData) => (navData.isActive ? "active-style" : 'none')} />
                             {/* <li className="nav-item col">
                                 <NavLink to="/lunch" activeClassName="active" className="nav-link" aria-label={ariaLabelText.navAriaLabel.navLinkAriaLabel4}>LUNCH</NavLink> 
                             </li> */}
-                            <NavigationLInk to="/lunch" linkName="Lunch" ariaLabel={ariaLabelText.navAriaLabel.navLinkAriaLabel3} className={(navData) => (navData.isActive ? "active-style" : 'none')} />
+                            <NavigationLink to="/lunch" linkName="Lunch" ariaLabel={ariaLabelText.navAriaLabel.navLinkAriaLabel3} className={(navData) => (navData.isActive ? "active-style" : 'none')} />
                             {/* <li className="nav-item col">
                                 <NavLink to="/dinner" activeclassname="active" className="nav-link" aria-label={ariaLabelText.navAriaLabel.navLinkAriaLabel4}>DINNER</NavLink>
                             </li> */}
-                            <NavigationLInk to="/dinner" linkName="Dinner" ariaLabel={ariaLabelText.navAriaLabel.navLinkAriaLabel4} className={(navData) => (navData.isActive ? "active-style" : 'none')} />
+                            <NavigationLink to="/dinner" linkName="Dinner" ariaLabel={ariaLabelText.navAriaLabel.navLinkAriaLabel4} className={(navData) => (navData.isActive ? "active-style" : 'none')} />
                         </ul>
                         <ul className="row m-0 p-0">
                             {!token ?

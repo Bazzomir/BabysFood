@@ -192,6 +192,13 @@ select option:hover {
     }
 }
 
+/* @media (max-width: 767) {
+    footer li>* {
+        text-decoration: none !important;
+        list-style: none !important;
+    }
+} */
+
 .logo {
     height: 12.5rem;
     width: 12.5rem;
@@ -234,25 +241,24 @@ select option:hover {
     top: 79px;
 } */
 
-.footer {
+/* .footer {
     background-color: var(--grey);
     width: 100%;
     color: var(--white);
     position: absolute;
     left: 0;
-    /* bottom: 100; */
-}
+} */
 
-.footer li a {
+/* .footer li a {
     color: var(--white) !important;
     text-decoration: none;
-}
+} */
 
-.footer img {
+/* .footer img {
     aspect-ratio: 13 / 5;
     height: 50px;
     width: 130px;
-}
+} */
 
 .title {
     color: var(--green);
@@ -344,7 +350,7 @@ select option:hover {
     border-radius: 50%;
     border: 1px solid var(--green);
     object-fit: cover;
-    }
+}
 
 .recipeImage {
     border-radius: 11px;
@@ -372,10 +378,22 @@ nav {
     transition: padding 0.3s ease-in-out;
 }
 
-nav img {
+nav img,
+footer img {
     aspect-ratio: 13 / 5;
     width: 130px;
     height: 50px;
+}
+
+footer {
+    background-color: var(--grey);
+    width: 100%;
+    color: var(--white);
+}
+
+footer li a {
+    color: var(--white) !important;
+    text-decoration: none;
 }
 
 li {
