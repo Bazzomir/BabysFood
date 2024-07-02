@@ -153,8 +153,8 @@ export default function Register() {
                 <TitleWithLine title="Sing Up" />
                 <div className="row py-3 px-0 mx-auto w-100" >
                     <h2 className="col-12" ><span className="orangeText">Create Your</span><span className="greyText"> Account</span></h2>
-                    <div className="row flex-sm-row-reverse p-0 m-0 w-100">
-                        <div className="col-md-6 col-sm-12">
+                    <div className="row flex-sm-row-reverse justify-content-center p-0 m-0 w-100 gap-5">
+                        <div className="col-md-5 col-sm-12">
                             <div className="row d-flex justify-content-center align-items-center">
                                 <form name="registerForm" className="needs-validation col-12" onSubmit={singUp} noValidate>
                                     <div className="form-group">
@@ -240,7 +240,7 @@ export default function Register() {
                                 <ButtonLink to="/login" ariaLabel={ariaLabelText.createAccAriaLabel.haveAnAcc} className="haveAnAcc" divClassName="py-4" linkName="Have an account?" />
                             </div>
                         </div>
-                        <div className="col-md-6 col-sm-12">
+                        <div className="col-md-5 col-sm-12">
                             {/* <p className="greyText"><img className="logo" src={logo} alt="Logo" />
                                 Wondering what to make for dinner tonight?
                                 Baby's Food Place is here to help you cook delicious meals with less stress and more joy.
