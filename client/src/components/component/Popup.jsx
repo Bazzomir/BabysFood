@@ -53,8 +53,8 @@ function Popup(props) {
                 </Modal.Header>
                 <Modal.Body>
                     <div className="row">
-                        <div className="col-5">
-                            <Card.Img style={{ borderRadius: "15px" }} variant="top" src={`${api.root}/${recipe.image}`} />
+                        <div className="col-sm-12 col-lg-5">
+                            <Card.Img style={{ borderRadius: "15px" }} className="img-fluid img-thumbnail" variant="top" src={`${api.root}/${recipe.image}`} />
                             <Card.Title className="m-0 py-3 d-flex gap-2 align-items-center" style={{ color: "green" }}>
                                 Best Served For
                                 {/* <span className="popUpbadge mr-2">{recipe.category}</span> */}
@@ -64,7 +64,7 @@ function Popup(props) {
                                 {recipe.short_description}
                             </Card.Text>
                         </div>
-                        <div className="col-7">
+                        <div className="col-sm-12 col-lg-7">
                             <Card.Body >
                                 <Card.Text>
                                     {recipe.description}
