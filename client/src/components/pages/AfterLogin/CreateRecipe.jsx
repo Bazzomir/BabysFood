@@ -134,7 +134,8 @@ export default function CreateRecipe() {
     return (
         <div className="container">
             <div className="row pt-5 pb-6 position-relative">
-                <div className="col-12 px-0 w-100">
+                {/* <div className="col-12 px-0 w-100"> */}
+                <div className="row">
                     {/* <div className='row'>
                         <div className="col" >
                             <h2 className="title">Create recipes<hr className="mt-2 titleLine" /></h2>
@@ -154,7 +155,7 @@ export default function CreateRecipe() {
                 </div>
                 <div className="row px-0 mx-auto mt-4">
                     <div className="col-sm-12 col-lg-3">
-                        <div className="col">
+                        <div className="p-2 col-12">
                             <label htmlFor="recipeImage">Recipe Image</label>
                         </div>
                         <div className="col-12 mx-auto recipeImageDiv">
