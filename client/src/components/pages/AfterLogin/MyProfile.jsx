@@ -5,7 +5,7 @@ import avatar from "../../../assets/avatar.png";
 import ariaLabelText from '../../component/ariaLabelText';
 import TitleWithLine from '../../component/TitleWithLine';
 import { ButtonAuth } from '../../component/Buttons';
-import { InputClassic, InputTextArea } from '../../component/Inputs';
+import { InputClassic, InputTextArea, InputImage } from '../../component/Inputs';
 
 export default function MyProfile() {
 
@@ -109,7 +109,7 @@ export default function MyProfile() {
             <div className="row pt-5 pb-6">
                 <TitleWithLine title="My Profile" />
                 <div className="row px-0 mx-auto mt-4">
-                    <div className="col-sm-12 col-lg-2">
+                    {/* <div className="col-sm-12 col-lg-2">
                         <div className="col-12 text-center" >
                             <img className="avatarImg mx-auto" src={image} alt="Avatar Image" />
                         </div>
@@ -117,7 +117,8 @@ export default function MyProfile() {
                             <button onClick={() => document.getElementById("fileinput").click()} type="submit" className="btn btn-grey" area-label={ariaLabelText.myProfileAriaLabel.uploadAvatarAriaLabel}> CHANGE AVATAR </button>
                             <input id="fileinput" onChange={handleImage} type="file" accept="image/*" style={{ display: "none" }} />
                         </div>
-                    </div>
+                    </div> */}
+                    <InputImage classNameDiv="col-lg-2" classNameImg="avatarImg" src={image} alt="Avatar Image" onClick={() => document.getElementById("fileinput").click()} ariaLabel={ariaLabelText.myProfileAriaLabel.uploadAvatarAriaLabel} inputId="fileinput" onChange={handleImage} />
                     <div className="col-lg-10 col-sm-12 justify-content-end" >
                         <div className="row mx-auto px-0 d-flex justify-content-center align-items-center">
                             <form onSubmit={editUserProfile}>

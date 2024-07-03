@@ -356,11 +356,15 @@ select option:hover {
     border-radius: 11px;
     aspect-ratio: 1 / 1;
     object-fit: cover;
+    width: 100% !important;
+    height: 100% !important;
 }
 
 .recipeImageDiv {
     max-height: 250px;
+    height: 100%;
     max-width: 250px;
+    width: 100%;
 }
 
 nav {
