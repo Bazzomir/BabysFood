@@ -70,7 +70,7 @@ export default function MyRecipes() {
 
     return (
         <div className="container">
-            <div className="row pt-5 pb-6 position-relative justify-content-center">
+            <div className="row pt-5 pb-6 position-relative">
                 <div className="row">
                     {/* <div className="col">
                         <h2 className="title">My recipes<hr className="mt-2 titleLine" /></h2>

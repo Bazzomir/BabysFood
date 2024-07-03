@@ -4,7 +4,7 @@ import logo from '../../../assets/logo/logo.png';
 import ariaLabelText from '../../component/ariaLabelText';
 import { ButtonAuth, ButtonLink } from '../../component/Buttons';
 import TitleWithLine from '../../component/TitleWithLine';
-import { InputCheck, InputUser } from '../../component/Inputs';
+import { InputCheck, InputClassic } from '../../component/Inputs';
 
 // const bcrypt = require("bcryptjs");
 
@@ -153,8 +153,8 @@ export default function Register() {
                 <TitleWithLine title="Sing Up" />
                 <div className="row py-3 px-0 mx-auto w-100" >
                     <h2 className="col-12" ><span className="orangeText">Create Your</span><span className="greyText"> Account</span></h2>
-                    <div className="row flex-sm-row-reverse p-0 m-0 w-100">
-                        <div className="col-md-6 col-sm-12">
+                    <div className="row flex-sm-row-reverse justify-content-center p-0 m-0 w-100 gap-5">
+                        <div className="col-md-5 col-sm-12">
                             <div className="row d-flex justify-content-center align-items-center">
                                 <form name="registerForm" className="needs-validation col-12" onSubmit={singUp} noValidate>
                                     <div className="form-group">
@@ -167,7 +167,7 @@ export default function Register() {
                                                 Please enter your first name.
                                             </div>
                                         </div>  */}
-                                            <InputUser htmlFor="first_name" labelName="First Name" type="text" placeholder="John" classNameDiv="py-2 col-xl-6 col-xs-12" id="first_name" value={FirstName} onChange={e => { setFirstName(e.target.value) }} feedback="Please enter your first name." />
+                                            <InputClassic htmlFor="first_name" labelName="First Name" type="text" placeholder="John" classNameDiv="py-2 col-xl-6 col-xs-12" id="first_name" value={FirstName} onChange={e => { setFirstName(e.target.value) }} feedback="Please enter your first name." />
                                             {/* <div className="col-xl-6 col-xs">
                                             <label htmlFor="last_name"sssssssssssssssssssssssssss className="form-label m-0">Last Name</label>
                                             <input className="form-control" type="text" placeholder="Doe" id="last_name" required value={LastName}
@@ -176,7 +176,7 @@ export default function Register() {
                                                 Please enter your last name.
                                             </div>
                                         </div> */}
-                                            <InputUser htmlFor="last_name" labelName="Last Name" type="text" placeholder="Doe" classNameDiv="py-2 col-xl-6 col-xs-12" id="last_name" value={LastName} onChange={e => { setLastName(e.target.value) }} feedback="Please enter your last name." />
+                                            <InputClassic htmlFor="last_name" labelName="Last Name" type="text" placeholder="Doe" classNameDiv="py-2 col-xl-6 col-xs-12" id="last_name" value={LastName} onChange={e => { setLastName(e.target.value) }} feedback="Please enter your last name." />
                                         </div>
                                         <div className="row">
                                             {/* <div className="col-xl-6 col-xs">
@@ -187,7 +187,7 @@ export default function Register() {
                                                 Please enter your email address.
                                             </div>
                                         </div> */}
-                                            <InputUser htmlFor="email" labelName="Email" type="email" placeholder="user@domain.com" classNameDiv="py-2 col-xl-6 col-xs-12" id="email" value={email} onChange={e => { setEmail(e.target.value) }} feedback="Please enter your email address." />
+                                            <InputClassic htmlFor="email" labelName="Email" type="email" placeholder="user@domain.com" classNameDiv="py-2 col-xl-6 col-xs-12" id="email" value={email} onChange={e => { setEmail(e.target.value) }} feedback="Please enter your email address." />
                                             {/* <div className="form-group col-xl-6 col-xs">
                                             <label htmlFor="birthday" className="form-label m-0">Birthday</label>
                                             <input className="form-control" type="date" value={birthday} id="birthday" required
@@ -196,7 +196,7 @@ export default function Register() {
                                                 Please enter your birthday.
                                             </div>
                                         </div> */}
-                                            <InputUser htmlFor="birthday" labelName="Birthday" type="date" classNameDiv="py-2 col-xl-6 col-xs-12" id="birthday" value={birthday} onChange={e => { setBirthday(e.target.value) }} feedback="Please enter your birthday." />
+                                            <InputClassic htmlFor="birthday" labelName="Birthday" type="date" classNameDiv="py-2 col-xl-6 col-xs-12" id="birthday" value={birthday} onChange={e => { setBirthday(e.target.value) }} feedback="Please enter your birthday." />
                                         </div>
                                         <div className="row">
                                             {/* <div className="form-group col-xl-6 col-xs">
@@ -207,7 +207,7 @@ export default function Register() {
                                                 Please enter your password.
                                             </div>
                                         </div> */}
-                                            <InputUser htmlFor="password" labelName="Password" type="password" classNameDiv="py-2 col-xl-6 col-xs-12" id="password" value={password} placeholder="********" onChange={e => { setPassword(e.target.value) }} feedback="Please enter your password." />
+                                            <InputClassic htmlFor="password" labelName="Password" type="password" classNameDiv="py-2 col-xl-6 col-xs-12" id="password" value={password} placeholder="********" onChange={e => { setPassword(e.target.value) }} feedback="Please enter your password." />
                                             {/* <div className="form-group col-xl-6 col-xs">
                                             <label htmlFor="confim_password" className="form-label m-0">Repeat password</label>
                                             <input className="form-control" placeholder="********" type="password" id="confim_password" value={confim_password} required
@@ -216,7 +216,7 @@ export default function Register() {
                                                 Please enter your password.
                                             </div>
                                         </div> */}
-                                            <InputUser htmlFor="confim_password" labelName="Repeat password" type="password" classNameDiv="py-2 col-xl-6 col-xs-12" id="confim_password" value={confim_password} placeholder="********" onChange={e => { setConfirmPassword(e.target.value) }} feedback="Please enter your password." />
+                                            <InputClassic htmlFor="confim_password" labelName="Repeat password" type="password" classNameDiv="py-2 col-xl-6 col-xs-12" id="confim_password" value={confim_password} placeholder="********" onChange={e => { setConfirmPassword(e.target.value) }} feedback="Please enter your password." />
                                         </div>
                                         <div className="form-group pt-3 pb-1 px-0 col-12">
                                             {/* <div className="form-check">
@@ -240,7 +240,7 @@ export default function Register() {
                                 <ButtonLink to="/login" ariaLabel={ariaLabelText.createAccAriaLabel.haveAnAcc} className="haveAnAcc" divClassName="py-4" linkName="Have an account?" />
                             </div>
                         </div>
-                        <div className="col-md-6 col-sm-12">
+                        <div className="col-md-5 col-sm-12">
                             {/* <p className="greyText"><img className="logo" src={logo} alt="Logo" />
                                 Wondering what to make for dinner tonight?
                                 Baby's Food Place is here to help you cook delicious meals with less stress and more joy.

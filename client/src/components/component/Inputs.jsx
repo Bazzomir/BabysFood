@@ -1,32 +1,17 @@
 import React from 'react';
 
-export const InputAuth = ({ htmlFor, labelName, inputName, type, value, onChange, placeholder, inputClassName }) => {
+export const InputClassic = ({ htmlFor, labelName, classNameDiv, classNameInput, type, placeholder, id, value, onChange, feedback }) => {
     return (
-        <div className="form-group p-2 col-sm-12 col-md-6">
-            <label htmlFor={htmlFor} className="form-label m-0">{labelName}</label>
+        <div className={`form-group ${classNameDiv}`}>
+            <label htmlFor={htmlFor} className="form-group m-0">{labelName}</label>
             <input
-                className={`form-control ${inputClassName}`}
+                className={`form-control ${classNameInput}`}
                 placeholder={placeholder}
                 onChange={onChange}
                 value={value}
                 type={type}
-                name={inputName}
-            />
-        </div>
-    );
-}
-
-export const InputUser = ({ htmlFor, labelName, classNameDiv, type, placeholder, id, value, onChange, feedback }) => {
-    return (
-        <div className={classNameDiv}>
-            <label htmlFor={htmlFor} className="form-label m-0">{labelName}</label>
-            <input className="form-control"
-                type={type}
-                placeholder={placeholder}
-                id={id}
                 required
-                value={value}
-                onChange={onChange}
+                id={id}
             />
             <div className="invalid-feedback">
                 {feedback}
@@ -39,7 +24,7 @@ export const InputCheck = ({ value, onChange, id, htmlFor, ariaLabel, labelName,
     return (
         <div className="form-check">
             <input className="form-check-input" type="checkbox" value={value} id={id} required={required} onChange={onChange} aria-label={ariaLabel} />
-            <label className="form-check-label" htmlFor={htmlFor}>
+            <label className="form-check-label" htmlFor={htmlFor} >
                 {labelName}
             </label>
             <div className="invalid-feedback">
@@ -49,4 +34,15 @@ export const InputCheck = ({ value, onChange, id, htmlFor, ariaLabel, labelName,
     )
 }
 
-// export default InputAuth;
+export const InputTextArea = ({ classNameDiv, htmlFor, labelName, id, classNameTextArea, rows, value, onChange, feedback }) => {
+    return (
+        <div className={`form-group ${classNameDiv}`}>
+            <label htmlFor={htmlFor} >{labelName}</label>
+            <textarea className={`form-control ${classNameTextArea}`} id={id} rows={rows} value={value} required
+                onChange={onChange} />
+            <div className="invalid-feedback">
+                {feedback}
+            </div>
+        </div>
+    )
+}

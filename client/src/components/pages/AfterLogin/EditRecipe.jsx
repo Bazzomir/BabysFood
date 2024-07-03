@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { api } from "../../../RESTApi/RestApi";
 // import { Link } from 'react-router-dom';
 import { useParams } from "react-router-dom";
-import defaultImgRecipe from '../../../assets/defaultImgRecipe.jpg'
-import ariaLabelText from '../../component/ariaLabelText';
+import defaultImgRecipe from "../../../assets/defaultImgRecipe.jpg";
+import ariaLabelText from "../../component/ariaLabelText";
 import TitleWithLine from "../../component/TitleWithLine";
 import { ButtonAuth, ButtonCircle } from "../../component/Buttons";
+import { InputClassic, InputTextArea } from "../../component/Inputs";
 
 export default function EditRecipe() {
 
@@ -157,7 +158,7 @@ export default function EditRecipe() {
                 </div>
                 <div className="row px-0 mx-auto mt-4">
                     <div className="col-sm-12 col-lg-3">
-                        <div className="col">
+                        <div className="p-2 col-12">
                             <label htmlFor="recipeImage">Recipe Image</label>
                         </div>
                         <div className="col-12 mx-auto recipeImageDiv">
@@ -174,11 +175,12 @@ export default function EditRecipe() {
                                 <div className="row row-cols-md-2">
                                     <div className="col-md-12 col-lg-7">
                                         <div className="row">
-                                            <div className="form-group p-2 col-12">
+                                            {/* <div className="form-group p-2 col-12">
                                                 <label htmlFor="recipeTitle">Recipe Title</label>
                                                 <input className="form-control" id="recipeTitle" type="text" value={title} required
                                                     onChange={e => { setTitle(e.target.value) }} />
-                                            </div>
+                                            </div> */}
+                                            <InputClassic classNameDiv="p-2 col-12" htmlFor="recipeTitle" labelName="Recipe Title" type="text" placeholder="Recipe Title" id="recipeTitle" value={title} onChange={e => { setTitle(e.target.value) }} />
                                             <div className="col-12">
                                                 <div className="row row-cols-md-3">
                                                     <div className="form-group p-2 col-sm-12">
@@ -194,34 +196,39 @@ export default function EditRecipe() {
                                                     </div>
                                                     {/* <div className="col-12"> */}
                                                     {/* <div className="row row-cols-md-3"> */}
-                                                    <div className="form-group p-2 col-6">
+                                                    {/* <div className="form-group p-2 col-6">
                                                         <label htmlFor="recipePreparationTime">Preparation Time</label>
                                                         <input className="form-control" id="recipePreparationTime" type="number" value={preparation} required
                                                             onChange={e => { setPreparation(e.target.value) }} />
-                                                    </div>
-                                                    <div className="form-group p-2 col-6">
+                                                    </div> */}
+                                                    <InputClassic htmlFor="recipePreparationTime" labelName="Preparation Time" type="number" placeholder="Recipe Time" classNameDiv="p-2 col-12" id="recipePreparationTime" value={preparation} onChange={e => { setPreparation(e.target.value) }} />
+                                                    {/* <div className="form-group p-2 col-6">
                                                         <label htmlFor="recipeNumPeople">No. People</label>
                                                         <input className="form-control" id="recipeNumPeople" type="number" value={people} required
                                                             onChange={e => { setPeople(e.target.value) }} />
-                                                    </div>
+                                                    </div> */}
+                                                    <InputClassic htmlFor="recipeNumPeople" labelName="No. People" type="number" placeholder="Number of people" classNameDiv="p-2 col-12" id="recipeNumPeople" value={people} onChange={e => { setPeople(e.target.value) }} />
                                                     {/* </div> */}
                                                     {/* </div> */}
                                                 </div>
                                             </div>
-                                            <div className="form-group p-2 col-12">
+                                            {/* <div className="form-group p-2 col-12">
                                                 <label htmlFor="recipeShortDes">Short Description</label>
                                                 <textarea className="form-control" id="recipeShortDes" rows="3" value={shortDescription} required
                                                     onChange={e => { setShortDescription(e.target.value) }} />
-                                            </div>
+                                            </div> */}
+                                            <InputTextArea classNameDiv="p-2 col-12" htmlFor="recipeShortDes" labelName="Short Description" id="recipeShortDes" rows="3" value={shortDescription} onChange={e => { setShortDescription(e.target.value) }} feedback="Please enter recipe short description." />
                                         </div>
                                     </div>
                                     <div className="col-md-12 col-lg-5 p-2">
-                                        <div className="form-group mb-3">
+                                        {/* <div className="form-group mb-3">
                                             <label htmlFor="recipeDes">Full Recipe</label>
                                             <textarea className="form-control" id="recipeDes" rows="10" value={description} required
                                                 onChange={e => { setDescription(e.target.value) }} />
-                                        </div>
+                                        </div> */}
+                                        <InputTextArea classNameDiv="mb-3" htmlFor="recipeDes" labelName="Full Recipe" id="recipeDes" rows="10" value={description} onChange={e => { setDescription(e.target.value) }} feedback="Please enter full recipe." />
                                     </div>
+
                                     {/* <div className="pt-3">
                                         <button variant="success" className="btn btn-green col-2" onClick={editRecipe}>SAVE</button>
                                     </div> */}

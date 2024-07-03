@@ -9,7 +9,7 @@ export const NavigationButton = ({ to, ariaLabel, onClick, buttonName, className
     );
 };
 
-export const NavigationLInk = ({ to, linkName, ariaLabel, className }) => {
+export const NavigationLink = ({ to, linkName, ariaLabel, className }) => {
     return (
         <li className="nav-item col w-auto">
             <NavLink to={to}
@@ -65,4 +65,4 @@ export const ButtonCircle = ({ to, ariaLabel, viewBox, d }) => {
     );
 };
 
-// export default (NavigationButton, ButtonAuth, LinkButton, NavigationLInk);
+// export default (NavigationButton, ButtonAuth, LinkButton, NavigationLink);
