@@ -47,6 +47,15 @@
     padding: 2px 7.5px;
 }
 
+.popUp-image {
+    max-width: 100%;
+    height: 450px;
+    border-radius: 15px;
+    transition: height 0.5s;
+    object-fit: cover;
+}
+
+
 @keyframes slideIn {
     from {
         opacity: 0;
@@ -69,31 +78,20 @@
     }
 }
 
-/* Ensure the image is responsive */
-.responsive-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 15px;
-}
-
 @media (min-width: 576px) {
     .modal-dialog {
         max-width: 80%;
-        /* Adjust for sm and up */
     }
 }
 
 @media (min-width: 768px) {
     .modal-dialog {
         max-width: 70%;
-        /* Adjust for md and up */
     }
 }
 
 @media (min-width: 992px) {
     .modal-dialog {
         max-width: 60%;
-        /* Adjust for lg and up */
     }
 }
-
