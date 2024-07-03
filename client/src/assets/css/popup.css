@@ -3,6 +3,15 @@
     backdrop-filter: blur(5px);
 }
 
+.modal .modal-body {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.modal-dialog {
+    max-width: 90%;
+}
+
 .popUpButton {
     color: var(--white);
     background-color: var(--green);
@@ -59,3 +68,32 @@
         transform: translateY(100%);
     }
 }
+
+/* Ensure the image is responsive */
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 80%;
+        /* Adjust for sm and up */
+    }
+}
+
+@media (min-width: 768px) {
+    .modal-dialog {
+        max-width: 70%;
+        /* Adjust for md and up */
+    }
+}
+
+@media (min-width: 992px) {
+    .modal-dialog {
+        max-width: 60%;
+        /* Adjust for lg and up */
+    }
+}
+
