@@ -5,6 +5,7 @@ import defaultImgRecipe from '../../../assets/defaultImgRecipe.jpg';
 import ariaLabelText from '../../component/ariaLabelText';
 import TitleWithLine from '../../component/TitleWithLine';
 import { ButtonAuth, ButtonCircle } from '../../component/Buttons';
+import { InputClassic, InputTextArea } from '../../component/Inputs';
 
 export default function CreateRecipe() {
 
@@ -170,17 +171,18 @@ export default function CreateRecipe() {
                                 <div className="row row-cols-md-2">
                                     <div className="col-md-12 col-lg-7">
                                         <div className="row">
-                                            <div className="form-group p-2 col-12">
+                                            <InputClassic htmlFor="recipeTitle" labelName="Recipe Title" type="text" placeholder="Recipe Title" classNameDiv="p-2 col-12" id="recipeTitle" value={title} onChange={e => { setTitle(e.target.value) }} feedback="Please enter recipe title." />
+                                            {/* <div className="form-group p-2 col-12">
                                                 <label htmlFor="recipeTitle">Recipe Title</label>
                                                 <input className="form-control" id="recipeTitle" type="text" placeholder="Recipe Title" value={title} required
-                                                    onChange={e => { setTitle(e.target.value) }} />
-                                                {/* {Object.keys(titleError).map((key) => {
+                                                    onChange={e => { setTitle(e.target.value) }} /> */}
+                                            {/* {Object.keys(titleError).map((key) => {
                                                     return <div className='text-danger'>{titleError[key]}</div>
                                                 })} */}
-                                                <div className="invalid-feedback">
+                                            {/* <div className="invalid-feedback">
                                                     Please enter recipe title.
                                                 </div>
-                                            </div>
+                                            </div> */}
                                             <div className="col-12">
                                                 <div className="row row-cols-md-3">
                                                     <div className="form-group p-2 col-sm-12">
@@ -201,44 +203,48 @@ export default function CreateRecipe() {
                                                         </div>
                                                     </div>
                                                     {/* <div className="row row-cols-sm-2"> */}
-                                                    <div className="form-group p-2 col-6">
+                                                    {/* <div className="form-group p-2 col-6">
                                                         <label htmlFor="recipePreparationTime" >Preparation Time</label>
                                                         <input className="form-control" id="recipePreparationTime" type="number" value={preparation}
                                                             onChange={e => { setPreparation(e.target.value) }} />
-                                                    </div>
-                                                    <div className="form-group p-2 col-6">
+                                                    </div> */}
+                                                    <InputClassic htmlFor="recipePreparationTime" labelName="Preparation Time" type="number" placeholder="Recipe Time" classNameDiv="p-2 col-12" id="recipePreparationTime" value={preparation} onChange={e => { setPreparation(e.target.value) }} feedback="Please enter preparation time." />
+                                                    {/* <div className="form-group p-2 col-6">
                                                         <label htmlFor="recipeNumPeople">No. People</label>
                                                         <input className="form-control" id="recipeNumPeople" type="number" value={people}
                                                             onChange={e => { setPeople(e.target.value) }} />
-                                                    </div>
+                                                    </div> */}
+                                                    <InputClassic htmlFor="recipeNumPeople" labelName="No. People" type="number" placeholder="Number of people" classNameDiv="p-2 col-12" id="recipeNumPeople" value={people} onChange={e => { setPeople(e.target.value) }} feedback="Please enter number people." />
                                                     {/* </div> */}
                                                 </div>
                                             </div>
-                                            <div className="form-group p-2 col-12">
+                                            {/* <div className="form-group p-2 col-12">
                                                 <label htmlFor="recipeShortDes" >Short Description</label>
                                                 <textarea className="form-control" id="recipeShortDes" rows="3" value={shortDescription} required
-                                                    onChange={e => { setShortDescription(e.target.value) }} />
-                                                {/* {Object.keys(shortDescriptionError).map((key) => {
+                                                    onChange={e => { setShortDescription(e.target.value) }} /> */}
+                                            {/* {Object.keys(shortDescriptionError).map((key) => {
                                                     return <div className='text-danger'>{shortDescriptionError[key]}</div>
                                                 })} */}
-                                                <div className="invalid-feedback">
+                                            {/* <div className="invalid-feedback">
                                                     Please enter recipe short description.
                                                 </div>
-                                            </div>
+                                            </div> */}
+                                            <InputTextArea classNameDiv="p-2 col-12" htmlFor="recipeShortDes" labelName="Short Description" id="recipeShortDes" rows="3" value={shortDescription} onChange={e => { setShortDescription(e.target.value) }} feedback="Please enter recipe short description." />
                                         </div>
                                     </div>
                                     <div className="col-md-12 col-lg-5 p-2">
-                                        <div className="form-group mb-3">
+                                        {/* <div className="form-group mb-3">
                                             <label htmlFor="recipeDes">Full Recipe</label>
                                             <textarea className="form-control" id="recipeDes" rows="10" value={description} required
-                                                onChange={e => { setDescription(e.target.value) }} />
+                                                onChange={e => { setDescription(e.target.value) }} /> */}
                                             {/* {Object.keys(descriptionError).map((key) => {
                                                 return <div className='text-danger'>{descriptionError[key]}</div>
                                             })} */}
-                                            <div className="invalid-feedback">
+                                            {/* <div className="invalid-feedback">
                                                 Please enter full recipe.
                                             </div>
-                                        </div>
+                                        </div> */}
+                                        <InputTextArea classNameDiv="mb-3" htmlFor="recipeDes" labelName="Full Recipe" id="recipeDes" rows="10" value={description} onChange={e => { setDescription(e.target.value) }} feedback="Please enter full recipe." />
                                     </div>
                                     {/* <div className="pt-3">
                                         <button variant="success" className="btn btn-green col-2" aria-label={ariaLabelText.createMyRecipeAriaLabel.saveRecipeAriaLabel}

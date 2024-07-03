@@ -5,7 +5,7 @@ import avatar from "../../../assets/avatar.png";
 import ariaLabelText from '../../component/ariaLabelText';
 import TitleWithLine from '../../component/TitleWithLine';
 import { ButtonAuth } from '../../component/Buttons';
-import {InputUser} from '../../component/Inputs';
+import { InputClassic, InputTextArea } from '../../component/Inputs';
 
 export default function MyProfile() {
 
@@ -16,6 +16,7 @@ export default function MyProfile() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [image, setImage] = useState(null);
+    const [aboutMe, setAboutMe] = useState("");
 
     function handleImage(e) {
         const reader = new FileReader();
@@ -47,6 +48,7 @@ export default function MyProfile() {
                 setLastName(data.user.last_name)
                 setEmail(data.user.email)
                 setBirthday(data.user.birthday)
+                setAboutMe(data.user.about_me)
 
                 if (data.user.image === `${avatar}` || data.user.image === undefined) {
                     setImage(avatar)
@@ -126,39 +128,40 @@ export default function MyProfile() {
                                                 <label>First Name</label>
                                                 <input className="form-control" placeholder="John" onChange={(e) => setFirstName(e.target.value)} value={FirstName} type="text" />
                                             </div> */}
-                                            <InputUser htmlFor="first_name" labelName="First Name" inputName="first_name" type="text" value={FirstName} onChange={(e) => setFirstName(e.target.value)} />
+                                            <InputClassic htmlFor="first_name" labelName="First Name" inputName="first_name" type="text" value={FirstName} onChange={(e) => setFirstName(e.target.value)} />
                                             {/* <div className="form-group p-2 col-sm-12 col-md-6">
                                                 <label>Last Name</label>
                                                 <input className="form-control" placeholder="Smith" onChange={(e) => setLastName(e.target.value)} value={LastName} type="text" />
                                             </div> */}
-                                            <InputUser htmlFor="last_name" labelName="Last Name" inputName="last_name" type="text" value={LastName} onChange={(e) => setLastName(e.target.value)} />
+                                            <InputClassic htmlFor="last_name" labelName="Last Name" inputName="last_name" type="text" value={LastName} onChange={(e) => setLastName(e.target.value)} />
                                             {/* <div className="form-group p-2 col-sm-12 col-md-6">
                                                 <label>Email address</label>
                                                 <input className="form-control" type="email" placeholder="john@smith.com" onChange={(e) => setEmail(e.target.value)} value={email} />
                                             </div> */}
-                                            <InputUser htmlFor="email" labelName="Email" inputName="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                                            <InputClassic htmlFor="email" labelName="Email" inputName="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                                             {/* <div className="form-group p-2 col-sm-12 col-md-6" >
                                                 <label>Birthday</label><br />
                                                 <input className="form-control" type="date" name="birthday" onChange={(e) => setBirthday(e.target.value)} value={birthday} />
                                             </div> */}
-                                            <InputUser htmlFor="birthday" labelName="Birthdat" inputName="birthday" type="date" value={email} onChange={(e) => setBirthday(e.target.value)} />
+                                            <InputClassic htmlFor="birthday" labelName="Birthday" inputName="birthday" type="date" value={birthday} onChange={(e) => setBirthday(e.target.value)} />
                                             {/* <div className="form-group p-2 col-sm-12 col-md-6" >
                                                 <label>Password</label>
-                                                <input className="form-control" type="password" placeholder="******" onChange={(e) => setPassword(e.target.value)} value={password} />
+                                                <input className="form-control" type="password" placeholder="************" onChange={(e) => setPassword(e.target.value)} value={password} />
                                             </div> */}
-                                            <InputUser htmlFor="password" labelName="Password" inputName="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                                            <InputClassic htmlFor="password" labelName="Password" inputName="password" type="password" value={password} placeholder="************" onChange={(e) => setPassword(e.target.value)} />
                                             {/* <div className="form-group p-2 col-sm-12 col-md-6" >
                                                 <label>Repeat Password</label>
-                                                <input className="form-control" type="password" placeholder="******" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} />
+                                                <input className="form-control" type="password" placeholder="************" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} />
                                             </div> */}
-                                            <InputUser htmlFor="password" labelName="Repeat Password" inputName="password" type="password" value={password} onChange={(e) => setConfirmPassword(e.target.value)} />
+                                            <InputClassic htmlFor="password" labelName="Repeat Password" inputName="password" type="password" value={password} placeholder="************" onChange={(e) => setConfirmPassword(e.target.value)} />
                                         </div>
                                     </div>
                                     <div className="col-md-4 p-0">
-                                        <div className="form-group col-12 p-2" >
+                                        {/* <div className="form-group col-12 p-2" >
                                             <label htmlFor="aboutMe">About Me</label>
                                             <textarea className="form-control h-100 overflow-hidden" rows="8" />
-                                        </div>
+                                        </div> */}
+                                        <InputTextArea classNameDiv="p-2 col-12" htmlFor="aboutMe" labelName="About Me" id="aboutMe" classNameTextArea="h-100 overflow-hidden" rows="8" value={aboutMe} onChange={e => { setAboutMe(e.target.value) }} />
                                     </div>
                                 </div>
                                 <ButtonAuth classNameDiv="col-12 mt-4 text-end" classNameBtn="btn-green text-uppercase col-md-2" buttonName="Save" ariaLabel={ariaLabelText.myProfileAriaLabel.saveProfileAriaLabel} />

@@ -4,7 +4,7 @@ import logo from '../../../assets/logo/logo.png';
 import TitleWithLine from '../../component/TitleWithLine';
 import ariaLabelText from '../../component/ariaLabelText';
 import { ButtonAuth, ButtonLink } from '../../component/Buttons';
-import { InputCheck, InputAuth } from '../../component/Inputs';
+import { InputCheck, InputClassic } from '../../component/Inputs';
 // import { NavLink } from 'react-router-dom';
 
 const bcrypt = require("bcryptjs");
@@ -102,7 +102,7 @@ export default function Login() {
                                                 Please enter your email address.
                                             </div>
                                         </div> */}
-                                        <InputAuth htmlFor="email" labelName="Email" classNameDiv="col-12 py-2" type="email" placeholder="user@domain.com" id="email" value={email} onChange={e => { setEmail(e.target.value) }} feedback="Please enter your email address." />
+                                        <InputClassic htmlFor="email" labelName="Email" classNameDiv="col-12 py-2" type="email" placeholder="user@domain.com" id="email" value={email} onChange={e => { setEmail(e.target.value) }} feedback="Please enter your email address." />
                                         {/* <div className="form-group pb-4 col">
                                             <label htmlFor="validationCustom02" className="form-label m-0">Password</label>
                                             <input className="form-control" type="password" placeholder="********" id="validationCustom02" required value={password} onChange={(e) => { setPassword(e.target.value) }} />
@@ -110,7 +110,7 @@ export default function Login() {
                                                 Please enter your password.
                                             </div>
                                         </div> */}
-                                        <InputAuth htmlFor="password" labelName="Password" classNameDiv="col-12 py-2" type="password" id="password" value={password} placeholder="********" onChange={e => { setPassword(e.target.value) }} feedback="Please enter your password." />
+                                        <InputClassic htmlFor="password" labelName="Password" classNameDiv="col-12 py-2" type="password" id="password" value={password} placeholder="********" onChange={e => { setPassword(e.target.value) }} feedback="Please enter your password." />
                                         {/* </div> */}
                                         <div className="pt-3 pb-1 col-12 d-flex justify-content-between align-items-center">
                                             {/* <div className="form-check">
