@@ -46,3 +46,20 @@ export const InputTextArea = ({ classNameDiv, htmlFor, labelName, id, classNameT
         </div>
     )
 }
+
+export const InputImage = ({classNameDiv, classNameDivImg, classNameImg, alt, src, classNameDivLabel, labelName, htmlFor, onClick, ariaLabel, inputId, onChange }) => {
+    return (
+        <div className={`col-sm-12 ${classNameDiv}`}>
+            <div className={classNameDivLabel}>
+                <label htmlFor={htmlFor}>{labelName}</label>
+            </div>
+            <div className={`col-12 mx-auto ${classNameDivImg}`}>
+                <img className={`mx-auto ${classNameImg}`} alt={alt} src={src} />
+            </div>
+            <div className="col mt-4 text-center">
+                <button onClick={onClick} type="submit" className="btn btn-grey" aria-label={ariaLabel}>UPLOAD IMAGE</button>
+                <input id={inputId} onChange={onChange} type="file" accept="image/*" style={{ display: "none" }} />
+            </div>
+        </div>
+    )
+}
