@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const InputAuth = ({ htmlFor, labelName, inputName, type, value, onChange, placeholder, inputClassName }) => {
+export const InputUser = ({ htmlFor, labelName, inputName, type, value, onChange, placeholder, inputClassName }) => {
     return (
         <div className="form-group p-2 col-sm-12 col-md-6">
             <label htmlFor={htmlFor} className="form-label m-0">{labelName}</label>
@@ -16,7 +16,7 @@ export const InputAuth = ({ htmlFor, labelName, inputName, type, value, onChange
     );
 }
 
-export const InputUser = ({ htmlFor, labelName, classNameDiv, type, placeholder, id, value, onChange, feedback }) => {
+export const InputAuth = ({ htmlFor, labelName, classNameDiv, type, placeholder, id, value, onChange, feedback }) => {
     return (
         <div className={classNameDiv}>
             <label htmlFor={htmlFor} className="form-label m-0">{labelName}</label>
@@ -46,6 +46,18 @@ export const InputCheck = ({ value, onChange, id, htmlFor, ariaLabel, labelName,
                 {feedback}
             </div>
         </div>
+    )
+}
+
+export const InputTextArea = ({ }) => {
+    return (
+        <></>
+    )
+}
+
+export const InputRecipe = ({ }) => {
+    return (
+        <></>
     )
 }
 
