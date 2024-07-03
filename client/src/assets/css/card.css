@@ -56,3 +56,5 @@
     font-size: 12px;
     border-radius: 25px;
 }
+
+@media not all and (hover: none){};

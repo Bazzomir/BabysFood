@@ -44,7 +44,7 @@ function Popup(props) {
                 centered
                 show={modalOpen}
                 onHide={handleCloseModal}
-                dialogClassName="modal"
+                dialogClassName="modal-dialog"
             >
                 <Modal.Header closeButton>
                     <Modal.Title className="orangeText">
@@ -54,10 +54,14 @@ function Popup(props) {
                 <Modal.Body>
                     <div className="row">
                         <div className="col-sm-12 col-lg-5">
-                            <Card.Img style={{ borderRadius: "15px" }} className="img-fluid img-thumbnail" variant="top" src={`${api.root}/${recipe.image}`} />
+                            <Card.Img
+                                className="img-fluid img-thumbnail responsive-image"
+                                variant="top"
+                                src={`${api.root}/${recipe.image}`}
+                                alt={recipe.title}
+                            />
                             <Card.Title className="m-0 py-3 d-flex gap-2 align-items-center" style={{ color: "green" }}>
                                 Best Served For
-                                {/* <span className="popUpbadge mr-2">{recipe.category}</span> */}
                                 <RecipeCategoryBadge category={recipe.category || "Some food.."} className="popUpbadge mr-2" />
                             </Card.Title>
                             <Card.Text className="m-0">
@@ -65,7 +69,7 @@ function Popup(props) {
                             </Card.Text>
                         </div>
                         <div className="col-sm-12 col-lg-7">
-                            <Card.Body >
+                            <Card.Body>
                                 <Card.Text>
                                     {recipe.description}
                                 </Card.Text>
