@@ -128,36 +128,36 @@ export default function MyProfile() {
                                                 <label>First Name</label>
                                                 <input className="form-control" placeholder="John" onChange={(e) => setFirstName(e.target.value)} value={FirstName} type="text" />
                                             </div> */}
-                                            <InputClassic htmlFor="first_name" labelName="First Name" inputName="first_name" type="text" value={FirstName} onChange={(e) => setFirstName(e.target.value)} />
-                                            {/* <div className="form-group p-2 col-sm-12 col-md-6">
+                                            <InputClassic classNameDiv="p-2 col-sm-12 col-md-6" htmlFor="first_name" labelName="First Name" inputName="first_name" type="text" value={FirstName} onChange={(e) => setFirstName(e.target.value)} />
+                                            {/* <div className="p-2 col-sm-12 col-md-6">
                                                 <label>Last Name</label>
                                                 <input className="form-control" placeholder="Smith" onChange={(e) => setLastName(e.target.value)} value={LastName} type="text" />
                                             </div> */}
-                                            <InputClassic htmlFor="last_name" labelName="Last Name" inputName="last_name" type="text" value={LastName} onChange={(e) => setLastName(e.target.value)} />
-                                            {/* <div className="form-group p-2 col-sm-12 col-md-6">
+                                            <InputClassic classNameDiv="p-2 col-sm-12 col-md-6" htmlFor="last_name" labelName="Last Name" inputName="last_name" type="text" value={LastName} onChange={(e) => setLastName(e.target.value)} />
+                                            {/* <div className="p-2 col-sm-12 col-md-6">
                                                 <label>Email address</label>
                                                 <input className="form-control" type="email" placeholder="john@smith.com" onChange={(e) => setEmail(e.target.value)} value={email} />
                                             </div> */}
-                                            <InputClassic htmlFor="email" labelName="Email" inputName="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                                            {/* <div className="form-group p-2 col-sm-12 col-md-6" >
+                                            <InputClassic classNameDiv="p-2 col-sm-12 col-md-6" htmlFor="email" labelName="Email" inputName="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                                            {/* <div className="p-2 col-sm-12 col-md-6" >
                                                 <label>Birthday</label><br />
                                                 <input className="form-control" type="date" name="birthday" onChange={(e) => setBirthday(e.target.value)} value={birthday} />
                                             </div> */}
-                                            <InputClassic htmlFor="birthday" labelName="Birthday" inputName="birthday" type="date" value={birthday} onChange={(e) => setBirthday(e.target.value)} />
-                                            {/* <div className="form-group p-2 col-sm-12 col-md-6" >
+                                            <InputClassic classNameDiv="p-2 col-sm-12 col-md-6" htmlFor="birthday" labelName="Birthday" inputName="birthday" type="date" value={birthday} onChange={(e) => setBirthday(e.target.value)} />
+                                            {/* <div className="p-2 col-sm-12 col-md-6" >
                                                 <label>Password</label>
                                                 <input className="form-control" type="password" placeholder="************" onChange={(e) => setPassword(e.target.value)} value={password} />
                                             </div> */}
-                                            <InputClassic htmlFor="password" labelName="Password" inputName="password" type="password" value={password} placeholder="************" onChange={(e) => setPassword(e.target.value)} />
-                                            {/* <div className="form-group p-2 col-sm-12 col-md-6" >
+                                            <InputClassic classNameDiv="p-2 col-sm-12 col-md-6" htmlFor="password" labelName="Password" inputName="password" type="password" value={password} placeholder="************" onChange={(e) => setPassword(e.target.value)} />
+                                            {/* <div className="p-2 col-sm-12 col-md-6" >
                                                 <label>Repeat Password</label>
                                                 <input className="form-control" type="password" placeholder="************" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} />
                                             </div> */}
-                                            <InputClassic htmlFor="password" labelName="Repeat Password" inputName="password" type="password" value={password} placeholder="************" onChange={(e) => setConfirmPassword(e.target.value)} />
+                                            <InputClassic classNameDiv="p-2 col-sm-12 col-md-6" htmlFor="password" labelName="Repeat Password" inputName="password" type="password" value={password} placeholder="************" onChange={(e) => setConfirmPassword(e.target.value)} />
                                         </div>
                                     </div>
                                     <div className="col-md-4 p-0">
-                                        {/* <div className="form-group col-12 p-2" >
+                                        {/* <div className="col-12 p-2" >
                                             <label htmlFor="aboutMe">About Me</label>
                                             <textarea className="form-control h-100 overflow-hidden" rows="8" />
                                         </div> */}

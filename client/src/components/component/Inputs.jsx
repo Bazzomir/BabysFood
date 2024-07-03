@@ -2,8 +2,8 @@ import React from 'react';
 
 export const InputClassic = ({ htmlFor, labelName, classNameDiv, classNameInput, type, placeholder, id, value, onChange, feedback }) => {
     return (
-        <div className={classNameDiv}>
-            <label htmlFor={htmlFor} className="form-label m-0">{labelName}</label>
+        <div className={`form-group ${classNameDiv}`}>
+            <label htmlFor={htmlFor} className="form-group m-0">{labelName}</label>
             <input
                 className={`form-control ${classNameInput}`}
                 placeholder={placeholder}
@@ -24,7 +24,7 @@ export const InputCheck = ({ value, onChange, id, htmlFor, ariaLabel, labelName,
     return (
         <div className="form-check">
             <input className="form-check-input" type="checkbox" value={value} id={id} required={required} onChange={onChange} aria-label={ariaLabel} />
-            <label className="form-check-label" htmlFor={htmlFor}>
+            <label className="form-check-label" htmlFor={htmlFor} >
                 {labelName}
             </label>
             <div className="invalid-feedback">
