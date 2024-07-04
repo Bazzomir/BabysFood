@@ -7,8 +7,7 @@
 }
 
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-        monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
     font-display: optional;
 }
 
@@ -199,6 +198,17 @@ select option:hover {
     }
 } */
 
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    color: var(--grey);
+}
+
 .logo {
     height: 12.5rem;
     width: 12.5rem;
@@ -226,8 +236,6 @@ select option:hover {
     height: 15px;
     width: 15px;
 }
-
-
 
 /* .xxx {
     position: relative;
