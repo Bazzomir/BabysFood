@@ -55,7 +55,7 @@ function Popup(props) {
                     <div className="row">
                         <div className="col-sm-12 col-lg-5">
                             <Card.Img
-                                className="img-fluid img-thumbnail responsive-image"
+                                className="img-fluid img-thumbnail popUp-image"
                                 variant="top"
                                 src={`${api.root}/${recipe.image}`}
                                 alt={recipe.title}
