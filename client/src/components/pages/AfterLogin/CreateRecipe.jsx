@@ -121,9 +121,10 @@ export default function CreateRecipe() {
         })
             .then(res => {
                 if (res.status === 401 || res.status === 500) {
-                    alert("Token expired");
+                    alert("Token expired. Please log in.");
                     localStorage.removeItem("token");
                     window.location = "/login";
+                    return;
                 }
                 alert(`Recipes is created`);
                 window.location = "/myrecipes"
@@ -204,6 +205,7 @@ export default function CreateRecipe() {
                                                             Please choose recipe category.
                                                         </div>
                                                     </div>
+                                                    {/* <InputSelect onChange={e => { setCategory(e.target.value) }} value={category} defaultValue="defa" feedback="Please choose recipe category." /> */}
                                                     {/* <div className="row row-cols-sm-2"> */}
                                                     {/* <div className="form-group p-2 col-6">
                                                         <label htmlFor="recipePreparationTime" >Preparation Time</label>

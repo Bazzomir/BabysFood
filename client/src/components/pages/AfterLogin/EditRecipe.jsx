@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../../../RESTApi/RestApi";
-// import { Link } from 'react-router-dom';
 import { useParams } from "react-router-dom";
 import defaultImgRecipe from "../../../assets/defaultImgRecipe.jpg";
 import ariaLabelText from "../../component/ariaLabelText";
@@ -9,7 +8,6 @@ import { ButtonAuth, ButtonCircle } from "../../component/Buttons";
 import { InputClassic, InputTextArea, InputImage } from "../../component/Inputs";
 
 export default function EditRecipe() {
-
     const { id } = useParams();
     const [title, setTitle] = useState("");
     const [shortDescription, setShortDescription] = useState("");
@@ -17,125 +15,104 @@ export default function EditRecipe() {
     const [category, setCategory] = useState("");
     const [preparation, setPreparation] = useState("");
     const [people, setPeople] = useState("");
-    const [image, setImage] = useState(null);
-
-    function handleImage(e) {
-        const reader = new FileReader();
-        reader.onload = () => {
-            if (reader.readyState === 2) {
-                setImage(reader.result)
-            }
-        }
-        reader.readAsDataURL(e.target.files[0]);
-    }
-
-    // const getMyRecipe = () => {
-    //     fetch(`${api.root}/recipes/myrecipes/${id}`, {
-    //         headers: { 'Authorization': `Bearer ${localStorage.getItem("token")}` }
-    //     })
-    //         .then(res => {
-    //             if (res.status === 401 || res.status === 500) {
-    //                 alert("Loggin first");
-    //                 localStorage.removeItem('token');
-    //                 window.location = "/login";
-    //             }
-    //             return res.json();
-    //         })
-    //         .then(data => {
-    //             setTitle(data.recipe.title);
-    //             setShortDescription(data.recipe.short_description);
-    //             setDescription(data.recipe.description);
-    //             setCategory(data.recipe.category);
-    //             setPreparation(data.recipe.preparation);
-    //             setPeople(data.recipe.people);
-
-    //             if (data.recipe.image !== undefined) {
-    //                 setImage(`${api.root}/${data.recipe.image}`);
-    //             } else
-    //                 setImage(defaultImgRecipe);
-
-    //         })
-    // }
-
-    // useEffect(() => {
-    //     getMyRecipe();
-    // }, []);
+    const [image, setImage] = useState(defaultImgRecipe);
 
     useEffect(() => {
-        const getMyRecipe = () => {
-            fetch(`${api.root}/recipes/myrecipes/${id}`, {
-                headers: { 'Authorization': `Bearer ${localStorage.getItem("token")}` }
-            })
-                .then(res => {
-                    if (res.status === 401 || res.status === 500) {
-                        alert("Loggin first");
-                        localStorage.removeItem('token');
-                        window.location = "/login";
-                    }
-                    return res.json();
-                })
-                .then(data => {
-                    setTitle(data.recipe.title);
-                    setShortDescription(data.recipe.short_description);
-                    setDescription(data.recipe.description);
-                    setCategory(data.recipe.category);
-                    setPreparation(data.recipe.preparation);
-                    setPeople(data.recipe.people);
-
-                    if (data.recipe.image !== undefined) {
-                        setImage(`${api.root}/${data.recipe.image}`);
-                    } else {
-                        setImage(defaultImgRecipe);
-                    }
+        const getMyRecipe = async () => {
+            try {
+                const res = await fetch(`${api.root}/recipes/myrecipes/${id}`, {
+                    headers: { 'Authorization': `Bearer ${localStorage.getItem("token")}` }
                 });
+
+                if (res.status === 401 || res.status === 500) {
+                    alert("Token expired. Please log in.");
+                    localStorage.removeItem('token');
+                    window.location = "/login";
+                    return;
+                }
+
+                const data = await res.json();
+
+                if (data.recipe) {
+                    setTitle(data.recipe.title || "");
+                    setShortDescription(data.recipe.short_description || "");
+                    setDescription(data.recipe.description || "");
+                    setCategory(data.recipe.category || "");
+                    setPreparation(data.recipe.preparation || "");
+                    setPeople(data.recipe.people || "");
+                    setImage(data.recipe.image ? `${api.root}/${data.recipe.image}` : defaultImgRecipe);
+                } else {
+                    alert("Recipe not found");
+                }
+            } catch (err) {
+                alert("An error occurred: " + err.message);
+            }
         };
 
-        getMyRecipe();
+        if (id) {
+            getMyRecipe();
+        }
     }, [id]);
 
+    const handleImage = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImage(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
 
     const openFileInput = (event) => {
         event.preventDefault();
-        event.stopPropagation();
         document.getElementById("fileinput1").click();
-    }
+    };
 
-    const editRecipe = (event) => {
+    const editRecipe = async (event) => {
         event.preventDefault();
 
         const formData = new FormData();
-        const imageUpload = document.querySelector('input[type="file"]');
-
         formData.append('title', title);
         formData.append('short_description', shortDescription);
         formData.append('description', description);
         formData.append('category', category);
         formData.append('preparation', preparation);
         formData.append('people', people);
-        formData.append('image', imageUpload.files[0]);
 
-        fetch(`${api.root}/recipes/updateRecipe/${id}`, {
-            method: 'PATCH',
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem("token")}`,
-            },
-            body: formData
-        })
-            .then(res => {
-                if (res.status === 401 || res.status === 500) {
-                    alert("Token expired");
-                    localStorage.removeItem("token");
-                    window.location = "/login";
-                }
-                return res.json();
-            })
-            .then(data => {
-                if (data.error) {
-                    alert(data.message)
-                } else { window.location = "/myrecipes" }
-            })
-            .catch(err => alert(err))
-    }
+        const imageUpload = document.querySelector('input[type="file"]');
+        if (imageUpload && imageUpload.files[0]) {
+            formData.append('image', imageUpload.files[0]);
+        }
+
+        try {
+            const res = await fetch(`${api.root}/recipes/updateRecipe/${id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem("token")}`,
+                },
+                body: formData
+            });
+
+            if (res.status === 401 || res.status === 500) {
+                alert("Token expired. Please log in.");
+                localStorage.removeItem("token");
+                window.location = "/login";
+                return;
+            }
+
+            const data = await res.json();
+
+            if (data.error) {
+                alert(data.message);
+            } else {
+                window.location = "/myrecipes";
+            }
+        } catch (err) {
+            alert("An error occurred: " + err.message);
+        }
+    };
 
     return (
         <div className="container">
@@ -187,7 +164,7 @@ export default function EditRecipe() {
                                                     <div className="form-group p-2 col-sm-12">
                                                         <label htmlFor="recipeCategory">Category
                                                         </label>
-                                                        <select className="form-control" id="recipeCategory" value={category} required
+                                                        <select className="form-select" id="recipeCategory" value={category} required
                                                             onChange={e => { setCategory(e.target.value) }}>
                                                             <option value="Breakfast" id="Breakfast" >Breakfast</option>
                                                             <option value="Brunch" id="Brunch" >Brunch</option>
@@ -195,6 +172,7 @@ export default function EditRecipe() {
                                                             <option value="Dinner" id="Dinner" >Dinner</option>
                                                         </select>
                                                     </div>
+                                                    {/* <InputSelect onChange={e => { setCategory(e.target.value) }} value={category} /> */}
                                                     {/* <div className="col-12"> */}
                                                     {/* <div className="row row-cols-md-3"> */}
                                                     {/* <div className="form-group p-2 col-6">

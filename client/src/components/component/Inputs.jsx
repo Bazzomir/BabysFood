@@ -47,7 +47,7 @@ export const InputTextArea = ({ classNameDiv, htmlFor, labelName, id, classNameT
     )
 }
 
-export const InputImage = ({classNameDiv, classNameDivImg, classNameImg, alt, src, classNameDivLabel, labelName, htmlFor, onClick, ariaLabel, inputId, onChange }) => {
+export const InputImage = ({ classNameDiv, classNameDivImg, classNameImg, alt, src, classNameDivLabel, labelName, htmlFor, onClick, ariaLabel, inputId, onChange }) => {
     return (
         <div className={`col-sm-12 ${classNameDiv}`}>
             <div className={classNameDivLabel}>

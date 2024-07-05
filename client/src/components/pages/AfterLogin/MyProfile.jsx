@@ -15,7 +15,7 @@ export default function MyProfile() {
     const [email, setEmail] = useState("");
     const [birthday, setBirthday] = useState("");
     const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
+    const [confim_password, setConfirmPassword] = useState("");
     const [image, setImage] = useState(null);
     const [aboutMe, setAboutMe] = useState("");
     const [loading, setLoading] = useState(false);
@@ -34,7 +34,6 @@ export default function MyProfile() {
         setLoading(true);
         fetch(`${api.root}/users/me`, {
             headers: {
-                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         })
@@ -48,28 +47,20 @@ export default function MyProfile() {
                 return res.json();
             })
             .then(data => {
-                if (data) { // Ensure data is available
-                    setFirstName(data.user.first_name);
-                    setLastName(data.user.last_name);
-                    setEmail(data.user.email);
-                    setBirthday(data.user.birthday);
-                    setAboutMe(data.user.about_me);
+                const user = data.user || {};
+                setFirstName(user.first_name || '');
+                setLastName(user.last_name || '');
+                setEmail(user.email || '');
+                setBirthday(user.birthday || '');
+                setAboutMe(user.about_me || '');
+                setImage(user.image ? `${api.root}/${user.image}` : avatar);
+            })
+            .catch(err => {
+                alert(err);
+            })
+            .finally(() => setLoading(false));
+    };
 
-                    if (data.user.image === `${avatar}` || data.user.image === undefined) {
-                        setImage(avatar);
-                    } else {
-                        setImage(`${api.root}/${data.user.image}`);
-                    }
-                }
-            })
-            .catch(error => {
-                console.error("Error fetching user data:", error);
-                alert("An error occurred while fetching user data.");
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-    }
 
     useEffect(() => {
         getUser();
@@ -86,10 +77,10 @@ export default function MyProfile() {
         formData.append('email', email);
         formData.append('birthday', birthday);
         formData.append('password', password);
-        formData.append('confirmPassword', confirmPassword);
+        formData.append('confim_password', confim_password);
         formData.append('image', imageUpload.files[0]);
 
-        if (password === confirmPassword) {
+        if (password === confim_password) {
 
             fetch(`${api.root}/users/edit`, {
                 method: 'PATCH',
@@ -100,7 +91,7 @@ export default function MyProfile() {
             })
                 .then(res => {
                     if (res.status === 401 || res.status === 500) {
-                        alert("Token expired");
+                        alert("Token expired. Please log in.");
                         localStorage.removeItem("token");
                         window.location = "/login";
                     }
@@ -169,7 +160,7 @@ export default function MyProfile() {
                                                 <label>Repeat Password</label>
                                                 <input className="form-control" type="password" placeholder="************" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} />
                                             </div> */}
-                                            <InputClassic classNameDiv="p-2 col-sm-12 col-md-6" htmlFor="password" labelName="Repeat Password" inputName="password" type="password" value={password} placeholder="************" onChange={(e) => setConfirmPassword(e.target.value)} />
+                                            <InputClassic classNameDiv="p-2 col-sm-12 col-md-6" htmlFor="confim_password" labelName="Repeat Password" inputName="confim_password" type="password" value={confim_password} placeholder="************" onChange={(e) => setConfirmPassword(e.target.value)} />
                                         </div>
                                     </div>
                                     <div className="col-md-4 p-0">

@@ -31,7 +31,10 @@ export default function Breakfast() {
                 }
                 return res.json();
             })
-            .then(data => setBreakfast(data.recipes))
+            .then(data => {
+                const recipes = data.recipes || [];
+                setBreakfast(data.recipes);
+            })
             .catch((err) => alert(err))
             .finally(() => setLoading(false));
     }

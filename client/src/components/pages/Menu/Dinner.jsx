@@ -17,7 +17,10 @@ export default function Dinner() {
                 }
                 return res.json();
             })
-            .then(data => setDinner(data.recipes))
+            .then(data => {
+                const recipes = data.recipes || [];
+                setDinner(data.recipes)
+            })
             .catch(err => alert(err))
             .finally(() => setLoading(false));
     }
