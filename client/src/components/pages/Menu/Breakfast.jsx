@@ -2,22 +2,46 @@ import React, { useEffect, useState } from 'react';
 import { api } from '../../../RESTApi/RestApi';
 import RecipeCard from '../../component/RecipeCard';
 import TitleWithLine from '../../component/TitleWithLine';
+import Loading from '../../component/Loading';
 
 export default function Breakfast() {
     const [Breakfast, setBreakfast] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+    // function getBreakfast() {
+    //     setLoading(true);
+    //     fetch(`${api.root}/recipes/Breakfast`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setBreakfast(data.recipes)
+    //         })
+    //         .catch((err => alert(err), setLoading(false)));
+    // }
+
+    // useEffect(() => {
+    //     getBreakfast();
+    // }, []);
 
     function getBreakfast() {
+        setLoading(true);
         fetch(`${api.root}/recipes/Breakfast`)
-            .then(res => res.json())
-            .then(data => {
-                setBreakfast(data.recipes)
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`);
+                }
+                return res.json();
             })
-            .catch(err => alert(err));
+            .then(data => setBreakfast(data.recipes))
+            .catch((err) => alert(err))
+            .finally(() => setLoading(false));
     }
 
     useEffect(() => {
         getBreakfast();
     }, []);
+
+
+    if (loading) { return <Loading /> }
 
     return (
         <div className="container">

@@ -6,6 +6,7 @@ import ariaLabelText from '../../component/ariaLabelText';
 import TitleWithLine from '../../component/TitleWithLine';
 import { ButtonAuth } from '../../component/Buttons';
 import { InputClassic, InputTextArea, InputImage } from '../../component/Inputs';
+import Loading from '../../component/Loading';
 
 export default function MyProfile() {
 
@@ -17,6 +18,7 @@ export default function MyProfile() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [image, setImage] = useState(null);
     const [aboutMe, setAboutMe] = useState("");
+    const [loading, setLoading] = useState(false);
 
     function handleImage(e) {
         const reader = new FileReader();
@@ -29,6 +31,7 @@ export default function MyProfile() {
     }
 
     const getUser = () => {
+        setLoading(true);
         fetch(`${api.root}/users/me`, {
             headers: {
                 'Content-Type': 'application/json',
@@ -37,25 +40,35 @@ export default function MyProfile() {
         })
             .then(res => {
                 if (res.status === 401 || res.status === 500) {
-                    alert("Loggin first");
+                    alert("Log in first");
                     localStorage.removeItem('token');
                     window.location = "/login";
+                    return;
                 }
                 return res.json();
             })
             .then(data => {
-                setFirstName(data.user.first_name)
-                setLastName(data.user.last_name)
-                setEmail(data.user.email)
-                setBirthday(data.user.birthday)
-                setAboutMe(data.user.about_me)
+                if (data) { // Ensure data is available
+                    setFirstName(data.user.first_name);
+                    setLastName(data.user.last_name);
+                    setEmail(data.user.email);
+                    setBirthday(data.user.birthday);
+                    setAboutMe(data.user.about_me);
 
-                if (data.user.image === `${avatar}` || data.user.image === undefined) {
-                    setImage(avatar)
-                } else {
-                    setImage(`${api.root}/${data.user.image}`)
+                    if (data.user.image === `${avatar}` || data.user.image === undefined) {
+                        setImage(avatar);
+                    } else {
+                        setImage(`${api.root}/${data.user.image}`);
+                    }
                 }
             })
+            .catch(error => {
+                console.error("Error fetching user data:", error);
+                alert("An error occurred while fetching user data.");
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     }
 
     useEffect(() => {
@@ -102,6 +115,8 @@ export default function MyProfile() {
                 .catch(err => alert(err))
         } else { alert('The password confirmation does not match. Please try again, but CORRECTLY (:') }
     }
+
+    if (loading) { return <Loading /> }
 
     return (
         // <div>
