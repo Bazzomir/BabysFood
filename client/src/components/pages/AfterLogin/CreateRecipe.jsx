@@ -121,9 +121,10 @@ export default function CreateRecipe() {
         })
             .then(res => {
                 if (res.status === 401 || res.status === 500) {
-                    alert("Token expired");
+                    alert("Token expired. Please log in.");
                     localStorage.removeItem("token");
                     window.location = "/login";
+                    return;
                 }
                 alert(`Recipes is created`);
                 window.location = "/myrecipes"

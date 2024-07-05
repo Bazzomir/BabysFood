@@ -30,20 +30,15 @@ export default function MyRecipes() {
                     alert("Loggin first");
                     localStorage.removeItem('token');
                     window.location = "/login";
+                    return;
                 }
                 return res.json();
             })
             .then(data => {
-                let getRecipesImage = data.recipes.map((recipe) => {
-                    if (recipe.image !== undefined) {
-                        recipe.image = `${api.root}/${recipe.image}`
-                    } else {
-                        // recipe.image = "https://w7.pngwing.com/pngs/692/99/png-transparent-hamburger-street-food-seafood-fast-food-delicious-food-salmon-with-vegetables-salad-in-plate-leaf-vegetable-food-recipe-thumbnail.png"
-                        recipe.image = defaultImgRecipe;
-                    }
+                let getRecipesImage = (data.recipes || []).map(recipe => {
+                    recipe.image = recipe.image ? `${api.root}/${recipe.image}` : defaultImgRecipe;
                     return recipe;
-
-                })
+                });
                 setRecipes(getRecipesImage);
             })
             .catch((err) => alert(err))
@@ -66,9 +61,10 @@ export default function MyRecipes() {
         })
             .then(res => {
                 if (res.status === 401 || res.status === 500) {
-                    alert("Loggin first");
+                    alert("Token expired. Please log in.");
                     localStorage.removeItem('token');
                     window.location = "/login";
+                    return;
                 }
                 getMyRecipes();
             })

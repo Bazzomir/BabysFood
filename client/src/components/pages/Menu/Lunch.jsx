@@ -17,7 +17,10 @@ export default function Lunch() {
                 }
                 return res.json();
             })
-            .then(data => setLunch(data.recipes))
+            .then(data => {
+                const recipes = data.recipes || [];
+                setLunch(recipes);
+            })
             .catch(err => alert(err))
             .finally(() => setLoading(false));
     }

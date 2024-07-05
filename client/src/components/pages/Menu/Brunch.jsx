@@ -18,6 +18,7 @@ export default function Brunch() {
                 return res.json();
             })
             .then(data => {
+                const recipes = data.recipes || [];
                 setBrunch(data.recipes)
             })
             .catch(err => alert(err))
