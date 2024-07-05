@@ -6,6 +6,7 @@ import ariaLabelText from '../../component/ariaLabelText';
 import TitleWithLine from '../../component/TitleWithLine';
 import { ButtonAuth, ButtonCircle } from '../../component/Buttons';
 import { InputClassic, InputTextArea, InputImage } from '../../component/Inputs';
+import Swal from 'sweetalert2';
 
 export default function CreateRecipe() {
 
@@ -119,17 +120,32 @@ export default function CreateRecipe() {
             },
             body: formData
         })
-            .then(res => {
-                if (res.status === 401 || res.status === 500) {
-                    alert("Token expired. Please log in.");
-                    localStorage.removeItem("token");
-                    window.location = "/login";
-                    return;
+            .then(data => {
+                if (data.error) {
+                    // alert(data.message);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: ("An error occurred1: " + data.message),
+                    });
+                } else {
+                    Swal.fire({
+                        position: "top-center",
+                        icon: "success",
+                        title: "Recipe entered successfully",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    }).then(() => {
+                        window.location = "/myrecipes";
+                    });
                 }
-                alert(`Recipes is created`);
-                window.location = "/myrecipes"
             })
-            .catch(err => alert(err))
+            .catch(err => Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: ("An error occurred: " + err.message),
+            }));
+        // alert("An error occurred: " + err.message));
     }
 
     return (
