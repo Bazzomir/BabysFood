@@ -2,22 +2,31 @@ import React, { useEffect, useState } from 'react';
 import { api } from '../../../RESTApi/RestApi';
 import RecipeCard from '../../component/RecipeCard';
 import TitleWithLine from '../../component/TitleWithLine';
+import Loading from '../../component/Loading';
 
 export default function Dinner() {
     const [Dinner, setDinner] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     function getDinner() {
+        setLoading(true);
         fetch(`${api.root}/recipes/Dinner`)
-            .then(res => res.json())
-            .then(data => {
-                setDinner(data.recipes)
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`);
+                }
+                return res.json();
             })
-            .catch(err => alert(err));
+            .then(data => setDinner(data.recipes))
+            .catch(err => alert(err))
+            .finally(() => setLoading(false));
     }
 
     useEffect(() => {
         getDinner();
     }, []);
+
+    if (loading) { return <Loading /> }
 
     return (
         <div className="container" >
@@ -33,7 +42,7 @@ export default function Dinner() {
                         {Dinner.map(recipe => {
                             return (
                                 // <div className={`${Dinner.length > 2 ? 'col-4' : 'col-6'} pb-5`} key={recipe._id}>
-                                    <RecipeCard key={recipe._id} recipe={recipe} />
+                                <RecipeCard key={recipe._id} recipe={recipe} />
                                 // </div>
                             )
                         })}

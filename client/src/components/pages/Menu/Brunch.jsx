@@ -2,22 +2,33 @@ import React, { useEffect, useState } from 'react';
 import { api } from '../../../RESTApi/RestApi';
 import RecipeCard from '../../component/RecipeCard';
 import TitleWithLine from '../../component/TitleWithLine';
+import Loading from '../../component/Loading';
 
 export default function Brunch() {
     const [brunch, setBrunch] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     function getBrunch() {
+        setLoading(true);
         fetch(`${api.root}/recipes/brunch`)
-            .then(res => res.json())
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`);
+                }
+                return res.json();
+            })
             .then(data => {
                 setBrunch(data.recipes)
             })
-            .catch(err => alert(err));
+            .catch(err => alert(err))
+            .finally(() => setLoading(false));
     }
 
     useEffect(() => {
         getBrunch();
     }, []);
+
+    if (loading) { return <Loading /> }
 
     return (
         <div className="container" >
@@ -33,7 +44,7 @@ export default function Brunch() {
                         {brunch.map(recipe => {
                             return (
                                 // <div className={`${brunch.length > 2 ? 'col-4' : 'col-6'} pb-5`} key={recipe._id}>
-                                    <RecipeCard key={recipe._id} recipe={recipe} />
+                                <RecipeCard key={recipe._id} recipe={recipe} />
                                 // </div>
                             )
                         })}

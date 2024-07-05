@@ -7,14 +7,17 @@ import ariaLabelText from '../../component/ariaLabelText';
 import RecipeCategoryBadge from '../../component/RecipeCategoryBadge';
 import TitleWithLine from '../../component/TitleWithLine';
 import { ButtonCircle, NavigationImage, ButtonLink } from '../../component/Buttons';
+import Loading from '../../component/Loading';
 
 export default function MyRecipes() {
 
     // const { id } = useParams();
     const [recipes, setRecipes] = useState([]);
+    const [loading, setLoading] = useState(false);
 
 
     function getMyRecipes() {
+        setLoading(true);
         fetch(`${api.root}/recipes/myrecipes`, {
             method: 'GET',
             headers: {
@@ -43,11 +46,15 @@ export default function MyRecipes() {
                 })
                 setRecipes(getRecipesImage);
             })
+            .catch((err) => alert(err))
+            .finally(() => setLoading(false));
     }
 
     useEffect(() => {
         getMyRecipes();
     }, [])
+
+    if (loading) { return <Loading /> }
 
     function deleteMyRecipe(id) {
         fetch(`${api.root}/recipes/myrecipes/delete/${id}`, {
