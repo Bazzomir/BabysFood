@@ -5,7 +5,7 @@ import ariaLabelText from '../../component/ariaLabelText';
 import { ButtonAuth, ButtonLink } from '../../component/Buttons';
 import TitleWithLine from '../../component/TitleWithLine';
 import { InputCheck, InputClassic } from '../../component/Inputs';
-
+import Swal from 'sweetalert2';
 // const bcrypt = require("bcryptjs");
 
 export default function Register() {
@@ -136,13 +136,43 @@ export default function Register() {
                 .then(res => res.json())
                 .then((data) => {
                     if (!data.error) {
-                        alert(data.message)
-                        window.location = "/login"
-                    } else { alert(data.message) }
+                        // alert(data.message)
+                        Swal.fire({
+                            position: "top-center",
+                            icon: "success",
+                            // title: "Recipe entered successfully",
+                            title: (data.message),
+                            showConfirmButton: false,
+                            timer: 1500,
+                        }).then(() => {
+                            // window.location = "/myrecipes";
+                            window.location = "/login"
+                        });
+                        //             } else { alert(data.message) }
+                        //         })
+                        //         .catch(err => alert(err))
+                        // } else { alert('The password confirmation does not match. Please try again, but CORRECTLY (:') }
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: ("An error occurred1: " + data.message),
+                        });
+                    }
                 })
-                .catch(err => alert(err))
-        } else { alert('The password confirmation does not match. Please try again, but CORRECTLY (:') }
-    }
+                .catch(err => Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: ("An error occurred2: " + err.message),
+                }));
+        } else {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "The password confirmation does not match. Please try again."
+            });
+        }
+    };
 
     return (
         <div className="container">

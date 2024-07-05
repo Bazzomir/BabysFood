@@ -6,6 +6,7 @@ import ariaLabelText from "../../component/ariaLabelText";
 import TitleWithLine from "../../component/TitleWithLine";
 import { ButtonAuth, ButtonCircle } from "../../component/Buttons";
 import { InputClassic, InputTextArea, InputImage } from "../../component/Inputs";
+import Swal from 'sweetalert2';
 
 export default function EditRecipe() {
     const { id } = useParams();
@@ -104,13 +105,29 @@ export default function EditRecipe() {
 
             const data = await res.json();
 
-            if (data.error) {
-                alert(data.message);
+            if (!data.error) {
+                Swal.fire({
+                    position: "top-center",
+                    icon: "success",
+                    title: "The recipe has been successfully modified.",
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(() => {
+                    window.location = "/myrecipes";
+                });
             } else {
-                window.location = "/myrecipes";
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: ("An error occurred1: " + data.message),
+                });
             }
         } catch (err) {
-            alert("An error occurred: " + err.message);
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: ("An error occurred: " + err.message),
+            });
         }
     };
 

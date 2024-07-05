@@ -7,6 +7,7 @@ import TitleWithLine from '../../component/TitleWithLine';
 import { ButtonAuth } from '../../component/Buttons';
 import { InputClassic, InputTextArea, InputImage } from '../../component/Inputs';
 import Loading from '../../component/Loading';
+import Swal from 'sweetalert2';
 
 export default function MyProfile() {
 
@@ -15,7 +16,7 @@ export default function MyProfile() {
     const [email, setEmail] = useState("");
     const [birthday, setBirthday] = useState("");
     const [password, setPassword] = useState("");
-    const [confim_password, setConfirmPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [image, setImage] = useState(null);
     const [aboutMe, setAboutMe] = useState("");
     const [loading, setLoading] = useState(false);
@@ -34,33 +35,33 @@ export default function MyProfile() {
         setLoading(true);
         fetch(`${api.root}/users/me`, {
             headers: {
+                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         })
             .then(res => {
                 if (res.status === 401 || res.status === 500) {
-                    alert("Log in first");
+                    alert("Loggin first");
                     localStorage.removeItem('token');
                     window.location = "/login";
-                    return;
                 }
                 return res.json();
             })
             .then(data => {
-                const user = data.user || {};
-                setFirstName(user.first_name || '');
-                setLastName(user.last_name || '');
-                setEmail(user.email || '');
-                setBirthday(user.birthday || '');
-                setAboutMe(user.about_me || '');
-                setImage(user.image ? `${api.root}/${user.image}` : avatar);
-            })
-            .catch(err => {
-                alert(err);
-            })
-            .finally(() => setLoading(false));
-    };
+                setFirstName(data.user.first_name)
+                setLastName(data.user.last_name)
+                setEmail(data.user.email)
+                setBirthday(data.user.birthday)
+                setAboutMe(data.user.about_me)
 
+                if (data.user.image === `${avatar}` || data.user.image === undefined) {
+                    setImage(avatar)
+                } else {
+                    setImage(`${api.root}/${data.user.image}`)
+                }
+            })
+            .catch(setLoading(false))
+    }
 
     useEffect(() => {
         getUser();
@@ -68,20 +69,22 @@ export default function MyProfile() {
 
     const editUserProfile = (event) => {
         event.preventDefault();
-
+    
         const formData = new FormData();
         const imageUpload = document.querySelector('input[type="file"]');
-
+    
         formData.append('first_name', FirstName);
         formData.append('last_name', LastName);
         formData.append('email', email);
         formData.append('birthday', birthday);
         formData.append('password', password);
-        formData.append('confim_password', confim_password);
-        formData.append('image', imageUpload.files[0]);
-
-        if (password === confim_password) {
-
+        formData.append('confirmPassword', confirmPassword);
+    
+        if (imageUpload && imageUpload.files[0]) {
+            formData.append('image', imageUpload.files[0]);
+        }
+    
+        if (password === confirmPassword) {
             fetch(`${api.root}/users/edit`, {
                 method: 'PATCH',
                 headers: {
@@ -89,23 +92,47 @@ export default function MyProfile() {
                 },
                 body: formData
             })
-                .then(res => {
-                    if (res.status === 401 || res.status === 500) {
-                        alert("Token expired. Please log in.");
-                        localStorage.removeItem("token");
-                        window.location = "/login";
-                    }
-                    return res.json();
-                })
-                .then(data => {
-                    if (!data.error) {
-                        alert(data.message)
+            .then(res => {
+                if (res.status === 401 || res.status === 500) {
+                    alert("Token expired. Please log in.");
+                    localStorage.removeItem("token");
+                    window.location = "/login";
+                    return;
+                }
+                return res.json();
+            })
+            .then(data => {
+                if (!data.error) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Profile updated successfully.",
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(() => {
                         window.location.reload();
-                    } else { getUser(); }
-                })
-                .catch(err => alert(err))
-        } else { alert('The password confirmation does not match. Please try again, but CORRECTLY (:') }
-    }
+                    });
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: ("An error occurred1: " + data.message),
+                    });
+                }
+            })
+            .catch(err => Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: ("An error occurred2: " + err.message),
+            }));
+        } else {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "The password confirmation does not match. Please try again."
+            });
+        }
+    };
+    
 
     if (loading) { return <Loading /> }
 
@@ -160,7 +187,7 @@ export default function MyProfile() {
                                                 <label>Repeat Password</label>
                                                 <input className="form-control" type="password" placeholder="************" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} />
                                             </div> */}
-                                            <InputClassic classNameDiv="p-2 col-sm-12 col-md-6" htmlFor="confim_password" labelName="Repeat Password" inputName="confim_password" type="password" value={confim_password} placeholder="************" onChange={(e) => setConfirmPassword(e.target.value)} />
+                                            <InputClassic classNameDiv="p-2 col-sm-12 col-md-6" htmlFor="confirmPassword" labelName="Repeat Password" inputName="confirmPassword" type="password" value={confirmPassword} placeholder="************" onChange={(e) => setConfirmPassword(e.target.value)} />
                                         </div>
                                     </div>
                                     <div className="col-md-4 p-0">

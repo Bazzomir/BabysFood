@@ -8,13 +8,14 @@ import Navbar2 from './Header/Navbar2';
 // import 'bootstrap/dist/css/bootstrap.min.css'; 
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
+
 export default function App() {
   return (
-      <BrowserRouter>
-        {/* <Navbar /> */}
-        <Navbar2 />
-        <Ruti />
-        <Footer />
-      </BrowserRouter>
+    <BrowserRouter>
+      {/* <Navbar /> */}
+      <Navbar2 />
+      <Ruti />
+      <Footer />
+    </BrowserRouter>
   );
 }

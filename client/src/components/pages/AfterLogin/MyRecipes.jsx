@@ -8,6 +8,7 @@ import RecipeCategoryBadge from '../../component/RecipeCategoryBadge';
 import TitleWithLine from '../../component/TitleWithLine';
 import { ButtonCircle, NavigationImage, ButtonLink } from '../../component/Buttons';
 import Loading from '../../component/Loading';
+import Swal from 'sweetalert2';
 
 export default function MyRecipes() {
 
@@ -68,7 +69,11 @@ export default function MyRecipes() {
                 }
                 getMyRecipes();
             })
-            .catch(err => alert(err))
+            .catch(err => Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: ("An error occurred2: " + err.message),
+            }));
     }
 
     return (
