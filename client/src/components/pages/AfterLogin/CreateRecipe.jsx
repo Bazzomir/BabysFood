@@ -205,6 +205,7 @@ export default function CreateRecipe() {
                                                             Please choose recipe category.
                                                         </div>
                                                     </div>
+                                                    {/* <InputSelect onChange={e => { setCategory(e.target.value) }} value={category} defaultValue="defa" feedback="Please choose recipe category." /> */}
                                                     {/* <div className="row row-cols-sm-2"> */}
                                                     {/* <div className="form-group p-2 col-6">
                                                         <label htmlFor="recipePreparationTime" >Preparation Time</label>

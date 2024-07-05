@@ -164,7 +164,7 @@ export default function EditRecipe() {
                                                     <div className="form-group p-2 col-sm-12">
                                                         <label htmlFor="recipeCategory">Category
                                                         </label>
-                                                        <select className="form-control" id="recipeCategory" value={category} required
+                                                        <select className="form-select" id="recipeCategory" value={category} required
                                                             onChange={e => { setCategory(e.target.value) }}>
                                                             <option value="Breakfast" id="Breakfast" >Breakfast</option>
                                                             <option value="Brunch" id="Brunch" >Brunch</option>
@@ -172,6 +172,7 @@ export default function EditRecipe() {
                                                             <option value="Dinner" id="Dinner" >Dinner</option>
                                                         </select>
                                                     </div>
+                                                    {/* <InputSelect onChange={e => { setCategory(e.target.value) }} value={category} /> */}
                                                     {/* <div className="col-12"> */}
                                                     {/* <div className="row row-cols-md-3"> */}
                                                     {/* <div className="form-group p-2 col-6">
