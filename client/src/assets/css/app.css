@@ -293,6 +293,11 @@ select option:hover {
     text-decoration: underline;
 }
 
+button.swal2-confirm.swal2-styled {
+    background-color: var(--green) !important;
+    color: var(--white) !important;
+}
+
 /* @keyframes slideIn {
     from {
         opacity: 0;
