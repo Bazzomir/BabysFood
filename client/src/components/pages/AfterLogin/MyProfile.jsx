@@ -85,6 +85,7 @@ export default function MyProfile() {
         formData.append('birthday', birthday);
         formData.append('password', password);
         formData.append('confirmPassword', confirmPassword);
+        formData.append('about_me', aboutMe);
 
         if (imageUpload && imageUpload.files[0]) {
             formData.append('image', imageUpload.files[0]);
@@ -149,7 +150,7 @@ export default function MyProfile() {
 
     return (
         // <div>
-        <div className="container">
+        <div className="container min-vh-100">
             <div className="row pt-5 pb-6">
                 <TitleWithLine title="My Profile" />
                 <div className="row px-0 mx-auto mt-4">

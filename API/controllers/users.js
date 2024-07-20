@@ -90,14 +90,15 @@ module.exports = {
 
                 if (req.file) {
                     req.body.image = `images/users/${req.file.filename}`;
-                    if ( user.image !==undefined && user.image !=='undefined' && req.body.image !== user.image) {
+                    if (user.image !== undefined && user.image !== 'undefined' && req.body.image !== user.image) {
                         fs.unlink(`/public/${user.image}`, err => {
                             console.log(err)
                         })
                     }
                 } else {
-                    if (user.image === undefined)
-                        req.body.image = "https://w7.pngwing.com/pngs/692/99/png-transparent-hamburger-street-food-seafood-fast-food-delicious-food-salmon-with-vegetables-salad-in-plate-leaf-vegetable-food-recipe-thumbnail.png"
+                    req.body.image = ' '
+                    // if (user.image === undefined)
+                    //     req.body.image = "https://w7.pngwing.com/pngs/692/99/png-transparent-hamburger-street-food-seafood-fast-food-delicious-food-salmon-with-vegetables-salad-in-plate-leaf-vegetable-food-recipe-thumbnail.png"
                 }
 
                 user = await User.findByIdAndUpdate(req.user.id, req.body)

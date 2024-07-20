@@ -137,7 +137,7 @@ export default function EditRecipe() {
     };
 
     return (
-        <div className="container">
+        <div className="container min-vh-100">
             <div className="row pt-5 pb-6 position-relative">
                 <div className="row">
                     {/* <div className="col" >
