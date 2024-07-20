@@ -85,6 +85,7 @@ export default function MyProfile() {
         formData.append('birthday', birthday);
         formData.append('password', password);
         formData.append('confirmPassword', confirmPassword);
+        formData.append('about_me', aboutMe);
 
         if (imageUpload && imageUpload.files[0]) {
             formData.append('image', imageUpload.files[0]);
