@@ -20,14 +20,18 @@ const userSchema = mongoose.Schema({
     // },
     birthday: {
         type: String,
-        required:true
+        required: true
     },
     password: {
         type: String,
         require: true
     },
-    image:{
-        type:String
+    about_me: {
+        type: String,
+        require: true
+    },
+    image: {
+        type: String
     }
 }, { timestamps: true })
 mongoose.set('strictQuery', false);
