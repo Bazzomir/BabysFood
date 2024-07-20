@@ -26,10 +26,15 @@ export default function EditRecipe() {
                 });
 
                 if (res.status === 401 || res.status === 500) {
-                    alert("Token expired. Please log in.");
-                    localStorage.removeItem('token');
-                    window.location = "/login";
-                    return;
+                    Swal.fire({
+                        icon: "error",
+                        title: "Token expired",
+                        text: "Please log in.",
+                    }).then(() => {
+                        localStorage.removeItem("token");
+                        window.location = "/login";
+                    });
+                    throw new Error("Unauthorized or server error");
                 }
 
                 const data = await res.json();

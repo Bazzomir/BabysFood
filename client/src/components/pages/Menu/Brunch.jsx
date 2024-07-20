@@ -32,7 +32,7 @@ export default function Brunch() {
     if (loading) { return <Loading /> }
 
     return (
-        <div className="container" >
+        <div className="container min-vh-100">
             <div className="row pt-5 pb-6">
                 <div className="col pb-3">
                     {/* <div className="row">

@@ -6,7 +6,7 @@ import { NavigationLink, NavigationImage } from '../component/Buttons';
 export default function Footer() {
     return (
         <footer>
-            <div className="container pt-5 pb-5">
+            <div className="container pt-5 pb-5 mt-auto">
                 <div className="row">
                     <div className="col-sm-6 col-md-3 d-flex align-items-center justify-content-center justify-content-md-start">
                         {/* <a className="navbar-brand" href="/home" aria-label={ariaLabelText.navAriaLabel.navIconAriaLabel}>
