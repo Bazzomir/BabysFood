@@ -149,7 +149,7 @@ export default function MyProfile() {
 
     return (
         // <div>
-        <div className="container">
+        <div className="container min-vh-100">
             <div className="row pt-5 pb-6">
                 <TitleWithLine title="My Profile" />
                 <div className="row px-0 mx-auto mt-4">
