@@ -41,9 +41,15 @@ export default function MyProfile() {
         })
             .then(res => {
                 if (res.status === 401 || res.status === 500) {
-                    alert("Loggin first");
-                    localStorage.removeItem('token');
-                    window.location = "/login";
+                    Swal.fire({
+                        icon: "error",
+                        title: "Token expired",
+                        text: "Please log in.",
+                    }).then(() => {
+                        localStorage.removeItem("token");
+                        window.location = "/login";
+                    });
+                    throw new Error("Unauthorized or server error");
                 }
                 return res.json();
             })
@@ -69,21 +75,21 @@ export default function MyProfile() {
 
     const editUserProfile = (event) => {
         event.preventDefault();
-    
+
         const formData = new FormData();
         const imageUpload = document.querySelector('input[type="file"]');
-    
+
         formData.append('first_name', FirstName);
         formData.append('last_name', LastName);
         formData.append('email', email);
         formData.append('birthday', birthday);
         formData.append('password', password);
         formData.append('confirmPassword', confirmPassword);
-    
+
         if (imageUpload && imageUpload.files[0]) {
             formData.append('image', imageUpload.files[0]);
         }
-    
+
         if (password === confirmPassword) {
             fetch(`${api.root}/users/edit`, {
                 method: 'PATCH',
@@ -92,38 +98,43 @@ export default function MyProfile() {
                 },
                 body: formData
             })
-            .then(res => {
-                if (res.status === 401 || res.status === 500) {
-                    alert("Token expired. Please log in.");
-                    localStorage.removeItem("token");
-                    window.location = "/login";
-                    return;
-                }
-                return res.json();
-            })
-            .then(data => {
-                if (!data.error) {
-                    Swal.fire({
-                        icon: "success",
-                        title: "Profile updated successfully.",
-                        showConfirmButton: false,
-                        timer: 1500
-                    }).then(() => {
-                        window.location.reload();
-                    });
-                } else {
-                    Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        text: ("An error occurred1: " + data.message),
-                    });
-                }
-            })
-            .catch(err => Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: ("An error occurred2: " + err.message),
-            }));
+                .then(res => {
+                    if (res.status === 401 || res.status === 500) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Token expired",
+                            text: "Please log in.",
+                        }).then(() => {
+                            localStorage.removeItem("token");
+                            window.location = "/login";
+                        });
+                        throw new Error("Unauthorized or server error");
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    if (!data.error) {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Profile updated successfully.",
+                            showConfirmButton: false,
+                            timer: 1500
+                        }).then(() => {
+                            window.location.reload();
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: ("An error occurred1: " + data.message),
+                        });
+                    }
+                })
+                .catch(err => Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: ("An error occurred2: " + err.message),
+                }));
         } else {
             Swal.fire({
                 icon: "error",
@@ -132,7 +143,7 @@ export default function MyProfile() {
             });
         }
     };
-    
+
 
     if (loading) { return <Loading /> }
 

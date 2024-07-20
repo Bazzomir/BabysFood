@@ -120,14 +120,29 @@ export default function CreateRecipe() {
             },
             body: formData
         })
+            .then(res => {
+                if (res.status === 401 || res.status === 500) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Token expired",
+                        text: "Please log in.",
+                    }).then(() => {
+                        localStorage.removeItem("token");
+                        window.location = "/login";
+                    });
+                    throw new Error("Unauthorized or server error");
+                }
+                return res.json();
+            })
             .then(data => {
                 if (data.error) {
                     // alert(data.message);
-                    Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        text: ("An error occurred1: " + data.message),
-                    });
+                    // Swal.fire({
+                    //     icon: "error",
+                    //     title: "Oops...",
+                    //     text: ("An error occurred1: " + data.message),
+                    // });
+                    <saError text={`An error occurred1: ${data.message}`} />
                 } else {
                     Swal.fire({
                         position: "top-center",
@@ -140,11 +155,14 @@ export default function CreateRecipe() {
                     });
                 }
             })
-            .catch(err => Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: ("An error occurred: " + err.message),
-            }));
+            .catch(err =>
+                // Swal.fire({
+                //     icon: "error",
+                //     title: "Oops...",
+                //     text: ("An error occurred: " + err.message),
+                // })
+                <saError text={`An error occurred1: ${err.message}`} />
+            );
         // alert("An error occurred: " + err.message));
     }
 

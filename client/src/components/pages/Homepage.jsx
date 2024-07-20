@@ -58,7 +58,7 @@ function Homepage() {
     if (loading) { return <Loading /> }
 
     return (
-        <div className="container">
+        <div className="container min-vh-100">
             <div className="row pt-5">
                 <div className="col pb-3">
                     <TitleWithLine title="Fresh & New" />
